@@ -1,0 +1,17 @@
+.wrapperAccountPage {
+  display: flex;
+  box-sizing: border-box;
+  /* height: calc(100vh - 110px); */
+  min-height: fit-content;
+  align-items: stretch;
+  padding: 50px;
+}
+
+.mainContent {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  align-items: stretch;
+  padding-left: 50px;
+  position: relative;
+}

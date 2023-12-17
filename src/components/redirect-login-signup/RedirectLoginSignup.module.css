@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.container .question {
+  padding-right: 20px;
+}
+
+.container .link {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  padding-bottom: 1px;
+  border-bottom: 1px solid black;
+  font-weight: bolder;
+  font-size: 0.9em;
+}
