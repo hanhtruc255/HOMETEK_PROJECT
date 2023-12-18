@@ -4,12 +4,13 @@ import Navbar from '../../../Components/Navbar/Navbar';
 import { BsSortDown } from "react-icons/bs";
 import { BsSortUpAlt } from "react-icons/bs";
 import './ProductPage.scss';
+// import axios, { AxiosResponse } from "axios";
+import AllProducts from '../../../Components/Products/AllProducts';
 
 const ProductPage = () => {
   return (
     <div>
-        <Navbar/>
-      
+        {/* <Navbar/>
         <div className='Frame__filter'>
               <div className='Frame__filter__lefft'>
                 <h3>Sắp xếp theo: </h3>
@@ -38,7 +39,8 @@ const ProductPage = () => {
 
         <div  className="Frame__Product_Page">
           <CategorySidebar className="s1"/>
-    </div>
+          <AllProducts/>
+    </div> */}
     </div>
   )
 }

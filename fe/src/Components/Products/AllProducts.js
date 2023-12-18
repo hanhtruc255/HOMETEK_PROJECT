@@ -1,6 +1,6 @@
 import React from 'react';
-import ProductCard from './ProductCard';
-// import AllProductsData from '../../ASSETS/products';
+// import ProductCard from './ProductCard';
+// import { getAllProducts } from '../../../../be/controllers/product.js';
 import "./style.scss";
 
 const AllProducts = () => {
@@ -9,7 +9,7 @@ const AllProducts = () => {
     <div>
         <div className='All__Products'>
             <div className='Products'>
-                {/* {AllProductsData.map((item) =>  
+                {/* {getAllProducts.map((item) =>  
                             <ProductCard data={item} key={item.id}/>
                         )
                     } */}
