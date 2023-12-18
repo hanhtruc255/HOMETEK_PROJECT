@@ -1,0 +1,41 @@
+.Frame__Product_Page{
+    display: flex;
+    flex-direction: row;
+}
+.Frame__filter{
+    color: #041E42   ;
+    padding: 10px;
+    background: #FFDFE3 ;
+    display: flex;
+    justify-content: end;
+    margin: 20px 35px 0 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 1px rgb(166, 168, 167);
+
+    h3{
+        margin-right: 30px;
+    };
+    
+    .Frame__filter__right{
+        display: flex;};
+    
+    button{
+        display: flex;
+        border: #bbbbbb;
+        border-radius: 5px;
+        background: #f5f5f5;
+        margin-left: 10px;
+        padding: 5px 10px;
+        color: #041E42;
+
+        .Icon{
+            margin-right: 3px;
+        }
+    };
+    
+}
+    
+    
+
+
+

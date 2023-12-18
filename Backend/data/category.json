@@ -1,0 +1,31 @@
+[
+    {
+        "categoryId": "P1",
+        "name": "Bếp" ,
+        "subCategories": [
+            "Nồi chiên không dầu",
+            "Nồi cơm thông minh",
+            "Máy rửa thực phẩm",
+            "Máy khử trùng đồ dùng bếp"
+        ]
+    },
+
+    {
+        "categoryId": "P2",
+        "name": "Dọn dẹp" ,
+        "subCategories": [
+            "Bàn chải đa năng",
+            "Máy lọc không khí thông minh",
+            "Robot hút bụi lau nhà"
+        ]
+    },
+    {
+        "categoryId": "P3",
+        "name": "Tiện ích" ,
+        "subCategories": [
+            "Máy tạo bọt rửa tay",
+            "Loa trợ lý ảo thông minh",
+            "Công tắc thông minh"
+        ]
+    }
+]
