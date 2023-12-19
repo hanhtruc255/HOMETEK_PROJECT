@@ -25,6 +25,17 @@ const getProductById = async (req, res) => {
   }
 };
 
+//Tìm sản phẩm theo tên
+
+const getProductByName = async (req, res) => {
+  await Product
+    .findOne({ product_id: req.body.item_id })
+    .select({ name: 1, _id: 0 })
+    .then((product) => res.send(product.name))
+    .catch((err) => res.status(500).json({ error: err.message }));
+};
+
+// Lấy sản phẩm 
 // Lấy sản phẩm theo Category
 // const getProductByCate = async (req, res) => {
 //   try {
@@ -72,4 +83,4 @@ const updateProduct = async (req, res) => {
   }
 };
 
-module.exports = {getAllProducts, addProduct, updateProduct, getProductById}
+module.exports = {getAllProducts, addProduct, updateProduct, getProductById, getProductByName}

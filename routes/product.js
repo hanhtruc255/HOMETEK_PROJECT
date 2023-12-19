@@ -8,17 +8,11 @@ router.get('/Cua_hang', productController.getAllProducts);
 // api: Lấy 1 sản phẩm theo id
 router.get('/Cua_hang/:id', productController.getProductById);
 
-// api: Lấy sản phẩm theo danh mục
-// router.get('/:category', productController.getProductCategory);
+// api: Tìm sản phẩm theo tên
+router.post('/name', productController.getProductByName)
 
-// api: Lấy sản phẩm theo note
-// router.get('/products/:note', productController.getProductByNote)
+//api: Tạo một sản phẩm mới
+// router.post()
 
-// router.get('/:loai', product.category);
-
-// router.get('/info/:id', product.info);
-
-// router.post('/search/all', product.searchPost);
-// router.get('/search/:key', product.search);
 
 module.exports= router

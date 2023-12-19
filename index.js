@@ -18,6 +18,7 @@ db.connect();
 // app.use('/product', product)
 
 // API
+app.use(cors());
 app.use('/', productRouter);
 app.use('/', categoryRouter);
 app.listen(port, () =>{
