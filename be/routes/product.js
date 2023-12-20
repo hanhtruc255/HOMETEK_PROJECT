@@ -3,10 +3,10 @@ const router = express.Router()
 const productController = require('../controllers/product')
 
 // api: Lấy sản phẩm 
-router.get('/cua_hang', productController.getAllProducts);
+router.get('/product', productController.getAllProducts);
 
 // api: Lấy 1 sản phẩm theo id
-router.get('/cua_hang/:id', productController.getProductById);
+router.get('/product/:id', productController.getProductById);
 
 // api: Lấy sản phẩm theo danh mục
 // router.get('/:category', productController.getProductCategory);
