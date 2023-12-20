@@ -3,7 +3,7 @@ const router = express.Router();
 const categoryController = require('../controllers/category');
 
 // Lấy tất cả danh mục chính
-router.get('/Hometek', categoryController.getAllCategories);
+router.get('/categories', categoryController.getAllCategories);
 
 // Lấy danh sách danh mục con của một danh mục chính
 router.get('/categories/:categoryName/subcategories', categoryController.getSubCategories);
