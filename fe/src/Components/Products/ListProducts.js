@@ -1,7 +1,4 @@
 import React from 'react';
-// import ProductCard from './ProductCard';
-// import { getAllProducts } from '../../../../be/controllers/product.js';
-import image from "../../Assets/img1.jpg"
 import "./ListProduct.scss"
 import axios from "axios";
 import { Link } from 'react-router-dom';
@@ -13,9 +10,11 @@ class ListProducts extends React.Component{
     state = {ListProducts:[]}
     
     async componentDidMount(){
-        let res = await axios.get('http://localhost:3000/cua-hang');
+        let res = await axios.get('https://dummyjson.com/products');
+        // console.log (">>>", res)
         this.setState({
-            ListProducts: res && res.data ? res.data : []})
+            ListProducts: res && res.data.products? res.data.products
+            : []})
     }
     render(){
         let {ListProducts} = this.state;
@@ -26,7 +25,7 @@ class ListProducts extends React.Component{
                         ListProducts.map((item, index) => {
                             return(
                                 <div className='child' key={item.id}>
-                                    <Link to={`/product/${item.id}`}>
+                                    <Link to={`/cua-hang/${item.id}`}>
                                         <div>
                                             <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
                                         </div>

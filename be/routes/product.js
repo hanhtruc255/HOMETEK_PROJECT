@@ -6,7 +6,7 @@ const productController = require('../controllers/product')
 router.get('/cua-hang', productController.getAllProducts);
 
 // api: Lấy 1 sản phẩm theo id
-router.get('/cua-hang/:id', productController.getProductById);
+router.get('/cua-hang/:_id', productController.getProductById);
 
 // api: Lấy sản phẩm theo danh mục
 // router.get('/:category', productController.getProductCategory);

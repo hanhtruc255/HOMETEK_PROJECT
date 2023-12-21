@@ -1,9 +1,10 @@
 import React from 'react'
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter, Routes} from 'react-router-dom';
 import HomePage from './Pages/Users/HomePage/HomePage';
 import ProductPage from './Pages/Users/ProductPage/ProductPage';
-import CategoryPage from './Pages/Users/ProductPage/CatogoryPage';
-import ProductDetailPage from './Pages/Users/ProductPage/ProductDetailPage';
+import CartPage from './Pages/Users/CartPage/CartPage';
+import DetailProductPage from './Pages/Users/ProductPage/DetailProductPage';
+import CatogoryPage from './Pages/Users/ProductPage/CatogoryPage';
 
 const App = () => {
   return (
@@ -12,14 +13,13 @@ const App = () => {
        <Routes>
             <Route path="/" element ={<HomePage/>} />
             <Route path="*" element ={<div><h1>404 NOT FOUND</h1></div>} />
-            {/* <Route path="/yeu-thich" element={<Whishlist/>}/>
-            <Route path="/gio-hang" element={<Cart/>}/> */}
             <Route path='/cua-hang' element ={<ProductPage/>}/>
-                  <Route path="/cua-hang/:id" element={<ProductDetailPage/>}/>
+            <Route path='/cua-hang/:id' element={<DetailProductPage/>}/>
 
-            <Route path='/cua-hang/:cateid' element ={<CategoryPage/>}></Route> 
-           
-            
+            <Route path='/:category' element={<CatogoryPage/>}/>
+            {/* <Route path='/cua-hang/don-dep' element={<CatogoryPage/>}/>
+            <Route path='/cua-hang/tien-ich' element={<CatogoryPage/>}/> */}
+            <Route path="/gio-hang" element={<CartPage/>}/>
         </Routes> 
    </BrowserRouter>
     </div>

@@ -86,14 +86,15 @@ img{
 .Menu{
     background: #041E42;
     height: 40px;
+
     
     ul{
         display: flex;
         justify-content: space-between;
-        margin: 0 150px;
+        margin: 0 15px;
 
         li {
-            // width: 150px;
+            width: 150px;
             list-style-type: none;
             position: relative;
             

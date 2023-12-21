@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Navbar.scss';
 import { BsHeart } from "react-icons/bs";
 import { BsCart3 } from "react-icons/bs";
@@ -12,10 +12,13 @@ import { Link } from 'react-router-dom';
 
 
 const Navbar= () =>{
-    // const [Menu, setMenu] = useState("Cửa hàng")
+    const [activeTab, setActiveTab] = useState(null); 
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
+      };
 
     return (
-        <nav>
+        <div>
             <div className="Nav__top">
                     <div className="header__top__left">
                         <Link to={"/hometek"}> <img src={""} alt="logo"></img></Link>
@@ -49,7 +52,7 @@ const Navbar= () =>{
                         <li> <Link to="/"> Về chúng tôi</Link> </li>
 
                         <li><Link to ={"/cua-hang"}>Cửa hàng</Link> </li>
-                        <li><Link to ={"/hometek/bep"}>Bếp</Link> 
+                        <li><Link to ={'/bep'} onClick={() => handleTabChange('Bep')}>Bếp</Link> 
                             <ul className="header__menu__dropdown">
                                 <li>
                                     <Link to="/">Nồi cơm thông minh</Link>
@@ -67,7 +70,7 @@ const Navbar= () =>{
                         
                         </li>
                         
-                        <li><Link to ="/hometek/don-dep">Dọn dẹp</Link>
+                        <li><Link to ="/cua-hang/don-dep">Dọn dẹp</Link>
                             <ul className="header__menu__dropdown">
                                 <li><Link to="/">Robot hút bụi lau nhà</Link></li>
                                     
@@ -77,7 +80,7 @@ const Navbar= () =>{
                             </ul>
                         </li>
 
-                        <li><Link to ="/hometek/tien-ich">Tiện ích</Link>
+                        <li><Link to ="/cua-hang/tien-ich">Tiện ích</Link>
                             <ul className="header__menu__dropdown">
                                 <li><Link to="/">Máy tạo bọt rửa tay</Link></li>
                                 <li><Link to="/">Loa trợ lý ảo thông minh</Link></li>
@@ -88,100 +91,11 @@ const Navbar= () =>{
                         <li> <Link to="/hometek/blog">Blog</Link> </li>
                         <li> <Link to="/hometek/lien-he">Liện hệ</Link> </li>
                         <li> <Link to="/hometek/chinh-sach">Chính sách</Link> </li>
-
-{/* CÁCH 2 */}
-{/* 
-const [Menus] = useState ([
-        {category: "Về chúng tôi",
-         path:"",
-        },
-        {category:"Bếp",
-         path:  "/bep",
-         isShowSubmenu: false,
-         child: [
-            {sub_category:"Tất cả sản phẩm",
-            path: "/bep/tat-ca-san-pham",
-            },
-            {sub_category:"Nồi chiên không dầu",
-            path: "bep/noi-chien-khong-dau",
-            },
-            {sub_category:"Nồi cơm thông minh",
-            path: "/bep/noi-com-thong-minh",
-            },
-            {sub_category:"Máy rửa thực phẩm",
-            path: "/bep/may-rua-thuc-pham",
-            },
-            {sub_category:"Máy khử trùng đồ dùng bếp",
-            path: "/bep/may-khu-trung-do-dung-bep",
-            }
-
-         ]
-        },
-        {category: "Dọn dẹp",
-         path: "/don-dep",
-         isShowSubmenu: false,
-         child: [
-            {sub_category:"Tất cả sản phẩm",
-            path: "/don-dep/tat-ca-san-pham",
-            },
-            {sub_category:"Robot hút bụi lau nhà",
-            path: "/don-dep/robot-hut-bui-lau-nha",
-            },
-            {sub_category:"Máy lọc không khí thông minh",
-            path: "/don-dep/may-luc-khong-khi-thong-minh",
-            },
-            {sub_category:"Bàn chải đa năng",
-            path: "/don-dep/ban-chai-da-nang",
-            }
-         ]
-        },
-        {category: "Tiện ích",
-         path: "/tien-ich",
-         isShowSubmenu: false,
-         child: [
-            {sub_category:"Tất cả sản phẩm",
-            path: "/tien-ich/tat-ca-san-pham",
-            },
-            {sub_category:"Máy tạo bọt rửa tay",
-            path: "/tien-ich/may-tao-bot-rua-tay",
-            },
-            {sub_category:"Loa trợ lý ảo thông minh",
-            path: "/tien-ich/loa-tro-ly-ao-thong-minh",
-            },
-            {sub_category:"Công tắc thông minh",
-            path: "/tien-ich/cong-tac-thong-minh",
-            }
-         ]
-        },
-        {category: "Blog",
-         path: "/blog"
-        },
-        {category: "Chính sách",
-         path: "/chinh-sach"
-        },
-    ]) */}
-
-                        {/* {Menus. map((menu,menukey) => (
-                                <li key={menukey} className="active">
-                                    <Link to ={`/home/${menu.category}`}  >{menu?.category}
-                                    </Link>
-                                    {menu.child &&(
-                                        <ul className="header__menu__dropdown">
-                                            {menu.child.map((childItem, childKey) =>(
-                                                <li key={`${childItem}-${childKey}`}>
-                                                    <Link to={`/home/${menu.category}/${menu.sub_category}`} >{childItem.sub_category}</Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                        )
-                                    }
-                                </li> */}
-
                     </ul>
                 </nav>
             </div>
 
-        </nav>
+        </div>
     )
 };
 

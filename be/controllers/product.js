@@ -14,7 +14,7 @@ const getAllProducts = async (req, res) => {
 //Lấy sản phẩm theo ID
 const getProductById = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findOne({product_id: req.params.id});
     if (product) {
       res.json(product);
     } else {

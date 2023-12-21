@@ -4,8 +4,6 @@ import Navbar from '../../../Components/Navbar/Navbar';
 import { BsSortDown } from "react-icons/bs";
 import { BsSortUpAlt } from "react-icons/bs";
 import './ProductPage.scss';
-// import axios, { AxiosResponse } from "axios";
-
 import ListProducts from '../../../Components/Products/ListProducts';
 
 const ProductPage = () => {
