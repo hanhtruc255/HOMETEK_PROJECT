@@ -1,0 +1,36 @@
+.customer-filter {
+  .search-btn,
+  .add-customer-btn {
+    color: #041e42;
+    background: #c2e8c7;
+  }
+}
+.customer-table {
+  .block-btn,
+  .detail-btn {
+    color: #041e42;
+    background: #c2e8c7;
+  }
+}
+#customer-detail {
+  .customer-name {
+    background: #041e42;
+    color: #fff;
+  }
+  .modal-body {
+    padding: 0 !important;
+    .customer-email,
+    .customer-gender,
+    .customer-address {
+      padding: 10px;
+      background: #ddcfd8;
+      color: #041e42;
+    }
+    .customer-phone-number,
+    .customer-birth-date {
+      padding: 10px;
+      background: #f2f2f2;
+      color: #041e42;
+    }
+  }
+}

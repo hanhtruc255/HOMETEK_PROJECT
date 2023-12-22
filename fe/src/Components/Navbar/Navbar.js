@@ -22,8 +22,7 @@ const Navbar= () =>{
 
                     <div className="header__top__midle">
                         <input type="text" placeholder="Bạn muốn tìm gì..."/>
-                            <Link to={""} className="iconSearch"><BsSearch /></Link>
-                        
+                            <Link to={""} className='iconSearch'><BsSearch/></Link>
                     </div>
  
                     <div className="header__top__right">
@@ -76,7 +75,7 @@ const Navbar= () =>{
                             </ul>
                         </li>
 
-                        <li><Link to ="/tien-ich">Tiện ích</Link>
+                        <li><Link to ="/skincare">Tiện ích</Link>
                             <ul className="header__menu__dropdown">
                                 <li><Link to="/">Máy tạo bọt rửa tay</Link></li>
                                 <li><Link to="/">Loa trợ lý ảo thông minh</Link></li>

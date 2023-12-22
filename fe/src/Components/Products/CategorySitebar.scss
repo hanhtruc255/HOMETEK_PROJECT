@@ -1,44 +1,46 @@
 .Category__Sidebar{
     max-width: 300px;
-    height: 400px;
-    padding: 5px;
-    margin: 50px 30px 35px 20px;
+    padding: 10px;
+    margin: 50px 20px 35px 20px;
     border: 1px solid black;
     border-radius: 5px;
-
-    
     background-color: #F5F5F5F5;
-
-    button{
-        display: flex;
-        margin: 5px;
-        border: none;
-        background: none;
-    }
-    a{
-        color: #041E42;
-        list-style-type: none;
-
-    }
-
-    ul{ font-size: 14px;
-        list-style-type: none;
-        margin-right: 65px ;
-
-    }
-    li{
-        display: flex;
-        flex-direction: row;
-        padding: 5px;
-        width: 100px;
-
-    }
-
-}
-.Icon_cate{
-    list-style-type: none;
-    background: none;
-    border: none;
-    margin-right: 5px;
     color: #041E42;
+    // h4{
+    //     margin-left: 30px;
+    //     text-align: center;
+    // }
+
+
+    ul{margin-right: 65px ;
+
+    }
+
+   .category{
+    
+            a{
+            color: #041E42;
+            text-decoration: none;}
+
+            ul{ font-size: 14px;
+            list-style-type: none;
+            }
+            li{
+            display: flex;
+            flex-direction: row;
+            padding: 5px;
+            width: 120px;}}
+    
+}
+
+
+.input_soft{
+    width: 10px;
+}
+label{
+    display: flex;
+    margin-left: 10px;
+    p{
+        margin: 5px 30px;
+    }
 }

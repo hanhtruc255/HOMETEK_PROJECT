@@ -1,7 +1,7 @@
 import React from 'react'
 import { BsShop } from "react-icons/bs";
 
-const CartPage = () => {
+const Cart = () => {
   return (
     <div>
         {/* <Breadcrum/> */}
@@ -18,4 +18,4 @@ const CartPage = () => {
   )
 }
 
-export default CartPage
+export default Cart

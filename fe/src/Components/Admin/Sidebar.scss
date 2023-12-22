@@ -1,0 +1,26 @@
+.sidebar-admin {
+  background: #041e42;
+  .sidebar-home {
+    background: #c2e8c7;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      color: #041e42;
+      font-weight: 600;
+    }
+  }
+  #menu {
+    li {
+      margin: 5px 0;
+      a {
+        color: #fff;
+        text-decoration: none;
+        &.active {
+          color: #c2e8c7;
+        }
+      }
+    }
+  }
+}

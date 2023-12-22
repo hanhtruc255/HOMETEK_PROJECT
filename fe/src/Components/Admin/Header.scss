@@ -1,0 +1,35 @@
+.search {
+  .search-btn {
+    background: #041e42;
+    color: #e3e6f0;
+  }
+}
+
+.top-bar-split {
+  width: 0;
+  border-right: 1px solid #e3e6f0;
+  height: calc(4.375rem - 2rem);
+  margin: auto 1rem;
+}
+.dropdown:hover .dropdown-menu,
+.dropdown:focus .dropdown-menu {
+  display: block !important;
+}
+.dropdown {
+  .btn-dropdown {
+    border: none;
+    outline: none;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .dropdown-menu {
+    li {
+      padding: 5px 0;
+    }
+    li:hover {
+      cursor: pointer;
+    }
+  }
+}

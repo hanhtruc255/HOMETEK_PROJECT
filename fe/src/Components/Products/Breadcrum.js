@@ -29,7 +29,7 @@ const Breadcrum = () => {
 
   return(
         <h3 className='s1'>
-          Hometek/ {category}
+          Hometek/{category}
         </h3>
 
 
