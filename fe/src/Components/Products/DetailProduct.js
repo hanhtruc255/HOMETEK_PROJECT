@@ -9,7 +9,7 @@ import { BsTruck } from "react-icons/bs";
 import { BsArrowRepeat } from "react-icons/bs";
 
 const DetailProduct = () => {
-    const {id} = useParams();
+    const {category,id} = useParams();
     const [product, setProduct] = useState(null);
     const [activeTab, setActiveTab] = useState('description'); 
   
@@ -28,7 +28,7 @@ const DetailProduct = () => {
     const handleTabChange = (tab) => {
         setActiveTab(tab);
       };
-
+      console.log(this)
   return (
     <div>
         {product ? (
@@ -47,7 +47,9 @@ const DetailProduct = () => {
               </div>
 
               <div className='Infomation'>
-                {/* breadcrum */}
+
+              <h4>Hometek/{product.category}/{product.title}</h4>
+
                 <div className='name'>
                   {product.title}
                   </div>
@@ -81,7 +83,7 @@ const DetailProduct = () => {
                     <BsTruck/>
                     <h5>Giao nhanh - Miễn phí cho đơn từ 2 triệu đồng</h5></div>
                     
-                    <a>Enter your postal code for Deliverty Availability</a>
+                    <Link>Enter your postal code for Deliverty Availability</Link>
                   
                   <hr></hr>
                   <div className='Deli2'>
@@ -103,8 +105,6 @@ const DetailProduct = () => {
                         <hr className='hr_des'/>
                             <button onClick={() => handleTabChange('description')} className='s1' >Mô tả</button>
                             <button onClick={() => handleTabChange('specifications')} >Thông số kỹ thuật</button>
-
-                       
                         <hr className='hr_des'/>
                     </div>
                 {/* mô tả */}
@@ -126,8 +126,6 @@ const DetailProduct = () => {
 {/* Kết thúc */}
         </div>
             
-            
-              
               
               
               

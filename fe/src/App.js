@@ -15,8 +15,14 @@ const App = () => {
             <Route path="*" element ={<div><h1>404 NOT FOUND</h1></div>} />
             <Route path='/cua-hang' element ={<ProductPage/>}/>
             <Route path='/cua-hang/:id' element={<DetailProductPage/>}/>
-
+            
             <Route path='/:category' element={<CatogoryPage/>}/>
+            <Route path='/:category/:id' element={<DetailProductPage/>}/>
+            <Route path='/:category/:subcategory' element={<CatogoryPage/>}/>
+            <Route path='/:category/:subcategory/:id' element={<DetailProductPage/>}/>
+
+
+            
             {/* <Route path='/cua-hang/don-dep' element={<CatogoryPage/>}/>
             <Route path='/cua-hang/tien-ich' element={<CatogoryPage/>}/> */}
             <Route path="/gio-hang" element={<CartPage/>}/>

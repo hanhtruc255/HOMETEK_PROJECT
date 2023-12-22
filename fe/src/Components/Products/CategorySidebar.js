@@ -1,43 +1,51 @@
 import React from 'react'
 import "./CategorySitebar.scss"
 import { BsList } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 
 const CategorySidebar = ({data}) => {
     // Lọc các sub_cagory https://www.youtube.com/watch?v=c3WSziz_u_o&t=3246s//
   return (    
         <div className='Category__Sidebar'>
-                    <ul>
+                    <ul> <h4>CATEGORY</h4>
                         <li>
                             <button>
-                            <BsList className='Icon_cate'/>
-                            <h4>Cửa hàng</h4>
+                            <Link to='/cua-hang'>Cửa hàng</Link>
                             </button>
                              {/*Sub_Cate  */}
                         </li>
 
                         <li>
                             <button>
-                            <BsList className='Icon_cate'/>
-                            <h4>Bếp</h4>
+
+                            <Link to='/smartphones'>Bếp</Link>
                             </button>
                              {/*Sub_Cate  */}
                         </li>
 
                         <li>
                             <button>
-                                <BsList className='Icon_cate'/>
-                                <h4>Dọn dẹp</h4>
+
+                                <Link to='/laptops'>Dọn dẹp</Link>
                             </button>
                         </li>
 
                         <li>
                             <button>
-                                <BsList className='Icon_cate'/>
                                 <h4>Tiện ích</h4>
                             </button>
                         </li>
-                    </ul></div>
+                    </ul>
+
+                    <ul> <h4>PRICE</h4>
+                        <li></li>
+                    </ul>
+                    
+                    
+                    
+                    
+                    </div>
   )
 }
 

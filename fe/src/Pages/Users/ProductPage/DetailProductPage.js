@@ -2,10 +2,10 @@ import React from 'react';
 import DetailProduct from '../../../Components/Products/DetailProduct';
 import Navbar from '../../../Components/Navbar/Navbar';
 import Footer from '../../../Components/Footer/Footer';
+import Breadcrum from '../../../Components/Products/Breadcrum';
 
 
 const DetailProductPage = () => {
-
 
   return (
     <div>

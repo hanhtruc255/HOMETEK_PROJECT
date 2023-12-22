@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Navbar.scss';
 import { BsHeart } from "react-icons/bs";
 import { BsCart3 } from "react-icons/bs";
@@ -12,16 +12,12 @@ import { Link } from 'react-router-dom';
 
 
 const Navbar= () =>{
-    const [activeTab, setActiveTab] = useState(null); 
-    const handleTabChange = (tab) => {
-        setActiveTab(tab);
-      };
 
     return (
         <div>
             <div className="Nav__top">
                     <div className="header__top__left">
-                        <Link to={"/hometek"}> <img src={""} alt="logo"></img></Link>
+                        <Link to={"/"}>HOMETEK</Link>
                     </div>
 
                     <div className="header__top__midle">
@@ -52,10 +48,10 @@ const Navbar= () =>{
                         <li> <Link to="/"> Về chúng tôi</Link> </li>
 
                         <li><Link to ={"/cua-hang"}>Cửa hàng</Link> </li>
-                        <li><Link to ={'/bep'} onClick={() => handleTabChange('Bep')}>Bếp</Link> 
+                        <li><Link to ={'/smartphones'}>Bếp</Link> 
                             <ul className="header__menu__dropdown">
                                 <li>
-                                    <Link to="/">Nồi cơm thông minh</Link>
+                                    <Link to="/smartphones/noichien">Nồi cơm thông minh</Link>
                                 </li>
                                 <li>
                                     <Link to="/">Nồi chiên không dầu</Link>
@@ -70,7 +66,7 @@ const Navbar= () =>{
                         
                         </li>
                         
-                        <li><Link to ="/cua-hang/don-dep">Dọn dẹp</Link>
+                        <li><Link to ="/laptops">Dọn dẹp</Link>
                             <ul className="header__menu__dropdown">
                                 <li><Link to="/">Robot hút bụi lau nhà</Link></li>
                                     
@@ -80,7 +76,7 @@ const Navbar= () =>{
                             </ul>
                         </li>
 
-                        <li><Link to ="/cua-hang/tien-ich">Tiện ích</Link>
+                        <li><Link to ="/tien-ich">Tiện ích</Link>
                             <ul className="header__menu__dropdown">
                                 <li><Link to="/">Máy tạo bọt rửa tay</Link></li>
                                 <li><Link to="/">Loa trợ lý ảo thông minh</Link></li>

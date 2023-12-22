@@ -1,10 +1,11 @@
 .Category__Sidebar{
-    width: 100%;
+    max-width: 300px;
     height: 400px;
     padding: 5px;
-    margin: 50px 35px 35px 20px;
+    margin: 50px 30px 35px 20px;
     border: 1px solid black;
     border-radius: 5px;
+
     
     background-color: #F5F5F5F5;
 
@@ -14,18 +15,22 @@
         border: none;
         background: none;
     }
-    h4{
+    a{
         color: #041E42;
+        list-style-type: none;
+
     }
 
     ul{ font-size: 14px;
         list-style-type: none;
+        margin-right: 65px ;
 
     }
     li{
         display: flex;
         flex-direction: row;
         padding: 5px;
+        width: 100px;
 
     }
 
