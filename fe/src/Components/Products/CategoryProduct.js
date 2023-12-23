@@ -4,7 +4,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { BsHeart } from "react-icons/bs";
 import { BsCart3 } from "react-icons/bs";
-import "./CategoryProduct.scss"
+import "./styleproduct.scss"
+
 
 
 const CategoryProduct = () => {
@@ -50,16 +51,11 @@ const CategoryProduct = () => {
                       </div>
 
                       <div className="item__buy__icon">
-                          <ul>
-                              <li>
-                                  <button><BsHeart />
-                                  </button>
-                              </li>
-                              <li> 
-                                  <button><BsCart3 />
-                                  </button> 
-                              </li>
-                          </ul>
+                          <button><BsHeart />
+                          </button>
+                
+                          <button><BsCart3 />
+                          </button>
                       </div>
                   </div>
             </div>

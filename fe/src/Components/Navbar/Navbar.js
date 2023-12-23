@@ -22,7 +22,7 @@ const Navbar= () =>{
 
                     <div className="header__top__midle">
                         <input type="text" placeholder="Bạn muốn tìm gì..."/>
-                            <Link to={""} className='iconSearch'><BsSearch/></Link>
+                            <Link to={""} ><BsSearch className='iconSearch'/></Link>
                     </div>
  
                     <div className="header__top__right">
@@ -41,11 +41,10 @@ const Navbar= () =>{
                     </div>
             </div>
 
-            <div className="Nav__menu">
+            <div>
                 <nav className="Menu">
                     <ul>
                         <li> <Link to="/"> Về chúng tôi</Link> </li>
-
                         <li><Link to ={"/cua-hang"}>Cửa hàng</Link> </li>
                         <li><Link to ={'/smartphones'}>Bếp</Link> 
                             <ul className="header__menu__dropdown">
@@ -62,7 +61,6 @@ const Navbar= () =>{
                                     <Link to="/">Máy khử trùng đồ dùng bếp</Link>
                                 </li>
                             </ul>
-                        
                         </li>
                         
                         <li><Link to ="/laptops">Dọn dẹp</Link>

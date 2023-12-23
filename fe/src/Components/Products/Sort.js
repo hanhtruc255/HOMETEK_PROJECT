@@ -1,7 +1,7 @@
 import React from 'react'
 import { BsSortDown } from "react-icons/bs";
 import { BsSortUpAlt } from "react-icons/bs";
-import './Sort.scss'
+import './styleproduct.scss'
 
 const Sort = () => {
   return (
@@ -9,7 +9,7 @@ const Sort = () => {
             
             <div className='Frame_filter'>
                 <div className='Frame__filter__lefft'>
-                    <h3>Sắp xếp theo: </h3>
+                    <h5>Sắp xếp theo: </h5>
                 </div>
 
                 <div className='Frame__filter__right'>

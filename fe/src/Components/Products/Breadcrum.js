@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams} from 'react-router-dom'
 import axios from 'axios';
-import "./CategoryProduct.scss"
+import "../../Style/style.scss"
 
 
 const Breadcrum = () => {
@@ -28,9 +28,9 @@ const Breadcrum = () => {
 
 
   return(
-        <h3 className='s1'>
-          Hometek/{category}
-        </h3>
+        <p className='s1'>
+        Hometek/{category}
+        </p>
 
 
   )

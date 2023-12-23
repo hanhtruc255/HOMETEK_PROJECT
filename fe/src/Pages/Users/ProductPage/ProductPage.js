@@ -2,7 +2,7 @@ import React from 'react';
 import CategorySidebar from '../../../Components/Products/CategorySidebar';
 import Navbar from '../../../Components/Navbar/Navbar';
 
-import './ProductPage.scss';
+import './styleproductpage.scss';
 import ListProducts from '../../../Components/Products/ListProducts';
 import Sort from '../../../Components/Products/Sort';
 

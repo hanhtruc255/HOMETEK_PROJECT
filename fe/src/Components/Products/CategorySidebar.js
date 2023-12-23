@@ -1,5 +1,5 @@
 import React, {useState, useEffect  } from 'react';
-import "./CategorySitebar.scss";
+import "./styleproduct.scss";
 import { BsList } from "react-icons/bs";
 import axios from 'axios';
 import { Link} from 'react-router-dom';
@@ -36,76 +36,73 @@ const CategorySidebar = () => {
   return (
     <div className='Category__Sidebar'>
       {/* CATEGORY */}
-      <ul className='category'>
+      <div className='category'>
         <h4>CATEGORY</h4>
-        <li>
-          <Link to={"/cua-hang"}>Cửa hàng</Link>
-        </li>
-                
+        <Link to={"/cua-hang"}>Cửa hàng</Link>
           {/*Bếp */}
-        <li>
+        <div>
             <div>
                  <Link to='/smartphones' onClick={toggleBepSubcategories}>Bếp</Link>
             </div>
           {showBepSubcategories && (
-            <ul className="dropdown">
-              <li><Link to="/smartphones/noichien">Nồi cơm thông minh</Link></li>
-              <li><Link to="/">Nồi chiên không dầu</Link></li>
-              <li><Link to="/">Máy rửa thực phẩm</Link></li>
-              <li><Link to="/">Máy khử trùng đồ dùng bếp</Link></li>
-            </ul>
+            <div className="dropdown">
+              <Link to="/smartphones/noichien">Nồi cơm thông minh</Link> <br/>
+              <Link to="/">Nồi chiên không dầu</Link> <br/>
+              <Link to="/">Máy rửa thực phẩm</Link>  <br/>
+              <Link to="/">Máy khử trùng đồ dùng bếp</Link> <br/>
+            </div>
           )}
-        </li>
+        </div>
 
         {/* Dọn dẹp*/}
-        <li>
+        <div>
           <div onClick={toggleDonDepSubcategories}>
                 <Link to ='/laptops'>Dọn dẹp</Link>
           </div>
           {showDonDepSubcategories && (
-            <ul className="dropdown">
-              <li><Link to="/">Robot hút bụi lau nhà</Link></li>
-              <li><Link to="/">Máy lọc không khí thông minh</Link></li>
-              <li><Link to="/">Bàn chảy đa năng</Link></li>
-            </ul>
+            <div className="dropdown">
+              <Link to="/">Robot hút bụi lau nhà</Link> <br/>
+              <Link to="/">Máy lọc không khí thông minh</Link> <br/>
+              <Link to="/">Bàn chảy đa năng</Link> <br/>
+            </div>
           )}
-        </li>
+        </div>
 
         {/* Tiện ích */}
-        <li>
-          <div onClick={toggleTienIchSubcategories}>Tiện ích</div>
-          {showTienIchSubcategories && (
-            <ul className="dropdown">
-              <li><Link to="/">Máy tạo bọt rửa tay</Link></li>
-              <li><Link to="/">Loa trợ lý ảo thông minh</Link></li>
-              <li><Link to="/">Công tắc thông minh</Link></li>
-            </ul>
-          )}
-        </li>
-      </ul>
-
-      {/* BRAND */}
-      <ul>
-        <h4>BRAND</h4>
         <div>
-            <label> <input type='checkbox'className='input_soft'/><p> Apple</p>  </label>
+          <div onClick={toggleTienIchSubcategories}><Link to ='/skincare'>Tiện ích</Link></div>
+          {showTienIchSubcategories && (
+            <div className="dropdown">
+              <Link to="/">Máy tạo bọt rửa tay</Link> <br/>
+              <Link to="/">Loa trợ lý ảo thông minh</Link> <br/>
+              <Link to="/">Công tắc thông minh</Link> <br/>
+            </div>
+          )}
+        </div>
+      </div>
+        <hr></hr>
+      {/* BRAND */}
+      <div className='brandandprice'>
+        <h4>BRAND</h4>
+        <div className='b1'>
+            <label> <input type='checkbox'className='input_soft'/><p> Apple</p>  </label> 
             <label> <input type='checkbox'className='input_soft'/><p> Samsung</p> </label>
             <label> <input type='checkbox'className='input_soft'/><p>  OPPO</p> </label>
             <label> <input type='checkbox'className='input_soft'/><p> HP</p> </label>
         </div>
         
-      </ul>
-
+      </div>
+          <hr></hr>
       {/* PRICE */}
-      <ul>
+      <div className='brandandprice'>
         <h4>PRICE</h4>
-            <div>
+            <div className='b1'>
                 <label> <input type='radio' name='price'className='input_soft'/> <p>$0 - $50</p></label>
                 <label> <input type='radio' name='price'className='input_soft'/><p>100-1000</p> </label>
                 <label> <input type='radio' name='price'className='input_soft'/> <p>over 1000 </p> </label>
             </div>
 
-        </ul>
+        </div>
       <div> <button>LỌC</button> </div>
     </div>
   );

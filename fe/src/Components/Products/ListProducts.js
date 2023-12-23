@@ -1,5 +1,5 @@
 import React from 'react';
-import "./ListProduct.scss"
+import "./styleproduct.scss"
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import { BsHeart } from "react-icons/bs";
@@ -42,17 +42,9 @@ class ListProducts extends React.Component{
                                         </div>
 
                                         <div className="item__buy__icon">
-                                            <ul>
-                                                <li>
-                                                    <button><BsHeart />
-                                                    </button>
-                                                    </li>
-                                                <li> 
-                                                    
-                                                    <button><BsCart3 />
-                                                    </button> 
-                                                    </li>
-                                            </ul>
+                                                <button><BsHeart /></button>
+                                                <button><BsCart3 /></button> 
+                                        
                                         </div>
                                     </div>
                                 </div>    
