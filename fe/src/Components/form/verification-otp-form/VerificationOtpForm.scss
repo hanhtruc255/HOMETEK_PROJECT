@@ -1,0 +1,76 @@
+.form-otp {
+  width: 450px;
+  height: 410px;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.form-otp .form__content {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.form-otp .heading {
+  font-size: 1.7em;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.wrap-otp {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.wrap-otp .description {
+  padding: 10px 0 20px 0;
+}
+
+.form-otp .confirm-text {
+  text-align: start;
+  font-weight: 600;
+}
+
+.otp-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.otp-field {
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  text-align: center;
+  border: 1px solid grey;
+  border-radius: 8px;
+  outline: none;
+}
+
+.resend-otp-btn {
+  padding: 20px 0;
+  text-align: center;
+  color: gray;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+/* .closeModal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+} */

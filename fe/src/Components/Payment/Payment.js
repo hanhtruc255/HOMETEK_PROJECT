@@ -117,10 +117,10 @@ const Payment = () => {
               <div className='money_left'>
                 <p>Phương thức thanh toán</p>
                 <div className='money_left_child'>
-                    <label><input type='radio'/><img src='/'/></label>
-                    <label><input type='radio'/><img src='/'/></label>
-                    <label><input type='radio'/><img src='/'/></label>
-                    <label><input type='radio'/><img src='/'/></label>
+                    <label><input type='radio' name ='payment'/><img src='/'/></label>
+                    <label><input type='radio' name ='payment'/><img src='/'/></label>
+                    <label><input type='radio' name ='payment'/><img src='/'/></label>
+                    <label><input type='radio' name ='payment'/><img src='/'/></label>
                     <p>Thanh toán nhận hàng</p>
                     <b>Thời gian giao hàng dự kiến</b>
                 </div>
