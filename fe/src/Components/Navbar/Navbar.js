@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Navbar.scss';
 import { BsHeart } from "react-icons/bs";
 import { BsCart3 } from "react-icons/bs";
@@ -31,7 +31,7 @@ const Navbar= () =>{
                                 <Link to ={"/yeu-thich"}><BsHeart />
                                 </Link>
                                 </li>
-                            <li> <Link to = {"/gio-hang"}><BsCart3 />
+                            <li> <Link to = {"/gio-hang"} ><BsCart3 />
                                 </Link> 
                                 </li>
                             <li> <Link to ={"/dang-nhap"}><BsPerson />

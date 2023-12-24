@@ -22,6 +22,8 @@ import OrderUpdate from "./Pages/Admin/Order/OrderUpdate";
 import Voucher from "./Pages/Admin/Voucher/Voucher";
 import VoucherCreate from "./Pages/Admin/Voucher/VoucherCreate";
 import VoucherUpdate from "./Pages/Admin/Voucher/VoucherUpdate";
+import PaymentPage from './Pages/Users/PaymentPage/PaymentPage';
+import ConfirmPage from './Pages/Users/PaymentPage/ConfirmPage';
 
 const App = () => {
   return (
@@ -38,13 +40,12 @@ const App = () => {
             <Route path='/:category/:subcategory' element={<CatogoryPage/>}/>
             <Route path='/:category/:subcategory/:id' element={<DetailProductPage/>}/>
 
-
-            
             {/* <Route path='/cua-hang/don-dep' element={<CatogoryPage/>}/>
             <Route path='/cua-hang/tien-ich' element={<CatogoryPage/>}/> */}
-            
-            <Route path="/gio-hang" element={<CartPage/>}/>
 
+            <Route path="/gio-hang" element={<CartPage/>}/>
+            <Route path='/thanh-toan' element={<PaymentPage/>}/>
+            <Route path='/thanh-toan/xac-minh' element={<ConfirmPage/>}/>
 
             {/* Admin */}
             <Route path="/admin" element={<DashBoard />}>

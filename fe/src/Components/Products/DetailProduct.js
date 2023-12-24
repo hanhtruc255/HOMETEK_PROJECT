@@ -103,7 +103,7 @@ const DetailProduct = () => {
                 <div className='frame_descrip'>
                     <div className='descrip_title'>
                         <hr className='hr_des'/>
-                            <button onClick={() => handleTabChange('description')} className='s1' >Mô tả</button>
+                            <button onClick={() => handleTabChange('description')} >Mô tả</button>
                             <button onClick={() => handleTabChange('specifications')} >Thông số kỹ thuật</button>
                         <hr className='hr_des'/>
                     </div>

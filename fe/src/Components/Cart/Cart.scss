@@ -1,0 +1,88 @@
+.cart{
+    margin: 50px;
+
+    .Frame_cart{
+        margin: 30px;
+        border-radius: 5px;
+       
+        
+        tr{
+            vertical-align: middle;
+            
+            th{
+            background: #FFDFE3;
+            input{
+                margin-right: 20px;
+            }
+            b{
+                margin-left: 20px;
+            }
+            .icon_shop{
+           width: 30px;
+           height: 30px;
+           padding-bottom: 7px;}
+        }}
+    
+        tbody{
+            input{
+                margin-right: 20px;
+            }
+        }
+    }
+    hr{
+        margin: 20px;
+    }
+    .voucher{
+        display: flex;
+        margin: 30px;
+        justify-content: end;
+    
+        button{
+            margin-left: 100px;
+            padding: 5px 10px;
+            border: none;
+            background: none;
+            color: rgb(64, 64, 226);
+        }
+    
+        p{
+            padding-top: 20px;
+        }
+    
+        .icon_voucher{
+            margin: 20px;
+            height: 25px;
+            width: 25px;
+        }
+    }
+    
+    
+    .buy{
+        display: flex;
+        margin: 30px;
+        justify-content: space-between;
+        background:  #FFDFE3;
+    
+        .buy_child{
+            display: flex;
+            margin: 5px ;
+                
+            input{
+                margin: 0 20px 0px 15px;
+            }
+            p{
+                margin: 0 20px 0 0 ;
+            }
+            
+        }
+        a{
+            margin-left: 30px ;
+            text-decoration: none;
+            background:  #041E42;
+            color: white;
+            padding: 5px 10px;
+        
+        }
+    
+    }
+}

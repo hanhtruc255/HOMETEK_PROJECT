@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import CategorySidebar from '../../../Components/Products/CategorySidebar';
 import Navbar from '../../../Components/Navbar/Navbar';
 
@@ -6,7 +7,9 @@ import './styleproductpage.scss';
 import ListProducts from '../../../Components/Products/ListProducts';
 import Sort from '../../../Components/Products/Sort';
 
+
 const ProductPage = () => {
+  const [cartItems, setCartItems] = useState([]);
   return (
     <div>
         <Navbar/>
@@ -14,7 +17,7 @@ const ProductPage = () => {
         <Sort/>
         <div  className="Frame_Product">
           <CategorySidebar />
-          <ListProducts/>
+          <ListProducts setCartItems={setCartItems}/>
     </div>
     </div>
   )

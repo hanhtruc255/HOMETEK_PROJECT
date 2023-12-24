@@ -67,10 +67,10 @@
 
 //header__menu---------------
     .Menu{
-        display: flex;
+        // display: flex;
         padding:0 80px;
         background: #041E42;
-        height: 45px;
+        height: 50px;
         // width: 100%;
 
         ul{
@@ -84,12 +84,12 @@
                 position: relative;
                 a{
                     text-decoration: none;
-                    font-size: 14px;
+                    font-size: 15px;
                     color: #FFFFFF;
                     letter-spacing: 2px;
                     transition: all 0.2s;
                     display: block;
-                    padding: 12px;
+                    padding: 14px;
                     text-align: center;
                 }
                 :hover{
