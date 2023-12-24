@@ -1,15 +1,5 @@
 import React from 'react'
-import { Route, BrowserRouter, Routes} from 'react-router-dom';
-import { createContext, useState } from 'react';
-import HomePage from './Pages/Users/home-page/HomePage';
-import SignUpPage from './Pages/Users/sign-up-page/SignUpPage';
-import LoginPage from './Pages/Users/login-page/LoginPage'
-// import PageNotFound from './pages/page-not-found/PageNotFound';
-import PasswordRecoveryPage from './'
-
-import Layout from './Pages/Users/layout/Layout';
-import AccountPage from './Pages/Users/';
-import NewAddressPage from './Pages/account-page/account-profile-page/new-address-page/NewAddressPage';
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ProductPage from './Pages/Users/ProductPage/ProductPage';
 import CartPage from './Pages/Users/CartPage/CartPage';
 import DetailProductPage from './Pages/Users/ProductPage/DetailProductPage';
@@ -31,57 +21,28 @@ import VoucherUpdate from "./Pages/Admin/Voucher/VoucherUpdate";
 import PaymentPage from './Pages/Users/PaymentPage/PaymentPage';
 import ConfirmPage from './Pages/Users/PaymentPage/ConfirmPage';
 
-export const AppContext = createContext();
-function App() {
-  const [notificationModalActive, setNotificationModalActive] = useState(false);
-  const [otpFormModalActive, setOtpFormModalActive] = useState(false);
 
-  const toggleOtpFormModalActive = () => {
-    setOtpFormModalActive(!otpFormModalActive);
-  };
-
-  const toggleNotificationModalActive = () => {
-    setNotificationModalActive(!notificationModalActive);
-  };
+const App = () => {
   return (
-    <>
+    <div>
       <BrowserRouter>
-      <AppContext.Provider
-          value={{
-            notificationModalActive,
-            toggleNotificationModalActive,
-            otpFormModalActive,
-            toggleOtpFormModalActive,
-          }}
-        >
        <Routes>
-            <Route path="/" element ={<Layout/>}>
-              <Route index element={<HomePage />} />
-                <Route path="signup" element={<SignUpPage />} />
-                <Route path="login" element={<LoginPage />} />
-                <Route path="login" element={<AccountPage />} />
-                <Route path="change-password" element={<PasswordRecoveryPage />}/>
-
-                <Route path="new-address" element={<NewAddressPage />} />
-                <Route path="*" element ={<PageNotFound />} />
-                <Route path='/cua-hang' element ={<ProductPage/>}/>
-                <Route path='/cua-hang/:id' element={<DetailProductPage/>}/>
-                
-                <Route path='/:category' element={<CatogoryPage/>}/>
-                <Route path='/:category/:id' element={<DetailProductPage/>}/>
-                <Route path='/:category/:subcategory' element={<CatogoryPage/>}/>
-                <Route path='/:category/:subcategory/:id' element={<DetailProductPage/>}/>
-
-                {/* <Route path='/cua-hang/don-dep' element={<CatogoryPage/>}/>
-                <Route path='/cua-hang/tien-ich' element={<CatogoryPage/>}/> */}
-
-                <Route path="/gio-hang" element={<CartPage/>}/>
-                <Route path='/thanh-toan' element={<PaymentPage/>}/>
-                <Route path='/thanh-toan/xac-minh' element={<ConfirmPage/>}/>
-
-            </Route>
+            {/* <Route path='/' element={<HomePage />}/> */}
+            <Route path='/cua-hang' element ={<ProductPage/>}/>
+            <Route path='/cua-hang/:id' element={<DetailProductPage/>}/>
             
-            {/* Admin */}
+            <Route path='/:category' element={<CatogoryPage/>}/>
+            <Route path='/:category/:id' element={<DetailProductPage/>}/>
+            <Route path='/:category/:subcategory' element={<CatogoryPage/>}/>
+            <Route path='/:category/:subcategory/:id' element={<DetailProductPage/>}/>
+
+            {/* <Route path='/cua-hang/don-dep' element={<CatogoryPage/>}/>
+            <Route path='/cua-hang/tien-ich' element={<CatogoryPage/>}/> */}
+
+            <Route path="/gio-hang" element={<CartPage/>}/>
+            <Route path='/thanh-toan' element={<PaymentPage/>}/>
+            <Route path='/thanh-toan/xac-minh' element={<ConfirmPage/>}/>
+
             <Route path="/admin" element={<DashBoard />}>
             <Route path="san-pham" element={<Product />}></Route>
             <Route path="san-pham/them" element={<ProductCreate />}></Route>
@@ -103,14 +64,15 @@ function App() {
               path="khuyen-mai/cap-nhat"
               element={<VoucherUpdate />}
             ></Route>
-            {/*  */}
           </Route>
+            
         </Routes> 
-        </AppContext.Provider>
    </BrowserRouter>
-    </>
+    </div>
 
   )
 }
 
-export default App;
+export default App
+
+
