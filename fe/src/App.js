@@ -4,6 +4,11 @@ import ProductPage from './Pages/Users/ProductPage/ProductPage';
 import CartPage from './Pages/Users/CartPage/CartPage';
 import DetailProductPage from './Pages/Users/ProductPage/DetailProductPage';
 import CatogoryPage from './Pages/Users/ProductPage/CatogoryPage';
+import PaymentSuccess from './Components/Payment/PaymentSuccess';
+import PaymentMoney from './Components/Payment/PaymentMoney';
+
+
+// admin
 import DashBoard from "./Pages/Admin/Dashboard";
 import Product from "./Pages/Admin/Products/Product";
 import Customer from "./Pages/Admin/Customers/Customer";
@@ -35,13 +40,12 @@ const App = () => {
             <Route path='/:category/:id' element={<DetailProductPage/>}/>
             <Route path='/:category/:subcategory' element={<CatogoryPage/>}/>
             <Route path='/:category/:subcategory/:id' element={<DetailProductPage/>}/>
-
-            {/* <Route path='/cua-hang/don-dep' element={<CatogoryPage/>}/>
-            <Route path='/cua-hang/tien-ich' element={<CatogoryPage/>}/> */}
-
             <Route path="/gio-hang" element={<CartPage/>}/>
             <Route path='/thanh-toan' element={<PaymentPage/>}/>
             <Route path='/thanh-toan/xac-minh' element={<ConfirmPage/>}/>
+            <Route path='/thanh-toan/thanh-cong' element={<PaymentSuccess/>}/>
+            <Route path='/thanh-toan/xac-minh/thanh-toan-tien' element={<PaymentMoney/>}/>
+            
 
             <Route path="/admin" element={<DashBoard />}>
             <Route path="san-pham" element={<Product />}></Route>

@@ -3,7 +3,6 @@ import { BsCartFill } from 'react-icons/bs';
 import { BsFillGeoAltFill } from 'react-icons/bs';
 import './Payment.scss'
 import 'reactjs-popup/dist/index.css';
-import { BsShop } from "react-icons/bs";
 import { BsTicketPerforatedFill } from "react-icons/bs";
 import Confirm from './Confirm';
 import { Link } from 'react-router-dom';
@@ -24,20 +23,20 @@ const Payment = () => {
         <div className='modal_wrapper'></div>
         <div className='modal_container'>
             <h2>Địa chỉ mới</h2>
-            <div className='new_add'> 
+            <div className='new_add1'> 
               <label>Họ và tên<span>* </span><br/><input/></label>
               <label>Số điện thoại<span>* </span><br/><input/></label>
             </div>
-            <div className='new_add'> 
+            <div className='new_add2'> 
               <label>Tỉnh/ Thành phố<span>* <br/></span><select></select></label>
               <label>Quận/ Huyện<span>* </span><br/><select></select></label>
               <label>Phường/ Xã<span>* </span><br/><select></select></label>
             </div>
-            <div className='new_add'> 
+            <div className='new_add3'> 
               <label>Địa chỉ cụ thể<span>* </span><br/><input className='spe'/></label>
             </div>
-            <div className='new_add'> 
-              <label className='specheck'><input  type='checkbox'/><p>Đặt làm địa chỉ mặc định</p></label>
+            <div className='new_add4'> 
+              <label className='specheck'><input  type='checkbox'/><span>Đặt làm địa chỉ mặc định</span></label>
             </div>
             <center>
               <button className='spebut'>Hoàn Thành</button>

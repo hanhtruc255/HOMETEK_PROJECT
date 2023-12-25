@@ -154,7 +154,7 @@ body{
 .modal_wrapper{
     position: fixed;
     left: 0;
-    top: 120px;
+    top: 0;
     right: 0;
     bottom: 0;
     background: rgba(28, 27, 27, 0.9);
@@ -168,53 +168,60 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     background: #f5f5f5;
-    width: 600px;
-    height: 500px;
+    width: 650px;
     padding: 30px;
-    font-size: 20px;
+    font-size: 16px;
     color: #041E42;
-
-    .new_add{
-        margin-top: 20px ;
-        font-size: 16px;
-        span{
-            color: rgb(216, 80, 80);
-        }
-        label{
-            color: #b4b4b4;
-            input{
-                border: none;
-                margin-right: 38.3px;
-                height: 30px;
-            }
-            margin-right: 15px;
-            margin-bottom: 15px;
-            select{
-                margin-right: 15px;
-                border: none;
-                width: 130px ;
-                height: 30px;
-            }
-            .spe{
-                padding-right:30px ;
-                width:500px;
-            }
-            
-
-        }
-        .specheck{
-            display: flex;
-            input{
-                width: 25px;
-            }
-            p{
-                margin-left: -10px;
-                margin-top: 3px;
-                color: #041E42;
-            }
-        } 
-
+    border-radius: 5px;
+    
+    span{
+        color: rgb(216, 80, 80);
     }
+    label{
+        color: #b4b4b4;}
+
+    .new_add1{
+        margin-top: 20px ;
+        display: flex;
+        margin-bottom: 15px;
+        
+        input{
+            border: none;
+            height: 30px;
+            width: 270px;
+            margin-right: 50px;
+        }
+
+        
+       }
+    
+    .new_add2{
+        display: flex;
+        select{
+            width: 190px;
+            border: none;
+            height: 30px;
+            margin-right: 10px;
+            margin-bottom: 20px;
+        }}
+    .new_add3{
+        input{
+            width: 305%;
+            border: none;
+            height: 30px;
+            margin-bottom: 20px;
+        }}
+    .new_add4{
+        margin-bottom: 20px;
+        span{
+            color: #041E42;
+            margin: 0 0 0 10px;
+        }
+        input{
+            border: 1px solid #041E42
+        };
+    }
+
     center{
         button{
             border: none;
@@ -222,6 +229,7 @@ body{
             background: none;
             font-size: 18px;
             margin: 0 20px;
+            border-radius: 5px;
         }
 
         .spebut{
@@ -234,4 +242,98 @@ body{
 }
 
 ///Xác minh
+.confirm{
+    margin: 3% 35%;
+    width: 500px;
+    // height:400px;
+    padding: 50px;
+    border: 1px solid #f5f5f5;
+    border-radius: 5px;
+    background: #f5f5f5;
+    input{
+        width: 30px;
+        margin: 20px 5px 20px 0;
+        border-radius:3px ;
+        border: 1px solid #041E42;
+    }
+    button{
+        border: none;
+        background: none;
+        margin-bottom: 20px;
+        color: rgb(150, 150, 150);
+    }
+    h3{
+        margin: 20px 0;
+    }
+    p{
+        margin: 20px 0 0 0;}
+    h5, p, .specint {
+        margin-left: 70px ;
+    }
+    
+    .speclink{
+        text-decoration: none;
+        border: 1px solid #041E42;
+        background: #041E42;
+        padding: 7px 30%;
+        color: white;
+    }
+    .speclink1{
+       
+    }
+  
+    a{
+        color:#041E42;
+    }
+}
+.payment_money{
+    margin: 3% 35%;
+    width: 500px;
+    // height:600px;
+    padding: 50px;
+    border: 1px solid #f5f5f5;
+    border-radius: 5px;
+    background: #f5f5f5;
+    img{
+        width: 60%;
+    }
+    p{
+        color: #b4b4b4;
+        font-size: 16px;
+    }
+    a{
+        color: #041E42;
+        font-size: 20px;
+    }}
+.confirm_success{
+    margin: 15% 35%;
+    width: 500px;
+    // height:400px;
+    padding: 50px;
+    border: 1px solid #f5f5f5;
+    border-radius: 5px;
+    background: #f5f5f5;
+    color: #041E42;
+    .iconcheck{
+        font-size: 60px;
+        color: #041E42;
+        margin-bottom: 10px;
+    }
+    h3{
+        font-weight: bold;}
 
+    p{
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+
+    a{
+        text-decoration: none;
+        font-size: 20px;
+        border-radius: 30px ;
+        padding: 10px 30px;
+        color: #041E42;
+        border: 1px solid #041E42;
+
+    }
+}

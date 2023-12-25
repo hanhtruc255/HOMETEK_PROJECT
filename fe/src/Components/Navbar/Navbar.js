@@ -5,13 +5,15 @@ import { BsCart3 } from "react-icons/bs";
 import { BsPerson } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
 import { Link } from 'react-router-dom';
-
-
-
-// import all_products from "../../../../assets/data/product";
+import { BsTruck } from "react-icons/bs";
 
 
 const Navbar= () =>{
+    const [showInput, setShowInput] = useState(false);
+
+    const handleTruckButtonClick = () => {
+        setShowInput(!showInput);
+    };
 
     return (
         <div>
@@ -36,6 +38,15 @@ const Navbar= () =>{
                                 </li>
                             <li> <Link to ={"/dang-nhap"}><BsPerson />
                             </Link>
+                            </li>
+                            <li>
+                                <button onClick={handleTruckButtonClick}>
+                                <BsTruck /></button>
+                            {showInput && (
+                                <div className='mvd'>
+                                    <input type="text" placeholder="Enter code..." />
+                                </div>
+                            )}
                             </li>
                         </ul>
                     </div>
