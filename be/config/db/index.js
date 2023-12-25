@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 require('dotenv/config');
+
 async function connect(){
     try{
         await mongoose.connect("mongodb://localhost:27017/store_data");

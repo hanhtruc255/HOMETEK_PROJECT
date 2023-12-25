@@ -3,22 +3,26 @@ const router = express.Router()
 const productController = require('../controllers/product')
 
 // api: Lấy sản phẩm 
-router.get('/cua-hang', productController.getAllProducts);
+router.get('/Cua_hang', productController.getAllProducts);
 
 // api: Lấy 1 sản phẩm theo id
-router.get('/cua-hang/:_id', productController.getProductById);
+router.get('/Cua_hang/:id', productController.getProductById);
+//api hiển thị danh mục sản phẩm
+router.get('/categories', productController.getCategory);
+//api khi bấm vào "bếp", "tiện ích", "dọn dẹp"
+router.get('/categories/:id', productController.getCategoryProduct);
+//api khi bấm vào mục con của "bếp", "tiện ích", "dọn dẹp"
+router.get('/categories/:id/:id', productController.getSubcategories);
 
-// api: Lấy sản phẩm theo danh mục
-// router.get('/:category', productController.getProductCategory);
+//api khi lọc theo nhãn hàng
+router.get('/categories/:brand_name', productController.getProductBrand)
+//api cập nhật sản phẩm
+router.put('', productController.updateProduct)
+// api: Tìm sản phẩm theo tên
 
-// api: Lấy sản phẩm theo note
-// router.get('/products/:note', productController.getProductByNote)
 
-// router.get('/:loai', product.category);
+//api: Tạo một sản phẩm mới
+// router.post()
 
-// router.get('/info/:id', product.info);
-
-// router.post('/search/all', product.searchPost);
-// router.get('/search/:key', product.search);
 
 module.exports= router

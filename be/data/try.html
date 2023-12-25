@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiển thị ảnh từ JSON</title>
+</head>
+<body>
+
+<script>
+    // Đoạn mã JavaScript để đọc và hiển thị hình ảnh từ JSON
+    const jsonData = {
+        "sub_image": [
+            "https://i.ibb.co/J34xF3x/e5af1-710s-angl-1500x1500.png",
+            "https://i.ibb.co/cJ40286/e5af1-710s-angl-pr-1500x1500.png",
+            "https://i.ibb.co/ncS7Zn6/e6af1-520k-pr-1500x1500-min.jpg"
+        ],
+        "note": ""
+    };
+
+    const imageContainer = document.body;
+
+    jsonData.sub_image.forEach(imageUrl => {
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        imageContainer.appendChild(img);
+    });
+</script>
+
+</body>
+</html>
