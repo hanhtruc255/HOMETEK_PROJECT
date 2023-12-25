@@ -1,5 +1,6 @@
 const Product = require('../models/product');
-// const Category = require('../models/category')
+const bodyParser = require('body-parser');
+const Category = require('../models/category')
 
 // Lấy tất cả sản phẩm
 const getAllProducts = async (req, res) => {
@@ -14,7 +15,8 @@ const getAllProducts = async (req, res) => {
 //Lấy sản phẩm theo ID
 const getProductById = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const productId = req.params.id;
+    const product = await Product.findById(productId);
     if (product) {
       res.json(product);
     } else {
@@ -25,30 +27,48 @@ const getProductById = async (req, res) => {
   }
 };
 
-//Tìm sản phẩm theo tên
-
-const getProductByName = async (req, res) => {
-  await Product
-    .findOne({ product_id: req.body.item_id })
-    .select({ name: 1, _id: 0 })
-    .then((product) => res.send(product.name))
-    .catch((err) => res.status(500).json({ error: err.message }));
+//Lấy tất cả danh mục
+const getCategory = async (req, res) => {
+  Category.find({})
+    .then((category) => {
+      res.json(category);
+    })
+    .catch((err) => {
+      res.json({ Error: err.message });
+    });
+};
+//Lấy danh mục lớn
+const getCategoryProduct = async (req, res) => {
+  Product.find({ categoryId: req.params.id })
+    .then((product) => {
+      res.json(product);
+    })
+    .catch((err) => {
+      res.json({ Error: err.message });
+    });
 };
 
-// Lấy sản phẩm 
-// Lấy sản phẩm theo Category
-// const getProductByCate = async (req, res) => {
-//   try {
-//     const product = await Product.findById(req.params.id);
-//     if (product) {
-//       res.json(product);
-//     } else {
-//       res.status(404).json({ message: 'Product not found' });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// };
+//Lấy danh mục subcategory
+
+const getSubcategories = async (req, res) => {
+  try {
+    const products = await Product.find({ sub_categoryId: req.params.id });
+    res.json(products);
+  } catch (err) {
+    res.json({ Error: err.message });
+  }
+};
+
+//Lọc theo nhãn hàng
+const getProductBrand = async (req, res) => {
+  const {brand_name} = req.params;
+  try {
+    const products = await Product.find({ brand_name: { $eq: brand_name } });
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({error:'Có lỗi'})
+  }
+}
 
 // Tạo sản phẩm mới
 
@@ -61,14 +81,16 @@ const addProduct = async (req, res) => {
   });
 
   try {
-    const savedProduct = await newProduct.save();
+    let savedProduct = await newProduct.save();
+    console.log(savedProduct)
     res.status(201).json(savedProduct);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
 
-//Cập nhật sản phẩm
+//Cập nhật sản phẩm -- PATCH
+
 const updateProduct = async (req, res) => {
   const { name, description, price } = req.body;
   try {
@@ -83,4 +105,15 @@ const updateProduct = async (req, res) => {
   }
 };
 
-module.exports = {getAllProducts, addProduct, updateProduct, getProductById, getProductByName}
+//Xóa sản phẩm
+const deleteProduct = async(req,res) => {
+  try{
+    await Product.deleteOne({_id: req.params.id});
+    res.send("Success!")
+
+  } catch(err){
+    res.json({message: err.message})
+  }
+}
+
+module.exports = {getAllProducts,getCategory, getCategoryProduct, getSubcategories, getProductBrand, addProduct, updateProduct, getProductById, deleteProduct}

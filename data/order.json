@@ -1,0 +1,78 @@
+[
+  {
+    "orderId": "ORD123",
+    "customerName": "Trương Thị Tuyết Mai",
+    "phone": "0932660227",
+    "address": "33/3 đường số 1, phường 4, quận Gò Vấp, TPHCM",
+    "payment":" Thanh toán khi nhận hàng",
+    "products": [
+      {
+        "productId": "NCKDE2",
+        "name": "Nồi chiên không dầu 5L Explore 6 NCKDE2",
+        "image": "./data/image/Noichienkhongdau/vn-e6af1-520k-fr1-1500x1500.jpg",
+        "price": 3590000,
+        "sale_price": 2140000,
+        "quantity": 2 
+      }
+    ],
+    "totalAmount": 4280000,
+    "status": "Đã xác nhận",
+    "createdAt": "2023-12-25T08:00:00.000Z"
+  },
+  {
+    "orderId": "ORD203",
+    "customerName": "Trương Tú Anh",
+    "phone": "0977456189",
+    "address": "432 Lê Văn Thọ, Phường 16, Quận Gò Vấp, TPHCM",
+    "payment":" Thanh toán khi nhận hàng",
+    "products": [
+      {
+        "productId": "CTTM2",
+        "name": "Công tắc cảm ứng LifeSmart Nature Switch CTTM2",
+        "image": "./data/image/Congtacthongminh/CTTM_LifeSmart_1.png",
+        "price": 2405000,
+        "sale_price": 1850000,
+        "quantity": 1 
+      },
+      {
+        "productId": "LTM2",
+        "name": "Loa thông minh Google Home",
+        "image": "./data/image/Noichienkhongdau/vn-e6af1-520k-fr1-1500x1500.jpg",
+        "price": 2260000,
+        "sale_price": 2000000,
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 3850000,
+    "status": "Chưa xác nhận",
+    "createdAt": "2023-12-26T08:00:00.000Z"
+  },
+  {
+    "orderId": "ORD243",
+    "customerName": "Trần Anh Minh",
+    "phone": "078322465",
+    "address": "699 Nguyễn Ảnh Thủ, Tân Chánh Hiệp, Quận 12, TPHCM",
+    "payment":" Thanh toán khi nhận hàng",
+    "products": [
+      {
+        "productId": "MTB2",
+        "name": "Máy đựng sữa rửa tay tạo bọt Xiaomi X101",
+        "image": "./data/image/Congtacthongminh/CTTM_LifeSmart_1.png",
+        "price": 2405000,
+        "sale_price": 1900000,
+        "quantity": 1 
+      },
+      {
+        "productId": "RBE1",
+        "name": "Hộp đựng đũa khử khuẩn UV thông minh AOKAEN",
+        "image": "./data/image/Noichienkhongdau/vn-e6af1-520k-fr1-1500x1500.jpg",
+        "price": 2260000,
+        "sale_price": 1900000,
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 3800000,
+    "status": "Đã hủy",
+    "createdAt": "2023-12-26T08:00:00.000Z"
+  }
+]

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const productSchema = new Schema({
     id:{
         type: String,
-        required: true
+        required: true,
     },
     name: {
         type: String,
@@ -24,12 +24,12 @@ const productSchema = new Schema({
         required: true
     },
 
-    category:{
+    categoryId:{
         type: String,
         required: true
     },
 
-    sub_category:{
+    sub_categoryId:{
         type: String,
         required: true
     },
@@ -65,5 +65,13 @@ const productSchema = new Schema({
         type: Date,
         default: Date.now
     }
-})
+});
+// productSchema.set('toJSON', {
+//     transform: function (doc, ret) {
+//       ret.id = ret._id;
+//       delete ret._id;
+//       delete ret.__v;
+//       return ret;
+//     },
+//   });
 module.exports = mongoose.model('product',productSchema,'product')
