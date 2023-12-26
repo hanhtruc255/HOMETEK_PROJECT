@@ -21,6 +21,7 @@
     "reactjs-popup": "^2.0.6",
     "sass": "^1.69.5",
     "source-map-loader": "^4.0.1",
+    "swiper": "^11.0.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

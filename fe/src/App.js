@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import ProductPage from './Pages/Users/ProductPage/ProductPage';
-import CartPage from './Pages/Users/CartPage/CartPage';
-import DetailProductPage from './Pages/Users/ProductPage/DetailProductPage';
-import CatogoryPage from './Pages/Users/ProductPage/CatogoryPage';
-import PaymentSuccess from './Components/Payment/PaymentSuccess';
-import PaymentMoney from './Components/Payment/PaymentMoney';
-
+import ProductPage from "./Pages/Users/ProductPage/ProductPage";
+import CartPage from "./Pages/Users/CartPage/CartPage";
+import DetailProductPage from "./Pages/Users/ProductPage/DetailProductPage";
+import CatogoryPage from "./Pages/Users/ProductPage/CatogoryPage";
+import PaymentSuccess from "./Components/Payment/PaymentSuccess";
+import PaymentMoney from "./Components/Payment/PaymentMoney";
+import Layout from "./Pages/Users/layout/Layout.jsx";
 
 // admin
 import DashBoard from "./Pages/Admin/Dashboard";
@@ -23,31 +23,43 @@ import OrderUpdate from "./Pages/Admin/Order/OrderUpdate";
 import Voucher from "./Pages/Admin/Voucher/Voucher";
 import VoucherCreate from "./Pages/Admin/Voucher/VoucherCreate";
 import VoucherUpdate from "./Pages/Admin/Voucher/VoucherUpdate";
-import PaymentPage from './Pages/Users/PaymentPage/PaymentPage';
-import ConfirmPage from './Pages/Users/PaymentPage/ConfirmPage';
-
+import PaymentPage from "./Pages/Users/PaymentPage/PaymentPage";
+import ConfirmPage from "./Pages/Users/PaymentPage/ConfirmPage";
+import HomePage from "./Pages/Users/home-page/HomePage.jsx";
+import PageNotFound from "./Pages/Users/page-not-found/PageNotFound.jsx";
+import AboutUsPage from "./Pages/Users/about-us/AboutUsPage.jsx";
 
 const App = () => {
   return (
     <div>
       <BrowserRouter>
-       <Routes>
-            {/* <Route path='/' element={<HomePage />}/> */}
-            <Route path='/cua-hang' element ={<ProductPage/>}/>
-            <Route path='/cua-hang/:id' element={<DetailProductPage/>}/>
-            
-            <Route path='/:category' element={<CatogoryPage/>}/>
-            <Route path='/:category/:id' element={<DetailProductPage/>}/>
-            <Route path='/:category/:subcategory' element={<CatogoryPage/>}/>
-            <Route path='/:category/:subcategory/:id' element={<DetailProductPage/>}/>
-            <Route path="/gio-hang" element={<CartPage/>}/>
-            <Route path='/thanh-toan' element={<PaymentPage/>}/>
-            <Route path='/thanh-toan/xac-minh' element={<ConfirmPage/>}/>
-            <Route path='/thanh-toan/thanh-cong' element={<PaymentSuccess/>}/>
-            <Route path='/thanh-toan/xac-minh/thanh-toan-tien' element={<PaymentMoney/>}/>
-            
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="homepage" element={<HomePage />} />
+            <Route path="*" element={<PageNotFound />} />
+            <Route path="about-us" element={<AboutUsPage />} />
+            <Route path="/cua-hang" element={<ProductPage />} />
+            <Route path="/cua-hang/:id" element={<DetailProductPage />} />
 
-            <Route path="/admin" element={<DashBoard />}>
+            <Route path="/:category" element={<CatogoryPage />} />
+            <Route path="/:category/:id" element={<DetailProductPage />} />
+            <Route path="/:category/:subcategory" element={<CatogoryPage />} />
+            <Route
+              path="/:category/:subcategory/:id"
+              element={<DetailProductPage />}
+            />
+            <Route path="/gio-hang" element={<CartPage />} />
+            <Route path="/thanh-toan" element={<PaymentPage />} />
+            <Route path="/thanh-toan/xac-minh" element={<ConfirmPage />} />
+            <Route path="/thanh-toan/thanh-cong" element={<PaymentSuccess />} />
+            <Route
+              path="/thanh-toan/xac-minh/thanh-toan-tien"
+              element={<PaymentMoney />}
+            />
+          </Route>
+
+          <Route path="/admin" element={<DashBoard />}>
             <Route path="san-pham" element={<Product />}></Route>
             <Route path="san-pham/them" element={<ProductCreate />}></Route>
 
@@ -69,14 +81,10 @@ const App = () => {
               element={<VoucherUpdate />}
             ></Route>
           </Route>
-            
-        </Routes> 
-   </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
     </div>
+  );
+};
 
-  )
-}
-
-export default App
-
-
+export default App;

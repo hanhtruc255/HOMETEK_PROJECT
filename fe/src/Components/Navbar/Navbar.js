@@ -55,7 +55,7 @@ const Navbar= () =>{
             <div>
                 <nav className="Menu">
                     <ul>
-                        <li> <Link to="/"> Về chúng tôi</Link> </li>
+                        <li> <Link to="/about-us"> Về chúng tôi</Link> </li>
                         <li><Link to ={"/cua-hang"}>Cửa hàng</Link> </li>
                         <li><Link to ={'/smartphones'}>Bếp</Link> 
                             <ul className="header__menu__dropdown">
