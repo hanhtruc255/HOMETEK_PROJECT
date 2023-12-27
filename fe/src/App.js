@@ -3,7 +3,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ProductPage from './Pages/Users/ProductPage/ProductPage';
 import CartPage from './Pages/Users/CartPage/CartPage';
 import DetailProductPage from './Pages/Users/ProductPage/DetailProductPage';
-import CatogoryPage from './Pages/Users/ProductPage/CatogoryPage';
+import CatogoryPage from './Pages/Users/ProductPage/CategoryPage';
 import PaymentSuccess from './Components/Payment/PaymentSuccess';
 import PaymentMoney from './Components/Payment/PaymentMoney';
 
@@ -25,6 +25,10 @@ import VoucherCreate from "./Pages/Admin/Voucher/VoucherCreate";
 import VoucherUpdate from "./Pages/Admin/Voucher/VoucherUpdate";
 import PaymentPage from './Pages/Users/PaymentPage/PaymentPage';
 import ConfirmPage from './Pages/Users/PaymentPage/ConfirmPage';
+import CategoryPage from './Pages/Users/ProductPage/CategoryPage';
+import SubCategoryPage from './Pages/Users/ProductPage/SubcategoryPage';
+import TrackingPage from './Pages/Users/TrackingPage/TrackingPage';
+
 
 
 const App = () => {
@@ -36,15 +40,19 @@ const App = () => {
             <Route path='/cua-hang' element ={<ProductPage/>}/>
             <Route path='/cua-hang/:id' element={<DetailProductPage/>}/>
             
-            <Route path='/:category' element={<CatogoryPage/>}/>
-            <Route path='/:category/:id' element={<DetailProductPage/>}/>
-            <Route path='/:category/:subcategory' element={<CatogoryPage/>}/>
-            <Route path='/:category/:subcategory/:id' element={<DetailProductPage/>}/>
+            <Route path='/:categoryId' element={<CategoryPage/>} />
+            <Route path='/:categoryId/:id' element={<DetailProductPage/>}/>
+
+            <Route path='/:categoryId/sub/:sub_categoryId' element={<SubCategoryPage/>}/>
+            <Route path='/:categorId/sub/:sub_categoryId/:id' element={<DetailProductPage/>}/>
+            
             <Route path="/gio-hang" element={<CartPage/>}/>
             <Route path='/thanh-toan' element={<PaymentPage/>}/>
             <Route path='/thanh-toan/xac-minh' element={<ConfirmPage/>}/>
             <Route path='/thanh-toan/thanh-cong' element={<PaymentSuccess/>}/>
             <Route path='/thanh-toan/xac-minh/thanh-toan-tien' element={<PaymentMoney/>}/>
+
+            <Route path='/tra-ma-van-don' element={<TrackingPage/>}/>
             
 
             <Route path="/admin" element={<DashBoard />}>

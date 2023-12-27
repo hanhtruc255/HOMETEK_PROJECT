@@ -6,6 +6,7 @@ import Navbar from '../../../Components/Navbar/Navbar';
 import './styleproductpage.scss';
 import ListProducts from '../../../Components/Products/ListProducts';
 import Sort from '../../../Components/Products/Sort';
+import Breadcrumb from '../../../Components/Products/Breadcrumb';
 
 
 const ProductPage = () => {
@@ -13,7 +14,7 @@ const ProductPage = () => {
   return (
     <div>
         <Navbar/>
-        <h3 className='s1'>Hometek/Cửa hàng</h3>
+        <Breadcrumb/>
         <Sort/>
         <div  className="Frame_Product">
           <CategorySidebar />
