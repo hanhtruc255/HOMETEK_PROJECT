@@ -78,9 +78,9 @@ const Navbar= () =>{
                             </ul>
                         </li> 
 
-                        <li> <Link to="/hometek/blog">Blog</Link> </li>
-                        <li> <Link to="/hometek/lien-he">Liên hệ</Link> </li>
-                        <li> <Link to="/hometek/chinh-sach">Chính sách</Link> </li>
+                        <li> <Link to="/blog">Blog</Link> </li>
+                        <li> <Link to="/lien-he">Liên hệ</Link> </li>
+                        <li> <Link to="/chinh-sach">Chính sách</Link> </li>
                     </ul>
                 </nav>
             </div>

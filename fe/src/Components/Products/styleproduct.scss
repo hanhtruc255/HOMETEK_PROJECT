@@ -318,6 +318,7 @@
     .frame_content{
         border: 1px solid rgb(195, 195, 195);
         padding: 50px;
+        white-space: pre-line 
 
 
     }
@@ -337,7 +338,9 @@
     b{
         font-size: 30;
         text-decoration:underline;
-        margin-top: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+        letter-spacing: 1.5px;
     }
    .category{
     // margin: 0 100px 0 0 ;
@@ -365,39 +368,8 @@
                 p{
                     margin: 0 0 0 10px;
                 }}}}
-    button{
-       background: #041E42; 
-       padding: 5px 10px;
-       color: white;
-       border: 1px solid #041E42;
-       border-radius: 5px;
-       margin: 10px 20px 0 50px;
-    }
 }
 
-
-
-/////////breadcum
-.bread{
-    display: flex;
-    font-size: 20px;
-    margin: 20px 0 0 20px;
-    color: #041E42;
-    font-weight: bold;
-    a{
-        text-decoration: none;
-        color: #041E42;
-        font-size: 20px;
-
-    }
-    .iconbread{
-        font-size: 16px;
-        margin: 10px;
-    }
-    p{
-        font-size: 20px;
-    }
-}
 
 
 ////đánh giá

@@ -4,7 +4,6 @@ import { BsFillGeoAltFill } from 'react-icons/bs';
 import './Payment.scss'
 import 'reactjs-popup/dist/index.css';
 import { BsTicketPerforatedFill } from "react-icons/bs";
-import Confirm from './Confirm';
 import { Link } from 'react-router-dom';
 
 
@@ -68,11 +67,7 @@ const Payment = () => {
             {showModal && <Modaladdress closeModal={closeModal}/>}
           </>
 
-        
-
       </div>
-
-
       <div className='Payment_bottom'>
           <table>
               <thead>

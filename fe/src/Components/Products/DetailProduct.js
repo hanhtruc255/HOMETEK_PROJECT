@@ -8,7 +8,7 @@ import { BsStar } from "react-icons/bs";
 import { BsTruck } from "react-icons/bs";
 import { BsArrowRepeat } from "react-icons/bs";
 import { BsCamera } from "react-icons/bs";
-import Breadcrumb from './Breadcrumb';
+import Breadcrumb from '../Breadcrumb/Breadcrumb';
 
 const DetailProduct = () => {
     const {_id} = useParams();

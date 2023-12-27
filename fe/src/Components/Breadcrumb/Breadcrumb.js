@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { BsChevronRight } from 'react-icons/bs';
+import './Breadcrumb.scss'
 
 const mappingTable = {
   'cua-hang' : 'Cửa hàng',
@@ -17,6 +18,7 @@ const mappingTable = {
   'T1': 'Máy tạo bọt rửa tay',
   'T2': 'Loa trợ lý ảo thông minh',
   'T3': 'Công tắc thông minh',
+  'gio-hang': "Giỏ hàng"
 };
 
 const Breadcrumb = () => {
@@ -25,7 +27,6 @@ const Breadcrumb = () => {
 
   const paths = pathname.split("/").slice(1).filter(item => item !== 'sub');
   const breadcrumbs = paths.map((item, index) => {
-    // Exclude specific part, for example, IDs like '6589b90d5db9f9afbcbb7bd1'
     if (item.match(/^[0-9a-fA-F]{24}$/)) {
       return null;
     }
