@@ -127,7 +127,7 @@ const Navbar = () => {
             </li>
             <li>
               {" "}
-              <Link to="contact">Liên hệ</Link>{" "}
+              <Link to="contact">Liện hệ</Link>{" "}
             </li>
             <li>
               {" "}

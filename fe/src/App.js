@@ -4,7 +4,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ProductPage from "./Pages/Users/ProductPage/ProductPage";
 import CartPage from "./Pages/Users/CartPage/CartPage";
 import DetailProductPage from "./Pages/Users/ProductPage/DetailProductPage";
-import CatogoryPage from "./Pages/Users/ProductPage/CatogoryPage";
+// import CatogoryPage from "./Pages/Users/ProductPage/CatogoryPage";
 import PaymentSuccess from "./Components/Payment/PaymentSuccess";
 import PaymentMoney from "./Components/Payment/PaymentMoney";
 import Layout from "./Pages/Users/layout/Layout.jsx";
@@ -45,9 +45,9 @@ const App = () => {
             <Route path="/cua-hang" element={<ProductPage />} />
             <Route path="/cua-hang/:id" element={<DetailProductPage />} />
 
-            <Route path="/:category" element={<CatogoryPage />} />
+            {/* <Route path="/:category" element={<CatogoryPage />} /> */}
             <Route path="/:category/:id" element={<DetailProductPage />} />
-            <Route path="/:category/:subcategory" element={<CatogoryPage />} />
+            {/* <Route path="/:category/:subcategory" element={<CatogoryPage />} /> */}
             <Route
               path="/:category/:subcategory/:id"
               element={<DetailProductPage />}

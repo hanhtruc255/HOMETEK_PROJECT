@@ -20,8 +20,8 @@ const ListProducts = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://dummyjson.com/products');
-        setListProducts(response.data.products || []);
+        const response = await axios.get('http://localhost:3000/Cua_hang');
+        setListProducts(response.data || []);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -35,14 +35,14 @@ const ListProducts = () => {
       <div className="item">
         {listProducts.length > 0 &&
           listProducts.map((item, index) => (
-            <div className="child" key={item.id}>
-              <Link to={`/cua-hang/${item.id}`}>
+            <div className="child" key={item._id}>
+              <Link to={`/cua-hang/${item._id}`}>
                 <div>
                   <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh" />
                 </div>
                 <div className="child_inf">
                   <h4>{item.name}</h4>
-                  <b>{item.price}</b>
+                  <b>{item.price}đ</b>
                 </div>
               </Link>
 

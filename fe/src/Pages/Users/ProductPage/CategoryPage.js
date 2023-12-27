@@ -20,5 +20,3 @@ const CatogoryPage = () => {
     </div>
   );
 };
-
-export default CatogoryPage;

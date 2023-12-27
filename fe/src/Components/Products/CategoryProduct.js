@@ -4,21 +4,19 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { BsHeart } from "react-icons/bs";
 import { BsCart3 } from "react-icons/bs";
-import "./styleproduct.scss"
+import "./styleproduct.scss";
 
-
-
-const CategoryProduct = () => {
-  const {category} = useParams();
+const CategoryProduct = ({ selectedBrands }) => {
+  const {categoryId} = useParams();
   const [product, setProduct] = useState(null);
-  console.log(">>>", category)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://dummyjson.com/products/category/${category}`);
-        console.log(">>>>", response)
-        if (response.data && response.data.products && Array.isArray(response.data.products)) {
-          setProduct(response.data.products);
+        const response = await axios.get(`http://localhost:3000/categories/${categoryId}`);
+        // console.log(">>>>", response)
+        if (response.data && response.data && Array.isArray(response.data)) {
+          setProduct(response.data);
         } else {
           console.error('Invalid data format:', response.data);
         }
@@ -27,21 +25,21 @@ const CategoryProduct = () => {
       }
     };
     fetchData();
-  }, [category]);
-  console.log(">>>",setProduct)
+  }, [categoryId]);
+
 
   return (
       <div className='item'>
         {product !== null &&
           product.map((item) => (
-            <div key={item.id} className='child'>
-                  <Link to={`/${item.category}/${item.id}`}>
+            <div key={item._id} className='child'>
+                  <Link to={`/${item.categoryId}/${item._id}`}>
                       <div>
                           <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
                       </div>
                       <div className='child_inf'>
                           <h4>{item.name}</h4>
-                          <b>{item.price}</b>
+                          <b>{item.price}đ</b>
                       </div >     
                   </Link>
 

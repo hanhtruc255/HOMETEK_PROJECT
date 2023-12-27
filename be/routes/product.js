@@ -7,6 +7,7 @@ router.get('/Cua_hang', productController.getAllProducts);
 
 // api: Lấy 1 sản phẩm theo id
 router.get('/Cua_hang/:id', productController.getProductById);
+
 //api hiển thị danh mục sản phẩm
 router.get('/categories', productController.getCategory);
 //api khi bấm vào "bếp", "tiện ích", "dọn dẹp"
