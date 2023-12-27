@@ -10,6 +10,7 @@ const CategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice}) => {
   const { categoryId } = useParams();
   const navigate = useNavigate(); 
   const [cartItems, setCartItems] = useState([]);
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const [product, setProduct] = useState(null);
   const sortProducts = (products, criteria) => {
     switch (criteria) {
@@ -18,9 +19,9 @@ const CategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice}) => {
       case 'price-desc':
         return [...products].sort((a, b) => b.price - a.price);
       case 'oldest':
-        return [...products].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        return [...products].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
       case 'newest':
-        return [...products].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        return [...products].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
       default:
         return products;
     }
@@ -63,6 +64,7 @@ const CategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice}) => {
   
   //add to cart
   const addToCart = (item) => {
+    alert('Đã thêm vào giỏ hàng thành công');
     const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
     const newCart = [...existingCart, item];
     localStorage.setItem('cart', JSON.stringify(newCart));
@@ -85,7 +87,7 @@ const CategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice}) => {
 
           <div className="item__buy">
             <div>
-              <Link to="/gio-hang">Mua ngay</Link>
+              <Link to="/gio-hang" onClick={() => addToCart(item)}>Mua ngay</Link>
             </div>
 
             <div className="item__buy__icon">

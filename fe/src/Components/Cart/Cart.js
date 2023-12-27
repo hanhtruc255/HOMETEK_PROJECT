@@ -4,6 +4,8 @@ import { BsTicketPerforatedFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { BsFillGeoAltFill } from 'react-icons/bs';
 import { useState } from 'react';
+import { BsTrash, BsHeart } from "react-icons/bs";
+
 
 
 
@@ -17,7 +19,6 @@ const Cart = () => {
     const storedCartItems = JSON.parse(localStorage.getItem('cart')) || [];
     setCartItems(storedCartItems);
   }, []);
-
   //modal for address
   const Modaladdress = () => {
     useEffect(() => {
@@ -52,8 +53,37 @@ const Cart = () => {
             </center>
         </div>
         </>
-    )
-    }
+    )}
+    const removeItem = (itemId) => {
+      const isConfirmed = window.confirm('Bạn có muốn xóa sản phẩm không?');
+      if (isConfirmed) {
+        const updatedCart = cartItems.filter(item => item._id !== itemId);
+        setCartItems(updatedCart);
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+      }
+    };
+
+//quality
+      const decrementQuantity = (itemId) => {
+        const updatedCart = cartItems.map(item => (
+          item._id === itemId ? { ...item, quantity: Math.max(1, item.quantity - 1) } : item
+        ));
+        setCartItems(updatedCart);
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+      };
+
+      const incrementQuantity = (itemId) => {
+        const updatedCart = cartItems.map(item => (
+          item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+        ));
+        setCartItems(updatedCart);
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+      };
+///
+    const calculateTotal = () => {
+      return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    };
+
   return (
     <div className='cart'>
         <div className='Frame_cart'>
@@ -73,7 +103,7 @@ const Cart = () => {
                 <table>
                   <thead>
                     <tr>
-                      <th>Tên sản phẩm</th>
+                      <th className='th1'>Tên sản phẩm</th>
                       <th>Đơn giá</th>
                       <th>Số lượng</th>
                       <th>Thành tiền</th>
@@ -83,10 +113,32 @@ const Cart = () => {
                   <tbody>
                   {cartItems.map((item) => (
                     <tr key={item._id}>
-                      <td>{item.name}</td>
-                      <td>{item.price}đ</td>
-                      <td>{item.price}đ</td>
-                      <td>{item.price}đ</td>
+                      <td className='spec'>
+                        <div className='check1'>
+                          <input type='checkbox'/>
+                          {/* <img src={item.image} /> */}
+                           <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
+
+                        </div>
+                        <div>
+                          <b>{item.name} </b> <br/>
+                          <BsTrash className='icon_trash' onClick={() => removeItem(item._id)}/>
+                          <BsHeart className='icon_heart'/>
+
+                        </div>
+                        
+                      </td>
+                      <td><b>{item.price}đ</b>
+                      </td>
+                      <td>
+                        <div className='qty'>
+                          <button onClick={() => decrementQuantity(item._id)}>-</button>
+                          <div><input type='text' value={Math.max(1, parseInt(item.quantity) || 1)} readOnly /></div>
+                          <button  onClick={() => incrementQuantity(item._id)}>+</button>
+                        </div>
+                          
+                      </td>
+                      <td><b>{item.price * item.quantity}đ</b></td>
                     </tr>
                   ))}
                   </tbody>
@@ -107,7 +159,7 @@ const Cart = () => {
           </div>
           <div className='buy_child'> 
               <p>Tổng thanh toán</p>
-              <div>(Tiền)</div>
+              <div> {calculateTotal()}</div>
           </div>
           
           <Link to = '/thanh-toan'>Đặt hàng</Link>

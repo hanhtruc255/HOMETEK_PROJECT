@@ -150,15 +150,15 @@ const CategorySidebar = ({ onFilterChange, onPriceChange}) => {
         <b>PRICE</b> <br/>
         <div className='b1'>
           <label>
-              <input type='radio' name='price' className='input_soft' onChange={() => handlePriceChange(0)} />
+              <input type='checkbox' name='price' className='input_soft' onChange={() => handlePriceChange(0)} />
               <p>0đ - 2.000.000đ</p>
             </label>
             <label>
-              <input type='radio' name='price' className='input_soft' onChange={() => handlePriceChange(1)} />
+              <input type='checkbox' name='price' className='input_soft' onChange={() => handlePriceChange(1)} />
               <p>2.000.000đ - 5.000.000đ</p>
             </label>
             <label>
-              <input type='radio' name='price' className='input_soft' onChange={() => handlePriceChange(2)} />
+              <input type='checkbox' name='price' className='input_soft' onChange={() => handlePriceChange(2)} />
               <p> {'>'}= 5.000.000đ </p>
             </label>
         </div>

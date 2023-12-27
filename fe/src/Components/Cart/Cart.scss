@@ -1,5 +1,6 @@
 .cart{
     margin: 40px 100px 0 100px;
+    color: #041E42;
     .Frame_cart{
         margin: 30px;
         border-radius: 5px;
@@ -9,30 +10,89 @@
         font-size: 17px;
         table{
             width: 100%;
+          tbody{
+            border: 1px solid #b4b4b4;
+            border-radius: 5px;
+            box-shadow: 0px 1px 1px 1px #b4b4b4;
+          }
             th{
                 background: #FFDFE3;
                 padding:5px;
                 text-align: center;
-                width: 250px;
+                width: 200px;
             }
-            .th1{width: 450px;}
-    
+            .th1{width: 6%;}
+
+            .spec{
+                text-align: left;
+                width: 100%;
+                display: flex;
+                b{
+                    color: #00337D;
+                }
+                input{
+                    color: #041E42;
+                }
+                .check1{
+                    display: flex;
+                    img{
+                        width: 80px;
+                        border: 1px solid #041E42;
+                        border-radius:5px ;
+                        margin: 5px 15px;
+                        box-shadow: 0 1px #696969 ;
+                    }
+                }
+                .icon_trash{
+                    background: #041E42;
+                    color: white;
+                    padding: 2px;
+                    font-size: 25px;
+                    margin: 15px 10px 2px 0;
+                    border-radius: 5px;}
+                .icon_heart{
+                    font-size: 25px;
+                    margin-top: 15px;
+                }
+
+            }
             td{
                 background: white;
-                padding:5px;
+                padding:10px;
                 text-align: center;
-                width: 250px;
+                width: 100%;
+                .qty{
+                    display: flex;
+                    color: #041E42 ;
+                    button{
+                        height: 20px;
+                        width:30px;
+                        margin: 0 10px;
+                        padding-bottom: 10px;
+                        background: #041E42;
+                        color: white;
+                        border: 1px solid #041E42;
+                        border-radius: 5px;
+                        font-weight: bold;
+                        font-size: 13px;
+                        margin-top: 5px;}
+                    input{
+                        height: 20px;
+                        width: 40px;
+                        font-size: 10px;
+                        margin-right: 0.7px;
+                        text-align: center;
+                        border: 1px solid #041E42;
+                        border-radius: 5px;
+                    }}
             }
-            .th1{width: 450px;}
-    
+            .th1{width: 65%;}
             
         }
        }
 
        .address{
-        background: white;
-        // justify-content: space-between;
-        
+        background: white;    
         .add1{
             font-size: 17px;
         }
