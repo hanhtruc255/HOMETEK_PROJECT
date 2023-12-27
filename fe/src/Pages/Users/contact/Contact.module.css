@@ -20,6 +20,7 @@
 
 .map {
   width: 50%;
+  align-items: center;
 }
 
 .firstContentWrapper {
@@ -72,5 +73,20 @@
   width: fit-content;
   height: fit-content;
   padding: 10px;
-  margin: 0;
+  margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+  .wrapperConTact {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .map {
+    width: 90%;
+    align-items: center;
+    margin: 5px auto;
+  }
 }
