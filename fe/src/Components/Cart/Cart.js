@@ -14,6 +14,7 @@ const Cart = () => {
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
   const [cartItems, setCartItems] = useState([]);
+  const [selectAll, setSelectAll] = useState(false);
 
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cart')) || [];
@@ -62,27 +63,66 @@ const Cart = () => {
         localStorage.setItem('cart', JSON.stringify(updatedCart));
       }
     };
-
-//quality
-      const decrementQuantity = (itemId) => {
-        const updatedCart = cartItems.map(item => (
-          item._id === itemId ? { ...item, quantity: Math.max(1, item.quantity - 1) } : item
-        ));
-        setCartItems(updatedCart);
-        localStorage.setItem('cart', JSON.stringify(updatedCart));
-      };
-
-      const incrementQuantity = (itemId) => {
-        const updatedCart = cartItems.map(item => (
-          item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
-        ));
-        setCartItems(updatedCart);
-        localStorage.setItem('cart', JSON.stringify(updatedCart));
-      };
-///
-    const calculateTotal = () => {
-      return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  
+    const decrementQuantity = (itemId) => {
+      const updatedCart = cartItems.map(item =>
+        item._id === itemId ? { ...item, quantity: Math.max(1, item.quantity - 1) } : item
+      );
+      setCartItems(updatedCart);
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
     };
+  
+    const incrementQuantity = (itemId) => {
+      const updatedCart = cartItems.map(item =>
+        item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+      );
+      setCartItems(updatedCart);
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+    };
+  
+    useEffect(() => {
+      const storedCartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  
+      const aggregatedCartItems = storedCartItems.reduce((accumulator, currentItem) => {
+        const existingItem = accumulator.find(item => item._id === currentItem._id);
+  
+        if (existingItem) {
+          existingItem.quantity += parseInt(currentItem.quantity, 10) || 1;
+        } else {
+          accumulator.push({
+            ...currentItem,
+            quantity: parseInt(currentItem.quantity, 10) || 1,
+          });
+        }
+  
+        return accumulator;
+      }, []);
+  
+      setCartItems(aggregatedCartItems);
+    }, []);
+  
+    const calculateTotal = () => {
+      return cartItems.reduce((total, item) => (item.selected ? total + item.price * item.quantity : total), 0);
+    };
+  
+    const toggleItemSelection = (itemId) => {
+      setCartItems(prevCartItems =>
+        prevCartItems.map(item =>
+          item._id === itemId ? { ...item, selected: !item.selected } : item
+        )
+      );
+    };  
+
+    const toggleSelectAll = () => {
+      setSelectAll((prevSelectAll) => !prevSelectAll);
+      setCartItems((prevCartItems) =>
+        prevCartItems.map((item) => ({
+          ...item,
+          selected: !selectAll,
+        }))
+      );
+    };
+  
 
   return (
     <div className='cart'>
@@ -115,7 +155,10 @@ const Cart = () => {
                     <tr key={item._id}>
                       <td className='spec'>
                         <div className='check1'>
-                          <input type='checkbox'/>
+                          <input
+                            type='checkbox'
+                            checked={item.selected}
+                            onChange={() => toggleItemSelection(item._id)}/>
                           {/* <img src={item.image} /> */}
                            <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
 
@@ -138,7 +181,7 @@ const Cart = () => {
                         </div>
                           
                       </td>
-                      <td><b>{item.price * item.quantity}đ</b></td>
+                      <td><b>{item.price*item.quantity}</b></td>
                     </tr>
                   ))}
                   </tbody>
@@ -154,7 +197,7 @@ const Cart = () => {
 
         <div className='buy'>
           <div className='buy_child'>
-              <input type='checkbox'/>
+              <input type='checkbox' onChange={toggleSelectAll} checked={selectAll}/>
               <p> Chọn tất cả</p>
           </div>
           <div className='buy_child'> 
