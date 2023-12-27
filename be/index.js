@@ -1,8 +1,8 @@
 const express = require("express")
 const app= express()
-const port =3000
+const port =3001
 const Product = require('./models/product')
-const Customer = require('./models/customer')
+const Customer = require('./routes/customer')
 const cors = require('cors');
 const db= require('./config/db/index')
 const bodyParser = require('body-parser')
@@ -27,7 +27,10 @@ app.use(cors());
 app.use('/', productRouter);
 app.use('/', orderRouter)
 app.use('/reviews', feedbackRouter);
+app.use('/customers',Customer )
 app.listen(port, () =>{
     console.log(`My server's listening on port: ${port}`)
 })
 
+// const Accrouter=require("./routes/customer")
+// app.use("/", Accrouter)
