@@ -44,7 +44,6 @@ const Navbar= () =>{
                 <nav className="Menu">
                     <ul>
                         <li> <Link to="/about-us"> Về chúng tôi</Link> </li>
-                        <li><Link to ={"/cua-hang"}>Cửa hàng</Link> </li>
                         <li><Link to ={'/01'}>Bếp</Link> 
                             <ul className="header__menu__dropdown">
                                 <li>

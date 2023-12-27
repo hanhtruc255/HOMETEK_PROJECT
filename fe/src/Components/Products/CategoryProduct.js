@@ -6,15 +6,16 @@ import { BsHeart } from "react-icons/bs";
 import { BsCart3 } from "react-icons/bs";
 import "./styleproduct.scss";
 
-const CategoryProduct = ({ selectedBrands }) => {
+const CategoryProduct = () => {
   const {categoryId} = useParams();
   const [product, setProduct] = useState(null);
+  console.log(">>>>>>>", categoryId)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/categories/${categoryId}`);
-        // console.log(">>>>", response)
+        console.log(">>>>", response)
         if (response.data && response.data && Array.isArray(response.data)) {
           setProduct(response.data);
         } else {

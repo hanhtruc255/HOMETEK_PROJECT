@@ -75,23 +75,22 @@
 //header__menu---------------
     .Menu{
         // display: flex;
-        padding:0 80px;
+        justify-content: space-between;
         background: #041E42;
         height: 50px;
         width: 100%;
+        padding: 0 30px;
 
         ul{
             display: flex;
             justify-content: space-between;
-
-
             li {
-                width: 20%;
+                width: 150px;
                 list-style-type: none;
                 position: relative;
                 a{
                     text-decoration: none;
-                    font-size: 15px;
+                    font-size: 14px;
                     color: #FFFFFF;
                     letter-spacing: 2px;
                     transition: all 0.2s;

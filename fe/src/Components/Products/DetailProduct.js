@@ -11,8 +11,8 @@ import { BsCamera } from "react-icons/bs";
 import Breadcrumb from './Breadcrumb';
 
 const DetailProduct = () => {
-    const {id} = useParams();
-    console.log(">>>", id)
+    const {_id} = useParams();
+    console.log(">>>", _id)
     const [product, setProduct] = useState(null);
     const [activeTab, setActiveTab] = useState('description'); 
 
@@ -28,14 +28,14 @@ const DetailProduct = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get(`http://localhost:3000/Cua_hang/${id}`);
+          const response = await axios.get(`http://localhost:3000/Cua_hang/${_id}`);
           setProduct(response.data);
         } catch (error) {
           console.error('Error fetching product details:', error);
         }
       };
       fetchData();
-    }, [id]);
+    }, [_id]);
     const handleTabChange = (tab) => {
         setActiveTab(tab);
       };
