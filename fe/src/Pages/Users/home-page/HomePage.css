@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
 
 /* .homepage-content {
   min-height: 100vh;
@@ -13,7 +13,7 @@
 
 .homepage-content {
   padding: 20px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .homepage-content button {
@@ -42,6 +42,9 @@
   padding-top: 20px;
 }
 
+.list-product-types .title {
+  color: #041e42;
+}
 .swiper-wrapper {
   height: 100%;
   align-items: stretch;
@@ -88,7 +91,7 @@
 }
 
 .block-swiper {
-  background-color:#C2E8C7;
+  background-color: #c2e8c7;
   padding: 20px 20px 15px 20px;
   border-radius: 20px;
 }
@@ -96,11 +99,11 @@
 .homepage-content .heading {
   text-align: center;
   padding: 25px 0;
-  color: #041E42;
+  color: #041e42;
 }
 
 .block-swiper--promotional-products {
-  background-color: #C2E8C7;
+  background-color: #c2e8c7;
 }
 
 .block-swiper--latest-products {
@@ -108,11 +111,11 @@
 }
 
 .block-swiper--best-selling-products {
-  background-color: #C2E8C7;
+  background-color: #c2e8c7;
 }
 
 .block-swiper--suggested-products {
-  background-color: #C2E8C7;
+  background-color: #c2e8c7;
 }
 
 .wrapper-brands,
@@ -124,8 +127,9 @@
 .wrapper-brands--heading,
 .wrapper-blogs-swiper--heading {
   padding: 20px 0;
+  color: #041e42;
 }
 
-.wrapper-brands--block-brands{
+.wrapper-brands--block-brands {
   width: 90vw;
 }

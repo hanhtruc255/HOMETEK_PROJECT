@@ -1,0 +1,9 @@
+.marker{
+    color: #041E42;
+}
+
+.link{text-decoration: none;}
+
+.link:hover{
+    text-decoration: underline;
+}

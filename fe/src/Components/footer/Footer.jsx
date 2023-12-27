@@ -49,7 +49,7 @@ const Footer = () => {
 
         <div className={styles.item}>
           <h4 className={styles.paddingBottom}>
-            <Link to={"/"} className={styles.link}>
+            <Link to={"/contact"} className={styles.link}>
               Liên Hệ
             </Link>
           </h4>

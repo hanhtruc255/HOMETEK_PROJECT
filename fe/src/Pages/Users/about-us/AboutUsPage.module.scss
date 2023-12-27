@@ -12,7 +12,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 35%;
+    width: 40%;
     padding: 30px;
     color: white;
     text-align: justify;
@@ -73,7 +73,7 @@
     display: flex;
     align-items: center;
     .item {
-      width: 50%;
+      width: 100%;
       margin-right: 10%;
       color: #041e42;
       .line {
@@ -101,6 +101,23 @@
       //   bottom: 0;
       //   border-radius: 5px;
       // }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .content1 {
+    .textContent1 {
+      width: 70%;
+      .heading1 {
+        font-size: 2em;
+      }
+    }
+  }
+
+  .content2 {
+    .textContent2 {
+      width: 90%;
     }
   }
 }

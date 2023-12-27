@@ -1,0 +1,76 @@
+.bannerWrapper {
+  margin: 20px;
+}
+
+.banner {
+  width: 100%;
+}
+
+.wrapperConTact {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.contactContent {
+  width: 50%;
+  margin-right: 50px;
+  color: #041e42;
+}
+
+.map {
+  width: 50%;
+}
+
+.firstContentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.firstContent {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 50px;
+}
+.wrapperIcon {
+  min-width: 30px;
+  height: 30px;
+  border: #041e42 solid 1px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon {
+  width: 20px;
+}
+
+.firstContent .content {
+  margin: 0;
+}
+
+.secondContentWrapper .myFormControl {
+  width: 350px !important;
+  height: 20px !important;
+  min-height: 10px !important;
+}
+
+.secondContentWrapper .textAreaFormControl {
+  min-height: 40px !important;
+  max-height: 200px !important;
+  width: 350px !important;
+  resize: none;
+  overflow-y: hidden;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.contactBtn {
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+  margin: 0;
+}
