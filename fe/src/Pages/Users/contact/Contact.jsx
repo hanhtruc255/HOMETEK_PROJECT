@@ -47,6 +47,7 @@ const Contact = () => {
               <h4>Liên hệ với chúng tôi</h4>
               <div class="form-floating pb-3">
                 <input
+                  required
                   class={classNames("form-control", styles.myFormControl)}
                   id="name"
                   name="name"
@@ -58,6 +59,7 @@ const Contact = () => {
 
               <div class="form-floating pb-3">
                 <input
+                  required
                   class={classNames("form-control", styles.myFormControl)}
                   id="email"
                   name="email"
@@ -69,6 +71,7 @@ const Contact = () => {
 
               <div>
                 <textarea
+                  required
                   rows="7"
                   cols="40"
                   class={classNames(styles.textAreaFormControl)}
