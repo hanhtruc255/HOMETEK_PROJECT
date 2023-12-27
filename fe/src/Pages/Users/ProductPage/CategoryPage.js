@@ -9,17 +9,15 @@ import Sort from '../../../Components/Products/Sort';
 
 const CategoryPage = () => {
   return  (
-  
-  <div>
-  <Navbar/>
-  <Breadcrumb/>
-  <Sort/>
-  <div  className="Frame_Product">
-    <CategorySidebar />
-    <CategoryProduct/>
-</div>
-</div>
-)
-}
+        <div>
+        <Navbar/>
+        <Breadcrumb/>
+        <Sort/>
+        <div  className="Frame_Product">
+          <CategorySidebar />
+          <CategoryProduct/>
+      </div>
+      </div>
+)}
 
 export default CategoryPage

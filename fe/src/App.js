@@ -1,13 +1,14 @@
 import React from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-// import ProductPage from "./Pages/Users/ProductPage/ProductPage";
+
 import CartPage from "./Pages/Users/CartPage/CartPage";
 import DetailProductPage from "./Pages/Users/ProductPage/DetailProductPage";
 import CategoryPage from "./Pages/Users/ProductPage/CategoryPage";
 import SubcategotyPage from "./Pages/Users/ProductPage/SubcategoryPage"
 import PaymentSuccess from "./Components/Payment/PaymentSuccess";
 import PaymentMoney from "./Components/Payment/PaymentMoney";
-import TrackingPage from "./Pages/Users/TrackingPage/TrackingPage";
+import TrackingPage from "./Pages/Users/TrackingPage/TrackingPage"
+
 // admin
 import DashBoard from "./Pages/Admin/Dashboard";
 import Product from "./Pages/Admin/Products/Product";
@@ -31,9 +32,6 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Routes>
-         
-            {/* <Route path="/cua-hang" element={<ProductPage />} /> */}
-            {/* <Route path="/cua-hang/:id" element={<DetailProductPage />} /> */}
 
             <Route path="/:categoryId" element={<CategoryPage/>} />
             <Route path="/:categoryId/:_id" element={<DetailProductPage />} />

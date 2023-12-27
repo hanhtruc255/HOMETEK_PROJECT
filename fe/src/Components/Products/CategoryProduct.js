@@ -9,7 +9,7 @@ import "./styleproduct.scss";
 const CategoryProduct = () => {
   const {categoryId} = useParams();
   const [product, setProduct] = useState(null);
-  console.log(">>>>>>>", categoryId)
+  console.log(">>>>>>>truc",categoryId)
 
   useEffect(() => {
     const fetchData = async () => {
