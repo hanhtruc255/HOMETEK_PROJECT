@@ -2,11 +2,18 @@ const express = require ('express')
 const router = express.Router()
 const feedbackController = require('../controllers/feedback')
 
-// api: Lấy sản phẩm 
-router.post('/submit', feedbackController.addFeedback)
+// api: Hiển thị đánh giá 
+router.get('/feedback', feedbackController.getFeedback)
+
+// api: Thêm đánh giá
+
+// api: Chỉnh trạng thái của đánh giá
+
+// api : Sắp sếp theo tình trạng
+
+// api: Xóa đánh giá
 
 
-//api: Tạo một sản phẩm mới
 // router.post()
 
 

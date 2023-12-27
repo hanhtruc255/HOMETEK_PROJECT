@@ -11,7 +11,7 @@ router.put('/admin/order/confirm/:orderId',orderController.confirmOrder )
 //api lọc theo trạng thái đơn hàng
 router.get('/order/status/:status', orderController.filterOrder)
 //api tìm đơn hàng theo mã đơn hàng
-router.get('/order/find/:orderId', orderController.findOrder)
+router.get('/order/:orderId', orderController.findOrder)
 //api xóa đơn hàng
 
 module.exports= router

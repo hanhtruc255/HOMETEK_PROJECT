@@ -11,6 +11,9 @@ const productSchema = new Schema({
         type: String,
         required: true
     },
+    rating:{
+        type: Number
+    },
     description: {
         type: String,
         required: true},
@@ -20,8 +23,7 @@ const productSchema = new Schema({
         required: true},
 
     sale_price:{
-        type: String,
-        required: true
+        type: String
     },
 
     categoryId:{
@@ -30,8 +32,7 @@ const productSchema = new Schema({
     },
 
     sub_categoryId:{
-        type: String,
-        required: true
+        type: String
     },
 
     brand_name:{
@@ -40,8 +41,7 @@ const productSchema = new Schema({
     },
 
     tech_detail:{
-        type: String,
-        required: true
+        type: String
     },
 
     image:{
@@ -66,12 +66,4 @@ const productSchema = new Schema({
         default: Date.now
     }
 });
-// productSchema.set('toJSON', {
-//     transform: function (doc, ret) {
-//       ret.id = ret._id;
-//       delete ret._id;
-//       delete ret.__v;
-//       return ret;
-//     },
-//   });
 module.exports = mongoose.model('product',productSchema,'product')
