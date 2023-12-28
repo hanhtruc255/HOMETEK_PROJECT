@@ -70,17 +70,35 @@ const getProductBrand = async (req, res) => {
     res.status(500).json({error:'Có lỗi'})
   }
 }
+// Endpoint để lấy đánh giá sản phẩm theo ID
+app.get('/api/product/:productId/feedback', (req, res) => {
+  const productId = req.params.productId;
 
-// const getProductBrand = async (req, res) => {
-//   const { brand_name } = req.params;
-//   try {
-//     // Đảm bảo mô hình Product đã được import và định nghĩa đúng
-//     const products = await Product.find({ brand_name });
-//     res.json(products);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Có lỗi' });
-//   }
-// }
+  // Tìm sản phẩm trong danh sách sản phẩm
+  const product = productData;
+  if (!product) {
+    return res.status(404).json({ error: 'Sản phẩm không tồn tại' });
+  }
+
+  // Tìm đánh giá của sản phẩm trong danh sách đánh giá
+  const feedback = feedbackData;
+  if (!feedback) {
+    return res.status(404).json({ error: 'Đánh giá không tồn tại' });
+  }
+
+  // Kiểm tra xem đánh giá có phải của sản phẩm không
+  if (feedback.products.some(p => p.productId === productId)) {
+    return res.json({
+      productId: productId,
+      feedback: feedback
+    });
+  } else {
+    return res.status(404).json({ error: 'Đánh giá không tồn tại cho sản phẩm này' });
+  }
+});
+
+
+
 // Tạo sản phẩm mới
 
 const addProduct = async (req, res) => {

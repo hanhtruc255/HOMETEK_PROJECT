@@ -9,7 +9,7 @@
       {
         "productId": "NCKDE2",
         "name": "Nồi chiên không dầu 5L Explore 6 NCKDE2",
-        "image": "./data/image/Noichienkhongdau/vn-e6af1-520k-fr1-1500x1500.jpg",
+        "image": "https://i.ibb.co/gTLzM84/Electrolux-5-L-4-first.png",
         "price": 3590000,
         "sale_price": 2140000,
         "quantity": 2 
@@ -29,7 +29,7 @@
       {
         "productId": "CTTM2",
         "name": "Công tắc cảm ứng LifeSmart Nature Switch CTTM2",
-        "image": "./data/image/Congtacthongminh/CTTM_LifeSmart_1.png",
+        "image": "https://i.ibb.co/876TrXK/CTTM-Life-Smart-1.png",
         "price": 2405000,
         "sale_price": 1850000,
         "quantity": 1 
@@ -37,7 +37,7 @@
       {
         "productId": "LTM2",
         "name": "Loa thông minh Google Home",
-        "image": "./data/image/Noichienkhongdau/vn-e6af1-520k-fr1-1500x1500.jpg",
+        "image": "https://i.ibb.co/GQYHTv9/LTM-Google-1.jpg",
         "price": 2260000,
         "sale_price": 2000000,
         "quantity": 1
@@ -57,7 +57,7 @@
       {
         "productId": "MTB2",
         "name": "Máy đựng sữa rửa tay tạo bọt Xiaomi X101",
-        "image": "./data/image/Congtacthongminh/CTTM_LifeSmart_1.png",
+        "image": "https://i.ibb.co/gDQ2hKv/MTB-X-first.png",
         "price": 2405000,
         "sale_price": 1900000,
         "quantity": 1 
@@ -65,7 +65,7 @@
       {
         "productId": "RBE1",
         "name": "Hộp đựng đũa khử khuẩn UV thông minh AOKAEN",
-        "image": "./data/image/Noichienkhongdau/vn-e6af1-520k-fr1-1500x1500.jpg",
+        "image": "https://i.ibb.co/QnhZvVV/Robot-ecovas-3-first.png",
         "price": 2260000,
         "sale_price": 1900000,
         "quantity": 1
