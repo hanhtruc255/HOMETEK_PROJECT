@@ -8,9 +8,11 @@ import { BsStar } from "react-icons/bs";
 import { BsTruck } from "react-icons/bs";
 import { BsArrowRepeat } from "react-icons/bs";
 import { BsCamera } from "react-icons/bs";
+import Breadcrumb from './Breadcrumb';
 
 const DetailProduct = () => {
-    const {category,id} = useParams();
+    const {id} = useParams();
+    console.log(">>>", id)
     const [product, setProduct] = useState(null);
     const [activeTab, setActiveTab] = useState('description'); 
 
@@ -26,7 +28,7 @@ const DetailProduct = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get(`https://dummyjson.com/products/${id}`);
+          const response = await axios.get(`http://localhost:3000/Cua_hang/${id}`);
           setProduct(response.data);
         } catch (error) {
           console.error('Error fetching product details:', error);
@@ -54,16 +56,18 @@ const DetailProduct = () => {
           <div className='modal_wrapper_evalua'></div>
           <div className='modal_evalua_container'>
             <div className='evalua_title'> 
-                <h3>Đánh giá và nhận xét</h3>
+                <p>Đánh giá và nhận xét</p>
                 <button onClick={() => setShowModal(false)}>X</button>
             </div>
+           
 
             <div className='evalua_body'>
               <div className='evalua_product'>
                   <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'}/>
-                  <h4>{product.title}</h4>
+                  <b>{product.name}</b>
+                  
               </div>
-              
+              <label>Mã đơn hàng: <input/></label>
               <p>Đánh giá chung</p>
 
               <div className='evalua_star' >
@@ -76,17 +80,14 @@ const DetailProduct = () => {
                 </div>
               ))}
               </div>
-              <hr/>
-              <div>
-                <p>Theo trải nghiệm</p>
-                <input className='input_text' placeholder='Xin mời chia sẻ một số cảm nhận về sản phẩm'/>
+              <div className='inputtext'>
+                <span>Nhận xét</span>
+                <input className='input_text' placeholder='Xin mời chia sẻ một số cảm nhận về sản phẩm'/> </div>
 
                 <div className='input_image'>
                   <BsCamera className='cam'/>
                   <input type="file"  className="form-control"/>
                 </div>
-                
-              </div>
                 
               <button>GỬI ĐÁNH GIÁ</button>
               
@@ -100,6 +101,7 @@ const DetailProduct = () => {
     
   return (
     <div>
+      
         {product ? (
             <div>
                 <div  className='Detail_Product'>
@@ -116,11 +118,9 @@ const DetailProduct = () => {
                     </div>
 
                     <div className='Infomation'>
-
-                    <h4>Hometek/{product.category}/{product.title}</h4>
-
+                        <div className='breadcrumdetail'><Breadcrumb/></div>
                       <div className='name'>
-                        {product.title}
+                        {product.name}
                         </div>
                       <div>
                         <BsStar className='icon'/>
@@ -130,9 +130,9 @@ const DetailProduct = () => {
                         <BsStar className='icon'/>
                         <BsHeart className='heart'/> </div>
 
-                      <div className='price'>{product.price}$</div>
+                      <div className='price'>{product.price}đ</div>
                         
-                      <p>Số lượng</p>
+                      <h4>Số lượng</h4>
 
                       <div className='qty'>
                         <button>-</button>
@@ -148,19 +148,20 @@ const DetailProduct = () => {
                       </div>
 
                       <div className='Deli'>
+                     
                         <div className='Deli1'>
-                          <BsTruck/>
-                          <h5>Giao nhanh - Miễn phí cho đơn từ 2 triệu đồng</h5></div>
-                          
-                          <Link>Enter your postal code for Deliverty Availability</Link>
-                        
-                        <hr></hr>
-                        <div className='Deli2'>
-                          <BsArrowRepeat/>
-                          <h5>Chính sách Bảo hành - Đổi trả</h5>
+                        <BsTruck className='icon'/>
+                          <p>Giao nhanh - Miễn phí cho đơn từ 2 triệu đồng <br/><Link>Enter your postal code for Deliverty Availability</Link></p>
                           </div>
-                          Free 30 Days Delivery<Link to ="#"> Detail</Link>
-
+                        <div className='Deli2'>
+                          <BsArrowRepeat className='icon'/>
+                          <p>Chính sách Bảo hành - Đổi trả
+                          <br/>Free 30 Days Delivery
+                          <Link to ="#"> Detail</Link>
+                          </p>
+                          
+                          </div>
+                          
                         
                       </div>
                     </div>   
@@ -170,10 +171,10 @@ const DetailProduct = () => {
 
                 {/* Mô tả và kỷ thuật */}
                 <div className='frame_descrip'>
-                    <div className='descrip_title'>
+                    <div className='descrip_name'>
                         <hr className='hr_des'/>
                             <button onClick={() => handleTabChange('description')} >Mô tả</button>
-                            <button onClick={() => handleTabChange('specifications')} >Thông số kỹ thuật</button>
+                            <button onClick={() => handleTabChange('tech_detail')} >Thông số kỹ thuật</button>
                         <hr className='hr_des'/>
                     </div>
                 {/* mô tả */}
@@ -183,9 +184,9 @@ const DetailProduct = () => {
                         {product.description}
                         </div>)}
                     {/* kỷ thuật */}
-                    {activeTab === 'specifications' && (
+                    {activeTab === 'tech_detail' && (
                         <div>
-                        {product.rating}
+                        {product.tech_detail}
                         </div>)}       
                 </div>
             
@@ -194,7 +195,7 @@ const DetailProduct = () => {
                 {/* đánh giá */}
                   <div className='frame_evalua'>
                     {/* frame chỉnh */}
-                    <h3>Đánh giá sản phẩm {product.title}</h3>
+                    <h3>Đánh giá sản phẩm {product.name}</h3>
                     {/* tỏng đánh giá */}
                     <div>
                         <div>
@@ -224,16 +225,14 @@ const DetailProduct = () => {
                 {/* hỏi đáp */}
                   <div className='ask'>
                     <h3>HỎI ĐÁP</h3>
-                    <p>Bình luận về {product.title}</p>
+                    <p>Bình luận về {product.name}</p>
                     <input placeholder="Xin mời để lại câu hỏi, Hometek sẽ nhanh chóng giải đáp những thắc mắc của bạn."/>
                     <div className='ask_inf'>
-                     <input placeholder="Nhập họ tên*"/>
-                     <input placeholder="Nhập số điện thoại"/>
-                     <button>Gửi</button>
-
+                        <input placeholder="Nhập họ tên*"/>
+                        <input placeholder="Nhập số điện thoại"/>
+                        <button>Gửi</button>
                     </div>
                   </div>
-
 {/* Kết thúc */}
             </div>
               ) : (<></>)}

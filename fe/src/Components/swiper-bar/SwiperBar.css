@@ -1,0 +1,25 @@
+.swiper {
+  height: fit-content;
+}
+
+.swiper-wrapper {
+  height: fit-content;
+  position: relative;
+}
+
+.swiper-slide {
+  height: auto !important;
+  padding: 5px;
+  box-sizing: border-box;
+  /* min-height: 310px; */
+  max-height: 420px;
+  max-width: 310px;
+}
+
+.swiper-pagination {
+  display: none;
+}
+
+.swiper-content {
+  height: 100% !important;
+}

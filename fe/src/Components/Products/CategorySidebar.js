@@ -1,109 +1,158 @@
-import React, {useState, useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./styleproduct.scss";
 import { BsList } from "react-icons/bs";
 import axios from 'axios';
-import { Link} from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const CategorySidebar = () => {
-//   category
+  //category
   const [showBepSubcategories, setShowBepSubcategories] = useState(false);
   const [showDonDepSubcategories, setShowDonDepSubcategories] = useState(false);
   const [showTienIchSubcategories, setShowTienIchSubcategories] = useState(false);
 
-  // Function to toggle the visibility of subcategories for "Bếp"
   const toggleBepSubcategories = () => {
     setShowBepSubcategories(!showBepSubcategories);
-    setShowDonDepSubcategories(false);
+    setShowDonDepSubcategories(false); 
     setShowTienIchSubcategories(false);
   };
 
-  //  "Dọn dẹp"
   const toggleDonDepSubcategories = () => {
+    setShowBepSubcategories(false)
     setShowDonDepSubcategories(!showDonDepSubcategories);
-    setShowBepSubcategories(false);
     setShowTienIchSubcategories(false);
   };
 
-  //"Tiện ích"
   const toggleTienIchSubcategories = () => {
-    setShowTienIchSubcategories(!showTienIchSubcategories);
-    setShowBepSubcategories(false);
+    setShowBepSubcategories(false)
     setShowDonDepSubcategories(false);
+    setShowTienIchSubcategories(!showTienIchSubcategories);
   };
 
-///brand
+  // brand
+  const {categoryId} = useParams()
+  console.log (">>", categoryId)
+
+  const [product, setProduct] = useState(null);
+  const [uniqueBrands, setUniqueBrands] = useState(new Set());
+  const [selectedBrands, setSelectedBrands] = useState(new Set());
+
+  const handleBrandChange = (brand) => {
+    const updatedBrands = new Set(selectedBrands);
+    if (updatedBrands.has(brand)) {
+      updatedBrands.delete(brand);
+    } else {
+      updatedBrands.add(brand);
+    }
+    setSelectedBrands(updatedBrands);
+  };
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const filterProducts = (selectedBrands) => {
+    if (product) {
+      const filtered = product.filter(item => selectedBrands.has(item.brand_name));
+      setFilteredProducts(filtered);
+    }
+  };
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/categories/${categoryId}`);
+        console.log("truc", response)
+        if (response.data && response.data && Array.isArray(response.data)) {
+          setProduct(response.data);
+          const brands = response.data.map(item => item.brand_name);
+          setUniqueBrands(new Set(brands));
+          
+        } else {
+          console.error('Invalid data format:', response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching product details:', error);
+      }
+    };
+    fetchData();
+  }, [categoryId]);
+
+
 
   return (
     <div className='Category__Sidebar'>
       {/* CATEGORY */}
       <div className='category'>
-        <h4>CATEGORY</h4>
+        <b>CATEGORY</b>  <br/>
         <Link to={"/cua-hang"}>Cửa hàng</Link>
-          {/*Bếp */}
         <div>
-            <div>
-                 <Link to='/smartphones' onClick={toggleBepSubcategories}>Bếp</Link>
-            </div>
+          <div>
+            <Link to='/01' onClick={toggleBepSubcategories}>Bếp</Link>
+          </div>
           {showBepSubcategories && (
             <div className="dropdown">
-              <Link to="/smartphones/noichien">Nồi cơm thông minh</Link> <br/>
-              <Link to="/">Nồi chiên không dầu</Link> <br/>
-              <Link to="/">Máy rửa thực phẩm</Link>  <br/>
-              <Link to="/">Máy khử trùng đồ dùng bếp</Link> <br/>
+              <Link to="/01/sub/B1">Nồi chiên không dầu</Link> <br />
+              <Link to="/01/sub/B2">Nồi cơm thông minh</Link> <br />
+              <Link to="/01/sub/B3">Máy rửa thực phẩm</Link> <br />
+              <Link to="/01/sub/B4">Máy khử trùng đồ dùng bếp</Link> <br />
             </div>
           )}
         </div>
 
-        {/* Dọn dẹp*/}
         <div>
           <div onClick={toggleDonDepSubcategories}>
-                <Link to ='/laptops'>Dọn dẹp</Link>
+            <Link to='/02'>Dọn dẹp</Link>
           </div>
           {showDonDepSubcategories && (
             <div className="dropdown">
-              <Link to="/">Robot hút bụi lau nhà</Link> <br/>
-              <Link to="/">Máy lọc không khí thông minh</Link> <br/>
-              <Link to="/">Bàn chảy đa năng</Link> <br/>
+              <Link to="/02/sub/D1">Bàn chảy đa năng</Link> <br />
+              <Link to="/02/sub/D2">Máy lọc không khí thông minh</Link> <br />
+              <Link to="/02/sub/D3">Robot hút bụi lau nhà</Link> <br />
+              
+             
             </div>
           )}
         </div>
 
-        {/* Tiện ích */}
         <div>
-          <div onClick={toggleTienIchSubcategories}><Link to ='/skincare'>Tiện ích</Link></div>
+          <div onClick={toggleTienIchSubcategories}><Link to='/03'>Tiện ích</Link></div>
           {showTienIchSubcategories && (
             <div className="dropdown">
-              <Link to="/">Máy tạo bọt rửa tay</Link> <br/>
-              <Link to="/">Loa trợ lý ảo thông minh</Link> <br/>
-              <Link to="/">Công tắc thông minh</Link> <br/>
+              <Link to="/03/sub/T1">Máy tạo bọt rửa tay</Link> <br />
+              <Link to="/03/sub/T2">Loa trợ lý ảo thông minh</Link> <br />
+              <Link to="/03/sub/T3">Công tắc thông minh</Link> <br />
             </div>
           )}
         </div>
       </div>
-        <hr></hr>
+      <hr></hr>
       {/* BRAND */}
       <div className='brandandprice'>
-        <h4>BRAND</h4>
-        <div className='b1'>
-            <label> <input type='checkbox'className='input_soft'/><p> Apple</p>  </label> 
-            <label> <input type='checkbox'className='input_soft'/><p> Samsung</p> </label>
-            <label> <input type='checkbox'className='input_soft'/><p>  OPPO</p> </label>
-            <label> <input type='checkbox'className='input_soft'/><p> HP</p> </label>
-        </div>
-        
+        <b>BRAND</b>  <br/>
+        {uniqueBrands.size > 0 && Array.from(uniqueBrands).map((brand, index) => (
+          <div key={index} className='b1'>
+            <label>
+              <input
+                type='checkbox'
+                className='input_soft'
+                checked={selectedBrands.has(brand)}
+                onChange={() => handleBrandChange(brand)}
+              />
+              <p> {brand} </p>
+            </label>
+          </div>
+        ))}
+
       </div>
-          <hr></hr>
+      <hr></hr>
       {/* PRICE */}
       <div className='brandandprice'>
-        <h4>PRICE</h4>
-            <div className='b1'>
-                <label> <input type='radio' name='price'className='input_soft'/> <p>$0 - $50</p></label>
-                <label> <input type='radio' name='price'className='input_soft'/><p>100-1000</p> </label>
-                <label> <input type='radio' name='price'className='input_soft'/> <p>over 1000 </p> </label>
-            </div>
-
+        <b>PRICE</b> <br/>
+        <div className='b1'>
+          <label> <input type='radio' name='price' className='input_soft' /> <p>0đ - 2.000.000đ</p></label>
+          <label> <input type='radio' name='price' className='input_soft' /><p>2.000.000đ - 5.000.000đ</p> </label>
+          <label> <input type='radio' name='price' className='input_soft' /> <p> {'>'}= 5.000.000đ </p> </label>
         </div>
-      <div> <button>LỌC</button> </div>
+      </div>
+      <div> <button onClick={() => filterProducts(selectedBrands)}>LỌC</button> </div>
     </div>
   );
 }

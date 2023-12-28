@@ -3,11 +3,11 @@
     display: flex;
     flex-wrap: wrap;
     color: #041E42;
-    margin: 0 20px;
+    margin: 0 20px 20px 20px;
     .child{
-        width: 200px;
-        height: 300px;
-        padding: 10px 5px ;
+        width: 220px;
+        height: 330px;
+        padding: 5px 5px ;
         margin: 50px 0px -20px 25px;
         border: 1px solid black;
         border-radius: 5px;
@@ -125,10 +125,11 @@
 // detail product
 .Detail_Product{
     display: flex;
-    margin: 50px 25px;
+    margin: 50px 50px;
+
     .Image{
         display: flex;
-        width: 500px;
+        width: 37%;
         flex-direction: column;
         margin-right: 50px;
         align-items: center;
@@ -137,10 +138,8 @@
             // margin-bottom: 20px;
             border: 1px solid black;
             border-radius: 5px;
-            img{
-                
-            width: 100%;
-                height: 350px;
+            img{            
+                width: 100%;
             }
         };
         .Image_small{    
@@ -148,55 +147,57 @@
             flex-wrap: nowrap;
             padding: 20px;
             width: 100%;
-
-
+            justify-content: space-between;
             img{
                 border: 1px solid rgb(147, 147, 147);
                 border-radius: 5px;
-                margin: 0 25px;
-                width: 100px;
-                height: 100px;
+                width: 30%;
+                // height: 100px;
             }
         }
     }
 
     .Infomation{
-       
+        color: #041E42;
+       .breadcrumdetail{
+        height: 35px;
+        border-radius: 3px;
+        margin: -20px 0 0 -5px;
+        background: #F5F5F5;
+        font-size: 15px;
+        color: #00337D;
+       }
         .name{
             display: flex;
             flex-direction: row;
-            font-size: 40px;
+            font-size: 35px;
             font-weight: bold;
-            margin-bottom: 20px;
-            
-           
+            margin: 15px 0 ;
+            color: #00337D;
         }
 
         .icon{
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             margin-right: 5px;
             font-size: 20px;
-        }
+            color: #041E42;
+            font-weight: bold;}
 
         .heart{
             margin-left: 15px;
             font-size: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            color: #041E42;
+            font-weight: bold;
         }
 
         .price{
-            margin-bottom: 20px;
-            font-size: 50px;
+            margin: 10px 0;
+            font-size: 32px;
             font-weight: bold;
-            :hover{
-                background: #595959;
-            }
+            color: #00337D;
         }
         
-        p{
-            font-size: 25px;
-            margin-bottom: 10px;
-        }
 
         .qty{
             display: flex;
@@ -204,77 +205,78 @@
             color: #041E42 ;
             button{
                 height: 40px;
-                width:30px;
+                width:40px;
                 margin-right: 1px;background: none;
                 border: 1px solid #041E42;
                 border-radius: 5px;
                 font-weight: bold;
-                font-size: 16px;
-        
-            }
+                font-size: 16px;}
             input{
                 height: 40px;
-                width: 30px;
+                width: 40px;
                 margin-right: 0.7px;
                 text-align: center;
                 border: 1px solid #041E42;
                 border-radius: 5px;
-                
-            }
-            
-        }
+            }}
 
         .buy_product{
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
-            margin-bottom: 20px;
-            a{
+            margin: 40px 0;
+            a{ width: 40%;
+                height: 50px;
                 color: white;
-                font-size: 30px;
+                font-size: 20px;
                 font-weight: bold;
                 text-decoration: none;
                 background: #041E42;
                 border: 1px solid #f5f5f5;
                 border-radius: 5px;
-                padding: 15px 25px;
                 margin-right: 5px;
+                padding: 9px 0 ;
+                text-align: center;
             }
 
             button{
+                width: 60%;
                 background: white;
                 border: 1px solid #041E42;
                 font-weight: bold;
                 font-size: 30px;
                 border-radius: 5px;
-                padding: 15px 30px;            }
-        }
+                           }}
+           
 
         .Deli{
+
             border: 1px solid #041E42;
             border-radius: 5px;
             padding: 10px;
             margin-top: 20px;
-            m
-            h5{
-                margin-left: 5px;
+            font-size: 14px;
+            p{margin-left: 5px;}
+            a{
+                color: #041E42;
             }
+            .icon{
+                width: 40px;
+                font-size: 20px;
+              }
+            
+           
             .Deli1{
                 display: flex;
-            }
-            hr{
-                margin: 7px 0;
-                width: 70%;
-            }
-            .Deli2{
-                display: flex;
+                margin-bottom: 7px;
+                border-bottom: 1px solid #a6a6a6;
                 
             }
         }
+        .Deli2{
+            display: flex;}
 
-    }
-
-}
+}}
 
 .line{
     background: #041E42;
@@ -285,25 +287,25 @@
 }
 
 .frame_descrip{
-    margin: 30px 50px ;
+    margin: 30px 150px ;
     // height: 500px;
     border: 1px solid #041E42;
     padding: 30px;
 
-    .descrip_title{
+    .descrip_name{
         display: flex;
-        // margin: 30px;    
+ 
         justify-content: center;
         .hr_des{
-            width: 370px;
+            width: 25%;
             height: 0px;
             margin: 15px 5px;
         }
         button{
             background: none;
             border: none;
-            margin: 0 10px;
-            font-size: 30px;
+            margin: 0 20px;
+            font-size: 20px;
             cursor: pointer;
             color: #595959;
         }
@@ -315,22 +317,26 @@
 
     .frame_content{
         border: 1px solid rgb(195, 195, 195);
-        padding: 20px;
+        padding: 50px;
+
 
     }
     }
 
     // sidebar
 .Category__Sidebar{
-    width: 300px;
+    width: 200px;
+    max-width: 200px;
+    min-width: 200px;
     padding: 15px;
-    margin: 50px 50px 35px 20px;
+    margin: 50px 20px 0px 20px;
     border: 1px solid black;
     border-radius: 5px;
     background-color: #F5F5F5F5;
     color: #041E42;
-    h4{
-        // text-align: center;
+    b{
+        font-size: 30;
+        text-decoration:underline;
         margin-top: 10px;
     }
    .category{
@@ -340,16 +346,22 @@
             text-decoration: none;
             color:#041E42;
         }
+        a:focus{
+            color: #0068FF;
+        }
+        ;
         
         .dropdown{
+            border-left: 1px solid #041E42;
+            padding-left: 5px;
             width: 150px;
-            margin: 0 0 10px 25px;
+            margin: 0 0 10px 20px;
         }}
     .brandandprice{
         .b1{
             label{
                 display: flex;
-                margin: 10px;
+                margin: 15px 10px;
                 p{
                     margin: 0 0 0 10px;
                 }}}}
@@ -359,28 +371,44 @@
        color: white;
        border: 1px solid #041E42;
        border-radius: 5px;
-       margin: 5px 30px 0 70px;
+       margin: 10px 20px 0 50px;
     }
 }
 
 
 
 /////////breadcum
-.s1{
-margin: 20px;
-font-size: 20px;
-font-weight: bold;
+.bread{
+    display: flex;
+    font-size: 20px;
+    margin: 20px 0 0 20px;
+    color: #041E42;
+    font-weight: bold;
+    a{
+        text-decoration: none;
+        color: #041E42;
+        font-size: 20px;
+
+    }
+    .iconbread{
+        font-size: 16px;
+        margin: 10px;
+    }
+    p{
+        font-size: 20px;
+    }
 }
 
 
 ////đánh giá
 
 .frame_evalua{
-    margin: 30px 50px ;
+    margin: 30px 150px ;
     // height: 500px;
     border: 1px solid #041E42;
     padding: 30px;
-    h3{font-size: 30px;}
+    h3{font-size: 25px;
+    text-align: center;}
     h2{
         color: rgb(234, 234, 10);
         font-weight: bold;
@@ -391,6 +419,7 @@ font-weight: bold;
         border-radius: 5px;
         background: #041E42;
         color: white;
+        border: none;
     }
 
     .frame_evalua_1{
@@ -416,22 +445,21 @@ font-weight: bold;
     background: white;
     width: 650px;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 16px;
     color: #041E42;
 
     .evalua_title{
         display: flex;
         justify-content: space-between;
-        // margin: 40px;
         border-radius: 5px 5px 0 0;
         background: #F5F5F5;
-        h3{
-            margin: 20px 0px 20px 35px;    
+        p{ font-size: 28px;
+            margin: 7px 0px 0px 35px;    
         }
         button{
-            margin: 20px 35px 20px 0;
+            margin: 10px 35px 10px 0;
             padding: 5px 7px;
-            font-size: 15px;
+            font-size: 10px;
         }
     }
     .evalua_body{
@@ -444,26 +472,35 @@ font-weight: bold;
         }
         .evalua_product{
             display: flex;
-            h4{
-                margin-top: 14px;
+            b{ font-size: 20px;
+                margin-top: 5px;
                 font-weight: bold;
             }
             
             img{
                 width: 40px;
-                margin: 10px 20px 10px 0;
+                margin: 0px 20px 10px 0;
             }}
         input{
             outline: none;
             padding: 5px ;
             margin-bottom: 15px;
+            border: 1px solid #a6a6a6;
+            border-radius: 5px;
         }
-        .input_text{
+        span{
+            width: 100px;
+            padding-top: 25px;
+        }
+        .inputtext{
+            display: flex;
+            .input_text{
             width: 100%;
-            height: 100px;
+            height: 70px;
             border: 1px solid #a6a6a6;
         }
-
+}
+        
         .input_image{
             display: flex;
             .cam{
@@ -471,7 +508,8 @@ font-weight: bold;
                 margin-top: 10px;
             }
             input{
-                margin: 10px;
+                margin: 10px 0 0 60px;
+                width: 100%;
             }
         }
 
@@ -485,7 +523,7 @@ font-weight: bold;
 
 
 .ask{
-    margin: 30px 50px ;
+    margin: 30px 150px ;
     background: #FFDFE3 ;
     border-radius: 5px;
     padding: 25px 30px;
