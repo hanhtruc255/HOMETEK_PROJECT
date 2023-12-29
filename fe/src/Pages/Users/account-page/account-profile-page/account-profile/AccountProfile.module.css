@@ -1,0 +1,88 @@
+.wrapperAccountProfile {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.heading {
+  text-align: center;
+}
+
+.wrapperInforField {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  min-width: 450px;
+  max-width: fit-content;
+  margin: 25px 0;
+}
+
+.wrapperInforField .labelInfor {
+  min-width: 120px;
+}
+
+.wrapperInforField .displayInfor {
+  min-width: 315px;
+  max-width: fit-content;
+  padding: 7px;
+  margin-right: 20px;
+  background-color: white;
+  border: 0;
+  outline: none;
+}
+
+.wrapperInforField .displayGender {
+  background-color: transparent;
+}
+
+.displayGender .wrapperGenderField {
+  display: flex;
+}
+
+.displayGender .wrapperGenderField .genderField {
+  padding-right: 15px;
+}
+
+.labelGender {
+  padding-right: 5px;
+}
+
+.footer {
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* .changeInforBtn {
+  text-decoration: none;
+  background-color: #041e42;
+  border-radius: 4px;
+  padding: 1px 8px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  color: white;
+} */
+
+.changeInforIcon {
+  cursor: pointer;
+}
+
+.accountBtn {
+  width: 250px;
+  display: block;
+  margin-left: 20px;
+  text-align: center;
+  padding: 8px 0;
+  border: none;
+  outline: none;
+  background-color: #152446;
+  color: white;
+  border-radius: 3px;
+  font-size: 1.1em;
+  font-weight: 500;
+  cursor: pointer;
+}
