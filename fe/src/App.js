@@ -31,7 +31,23 @@ import ConfirmPage from "./Pages/Users/PaymentPage/ConfirmPage";
 import HomePage from "./Pages/Users/home-page/HomePage.jsx";
 import PageNotFound from "./Pages/Users/page-not-found/PageNotFound.jsx";
 import AboutUsPage from "./Pages/Users/about-us/AboutUsPage.jsx";
+import LoginPage from "./Pages/Users/login-page/LoginPage";
+import SignUpPage from "./Pages/Users/sign-up-page/SignUpPage";
+import ForgetPasswordPage from "./Pages/Users/login-page/forget-password-page/ForgetPasswordPage.jsx";
+import SendOtpForm from "./Components/form/send-otp-form/SendOtpForm.jsx";
+import VertificationOtpForm from "./Components/form/verification-otp-form/VerificationOtpForm.jsx";
+import PasswordRecoveryForm from "./Components/form/password-recovery-form/PasswordRecoveryForm.jsx";
 
+import AccountPage from "./Pages/Users/account-page/AccountPage.jsx";
+import AccountProfilePage from "./Pages/Users/account-page/account-profile-page/AccountProfilePage.jsx";
+import AccountProfile from "./Pages/Users/account-page/account-profile-page/account-profile/AccountProfile.jsx";
+import ChangePasswordPage from "./Pages/Users/account-page/account-profile-page/change-password-page/ChangePasswordPage.jsx";
+import NewAddressPage from "./Pages/Users/account-page/account-profile-page/new-address-page/NewAddressPage.jsx";
+import ManageOrdersPage from "./Pages/Users/account-page/manage-orders-page/ManageOrdersPage.jsx";
+import ManageOrdersTable from "./Pages/Users/account-page/manage-orders-page/manage-orders-table/ManageOrdersTable.jsx";
+import OrderDetailsPage from "./Pages/Users/account-page/manage-orders-page/order-details-page/OrderDetailsPage.jsx";
+import RatingOrderPage from "./Pages/Users/account-page/manage-orders-page/order-details-page/rating-order-page/RatingOrderPage.jsx";
+import AssistsPage from "./Pages/Users/account-page/assists-page/AssistsPage.jsx";
 const App = () => {
   return (
     <div>
@@ -40,6 +56,51 @@ const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="homepage" element={<HomePage />} />
+            <Route path="signup" element={<SignUpPage />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="forget-password" element={<ForgetPasswordPage />}>
+              <Route index element={<SendOtpForm />} />
+              <Route path="send-otp" element={<SendOtpForm />} />
+              <Route
+                path="vertify-otp"
+                element={
+                  <VertificationOtpForm
+                    type="forgetPassword"
+                    heading="Phục hồi mật khẩu"
+                    btnText="Xác minh"
+                    smsOTP={"123456"}
+                    nextPage={"/forget-password/password-recovery"}
+                  />
+                }
+              />
+              <Route
+                path="password-recovery"
+                element={<PasswordRecoveryForm />}
+              />
+              {/* <Route path='send-otp' element{<SendOtpForm />} /> */}
+            </Route>
+            <Route path="account" element={<AccountPage />}>
+              <Route index element={<AccountProfilePage />} />
+              <Route path="account-profile" element={<AccountProfilePage />}>
+                <Route index element={<AccountProfile />} />
+                <Route
+                  path="change-password"
+                  element={<ChangePasswordPage />}
+                />
+                <Route path="new-address" element={<NewAddressPage />} />
+              </Route>
+
+              <Route path="orders-management" element={<ManageOrdersPage />}>
+                <Route index element={<ManageOrdersTable />} />
+                <Route path="list-orders" element={<ManageOrdersTable />} />
+                <Route path="order-details" element={<OrderDetailsPage />} />
+                <Route
+                  path="order-details/rating-order"
+                  element={<RatingOrderPage />}
+                />
+              </Route>
+              <Route path="assits" element={<AssistsPage />} />
+            </Route>
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<PageNotFound />} />
             <Route path="about-us" element={<AboutUsPage />} />

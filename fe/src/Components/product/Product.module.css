@@ -6,7 +6,6 @@
   height: 100%;
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
-  /* margin: 2px 0; */
   padding: 15px;
   border-radius: 15px;
   background-color: #fff;
@@ -16,12 +15,13 @@
 }
 
 .productImage {
-  width: 95%;
+  width: 80%;
   margin: auto;
+  padding-bottom: 20px;
 }
 
 .productImage .productImg {
-  width: 95%;
+  width: 100%;
   height: fit-content;
   object-fit: cover;
 }
@@ -72,6 +72,7 @@
 .product .blockIconBtn {
   display: flex;
   align-items: center;
+  padding-right: 5px;
 }
 
 .product .productIcon {
@@ -79,9 +80,24 @@
 }
 
 .productIconCart {
-  width: 25px;
+  width: 30px;
+  cursor: pointer;
 }
 
 .productIconHeart {
-  width: 17px;
+  width: 21px;
+  height: 21px;
+  fill: black;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-right: 1px !important;
+}
+
+.productIconHeartActive {
+  width: 21px;
+  height: 21px;
+  fill: red;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-right: 1px !important;
 }

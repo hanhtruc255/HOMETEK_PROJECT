@@ -1,0 +1,146 @@
+/* DEFAULT STYLE OF LOGIN PAGE */
+.main-content {
+  width: 100%;
+  height: 660px;
+  min-height: 100%;
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+.wrap-form {
+  display: flex;
+  justify-content: space-evenly;
+  height: 100%;
+  align-items: center;
+}
+
+.form-background {
+  height: 100%;
+  display: block;
+}
+
+.form-background img {
+  height: 100%;
+}
+
+.form {
+  height: fit-content;
+  padding: 30px 50px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: white;
+  border-radius: 7px;
+}
+
+.form__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: fit-content;
+  margin: auto;
+}
+
+.form__title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+.form__direction {
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.input-container {
+  position: relative;
+}
+
+.form-floating > .form-control {
+  width: 350px;
+}
+
+.inputFocus:focus {
+  border: solid 1px grey !important;
+}
+
+.form-control:focus,
+.inputFocus:focus {
+  border-color: grey;
+  box-shadow: 0 0 0 0.25rem rgba(128, 128, 128, 0.25);
+}
+
+.checkbox-container {
+  width: 300px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
+}
+
+.checkbox-container input {
+  border: 1px solid black;
+  border-radius: 2px;
+  outline: none;
+  margin-right: 10px;
+}
+
+.form-btn {
+  width: 350px !important;
+}
+
+.btn {
+  display: block;
+  width: 90%;
+  margin: 15px 0;
+  text-align: center;
+  padding: 10px 0;
+  border: none;
+  outline: none;
+  background-color: #152446;
+  color: white;
+  border-radius: 3px;
+}
+
+.nav-text {
+  display: block;
+  text-decoration: none;
+  color: grey;
+  text-align: center;
+}
+
+.other-login-methods {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 0;
+}
+
+.other-login-methods .login-method {
+  display: flex;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.1em;
+  color: black;
+  justify-content: center;
+}
+
+.other-login-methods .login-method img {
+  margin-right: 10px;
+  width: 25px;
+}
+
+.other-login-methods .login-method span {
+  padding-top: 2px;
+}
+
+/* .inputFocus:focus {
+  border: solid 1px !important;
+  border-color: #ff5c00 !important;
+  box-shadow: 0 0 0 3.5px rgba(255, 92, 0, 0.2);
+}
+
+.inputFocusError:focus {
+  background-color: #fcf2f3;
+} */

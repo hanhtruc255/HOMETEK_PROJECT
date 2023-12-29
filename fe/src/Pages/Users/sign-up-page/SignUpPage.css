@@ -1,0 +1,54 @@
+.form--signup {
+  padding: 20px 70px !important;
+}
+
+.input-container--signup {
+  margin-bottom: 7px !important;
+}
+
+.notification-text {
+  display: block;
+  width: 100%;
+  text-align: start;
+  color: red;
+  font-size: 0.8em;
+  padding-top: 3px;
+}
+
+.pwd-direction--sign-up {
+  width: 350px;
+  font-size: 0.6em;
+  color: gray;
+  padding-bottom: 7px;
+}
+
+.wrapper-user-agreement-checkbox {
+  display: flex;
+  font-size: 0.8rem;
+  width: 350px;
+  align-items: start;
+}
+
+/* .wrapper-user-agreement-checkbox .checkbox {
+  outline: none;
+  border: 3px solid red !important;
+} */
+
+.wrapper-user-agreement-checkbox .user-agreement-description {
+  text-align: start;
+  padding-left: 5px;
+  margin: 0;
+  color: #595959;
+}
+
+.wrapper-user-agreement-checkbox .user-greement-link {
+  color: #041e42;
+  font-weight: 500px;
+}
+
+.closeModal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
