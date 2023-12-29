@@ -12,7 +12,6 @@ import TrackingPage from "./Pages/Users/TrackingPage/TrackingPage"
 import PaymentPage from "./Pages/Users/PaymentPage/PaymentPage";
 import ConfirmPage from "./Pages/Users/PaymentPage/ConfirmPage";
 import WhishlistPage from "./Pages/Users/WhishlistPage/WhishlistPage";
-
 // admin
 import DashBoard from "./Pages/Admin/Dashboard";
 import Product from "./Pages/Admin/Products/Product";
@@ -28,17 +27,6 @@ import OrderUpdate from "./Pages/Admin/Order/OrderUpdate";
 import Voucher from "./Pages/Admin/Voucher/Voucher";
 import VoucherCreate from "./Pages/Admin/Voucher/VoucherCreate";
 import VoucherUpdate from "./Pages/Admin/Voucher/VoucherUpdate";
-
-import AccountPage from "./Pages/Users/account-page/AccountPage.jsx";
-import AccountProfilePage from "./Pages/Users/account-page/account-profile-page/AccountProfilePage.jsx";
-import AccountProfile from "./Pages/Users/account-page/account-profile-page/account-profile/AccountProfile.jsx";
-import ChangePasswordPage from "./Pages/Users/account-page/account-profile-page/change-password-page/ChangePasswordPage.jsx";
-import NewAddressPage from "./Pages/Users/account-page/account-profile-page/new-address-page/NewAddressPage.jsx";
-import ManageOrdersPage from "./Pages/Users/account-page/manage-orders-page/ManageOrdersPage.jsx";
-import ManageOrdersTable from "./Pages/Users/account-page/manage-orders-page/manage-orders-table/ManageOrdersTable.jsx";
-import OrderDetailsPage from "./Pages/Users/account-page/manage-orders-page/order-details-page/OrderDetailsPage.jsx";
-import RatingOrderPage from "./Pages/Users/account-page/manage-orders-page/order-details-page/rating-order-page/RatingOrderPage.jsx";
-import AssistsPage from "./Pages/Users/account-page/assists-page/AssistsPage.jsx";
 const App = () => {
   return (
     <div>

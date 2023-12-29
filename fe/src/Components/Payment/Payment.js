@@ -6,10 +6,15 @@ import 'reactjs-popup/dist/index.css';
 import { BsTicketPerforatedFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+
 
 const Payment = () => {
-  const location = useLocation();
-  const { selectedItems } = location.state || { selectedItems: [] };
+  const [searchParams] = useSearchParams();
+  const selectedItemsParam = searchParams.get('selectedItems');
+  const selectedItems = selectedItemsParam ? JSON.parse(decodeURIComponent(selectedItemsParam)) : [];
+  const decodedSelectedItems = selectedItemsParam ? decodeURIComponent(selectedItemsParam) : null;
+  const [totalAmount, setTotalAmount] = useState(0);
 
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
@@ -47,7 +52,14 @@ const Payment = () => {
         </div>
         </>
     )}
- 
+    useEffect(() => {
+      const newTotalAmount = selectedItems.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+      setTotalAmount(newTotalAmount);
+    }, [selectedItems]);
+  
   return (
    
     <div className='Frame_Payment'>
@@ -84,12 +96,18 @@ const Payment = () => {
               <tbody>
                 {/* push data */}
                 {selectedItems &&
-                  selectedItems.map((item) => (
+                  selectedItems.map((item, index) => (
                     <tr key={item._id}>
-                      <td>{item.name}</td>
-                      <td>{item.price}đ</td>
+                      <td className='spec'>
+                        <p>{index + 1}</p>
+                        <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
+                        
+                        <b>{item.name}</b>
+                      </td>
+
+                      <td><b>{item.price}đ</b></td>
                       <td>{item.quantity}</td>
-                      <td>{item.price * item.quantity}</td>
+                      <td><b>{item.price * item.quantity}đ</b></td>
                     </tr>
                   ))}
               </tbody>
@@ -103,12 +121,12 @@ const Payment = () => {
               <p>Đơn vị vận chuyện</p> 
               <div>Giao hàng nhanh</div>
               <button>Thay đổi</button>
-              <div>(Tiền)</div>
+              <div>15000</div>
             <hr></hr>
             
           </div> 
           <div className='tongtien'>
-            <span>Tổng tiền:</span> ----Tiền---
+            <span>Tổng tiền: {totalAmount + 15000}đ</span>
           </div>
 
 
@@ -126,7 +144,7 @@ const Payment = () => {
               </div>
           
               <div className='money_right'>
-                <div>Tổng cộng:   <span>   ----
+                <div>Tổng cộng:  {totalAmount}đ <span>
                 </span>
                 </div>
                 <div>Phía vận chuyển:<span> -----

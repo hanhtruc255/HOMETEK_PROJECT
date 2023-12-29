@@ -15,7 +15,7 @@
         ["https://i.ibb.co/wBN3DrT/vn-e6af1-520k-angl1-1500x1500.jpg",
         "https://i.ibb.co/pR6Fmmt/vn-e6af1-520k-cp-1500x1500.jpg", 
         "https://i.ibb.co/ncS7Zn6/e6af1-520k-pr-1500x1500-min.jpg"],
-        "note": "hot",
+        "note": "Sản phẩm bán chạy",
         "created_at": "07/10/2023",
         "modified_at": ""
     },
@@ -35,7 +35,7 @@
         ["https://i.ibb.co/J34xF3x/e5af1-710s-angl-1500x1500.png",
         "https://i.ibb.co/cJ40286/e5af1-710s-angl-pr-1500x1500.png", 
         "https://i.ibb.co/WgwzNvx/e5af1-710s-cp-1500x1500.jpg"],
-        "note": "sale",
+        "note": "Sản phẩm khuyến mãi",
         "created_at": "07/10/2023",
         "modified_at": ""
     },
@@ -77,7 +77,7 @@
         ["https://i.ibb.co/FDctNKP/2-121.jpg",
         "https://i.ibb.co/xqyC8tL/3-126.jpg", 
         "https://i.ibb.co/5GQW6D0/4-125.jpg"],
-        "note": "hot",
+        "note": "Sản phẩm bán chạy",
         "created_at": "08/10/2023",
         "modified_at": ""
     },

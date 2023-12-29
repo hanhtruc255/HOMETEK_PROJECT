@@ -181,7 +181,7 @@ const DetailProduct = () => {
                         <button>+</button>
                       </div>
                       <div className='buy_product'>
-                        <Link to="/gio-hang" onClick={() => addToCart(product)}>MUA HÀNG</Link>
+                        <Link to="/thanh-toan">MUA HÀNG</Link>
 
                         <button onClick={() => addToCart(product)}>THÊM VÀO GIỎ HÀNG</button>
                       </div>

@@ -122,7 +122,7 @@ const CategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice}) => {
 
           <div className="item__buy">
             <div>
-              <Link to="/gio-hang" onClick={() => addToCart(item, true)}>Mua ngay</Link>
+              <Link to="/thanh-toan">Mua ngay</Link>
             </div>
 
             <div className="item__buy__icon">

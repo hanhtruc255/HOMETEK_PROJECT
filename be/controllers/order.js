@@ -14,7 +14,7 @@ const getOrder = async (req, res) => {
 };
 
 //Hủy đơn đặt hàng:
-    const cancelOrder = async (req, res) => {
+const cancelOrder = async (req, res) => {
     const { orderId } = req.params;
   
     try {
@@ -27,12 +27,12 @@ const getOrder = async (req, res) => {
       }
   
       // Kiểm tra xem đơn đặt hàng có thể hủy không (ví dụ: trạng thái là "Chưa xác nhận" hoặc "Đã xác nhận")
-      if (order.orderStatus !== 'Chưa xác nhận' ) {
+      if (order.status !== 'Chưa xác nhận' ) {
         return res.status(400).json({ error: 'Không thể hủy đơn đặt hàng ở trạng thái này.' });
       }
   
       // Chuyển trạng thái đơn đặt hàng sang "Đã hủy"
-      order.orderStatus = 'Đã hủy';
+      order.status = 'Đã hủy';
   
       // Lưu lại vào cơ sở dữ liệu
       await order.save();
@@ -83,7 +83,7 @@ const confirmOrder = async (req, res) => {
 const filterOrder = async (req, res) => {
   const {status} = req.params;
   try {
-    const orders = await Order.find({ orderStatus: { $eq: status } });
+    const orders = await Order.find({ status: { $eq: status } });
     res.json(orders);
   } catch (error) {
     res.status(500).json({error:'Có lỗi'})

@@ -1,7 +1,7 @@
 import React, { useEffect} from 'react';
 import './Cart.scss';
 import { BsTicketPerforatedFill } from "react-icons/bs";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsFillGeoAltFill } from 'react-icons/bs';
 import { useState } from 'react';
 import { BsTrash, BsHeart } from "react-icons/bs";
@@ -9,13 +9,14 @@ import { BsTrash, BsHeart } from "react-icons/bs";
 const Cart = ({ updateCartQuantity }) => {
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
+  const [selectedItems, setSelectedItems] = useState([]); 
   const [cartItems, setCartItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
+  const navigate = useNavigate();
 
   const getCartItemsData = () => {
     return cartItems;
   };
-  console.log(">>>data:", getCartItemsData)
 
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cart')) || [];
@@ -74,23 +75,25 @@ const Cart = ({ updateCartQuantity }) => {
     };
   
     const toggleItemSelection = (itemId) => {
-      setCartItems((prevCartItems) =>
-        prevCartItems.map((item) =>
-          item._id === itemId ? { ...item, selected: !item.selected } : item
-        )
-      );
+      setSelectedItems((prevSelectedItems) => {
+        const isSelected = prevSelectedItems.some((item) => item._id === itemId);
+    
+        if (isSelected) {
+          return prevSelectedItems.filter((item) => item._id !== itemId);
+        } else {
+          const selectedItem = cartItems.find((item) => item._id === itemId);
+          return [...prevSelectedItems, selectedItem];
+        }
+      });
     };
-
+    
     const toggleSelectAll = () => {
       setSelectAll((prevSelectAll) => !prevSelectAll);
-      setCartItems((prevCartItems) =>
-        prevCartItems.map((item) => ({
-          ...item,
-          selected: !selectAll,
-        }))
+      setSelectedItems((prevSelectedItems) =>
+        !selectAll ? cartItems.filter((item) => !item.selected) : []
       );
     };
-
+    console.log('Selected Items:', selectedItems);
   return (
     <div className='cart'>
         <div className='Frame_cart'>
@@ -162,8 +165,10 @@ const Cart = ({ updateCartQuantity }) => {
               <div> {calculateTotal()}</div>
           </div>
           
-          <Link to={{ pathname: "/thanh-toan", state: { selectedItems: cartItems.filter(item => item.selected) } }}>Đặt hàng</Link>
-
+          <Link to={{
+    pathname: '/thanh-toan',
+    search: `?selectedItems=${encodeURIComponent(JSON.stringify(selectedItems))}`,
+  }}onClick={() => navigate('/thanh-toan')}>Đặt hàng</Link>
         </div>
     </div>
   )

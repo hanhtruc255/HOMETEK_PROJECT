@@ -62,8 +62,32 @@ body{
             padding:5px;
             text-align: center;
             width: 250px;
+            p{
+                padding-top: 33px;
+            }
         }
-        .th1{width: 450px;}
+
+        tbody{
+            border: 1px solid #b4b4b4;
+            border-radius: 5px;
+            box-shadow: 0px 1px 1px 1px #b4b4b4;
+            .spec{
+                text-align: left;
+                width: 100%;
+                display: flex;
+                b{
+                    color: #00337D;
+                }
+                img{
+                    width: 80px;
+                    border: 1px solid #041E42;
+                    border-radius:5px ;
+                    margin: 5px 15px;
+                    box-shadow: 0 1px #696969 ;
+                }
+            }
+            
+        }
 
         
     }
@@ -142,6 +166,9 @@ body{
     }
    
 }
+
+
+
 
 ///-------wrapper------
 .modal_wrapper{

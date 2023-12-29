@@ -39,7 +39,7 @@
       color: #ffffff;
       border-radius: 0 5px 5px 0;
       width: 35px;
-      height: 30px;
+      height: 24px;
       // font-size: px;
       text-align: center;
       padding: 5px 0;
@@ -77,7 +77,6 @@
 }
 
 //header__menu---------------
-<<<<<<< HEAD
     .Menu{
         justify-content: space-between;
         background: #041E42;
@@ -100,80 +99,9 @@
                     display: block;
                     padding: 14px;
                     text-align: center;
-=======
-.Menu {
-  // display: flex;
-  padding: 0 80px;
-  background: #041e42;
-  height: 50px;
-
-  ul {
-    display: flex;
-    justify-content: space-between;
-
-    li {
-      width: fit-content;
-      list-style-type: none;
-      position: relative;
-      a {
-        text-decoration: none;
-        font-size: 15px;
-        color: #ffffff;
-        letter-spacing: 2px;
-        transition: all 0.2s;
-        display: block;
-        padding: 14px;
-        text-align: center;
-      }
-      :hover {
-        background: #f5f5f5;
-        color: #041e42;
-      }
-    }
-
-    .header__menu__dropdown {
-      background: #f5f5f5;
-      border-radius: 2px;
-      border: 1px solid #041e42;
-      display: block;
-      position: absolute;
-      width: 220px;
-      z-index: 9;
-      visibility: hidden;
-
-      li {
-        a {
-          margin: 5px;
-          padding: 5px;
-          color: #041e42;
-          transition: all 0.1s;
-          text-align: left;
-          width: 180px;
-        }
-        a:hover {
-          .header__menu__dropdown {
-            // background: #F5F5F5;;
-            border-radius: 2px;
-            border: 1px solid #041e42;
-            display: block;
-            position: absolute;
-            // width: 200px;
-            z-index: 9;
-            visibility: hidden;
-
-            li {
-              a {
-                padding: 5px;
-                color: #041e42;
-                transition: all 0.1s;
-                a:hover {
-                  background: none;
-                  color: #c2e8c7;
->>>>>>> 519dfbb58dee732296aabd525c51af41f08e2ebc
                 }
               }
             }
-<<<<<<< HEAD
             
             .header__menu__dropdown{
                 background: #F5F5F5;;
@@ -226,18 +154,5 @@
                     visibility: visible;}
 
            
-    }}
+    }
     
-=======
-          }
-          color: #c2e8c7;
-        }
-      }
-    }
-    li:hover .header__menu__dropdown {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
-}
->>>>>>> 519dfbb58dee732296aabd525c51af41f08e2ebc

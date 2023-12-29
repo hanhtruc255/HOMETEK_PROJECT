@@ -117,7 +117,7 @@ const sortedProducts = sortProducts(filteredProducts, sortCriteria);
 
           <div className="item__buy">
             <div>
-              <Link to="/gio-hang" onClick={() => addToCart(item)}>Mua ngay</Link>
+              <Link to="/thanh-toan" >Mua ngay</Link>
             </div>
 
             <div className="item__buy__icon">
