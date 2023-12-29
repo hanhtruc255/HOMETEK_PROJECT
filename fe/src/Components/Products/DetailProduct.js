@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from 'react'
-import "./styleproduct.scss"
+import "./styleproduct.scss";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsHeart } from "react-icons/bs";
 import { BsStar } from "react-icons/bs";
 import { BsTruck } from "react-icons/bs";
 import { BsArrowRepeat } from "react-icons/bs";
 import { BsCamera } from "react-icons/bs";
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
+// 
 
 const DetailProduct = () => {
     const {_id} = useParams();
     console.log(">>>", _id)
+    const navigate = useNavigate(); 
+    const [cartItems, setCartItems] = useState([]);
+    const [showConfirmation, setShowConfirmation] = useState(false);
     const [product, setProduct] = useState(null);
     const [activeTab, setActiveTab] = useState('description'); 
+    const [whishlistItems, setWhishlistItems] = useState([]);
+    const [wishlistChanged, setWishlistChanged] = useState(false);
 
-    
+
+
 //đánh giá sao trong đánh giá
     const [selectedStarIndex, setSelectedStarIndex] = useState(null);
 
@@ -98,10 +105,44 @@ const DetailProduct = () => {
       )
       }
   //end đánh giá
+
+    //add to cart
+    const addToCart = (item) => {
+      alert('Đã thêm vào giỏ hàng thành công');
+      const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+      const newCart = [...existingCart, item];
+      localStorage.setItem('cart', JSON.stringify(newCart));
+      setCartItems(newCart);
+    };
+
+  ///add to whishlist
+    useEffect(() => {
+    setWhishlistItems(JSON.parse(localStorage.getItem('Whishlist')) || []);
+    setWishlistChanged(false);
+    }, [wishlistChanged]); 
+
+    const isItemInWishlist = (itemId) => {
+    return whishlistItems.some((wishlistItem) => wishlistItem._id === itemId);
+  };
+    const addToWhishlist = (item) => {
+      const isDuplicate = isItemInWishlist(item._id);
+      if (isDuplicate) {
+        const updatedWhishlist = whishlistItems.filter((wishlistItem) => wishlistItem._id !== item._id);
+        setWhishlistItems(updatedWhishlist);
+        localStorage.setItem('Whishlist', JSON.stringify(updatedWhishlist));
+        setWishlistChanged(true);
+        alert('Đã xóa khỏi sản phẩm yêu thích.');
+      } else {
+        const updatedWhishlist = [...whishlistItems, item];
+        setWhishlistItems(updatedWhishlist);
+        localStorage.setItem('Whishlist', JSON.stringify(updatedWhishlist));
+        setWishlistChanged(true);
+        alert('Đã thêm vào sản phẩm yêu thích.');
+      }
+    };
     
   return (
     <div>
-      
         {product ? (
             <div>
                 <div  className='Detail_Product'>
@@ -128,7 +169,7 @@ const DetailProduct = () => {
                         <BsStar className='icon'/>
                         <BsStar className='icon'/>
                         <BsStar className='icon'/>
-                        <BsHeart className='heart'/> </div>
+                        <BsHeart className='heart' style={{ color: isItemInWishlist(product._id) ? 'rgb(170, 4, 4)' : 'inherit' }} onClick={() => addToWhishlist(product)}/> </div>
 
                       <div className='price'>{product.price}đ</div>
                         
@@ -139,12 +180,10 @@ const DetailProduct = () => {
                         <div><input type='text'/></div>
                         <button>+</button>
                       </div>
-
-
                       <div className='buy_product'>
-                        <Link to="/gio-hang">MUA HÀNG</Link>
+                        <Link to="/gio-hang" onClick={() => addToCart(product)}>MUA HÀNG</Link>
 
-                        <button>THÊM VÀO GIỎ HÀNG</button>
+                        <button onClick={() => addToCart(product)}>THÊM VÀO GIỎ HÀNG</button>
                       </div>
 
                       <div className='Deli'>
@@ -221,7 +260,6 @@ const DetailProduct = () => {
 
                     </div>
                   </div>
-
                 {/* hỏi đáp */}
                   <div className='ask'>
                     <h3>HỎI ĐÁP</h3>
@@ -230,7 +268,7 @@ const DetailProduct = () => {
                     <div className='ask_inf'>
                         <input placeholder="Nhập họ tên*"/>
                         <input placeholder="Nhập số điện thoại"/>
-                        <button>Gửi</button>
+                        <button >Gửi</button>
                     </div>
                   </div>
 {/* Kết thúc */}

@@ -6,9 +6,6 @@ const PaymentPage = () => {
     <div>
         <Navbar/>
         <Payment/>
-
-
-
     </div>
   )
 }

@@ -6,6 +6,7 @@ import { BsPerson } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { BsTruck } from "react-icons/bs";
+import './Responsive.scss'
 
 
 const Navbar= () =>{

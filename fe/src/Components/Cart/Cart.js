@@ -6,55 +6,22 @@ import { BsFillGeoAltFill } from 'react-icons/bs';
 import { useState } from 'react';
 import { BsTrash, BsHeart } from "react-icons/bs";
 
-
-
-
-const Cart = () => {
-
+const Cart = ({ updateCartQuantity }) => {
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
   const [cartItems, setCartItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
 
+  const getCartItemsData = () => {
+    return cartItems;
+  };
+  console.log(">>>data:", getCartItemsData)
+
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cart')) || [];
     setCartItems(storedCartItems);
   }, []);
-  //modal for address
-  const Modaladdress = () => {
-    useEffect(() => {
-      document.body.style.overflowY = "hidden";
-      return () => {
-        document.body.style.overflowY = "scroll";
-      };
-    }, []);
-    return (
-        <>
-        <div className='modal_wrapper'></div>
-        <div className='modal_container'>
-            <h2>Địa chỉ mới</h2>
-            <div className='new_add1'> 
-              <label>Họ và tên<span>* </span><br/><input/></label>
-              <label>Số điện thoại<span>* </span><br/><input/></label>
-            </div>
-            <div className='new_add2'> 
-              <label>Tỉnh/ Thành phố<span>* <br/></span><select></select></label>
-              <label>Quận/ Huyện<span>* </span><br/><select></select></label>
-              <label>Phường/ Xã<span>* </span><br/><select></select></label>
-            </div>
-            <div className='new_add3'> 
-              <label>Địa chỉ cụ thể<span>* </span><br/><input className='spe'/></label>
-            </div>
-            <div className='new_add4'> 
-              <label className='specheck'><input  type='checkbox'/><span>Đặt làm địa chỉ mặc định</span></label>
-            </div>
-            <center>
-              <button className='spebut'>Hoàn Thành</button>
-            <button onClick={() => setShowModal(false)}>Quay lại</button>
-            </center>
-        </div>
-        </>
-    )}
+     
     const removeItem = (itemId) => {
       const isConfirmed = window.confirm('Bạn có muốn xóa sản phẩm không?');
       if (isConfirmed) {
@@ -62,24 +29,26 @@ const Cart = () => {
         setCartItems(updatedCart);
         localStorage.setItem('cart', JSON.stringify(updatedCart));
       }
+      updateCartQuantity();
     };
-  
+    
     const decrementQuantity = (itemId) => {
       const updatedCart = cartItems.map(item =>
         item._id === itemId ? { ...item, quantity: Math.max(1, item.quantity - 1) } : item
       );
       setCartItems(updatedCart);
       localStorage.setItem('cart', JSON.stringify(updatedCart));
+      updateCartQuantity();
     };
-  
+    
     const incrementQuantity = (itemId) => {
       const updatedCart = cartItems.map(item =>
         item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
       );
       setCartItems(updatedCart);
       localStorage.setItem('cart', JSON.stringify(updatedCart));
+      updateCartQuantity();
     };
-  
     useEffect(() => {
       const storedCartItems = JSON.parse(localStorage.getItem('cart')) || [];
   
@@ -94,7 +63,6 @@ const Cart = () => {
             quantity: parseInt(currentItem.quantity, 10) || 1,
           });
         }
-  
         return accumulator;
       }, []);
   
@@ -106,12 +74,12 @@ const Cart = () => {
     };
   
     const toggleItemSelection = (itemId) => {
-      setCartItems(prevCartItems =>
-        prevCartItems.map(item =>
+      setCartItems((prevCartItems) =>
+        prevCartItems.map((item) =>
           item._id === itemId ? { ...item, selected: !item.selected } : item
         )
       );
-    };  
+    };
 
     const toggleSelectAll = () => {
       setSelectAll((prevSelectAll) => !prevSelectAll);
@@ -122,23 +90,10 @@ const Cart = () => {
         }))
       );
     };
-  
 
   return (
     <div className='cart'>
         <div className='Frame_cart'>
-            <div className="address">
-            <div className="add1">
-              <BsFillGeoAltFill /> <b>Địa Chỉ Nhận Hàng</b>
-            </div>
-
-            <div className='add_address'>
-              <span>Chưa có địa chỉ nhận hàng</span>
-              <button onClick={()=> setShowModal(true)}>Thêm địa chỉ mới</button>  
-            </div>
-            <>{showModal && <Modaladdress closeModal={closeModal}/>} </>
-            </div>
-            
             <div className='Cart_1'>
                 <table>
                   <thead>
@@ -154,15 +109,17 @@ const Cart = () => {
                   {cartItems.map((item) => (
                     <tr key={item._id}>
                       <td className='spec'>
-                        <div className='check1'>
-                          <input
-                            type='checkbox'
-                            checked={item.selected}
-                            onChange={() => toggleItemSelection(item._id)}/>
+                      <div className='check1'>
+                      <input
+                          type='checkbox'
+                          id={`checkbox-${item._id}`}
+                          checked={item.selected}
+                          onChange={() => toggleItemSelection(item._id)}/>
                           {/* <img src={item.image} /> */}
                            <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
 
                         </div>
+
                         <div>
                           <b>{item.name} </b> <br/>
                           <BsTrash className='icon_trash' onClick={() => removeItem(item._id)}/>
@@ -205,11 +162,12 @@ const Cart = () => {
               <div> {calculateTotal()}</div>
           </div>
           
-          <Link to = '/thanh-toan'>Đặt hàng</Link>
+          <Link to={{ pathname: "/thanh-toan", state: { selectedItems: cartItems.filter(item => item.selected) } }}>Đặt hàng</Link>
+
         </div>
     </div>
   )
 }
 
 
-export default Cart
+export default Cart ;

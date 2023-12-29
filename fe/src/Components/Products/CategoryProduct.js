@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link,useNavigate  } from 'react-router-dom';
-import { BsHeart, BsCart3 } from 'react-icons/bs';
+import { BsHeart , BsCart3 } from 'react-icons/bs';
 import "./styleproduct.scss";
 
 
@@ -12,6 +12,10 @@ const CategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice}) => {
   const [cartItems, setCartItems] = useState([]);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [product, setProduct] = useState(null);
+  const [whishlistItems, setWhishlistItems] = useState([]);
+  const [wishlistChanged, setWishlistChanged] = useState(false);
+
+
   const sortProducts = (products, criteria) => {
     switch (criteria) {
       case 'price-asc':
@@ -69,12 +73,43 @@ const CategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice}) => {
     const newCart = [...existingCart, item];
     localStorage.setItem('cart', JSON.stringify(newCart));
     setCartItems(newCart);
+    const checkbox = document.getElementById(`checkbox-${item._id}`);
+    if (checkbox) {
+      checkbox.checked = true;
+    }
+  };
+
+  ///add to whishlist
+  useEffect(() => {
+    setWhishlistItems(JSON.parse(localStorage.getItem('Whishlist')) || []);
+    setWishlistChanged(false);
+  }, [wishlistChanged]); 
+
+  const isItemInWishlist = (itemId) => {
+    return whishlistItems.some((wishlistItem) => wishlistItem._id === itemId);
+  };
+
+  const addToWhishlist = (item) => {
+    const isDuplicate = isItemInWishlist(item._id);
+    if (isDuplicate) {
+      const updatedWhishlist = whishlistItems.filter((wishlistItem) => wishlistItem._id !== item._id);
+      setWhishlistItems(updatedWhishlist);
+      localStorage.setItem('Whishlist', JSON.stringify(updatedWhishlist));
+      setWishlistChanged(true);
+      alert('Đã xóa khỏi sản phẩm yêu thích.');
+    } else {
+      const updatedWhishlist = [...whishlistItems, item];
+      setWhishlistItems(updatedWhishlist);
+      localStorage.setItem('Whishlist', JSON.stringify(updatedWhishlist));
+      setWishlistChanged(true);
+      alert('Đã thêm vào sản phẩm yêu thích.');
+    }
   };
 
   return (
     <div className='item'>
       {sortedProducts.map((item) => (
-        <div key={item._id} className='child'>
+        <div key={item._id}  className='child'>
           <Link to={`/${item.categoryId}/${item._id}`}>
             <div>
               <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
@@ -87,11 +122,12 @@ const CategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice}) => {
 
           <div className="item__buy">
             <div>
-              <Link to="/gio-hang" onClick={() => addToCart(item)}>Mua ngay</Link>
+              <Link to="/gio-hang" onClick={() => addToCart(item, true)}>Mua ngay</Link>
             </div>
 
             <div className="item__buy__icon">
-              <button><BsHeart /></button>
+              <button
+              style={{ color: isItemInWishlist(item._id) ? 'rgb(170, 4, 4)' : 'inherit' }} onClick={() => addToWhishlist(item)}><BsHeart /></button>
               <button onClick={() => addToCart(item)}><BsCart3 /></button>
             </div>
           </div>

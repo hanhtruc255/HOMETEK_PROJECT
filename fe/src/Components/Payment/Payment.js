@@ -1,13 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsCartFill } from 'react-icons/bs';
 import { BsFillGeoAltFill } from 'react-icons/bs';
-import './Payment.scss'
+import './Payment.scss';
 import 'reactjs-popup/dist/index.css';
 import { BsTicketPerforatedFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
-
+import { useLocation } from 'react-router-dom';
 
 const Payment = () => {
+  const location = useLocation();
+  const { selectedItems } = location.state || { selectedItems: [] };
+
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
   const Modaladdress = () => {
@@ -43,8 +46,7 @@ const Payment = () => {
             </center>
         </div>
         </>
-    )
-    }
+    )}
  
   return (
    
@@ -80,13 +82,16 @@ const Payment = () => {
               </thead>
 
               <tbody>
-                {/* truyền data */}
-                <tr>
-                  <td>êffewf</td>
-                  <td>fwew</td>
-                  <td>ừef32w</td>
-                  <td>ừewf23</td>
-                </tr>
+                {/* push data */}
+                {selectedItems &&
+                  selectedItems.map((item) => (
+                    <tr key={item._id}>
+                      <td>{item.name}</td>
+                      <td>{item.price}đ</td>
+                      <td>{item.quantity}</td>
+                      <td>{item.price * item.quantity}</td>
+                    </tr>
+                  ))}
               </tbody>
           </table>
           <div className='voucher'>

@@ -14,7 +14,7 @@ const getOrder = async (req, res) => {
 };
 
 //Hủy đơn đặt hàng:
-const cancelOrder = async (req, res) => {
+    const cancelOrder = async (req, res) => {
     const { orderId } = req.params;
   
     try {

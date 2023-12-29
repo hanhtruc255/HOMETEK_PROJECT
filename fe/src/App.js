@@ -8,6 +8,9 @@ import SubcategotyPage from "./Pages/Users/ProductPage/SubcategoryPage"
 import PaymentSuccess from "./Components/Payment/PaymentSuccess";
 import PaymentMoney from "./Components/Payment/PaymentMoney";
 import TrackingPage from "./Pages/Users/TrackingPage/TrackingPage"
+import PaymentPage from "./Pages/Users/PaymentPage/PaymentPage";
+import ConfirmPage from "./Pages/Users/PaymentPage/ConfirmPage";
+import WhishlistPage from "./Pages/Users/WhishlistPage/WhishlistPage";
 
 // admin
 import DashBoard from "./Pages/Admin/Dashboard";
@@ -24,8 +27,7 @@ import OrderUpdate from "./Pages/Admin/Order/OrderUpdate";
 import Voucher from "./Pages/Admin/Voucher/Voucher";
 import VoucherCreate from "./Pages/Admin/Voucher/VoucherCreate";
 import VoucherUpdate from "./Pages/Admin/Voucher/VoucherUpdate";
-import PaymentPage from "./Pages/Users/PaymentPage/PaymentPage";
-import ConfirmPage from "./Pages/Users/PaymentPage/ConfirmPage";
+
 
 const App = () => {
   return (
@@ -41,6 +43,7 @@ const App = () => {
               element={<DetailProductPage />}
             />
             <Route path="/gio-hang" element={<CartPage />} />
+            <Route path="/yeu-thich" element={<WhishlistPage/>}/>
             <Route path="/thanh-toan" element={<PaymentPage />} />
             <Route path="/thanh-toan/xac-minh" element={<ConfirmPage />} />
             <Route path="/thanh-toan/thanh-cong" element={<PaymentSuccess />} />
