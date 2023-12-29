@@ -7,40 +7,49 @@ const orderSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  customerName: {
+  orderStatus: {
     type: String,
-    required: true,
+    enum: ['Chưa xác nhận', 'Đã xác nhận', 'Đang giao hàng', 'Đã giao hàng', 'Đã hủy'],
+    default: 'Chưa xác nhận',
   },
+  deliveryInfor : [{
+    customerName: {type: String},
+    deliveryAddredd: {type: String},
+    deliveryPhoneNumber: {type: String}
+  }],
   phone: { type: String },
   address: { type: String },
   payment: { type: String },
-  products: [
+  orderProducts: [
     {
       productId: {
-        type: String,
-        required: true,
+        type: String
       },
       name:{type: String},
       image:{type: String},
       quantity: {
-        type: Number,
-        required: true,
+        type: Number
       },
+      price:{type: Number},
+      sale_price:{type: Number},
+      rating: [{
+        isRating: {type: Boolean},
+        _isRatingComment: {type: String},
+        star: {type: Number},
+        content: {type: String},
+      }]
     },
   ],
   totalAmount: {
     type: Number,
     required: true,
   },
-  status: {
-    type: String,
-    enum: ['Chưa xác nhận', 'Đã xác nhận', 'Đang giao hàng', 'Đã giao hàng', 'Đã hủy'],
-    default: 'Chưa xác nhận',
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
+  shippingFee: {type: Number},
+  voucher: [{
+    voucherCode: {type: String},
+    amount: {type: Number}
+  }],
+  finalAmount: {type: Number}
 });
 
 module.exports = mongoose.model('order',orderSchema,'order')

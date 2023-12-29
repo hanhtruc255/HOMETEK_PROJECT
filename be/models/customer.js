@@ -1,15 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
-//Tạo model
 const customerSchema = new Schema({
     userId: {
         type: String,
-        required: true},
+        default: ''},
     userName: {
-        type: String,
-        required: true},
-    userEmail: {
         type: String,
         required: true},
     phone: {
@@ -18,15 +14,24 @@ const customerSchema = new Schema({
 
     password:{
         type: String,
-        required: true},
+        default: ''},
 
     address:{
         type: String,
-        required: true},
+        default: ''},
 
     salt:{
         type: String,
-        required: true
-    }
+        // required: true
+    },
+    // cart: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Cart'
+    // }
 })
-module.exports = mongoose.model('customer',customerSchema,'customer')
+
+const Cust=mongoose.model("customers", customerSchema)
+module.exports=Cust
+
+
+// module.exports = mongoose.model('customer',customerSchema,'customer')

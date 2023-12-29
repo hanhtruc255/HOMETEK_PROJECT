@@ -1,0 +1,38 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: 50px 310px;
+  gap: 10px;
+  width: 370px;
+  height: 90px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  color: #00337d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  width: 370px;
+  height: 90px;
+  display: flex;
+  background-color: #f5f5f5;
+  color: #00337d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+  align-items: center;
+}
+.icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+.content {
+  height: 100%;
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+}

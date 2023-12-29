@@ -1,14 +1,13 @@
-import React from 'react'
-import Navbar from '../../../Components/Navbar/Navbar'
-import Confirm from '../../../Components/Payment/Confirm'
+import React from "react";
+import Navbar from "../../../Components/Navbar/Navbar";
+import Confirm from "../../../Components/Payment/Confirm";
 
 const ConfirmPage = () => {
   return (
     <div>
-        <Navbar/>
-        <Confirm/>
+      <Confirm />
     </div>
-  )
-}
+  );
+};
 
-export default ConfirmPage
+export default ConfirmPage;

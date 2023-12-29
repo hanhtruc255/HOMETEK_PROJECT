@@ -1,8 +1,10 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 import CartPage from "./Pages/Users/CartPage/CartPage";
 import DetailProductPage from "./Pages/Users/ProductPage/DetailProductPage";
+<<<<<<< HEAD
 import CategoryPage from "./Pages/Users/ProductPage/CategoryPage";
 import SubcategotyPage from "./Pages/Users/ProductPage/SubcategoryPage"
 import PaymentSuccess from "./Components/Payment/PaymentSuccess";
@@ -11,6 +13,14 @@ import TrackingPage from "./Pages/Users/TrackingPage/TrackingPage"
 import PaymentPage from "./Pages/Users/PaymentPage/PaymentPage";
 import ConfirmPage from "./Pages/Users/PaymentPage/ConfirmPage";
 import WhishlistPage from "./Pages/Users/WhishlistPage/WhishlistPage";
+=======
+// import CatogoryPage from "./Pages/Users/ProductPage/CatogoryPage";
+import PaymentSuccess from "./Components/Payment/PaymentSuccess";
+import PaymentMoney from "./Components/Payment/PaymentMoney";
+import Layout from "./Pages/Users/layout/Layout.jsx";
+import Contact from "./Pages/Users/contact/Contact.jsx";
+import BlogPage from "./Pages/Users/blog-page/BlogPage.jsx";
+>>>>>>> 519dfbb58dee732296aabd525c51af41f08e2ebc
 
 // admin
 import DashBoard from "./Pages/Admin/Dashboard";
@@ -27,17 +37,102 @@ import OrderUpdate from "./Pages/Admin/Order/OrderUpdate";
 import Voucher from "./Pages/Admin/Voucher/Voucher";
 import VoucherCreate from "./Pages/Admin/Voucher/VoucherCreate";
 import VoucherUpdate from "./Pages/Admin/Voucher/VoucherUpdate";
+<<<<<<< HEAD
 
+=======
+import PaymentPage from "./Pages/Users/PaymentPage/PaymentPage";
+import ConfirmPage from "./Pages/Users/PaymentPage/ConfirmPage";
+import HomePage from "./Pages/Users/home-page/HomePage.jsx";
+import PageNotFound from "./Pages/Users/page-not-found/PageNotFound.jsx";
+import AboutUsPage from "./Pages/Users/about-us/AboutUsPage.jsx";
+import LoginPage from "./Pages/Users/login-page/LoginPage";
+import SignUpPage from "./Pages/Users/sign-up-page/SignUpPage";
+import ForgetPasswordPage from "./Pages/Users/login-page/forget-password-page/ForgetPasswordPage.jsx";
+import SendOtpForm from "./Components/form/send-otp-form/SendOtpForm.jsx";
+import VertificationOtpForm from "./Components/form/verification-otp-form/VerificationOtpForm.jsx";
+import PasswordRecoveryForm from "./Components/form/password-recovery-form/PasswordRecoveryForm.jsx";
+>>>>>>> 519dfbb58dee732296aabd525c51af41f08e2ebc
 
+import AccountPage from "./Pages/Users/account-page/AccountPage.jsx";
+import AccountProfilePage from "./Pages/Users/account-page/account-profile-page/AccountProfilePage.jsx";
+import AccountProfile from "./Pages/Users/account-page/account-profile-page/account-profile/AccountProfile.jsx";
+import ChangePasswordPage from "./Pages/Users/account-page/account-profile-page/change-password-page/ChangePasswordPage.jsx";
+import NewAddressPage from "./Pages/Users/account-page/account-profile-page/new-address-page/NewAddressPage.jsx";
+import ManageOrdersPage from "./Pages/Users/account-page/manage-orders-page/ManageOrdersPage.jsx";
+import ManageOrdersTable from "./Pages/Users/account-page/manage-orders-page/manage-orders-table/ManageOrdersTable.jsx";
+import OrderDetailsPage from "./Pages/Users/account-page/manage-orders-page/order-details-page/OrderDetailsPage.jsx";
+import RatingOrderPage from "./Pages/Users/account-page/manage-orders-page/order-details-page/rating-order-page/RatingOrderPage.jsx";
+import AssistsPage from "./Pages/Users/account-page/assists-page/AssistsPage.jsx";
 const App = () => {
   return (
     <div>
       <BrowserRouter>
         <Routes>
+<<<<<<< HEAD
 
             <Route path="/:categoryId" element={<CategoryPage/>} />
             <Route path="/:categoryId/:_id" element={<DetailProductPage />} />
             <Route path="/:categoryId/sub/:sub_categoryId" element={<SubcategotyPage/>} />
+=======
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="homepage" element={<HomePage />} />
+            <Route path="signup" element={<SignUpPage />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="forget-password" element={<ForgetPasswordPage />}>
+              <Route index element={<SendOtpForm />} />
+              <Route path="send-otp" element={<SendOtpForm />} />
+              <Route
+                path="vertify-otp"
+                element={
+                  <VertificationOtpForm
+                    type="forgetPassword"
+                    heading="Phục hồi mật khẩu"
+                    btnText="Xác minh"
+                    smsOTP={"123456"}
+                    nextPage={"/forget-password/password-recovery"}
+                  />
+                }
+              />
+              <Route
+                path="password-recovery"
+                element={<PasswordRecoveryForm />}
+              />
+              {/* <Route path='send-otp' element{<SendOtpForm />} /> */}
+            </Route>
+            <Route path="account" element={<AccountPage />}>
+              <Route index element={<AccountProfilePage />} />
+              <Route path="account-profile" element={<AccountProfilePage />}>
+                <Route index element={<AccountProfile />} />
+                <Route
+                  path="change-password"
+                  element={<ChangePasswordPage />}
+                />
+                <Route path="new-address" element={<NewAddressPage />} />
+              </Route>
+
+              <Route path="orders-management" element={<ManageOrdersPage />}>
+                <Route index element={<ManageOrdersTable />} />
+                <Route path="list-orders" element={<ManageOrdersTable />} />
+                <Route path="order-details" element={<OrderDetailsPage />} />
+                <Route
+                  path="order-details/rating-order"
+                  element={<RatingOrderPage />}
+                />
+              </Route>
+              <Route path="assits" element={<AssistsPage />} />
+            </Route>
+            <Route path="contact" element={<Contact />} />
+            <Route path="*" element={<PageNotFound />} />
+            <Route path="about-us" element={<AboutUsPage />} />
+            <Route path="/cua-hang" element={<ProductPage />} />
+            <Route path="/cua-hang/:id" element={<DetailProductPage />} />
+            <Route path="/blog-page" element={<BlogPage />} />
+
+            {/* <Route path="/:category" element={<CatogoryPage />} /> */}
+            <Route path="/:category/:id" element={<DetailProductPage />} />
+            {/* <Route path="/:category/:subcategory" element={<CatogoryPage />} /> */}
+>>>>>>> 519dfbb58dee732296aabd525c51af41f08e2ebc
             <Route
               path="/:categoryId/sub/:sub_categoryId/:_id"
               element={<DetailProductPage />}
