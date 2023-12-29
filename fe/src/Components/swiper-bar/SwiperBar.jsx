@@ -1,26 +1,29 @@
-import React from "react";
-import { useRef, useState } from "react";
+import React from 'react';
+import { useRef, useState } from 'react';
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
-import "./SwiperBar.css";
-import Product from "../../Components/product/Product";
-import { Pagination, Navigation, Scrollbar, FreeMode } from "swiper/modules";
+import './SwiperBar.css';
+import Product from '../product/Product';
+import { Pagination, Navigation, Scrollbar, FreeMode } from 'swiper/modules';
 const SwiperBar = (props) => {
   return (
     <Swiper
       grabCursor={true}
-      modules={[Pagination]}
+      modules={[Navigation]}
       loop={false}
+      navigation={{
+        clickable: true,
+      }}
       pagination={{
         clickable: true,
       }}
-      navigation={true}
+      // navigation={true}
       breakpoints={{
         0: { slidesPerView: 1, spaceBetween: 10 },
         480: { slidesPerView: 2, spaceBetween: 10 },

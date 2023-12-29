@@ -23,6 +23,9 @@ router.delete('/Cua_hang/:id', productController.deleteProduct)
 //api: Tạo một sản phẩm mới Admin(đã làm được)
 router.post('/Cua_hang', productController.addProduct)
 // router.post()
+//api xem sản phẩm và đánh giá
+router.get('/Cua_hang/:productId/feedback', productController.getProductFeedback);
 
-
+// api xem theo note
+router.get('/Cua_hang/note/:note', productController.getProductByNote)
 module.exports= router
