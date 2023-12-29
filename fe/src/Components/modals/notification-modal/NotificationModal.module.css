@@ -1,0 +1,52 @@
+.wrapperNotificationModal {
+  width: 295px;
+  height: 55px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 5px;
+  position: absolute;
+  top: -10px;
+  left: -315px;
+}
+
+.wrapperNotificationModal::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-left: 10px solid white;
+  border-bottom: 9px solid transparent;
+  position: absolute;
+  top: 35%;
+  right: -10px;
+}
+
+.modalContent {
+  display: flex;
+  align-items: center;
+}
+
+.wrapperIcon {
+  width: 15px;
+  height: 15px;
+  background-color: orange;
+  border-radius: 50%;
+  position: relative;
+  margin-right: 10px;
+}
+
+.wrapperIcon .icon {
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.modalText {
+  font-size: 0.75em;
+  padding-top: 2px;
+}

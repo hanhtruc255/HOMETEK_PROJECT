@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+
+.blog {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-bottom: 20px !important;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+  border-radius: 45px;
+  background-color: #fff;
+  /* box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.87);
+  -webkit-box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.87);
+  -moz-box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.87); */
+  border: 1px solid #041e42;
+}
+
+.blogImage {
+  margin-top: 5px;
+  width: 100%;
+  border-radius: 35px 35px 0 0;
+}
+
+.blogImage .blogImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 35px 35px 0 0;
+}
+
+.blogTitle {
+  padding: 0 10px !important;
+  text-align: start;
+  color: #041e42;
+}
+
+.blogTitle .title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgb(5, 5, 100);
+}
+
+.wrapperFooter {
+  /* padding-top: 30px; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.blogFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blogCreationDate {
+  color: #595959;
+  font-size: 0.9em;
+}
+
+.blogIconBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  background-color: #c2e8c7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blogIconBtn .icon {
+  height: 40%;
+}
+
+@media only screen and (max-width: 1135px) {
+  .title {
+    font-size: 1.1rem !important;
+  }
+}
+
+@media only screen and (max-width: 1075px) {
+  .title {
+    font-size: 1rem !important;
+  }
+}
+
+@media only screen and (max-width: 915px) {
+  .title {
+    font-size: 1rem !important;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .title {
+    font-size: 0.8rem !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 0.6rem !important;
+  }
+  .blogIconBtn {
+    width: 15px;
+    height: 15px;
+  }
+  .wrapperFooter {
+    flex: 1;
+  }
+
+  .blogCreationDate {
+    font-size: 0.6rem;
+  }
+
+  .blogFooter {
+    padding: 0 !important;
+  }
+
+  .blog {
+    border-radius: 25px;
+    padding: 5px !important;
+  }
+
+  .blogImage {
+    border-radius: 15px 15px 0 0 !important;
+  }
+
+  .blogImg {
+    border-radius: 15px 15px 0 0 !important;
+  }
+}
