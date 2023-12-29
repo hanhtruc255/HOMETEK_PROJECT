@@ -81,6 +81,22 @@
   .itemDescription {
     font-size: 0.8rem !important;
   }
+
+  .secondLineDescription {
+    font-size: 0.8rem;
+  }
+}
+
+.secondLine {
+  background-color: #041e42;
+  padding: 10px 0;
+}
+
+.secondLineDescription {
+  padding: 0 !important;
+  margin: 0 !important;
+  color: #9f9f9f;
+  text-align: center;
 }
 /* .footerContent1 {
   grid-area: 1 / 1 / 2 / 2;

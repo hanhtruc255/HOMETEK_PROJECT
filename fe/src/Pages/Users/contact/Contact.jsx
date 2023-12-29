@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useContext, useEffect } from "react";
 import classNames from "classnames";
 import FormButton from "../../../Components/form-btn/FormButton";
 import GgMap from "../../../Components/gg-map/GgMap";
@@ -7,8 +7,12 @@ import BannerContact from "../../../Assets/images/BannerContact.png";
 import phone from "../../../Assets/icons/telephone.svg";
 import mail from "../../../Assets/icons/envelope.svg";
 import geoAlt from "../../../Assets/icons/geo-alt-fill.svg";
-
+import { AppContext } from "../layout/Layout";
 const Contact = () => {
+  const { setDisplayFooter } = useContext(AppContext);
+  useEffect(() => {
+    setDisplayFooter(true);
+  }, []);
   return (
     <>
       <div className={styles.bannerWrapper}>

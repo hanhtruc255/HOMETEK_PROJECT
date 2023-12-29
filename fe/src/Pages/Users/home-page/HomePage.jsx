@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
 
 import "react-slideshow-image/dist/styles.css";
 
@@ -57,13 +57,46 @@ import category3 from "../../../Assets/background/category3.png";
 
 // import BlogsSwiper from '../../components/blogs-swiper/BlogsSwiper';
 import BlogsSwiper from "../../../Components/blogs-swiper/BlogsSwiper";
-
-import data from "../../../data_update/data/product.json";
+import { AppContext } from "../layout/Layout";
+// import data from "../../../data_update/data/product.json";
 const HomePage = () => {
-  console.log("data: ", data);
+  const { setDisplayFooter } = useContext(AppContext);
+  // const [loading, setLoading] = useState(true);
+  // const [errorMsg, setErrorMsg] = useState(null);
 
+  const [productsData, setProductsData] = useState([]);
+  const [blogsData, setBlogsData] = useState([]);
+  useEffect(() => {
+    setDisplayFooter(true);
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const [products, blogs] = await Promise.all([
+        fetch("http://localhost:3001/Cua_hang"),
+        fetch("http://localhost:3001/blog"),
+      ]);
+
+      if (!products.ok) {
+        throw new Error("Products response was not ok");
+      }
+
+      if (!blogs.ok) {
+        throw new Error("Products response was not ok");
+      }
+
+      const productsData = await products.json();
+      const blogsData = await blogs.json();
+
+      setProductsData(productsData);
+      setBlogsData(blogsData);
+      // console.log("data: ", data);
+    } catch (error) {}
+  };
+  //setting for blogs slider
   var settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 3,
@@ -71,26 +104,27 @@ const HomePage = () => {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1025,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
+          slidesToScroll: 1,
+          infinite: false,
+          dots: false,
         },
       },
+
       {
-        breakpoint: 600,
+        breakpoint: 915,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           initialSlide: 2,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 650,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -103,15 +137,12 @@ const HomePage = () => {
         <div className="wrapper-banner">
           <Slide>
             <div className="each-slide-effect">
-              {/* <div style={{ backgroundImage: `url(${banner})` }}></div> */}
               <img src={banner} alt="" />
             </div>
             <div className="each-slide-effect">
-              {/* <div style={{ backgroundImage: `url(${banner})` }}></div> */}
               <img src={banner} alt="" />
             </div>
             <div className="each-slide-effect">
-              {/* <div style={{ backgroundImage: `url(${banner})` }}></div> */}
               <img src={banner} alt="" />
             </div>
           </Slide>
@@ -133,7 +164,7 @@ const HomePage = () => {
         <div className="block-swiper block-swiper--promotional-products">
           <div className="heading">SẢN PHẨM KHUYẾN MÃI</div>
           <SwiperBar>
-            {data.map((product) => {
+            {productsData.map((product) => {
               if (product.note === "Sản phẩm khuyến mãi") {
                 return (
                   <SwiperSlide>
@@ -153,7 +184,7 @@ const HomePage = () => {
         <div className="block-swiper block-swiper--latest-products">
           <div className="heading">SẢN PHẨM MỚI NHẤT</div>
           <SwiperBar>
-            {data.map((product) => {
+            {productsData.map((product) => {
               if (product.note === "Sản phẩm mới nhất") {
                 return (
                   <SwiperSlide>
@@ -173,7 +204,7 @@ const HomePage = () => {
         <div className="block-swiper block-swiper--best-selling-products">
           <div className="heading">SẢN PHẨM BÁN CHẠY</div>
           <SwiperBar>
-            {data.map((product) => {
+            {productsData.map((product) => {
               if (product.note === "Sản phẩm bán chạy") {
                 return (
                   <SwiperSlide>
@@ -193,7 +224,7 @@ const HomePage = () => {
         <div className="block-swiper block-swiper--recommended">
           <div className="heading">GỢI Ý CHO BẠN</div>
           <SwiperBar>
-            {data.map((product) => {
+            {productsData.map((product) => {
               if (product.note === "Sản phẩm bán chạy") {
                 return (
                   <SwiperSlide>
@@ -211,31 +242,24 @@ const HomePage = () => {
         </div>
 
         <div className="wrapper-brands">
-          <h1 className="wrapper-brands--heading">THƯƠNG HIỆU</h1>
+          <div className="heading">THƯƠNG HIỆU</div>
+
           <div className="wrapper-brands--block-brands">
             <img src={brandsImage} alt="" />
           </div>
         </div>
         <div className="wrapper-blogs">
-          {/* <BlogsSwiper>
-            {blogData.map((blog) => {
-              return (
-                <SwiperSlide>
-                  <div style={{ backgroundColor: 'red' }}></div>
-                </SwiperSlide>
-              );
-            })}
-          </BlogsSwiper> */}
+          <div className="heading">TIN TỨC</div>
+
           <Slider {...settings}>
-            {blogData.map((blog) => {
+            {blogsData.map((blog) => {
               return (
-                <div className="test-slide">
-                  {/* <BlogCard
-                    imgSrc={blog.image}
+                <div className="wrapper-slide">
+                  <BlogCard
+                    imgSrc={"/test-blog.jpg"}
                     blogTitle={blog.title}
                     dateCreate={blog.created_at}
-                  /> */}
-                  1
+                  />
                 </div>
               );
             })}

@@ -28,8 +28,11 @@ import {
 
 // import CheckPhoneNumberFormat from '../../functions/CheckPhoneNumberFormat';
 import CheckPhoneNumberFormat from "../../../functions/CheckPhoneNumberFormat";
-
 const SignUpPage = () => {
+  const { setDisplayFooter } = useContext(AppContext);
+  useEffect(() => {
+    setDisplayFooter(false);
+  }, []);
   const {
     globalState,
     setGlobalState,

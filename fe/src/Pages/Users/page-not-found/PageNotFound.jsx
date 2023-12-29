@@ -1,10 +1,14 @@
-import React from "react";
+import { React, useContext, useEffect } from "react";
 import BackGround404 from "../../../Assets/background/404-BackGround.jpg";
 import styles from "./PageNotFound.module.css";
 import FormButton from "../../../Components/form-btn/FormButton";
 import { Link } from "react-router-dom";
-
+import { AppContext } from "../layout/Layout";
 const PageNotFound = () => {
+  const { setDisplayFooter } = useContext(AppContext);
+  useEffect(() => {
+    setDisplayFooter(true);
+  }, []);
   return (
     <div className={styles.container}>
       <img

@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 // import '../../styles/FormStyle.css';
@@ -20,7 +20,12 @@ import WrapperModal from "../../../Components/modals/WrapperModal";
 import NotificationForm from "../../../Components/form/notification-form/NotificationForm";
 // import loginBackground from '../../assets/background/login-background.png';
 import loginBackground from "../../../Assets/background/login-background.png";
+import { AppContext } from "../layout/Layout";
 const LoginPage = () => {
+  const { setDisplayFooter } = useContext(AppContext);
+  useEffect(() => {
+    setDisplayFooter(false);
+  }, []);
   const history = useNavigate();
   const sampleUserData = {
     phoneNumber: "0123456789",

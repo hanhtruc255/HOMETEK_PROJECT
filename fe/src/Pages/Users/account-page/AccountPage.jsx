@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect, useContext } from "react";
 import styles from "./AccountPage.module.css";
 // import SidebarAccount from '../../components/sidebar-account/SidebarAccount';
 import SidebarAccount from "../../../Components/sidebar-account/SidebarAccount";
@@ -11,8 +11,15 @@ import WrapperModal from "../../../Components/modals/WrapperModal";
 import ListAddressModal from "../../../Components/modals/list-address-modal/ListAddressModal";
 // import AccountModal from '../../components/modals/account-modal/AccountModal';
 import AccountModal from "../../../Components/modals/account-modal/AccountModal";
+import { AppContext } from "../layout/Layout";
 export const AccountContext = createContext();
+
 const AccountPage = () => {
+  const { setDisplayFooter } = useContext(AppContext);
+  useEffect(() => {
+    setDisplayFooter(false);
+  }, []);
+
   const [isAddressModalVisible, setIsAddressModalVisible] = useState(false);
   const [isAccountNotifyModalVisible, setIsAccountNotifyModalVisible] =
     useState(false);
