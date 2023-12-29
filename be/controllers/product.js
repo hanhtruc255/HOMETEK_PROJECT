@@ -28,6 +28,19 @@ const getProductById = async (req, res) => {
   }
 };
 
+// Lấy sản phẩm theo note
+const getProductByNote = async (req, res) => {
+  const {note} = req.params;
+  try {
+    const notes = await Product.find({ note: { $eq: note } });
+    res.json(notes);
+  } catch (error) {
+    res.status(500).json({error:'Có lỗi'})
+  }
+}
+
+
+
 //Lấy tất cả danh mục
 const getCategory = async (req, res) => {
   Category.find({})
@@ -71,31 +84,36 @@ const getProductBrand = async (req, res) => {
   }
 }
 // Endpoint để lấy đánh giá sản phẩm theo ID
-app.get('/api/product/:productId/feedback', (req, res) => {
-  const productId = req.params.productId;
+const getProductFeedback = async (req, res) => {
+  try {
+    const productId = req.params.id;
+ 
+    // Tìm sản phẩm trong danh sách sản phẩm
+    // const product = await Product.findOne({ id: productId });
+    const product = await Product.findById(productId);
 
-  // Tìm sản phẩm trong danh sách sản phẩm
-  const product = productData;
-  if (!product) {
-    return res.status(404).json({ error: 'Sản phẩm không tồn tại' });
-  }
+    if (!product) {
+      return res.status(404).json({ error: 'Sản phẩm không tồn tại' });
+    }
 
-  // Tìm đánh giá của sản phẩm trong danh sách đánh giá
-  const feedback = feedbackData;
-  if (!feedback) {
-    return res.status(404).json({ error: 'Đánh giá không tồn tại' });
-  }
+    // Tìm đánh giá của sản phẩm trong danh sách đánh giá
+    const feedback = await Feedback.findOne({ productId: productId });
 
-  // Kiểm tra xem đánh giá có phải của sản phẩm không
-  if (feedback.products.some(p => p.productId === productId)) {
+    if (!feedback) {
+      return res.status(404).json({ error: 'Đánh giá không tồn tại' });
+    }
+
+    // Trả về thông tin sản phẩm và đánh giá tương ứng
     return res.json({
       productId: productId,
+      product: product,
       feedback: feedback
     });
-  } else {
-    return res.status(404).json({ error: 'Đánh giá không tồn tại cho sản phẩm này' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Lỗi server' });
   }
-});
+};
 
 
 
@@ -148,4 +166,4 @@ const deleteProduct = async(req,res) => {
   }
 }
 
-module.exports = {getAllProducts,getCategory, getCategoryProduct, getSubcategories, getProductBrand, addProduct, updateProduct, getProductById, deleteProduct}
+module.exports = {getAllProducts,getCategory, getCategoryProduct, getSubcategories, getProductBrand, addProduct, updateProduct, getProductById, deleteProduct, getProductFeedback, getProductByNote}
