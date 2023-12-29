@@ -1,14 +1,18 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-// import ProductPage from "./Pages/Users/ProductPage/ProductPage";
+
 import CartPage from "./Pages/Users/CartPage/CartPage";
 import DetailProductPage from "./Pages/Users/ProductPage/DetailProductPage";
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6914a1284c24c7c7062cab78110cfe0c8d6c9600
 import CategoryPage from "./Pages/Users/ProductPage/CategoryPage";
 import SubcategotyPage from "./Pages/Users/ProductPage/SubcategoryPage"
 import PaymentSuccess from "./Components/Payment/PaymentSuccess";
 import PaymentMoney from "./Components/Payment/PaymentMoney";
+<<<<<<< HEAD
 import TrackingPage from "./Pages/Users/TrackingPage/TrackingPage";
 =======
 // import CatogoryPage from "./Pages/Users/ProductPage/CatogoryPage";
@@ -19,6 +23,12 @@ import Contact from "./Pages/Users/contact/Contact.jsx";
 import BlogPage from "./Pages/Users/blog-page/BlogPage.jsx";
 
 >>>>>>> d58fbbf4f030b560f9a6795b8e7cef808aaf1e7c
+=======
+import TrackingPage from "./Pages/Users/TrackingPage/TrackingPage"
+import PaymentPage from "./Pages/Users/PaymentPage/PaymentPage";
+import ConfirmPage from "./Pages/Users/PaymentPage/ConfirmPage";
+import WhishlistPage from "./Pages/Users/WhishlistPage/WhishlistPage";
+>>>>>>> 6914a1284c24c7c7062cab78110cfe0c8d6c9600
 // admin
 import DashBoard from "./Pages/Admin/Dashboard";
 import Product from "./Pages/Admin/Products/Product";
@@ -34,6 +44,7 @@ import OrderUpdate from "./Pages/Admin/Order/OrderUpdate";
 import Voucher from "./Pages/Admin/Voucher/Voucher";
 import VoucherCreate from "./Pages/Admin/Voucher/VoucherCreate";
 import VoucherUpdate from "./Pages/Admin/Voucher/VoucherUpdate";
+<<<<<<< HEAD
 import PaymentPage from "./Pages/Users/PaymentPage/PaymentPage";
 import ConfirmPage from "./Pages/Users/PaymentPage/ConfirmPage";
 <<<<<<< HEAD
@@ -59,11 +70,14 @@ import ManageOrdersTable from "./Pages/Users/account-page/manage-orders-page/man
 import OrderDetailsPage from "./Pages/Users/account-page/manage-orders-page/order-details-page/OrderDetailsPage.jsx";
 import RatingOrderPage from "./Pages/Users/account-page/manage-orders-page/order-details-page/rating-order-page/RatingOrderPage.jsx";
 import AssistsPage from "./Pages/Users/account-page/assists-page/AssistsPage.jsx";
+=======
+>>>>>>> 6914a1284c24c7c7062cab78110cfe0c8d6c9600
 const App = () => {
   return (
     <div>
       <BrowserRouter>
         <Routes>
+<<<<<<< HEAD
 <<<<<<< HEAD
          
             {/* <Route path="/cua-hang" element={<ProductPage />} /> */}
@@ -132,11 +146,17 @@ const App = () => {
             <Route path="/:category/:id" element={<DetailProductPage />} />
             {/* <Route path="/:category/:subcategory" element={<CatogoryPage />} /> */}
 >>>>>>> d58fbbf4f030b560f9a6795b8e7cef808aaf1e7c
+=======
+            <Route path="/:categoryId" element={<CategoryPage/>} />
+            <Route path="/:categoryId/:_id" element={<DetailProductPage />} />
+            <Route path="/:categoryId/sub/:sub_categoryId" element={<SubcategotyPage/>} />
+>>>>>>> 6914a1284c24c7c7062cab78110cfe0c8d6c9600
             <Route
               path="/:categoryId/sub/:sub_categoryId/:_id"
               element={<DetailProductPage />}
             />
             <Route path="/gio-hang" element={<CartPage />} />
+            <Route path="/yeu-thich" element={<WhishlistPage/>}/>
             <Route path="/thanh-toan" element={<PaymentPage />} />
             <Route path="/thanh-toan/xac-minh" element={<ConfirmPage />} />
             <Route path="/thanh-toan/thanh-cong" element={<PaymentSuccess />} />

@@ -3,7 +3,10 @@ const Schema = mongoose.Schema
 
 //Tạo model
 const productSchema = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+    id:{
+        type: String,
+        required: true,
+    },
     name: {
         type: String,
         required: true
@@ -51,8 +54,7 @@ const productSchema = new Schema({
     }],
 
     note:{
-        type: String,
-        enum: ['Sản phẩm bán chạy', 'Sản phẩm khuyến mãi', 'Sản phẩm mới nhất']
+        type: String
     },
 
     created_at:{

@@ -28,19 +28,6 @@ const getProductById = async (req, res) => {
   }
 };
 
-// Lấy sản phẩm theo note
-const getProductByNote = async (req, res) => {
-  const {note} = req.params;
-  try {
-    const notes = await Product.find({ note: { $eq: note } });
-    res.json(notes);
-  } catch (error) {
-    res.status(500).json({error:'Có lỗi'})
-  }
-}
-
-
-
 //Lấy tất cả danh mục
 const getCategory = async (req, res) => {
   Category.find({})
@@ -83,40 +70,17 @@ const getProductBrand = async (req, res) => {
     res.status(500).json({error:'Có lỗi'})
   }
 }
-// Endpoint để lấy đánh giá sản phẩm theo ID
-const getProductFeedback = async (req, res) => {
-  try {
-    const productId = req.params.id;
- 
-    // Tìm sản phẩm trong danh sách sản phẩm
-    // const product = await Product.findOne({ id: productId });
-    const product = await Product.findById(productId);
 
-    if (!product) {
-      return res.status(404).json({ error: 'Sản phẩm không tồn tại' });
-    }
-
-    // Tìm đánh giá của sản phẩm trong danh sách đánh giá
-    const feedback = await Feedback.findOne({ productId: productId });
-
-    if (!feedback) {
-      return res.status(404).json({ error: 'Đánh giá không tồn tại' });
-    }
-
-    // Trả về thông tin sản phẩm và đánh giá tương ứng
-    return res.json({
-      productId: productId,
-      product: product,
-      feedback: feedback
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Lỗi server' });
-  }
-};
-
-
-
+// const getProductBrand = async (req, res) => {
+//   const { brand_name } = req.params;
+//   try {
+//     // Đảm bảo mô hình Product đã được import và định nghĩa đúng
+//     const products = await Product.find({ brand_name });
+//     res.json(products);
+//   } catch (error) {
+//     res.status(500).json({ error: 'Có lỗi' });
+//   }
+// }
 // Tạo sản phẩm mới
 
 const addProduct = async (req, res) => {
@@ -166,4 +130,4 @@ const deleteProduct = async(req,res) => {
   }
 }
 
-module.exports = {getAllProducts,getCategory, getCategoryProduct, getSubcategories, getProductBrand, addProduct, updateProduct, getProductById, deleteProduct, getProductFeedback, getProductByNote}
+module.exports = {getAllProducts,getCategory, getCategoryProduct, getSubcategories, getProductBrand, addProduct, updateProduct, getProductById, deleteProduct}

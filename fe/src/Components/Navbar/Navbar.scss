@@ -39,7 +39,7 @@
       color: #ffffff;
       border-radius: 0 5px 5px 0;
       width: 35px;
-      height: 30px;
+      height: 24px;
       // font-size: px;
       text-align: center;
       padding: 5px 0;
@@ -78,14 +78,15 @@
 
 //header__menu---------------
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6914a1284c24c7c7062cab78110cfe0c8d6c9600
     .Menu{
-        // display: flex;
         justify-content: space-between;
         background: #041E42;
         height: 50px;
         width: 100%;
-        padding: 0 30px;
-
+        padding: 0;
         ul{
             display: flex;
             justify-content: space-between;
@@ -102,6 +103,7 @@
                     display: block;
                     padding: 14px;
                     text-align: center;
+<<<<<<< HEAD
 =======
 .Menu {
   // display: flex;
@@ -172,17 +174,62 @@
                   background: none;
                   color: #c2e8c7;
 >>>>>>> d58fbbf4f030b560f9a6795b8e7cef808aaf1e7c
+=======
+>>>>>>> 6914a1284c24c7c7062cab78110cfe0c8d6c9600
                 }
               }
             }
-          }
-          color: #c2e8c7;
-        }
-      }
+            
+            .header__menu__dropdown{
+                background: #F5F5F5;;
+                border-radius: 2px;
+                border: 1px solid #041E42;
+                display: block;
+                position: absolute;
+                width: 220px;
+                z-index: 9;
+                visibility: hidden;
+
+                li{
+                    a{  
+                        margin:5px;
+                        padding: 5px;
+                        color: #041E42;
+                        transition: all 0.1s;
+                        text-align: left;
+                        width: 180px;
+                    }
+                    a:hover{ .header__menu__dropdown{
+                        // background: #F5F5F5;;
+                        border-radius: 2px;
+                        border: 1px solid #041E42;
+                        display: block;
+                        position: absolute;
+                        // width: 200px;
+                        z-index: 9;
+                        visibility: hidden;
+        
+                        li{
+                            a{
+                                padding: 5px;
+                                color: #041E42;
+                                transition: all 0.1s;
+                                a:hover{
+                                    background: none;
+                                    color:#0068FF;
+                                }
+                            }
+                            
+                        }
+                    }
+                        color:#0068FF;;
+                    }
+                }
+            }
+            li:hover .header__menu__dropdown{
+                    opacity: 1;
+                    visibility: visible;}
+
+           
     }
-    li:hover .header__menu__dropdown {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
-}
+    
