@@ -29,6 +29,7 @@
     "sass": "^1.69.5",
     "slick-carousel": "^1.8.1",
     "source-map-loader": "^4.0.1",
+    "styled-components": "^6.1.5",
     "swiper": "^11.0.5",
     "web-vitals": "^2.1.4"
   },
@@ -57,6 +58,9 @@
     ]
   },
   "devDependencies": {
+    "css-loader": "^6.8.1",
+    "postcss-loader": "^7.3.4",
+    "sass-loader": "^13.3.3",
     "tailwindcss": "^3.4.0"
   }
 }
