@@ -15,7 +15,6 @@ const CategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice}) => {
   const [whishlistItems, setWhishlistItems] = useState([]);
   const [wishlistChanged, setWishlistChanged] = useState(false);
 
-
   const sortProducts = (products, criteria) => {
     switch (criteria) {
       case 'price-asc':
@@ -34,7 +33,7 @@ const CategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/categories/${categoryId}`);
+        const response = await axios.get(`http://localhost:3001/categories/${categoryId}`);
         if (response.data) {
           const productData = Array.isArray(response.data)
             ? response.data
@@ -106,17 +105,23 @@ const CategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice}) => {
     }
   };
 
+  ///format price
+  const formatPrice = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+
   return (
     <div className='item'>
       {sortedProducts.map((item) => (
         <div key={item._id}  className='child'>
           <Link to={`/${item.categoryId}/${item._id}`}>
             <div>
-              <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
+              <img src={item.image}/>
             </div>
             <div className='child_inf'>
               <h4>{item.name}</h4>
-              <b>{item.price}đ</b>
+              <b>{formatPrice(item.price)}đ</b>
+
             </div>
           </Link>
 

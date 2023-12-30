@@ -7,6 +7,11 @@ import { BsTicketPerforatedFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
+import ModalAddress from '../Modal/ModalAddress';
+import ip1 from '../../Assets/images/momo.png';
+import ip2 from '../../Assets/images/zalopay.png';
+import ip3 from '../../Assets/images/card.png';
+import ip4 from '../../Assets/images/money.png';
 
 
 const Payment = () => {
@@ -14,51 +19,74 @@ const Payment = () => {
   const selectedItemsParam = searchParams.get('selectedItems');
   const selectedItems = selectedItemsParam ? JSON.parse(decodeURIComponent(selectedItemsParam)) : [];
   const decodedSelectedItems = selectedItemsParam ? decodeURIComponent(selectedItemsParam) : null;
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
+  const [linkDestination, setLinkDestination] = useState("/thanh-toan/xac-minh");
   const [totalAmount, setTotalAmount] = useState(0);
 
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
-  const Modaladdress = () => {
-    useEffect(() => {
-      document.body.style.overflowY = "hidden";
-      return () => {
-        document.body.style.overflowY = "scroll";
-      };
-    }, []);
-    return (
-        <>
-        <div className='modal_wrapper'></div>
-        <div className='modal_container'>
-            <h2>Địa chỉ mới</h2>
-            <div className='new_add1'> 
-              <label>Họ và tên<span>* </span><br/><input/></label>
-              <label>Số điện thoại<span>* </span><br/><input/></label>
-            </div>
-            <div className='new_add2'> 
-              <label>Tỉnh/ Thành phố<span>* <br/></span><select></select></label>
-              <label>Quận/ Huyện<span>* </span><br/><select></select></label>
-              <label>Phường/ Xã<span>* </span><br/><select></select></label>
-            </div>
-            <div className='new_add3'> 
-              <label>Địa chỉ cụ thể<span>* </span><br/><input className='spe'/></label>
-            </div>
-            <div className='new_add4'> 
-              <label className='specheck'><input  type='checkbox'/><span>Đặt làm địa chỉ mặc định</span></label>
-            </div>
-            <center>
-              <button className='spebut'>Hoàn Thành</button>
-            <button onClick={() => setShowModal(false)}>Quay lại</button>
-            </center>
-        </div>
-        </>
-    )}
+  const [addressInfo, setAddressInfo] = useState(null);
+  const [editAddress, setEditAddress] = useState(false);
+  const handlePaymentMethodChange = (method) => {
+    setSelectedPaymentMethod(method);
+    if (method === ip4) {
+      setLinkDestination("/thanh-toan/xathanh-cong");
+    } else {
+      setLinkDestination("/thanh-toan/xac-minh/thanh-toan-tien");
+    }
+  };
+  //time giao hàng dự kiến
+  const today = new Date();
+  const deliveryStartDate = new Date(today);
+  deliveryStartDate.setDate(today.getDate() + 3); 
+
+  const deliveryEndDate = new Date(today);
+  deliveryEndDate.setDate(today.getDate() + 5); 
+
+  const handleAddressSubmit = (address) => {
+    setAddressInfo(address);
+    setShowModal(false);
+    console.log('>>>>', address); 
+  };
+  const handleEditAddress = () => {
+    setShowModal(true);
+    setEditAddress(true);
+  };
+
     useEffect(() => {
       const newTotalAmount = selectedItems.reduce(
         (total, item) => total + item.price * item.quantity,
         0
       );
       setTotalAmount(newTotalAmount);
-    }, [selectedItems]);
+    }, [selectedItems,  addressInfo]);
+
+    console.log('addressInfo:', addressInfo);
+
+    ///modal for vận chuyển
+    const Modaladdress = () => {
+      useEffect(() => {
+        document.body.style.overflowY = "hidden";
+        return () => {
+          document.body.style.overflowY = "scroll";
+        };
+      }, []);
+      return (
+        <>
+        <div className='modal_wrapper_evalua'></div>
+        <div className='modal_evalua_container'>
+          <div className='evalua_title'> 
+              <p>Đánh giá và nhận xét</p>
+              <button onClick={() => setShowModal(false)}>X</button>
+          </div>
+         
+              
+            <button>GỬI ĐÁNH GIÁ</button>
+            
+          </div>
+        </>
+    )
+    }
   
   return (
    
@@ -73,12 +101,22 @@ const Payment = () => {
           <BsFillGeoAltFill /> <b>Địa Chỉ Nhận Hàng</b>
         </div>
 
-        <div className='add_address'>
+        <div className="add_address">
+        {addressInfo ? (
+          <span>
+            {addressInfo.fullName}, {addressInfo.phone}, {addressInfo.detailAddress}, {addressInfo.ward}, {addressInfo.district}, {addressInfo.city} {addressInfo.isDefault && "(Mặc định)"}
+          </span>
+        ) : (
           <span>Chưa có địa chỉ nhận hàng</span>
-          <button onClick={()=> setShowModal(true)}>Thêm địa chỉ mới</button>  
-        </div>
+        )}
+        {addressInfo ? (
+          <button onClick={handleEditAddress}>Thay đổi</button>
+        ) : (
+          <button onClick={() => setShowModal(true)}>Thêm địa chỉ mới</button>
+        )}
+      </div>
         <>  
-            {showModal && <Modaladdress closeModal={closeModal}/>}
+        {showModal && <ModalAddress closeModal={() => setShowModal(false)} onSubmitAddress={handleAddressSubmit} editAddress={editAddress} currentAddress={addressInfo} />}
           </>
 
       </div>
@@ -100,7 +138,7 @@ const Payment = () => {
                     <tr key={item._id}>
                       <td className='spec'>
                         <p>{index + 1}</p>
-                        <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
+                        <img src={item.image} alt="hinh"/>
                         
                         <b>{item.name}</b>
                       </td>
@@ -118,47 +156,84 @@ const Payment = () => {
           </div>
 
           <div className='delivery'>
-              <p>Đơn vị vận chuyện</p> 
-              <div>Giao hàng nhanh</div>
-              <button>Thay đổi</button>
-              <div>15000</div>
+              <p>Đơn vị vận chuyển</p> 
+              <b>Giao hàng nhanh
+                <p>Nhận hàng vào ngày {`${deliveryStartDate.toLocaleDateString('en-GB')} - ${deliveryEndDate.toLocaleDateString('en-GB')}`}</p>
+              </b>
+              
+              <div>15.000đ</div>
             <hr></hr>
             
           </div> 
           <div className='tongtien'>
-            <span>Tổng tiền: {totalAmount + 15000}đ</span>
+          Tổng tiền: <span> {totalAmount + 15000}đ</span>
           </div>
+          <div className='money'>
+                <div className='money_left'>
+                  <p>Phương thức thanh toán</p>
+                  <div className='money_left_child'>
+                  <label>
+                        <input
+                          type="radio"
+                          name="payment"
+                          onChange={() => handlePaymentMethodChange(ip1)}
+                        />
+                        <img src={ip1} />
+                      </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name="payment"
+                          onChange={() => handlePaymentMethodChange(ip2)}
+                        />
+                        <img src={ip2} />
+                      </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name="payment"
+                          onChange={() => handlePaymentMethodChange(ip3)}
+                        />
+                        <img src={ip3} />
+                      </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name="payment"
+                          onChange={() => handlePaymentMethodChange(ip4)}
+                        />
+                        <img src={ip4} />
+                      </label>
+                      <p>
+                        {selectedPaymentMethod === ip4
+                          ? "Thanh toán nhận hàng"
+                          : selectedPaymentMethod
+                          ? "Internet"
+                          : ""}
+                      </p>
+                      <b>Thời gian giao hàng dự kiến</b>
+                      <p>{`${deliveryStartDate.toLocaleDateString('en-GB')} - ${deliveryEndDate.toLocaleDateString('en-GB')}`}</p>
 
-
-        <div className='money'>
-              <div className='money_left'>
-                <p>Phương thức thanh toán</p>
-                <div className='money_left_child'>
-                    <label><input type='radio' name ='payment'/><img src='/'/></label>
-                    <label><input type='radio' name ='payment'/><img src='/'/></label>
-                    <label><input type='radio' name ='payment'/><img src='/'/></label>
-                    <label><input type='radio' name ='payment'/><img src='/'/></label>
-                    <p>Thanh toán nhận hàng</p>
-                    <b>Thời gian giao hàng dự kiến</b>
+                  </div>
                 </div>
-              </div>
-          
-              <div className='money_right'>
-                <div>Tổng cộng:  {totalAmount}đ <span>
-                </span>
+            
+                <div className='money_right'>
+                  <div>Tổng cộng:  <span> {totalAmount}đ
+                  </span>
+                  </div>
+                  <div>Phía vận chuyển:<span> 15.000đ
+                  </span>
+                  </div>
+                  <div>Thành tiền<span> {totalAmount + 15000}đ
+                  </span>
+                  </div>
                 </div>
-                <div>Phía vận chuyển:<span> -----
-                </span>
-                </div>
-                <div>Thành tiền<span> -----
-                </span>
-                </div>
-              </div>
-        </div>
-        <div >
-          <Link to ="/thanh-toan/xac-minh" className='dathang'>ĐẶT HÀNG</Link>
-        </div>
-
+          </div>
+          <Link to={'/thanh-toan/xac-minh'} className="dathang">
+        ĐẶT HÀNG
+      </Link>
+       
+      
       </div>
       <br></br>
     </div>

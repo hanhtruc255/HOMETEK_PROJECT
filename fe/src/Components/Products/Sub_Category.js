@@ -32,7 +32,7 @@ const SubCategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice }) => 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/categories/${categoryId}/${sub_categoryId}`);
+        const response = await axios.get(`http://localhost:3001/categories/${categoryId}/${sub_categoryId}`);
 
         if (response.data) {
           const productData = Array.isArray(response.data)
@@ -100,6 +100,10 @@ const sortedProducts = sortProducts(filteredProducts, sortCriteria);
     }
   };
 
+    ///format price
+    const formatPrice = (price) => {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    };
 
   return (
     <div className='item'>
@@ -111,7 +115,7 @@ const sortedProducts = sortProducts(filteredProducts, sortCriteria);
             </div>
             <div className='child_inf'>
               <h4>{item.name}</h4>
-              <b>{item.price}đ</b>
+              <b>{formatPrice(item.price)}đ</b>
             </div>
           </Link>
 

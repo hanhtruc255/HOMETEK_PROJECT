@@ -62,7 +62,7 @@ const CategorySidebar = ({ onFilterChange, onPriceChange}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/categories/${categoryId}`);
+        const response = await axios.get(`http://localhost:3001/categories/${categoryId}`);
         console.log("truc", response)
         if (response.data && response.data && Array.isArray(response.data)) {
           setProduct(response.data);

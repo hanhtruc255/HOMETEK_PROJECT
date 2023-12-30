@@ -1,0 +1,90 @@
+///-------wrapper------
+.modal_wrapper{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(28, 27, 27, 0.9);
+
+
+}
+.modal_container{
+    color: #041E42;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f5f5f5;
+    width: 650px;
+    padding: 30px;
+    font-size: 16px;
+    color: #041E42;
+    border-radius: 5px;
+    
+    span{
+        color: rgb(216, 80, 80);
+    }
+    label{
+        color: #b4b4b4;}
+
+    .new_add1{
+        margin-top: 20px ;
+        display: flex;
+        margin-bottom: 15px;
+        
+        input{
+            border: none;
+            height: 30px;
+            width: 270px;
+            margin-right: 50px;
+        }
+
+        
+       }
+    
+    .new_add2{
+        display: flex;
+        select{
+            width: 190px;
+            border: none;
+            height: 30px;
+            margin-right: 10px;
+            margin-bottom: 20px;
+        }}
+    .new_add3{
+        input{
+            width: 305%;
+            border: none;
+            height: 30px;
+            margin-bottom: 20px;
+        }}
+    .new_add4{
+        margin-bottom: 20px;
+        span{
+            color: #041E42;
+            margin: 0 0 0 10px;
+        }
+        input{
+            border: 1px solid #041E42
+        };
+    }
+
+    center{
+        button{
+            border: none;
+            text-decoration: underline;
+            background: none;
+            font-size: 18px;
+            margin: 0 20px;
+            border-radius: 5px;
+        }
+
+        .spebut{
+            background: #041E42;
+            text-decoration: none;
+            padding: 5px 15px;
+            color: #f5f5f5;
+        }
+    }
+}

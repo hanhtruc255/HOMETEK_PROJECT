@@ -13,6 +13,8 @@ const Cart = ({ updateCartQuantity }) => {
   const [cartItems, setCartItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const navigate = useNavigate();
+  const [whishlistItems, setWhishlistItems] = useState([]);
+  const [wishlistChanged, setWishlistChanged] = useState(false);
 
   const getCartItemsData = () => {
     return cartItems;
@@ -70,10 +72,6 @@ const Cart = ({ updateCartQuantity }) => {
       setCartItems(aggregatedCartItems);
     }, []);
   
-    const calculateTotal = () => {
-      return cartItems.reduce((total, item) => (item.selected ? total + item.price * item.quantity : total), 0);
-    };
-  
     const toggleItemSelection = (itemId) => {
       setSelectedItems((prevSelectedItems) => {
         const isSelected = prevSelectedItems.some((item) => item._id === itemId);
@@ -93,7 +91,45 @@ const Cart = ({ updateCartQuantity }) => {
         !selectAll ? cartItems.filter((item) => !item.selected) : []
       );
     };
-    console.log('Selected Items:', selectedItems);
+    //add whishlist
+     useEffect(() => {
+    setWhishlistItems(JSON.parse(localStorage.getItem('Whishlist')) || []);
+    setWishlistChanged(false);
+  }, [wishlistChanged]); 
+
+  const isItemInWishlist = (itemId) => {
+    return whishlistItems.some((wishlistItem) => wishlistItem._id === itemId);
+  };
+
+  const addToWhishlist = (item) => {
+    const isDuplicate = isItemInWishlist(item._id);
+    if (isDuplicate) {
+      const updatedWhishlist = whishlistItems.filter((wishlistItem) => wishlistItem._id !== item._id);
+      setWhishlistItems(updatedWhishlist);
+      localStorage.setItem('Whishlist', JSON.stringify(updatedWhishlist));
+      setWishlistChanged(true);
+      alert('Đã xóa khỏi sản phẩm yêu thích.');
+    } else {
+      const updatedWhishlist = [...whishlistItems, item];
+      setWhishlistItems(updatedWhishlist);
+      localStorage.setItem('Whishlist', JSON.stringify(updatedWhishlist));
+      setWishlistChanged(true);
+      alert('Đã thêm vào sản phẩm yêu thích.');
+    }
+  };
+
+      ///format price
+  const formatPrice = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+      ///total money
+      const calculateTotal = () => {
+        const total = selectedItems.reduce((accumulator, item) => {
+          return accumulator + item.price * item.quantity;
+        }, 0);
+        return formatPrice(total);
+      };
+
   return (
     <div className='cart'>
         <div className='Frame_cart'>
@@ -118,20 +154,18 @@ const Cart = ({ updateCartQuantity }) => {
                           id={`checkbox-${item._id}`}
                           checked={item.selected}
                           onChange={() => toggleItemSelection(item._id)}/>
-                          {/* <img src={item.image} /> */}
-                           <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
-
+                          <img src={item.image} />
+                         
                         </div>
 
                         <div>
-                          <b>{item.name} </b> <br/>
+                          <b>{item.name}</b> <br/>
                           <BsTrash className='icon_trash' onClick={() => removeItem(item._id)}/>
-                          <BsHeart className='icon_heart'/>
-
+                          <BsHeart className='icon_heart' style={{ color: isItemInWishlist(item._id) ? 'rgb(170, 4, 4)' : 'inherit' }} onClick={() => addToWhishlist(item)}/>
                         </div>
                         
                       </td>
-                      <td><b>{item.price}đ</b>
+                      <td><b>{formatPrice(item.price)}đ</b>
                       </td>
                       <td>
                         <div className='qty'>
@@ -141,7 +175,7 @@ const Cart = ({ updateCartQuantity }) => {
                         </div>
                           
                       </td>
-                      <td><b>{item.price*item.quantity}</b></td>
+                      <td><b>{formatPrice(item.price*item.quantity)}đ</b></td>
                     </tr>
                   ))}
                   </tbody>

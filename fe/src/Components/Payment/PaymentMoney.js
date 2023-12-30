@@ -1,8 +1,7 @@
 import React from 'react'
 import Navbar from '../Navbar/Navbar';
-import ipayment from '../.././Assets/payment.png';
 import { Link } from 'react-router-dom';
-
+import ipayment from '../../Assets/images/payment.png';
 const PaymentMoney = () => {
   return (
     <div>

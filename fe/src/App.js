@@ -43,7 +43,7 @@ const App = () => {
             <Route path="/yeu-thich" element={<WhishlistPage/>}/>
             <Route path="/thanh-toan" element={<PaymentPage />} />
             <Route path="/thanh-toan/xac-minh" element={<ConfirmPage />} />
-            <Route path="/thanh-toan/thanh-cong" element={<PaymentSuccess />} />
+            <Route path="/thanh-toan/xac-minh/thanh-cong" element={<PaymentSuccess />} />
             <Route path="/thanh-toan/xac-minh/thanh-toan-tien" element={<PaymentMoney />}/>
             <Route path="/tra-ma-van-don" element={<TrackingPage/>}/>
     

@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom';
 import { BsHeart } from "react-icons/bs";
 import { BsStar } from "react-icons/bs";
+import { BsStarFill } from "react-icons/bs";
 import { BsTruck } from "react-icons/bs";
 import { BsArrowRepeat } from "react-icons/bs";
 import { BsCamera } from "react-icons/bs";
@@ -35,7 +36,7 @@ const DetailProduct = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get(`http://localhost:3000/Cua_hang/${_id}`);
+          const response = await axios.get(`http://localhost:3001/Cua_hang/${_id}`);
           setProduct(response.data);
         } catch (error) {
           console.error('Error fetching product details:', error);
@@ -70,7 +71,7 @@ const DetailProduct = () => {
 
             <div className='evalua_body'>
               <div className='evalua_product'>
-                  <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'}/>
+                  <img src={product.image}/>
                   <b>{product.name}</b>
                   
               </div>
@@ -80,7 +81,7 @@ const DetailProduct = () => {
               <div className='evalua_star' >
               {Array(5).fill().map((_, index) => (
                 <div key={index} onClick={() => handleStarClick(index)} className={index === selectedStarIndex ? 'selected' : ''}>
-                  <BsStar color={index === selectedStarIndex ? 'rgb(216, 216, 18)' : ''} />
+                  <BsStarFill color={index === selectedStarIndex ? 'rgb(216, 216, 18)' : ''} />
                   <p>
                     {index === 0 ? 'Rất tệ' : index === 1 ? 'Tệ' : index === 2 ? 'Bình thường' : index === 3 ? 'Tốt' : 'Tuyệt vời'}
                   </p>
@@ -140,6 +141,11 @@ const DetailProduct = () => {
         alert('Đã thêm vào sản phẩm yêu thích.');
       }
     };
+
+      ///format price
+  const formatPrice = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
     
   return (
     <div>
@@ -148,13 +154,14 @@ const DetailProduct = () => {
                 <div  className='Detail_Product'>
                     <div className='Image'>
                         <div className='Image_large'>
-                            <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
+                            <img src={product.image} alt="hinh"/>
                         </div>
 
                         <div className='Image_small'>
-                          <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
-                          <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
-                          <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
+                          <img src={product.sub_image[0]} alt="hinh"/>
+                          <img src={product.sub_image[1]} alt="hinh"/>
+                          <img src={product.sub_image[2]} alt="hinh"/>
+                          
                         </div>
                     </div>
 
@@ -171,7 +178,7 @@ const DetailProduct = () => {
                         <BsStar className='icon'/>
                         <BsHeart className='heart' style={{ color: isItemInWishlist(product._id) ? 'rgb(170, 4, 4)' : 'inherit' }} onClick={() => addToWhishlist(product)}/> </div>
 
-                      <div className='price'>{product.price}đ</div>
+                      <div className='price'>{formatPrice(product.price)}đ</div>
                         
                       <h4>Số lượng</h4>
 
