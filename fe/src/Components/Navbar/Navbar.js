@@ -6,15 +6,9 @@ import { BsPerson } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { BsTruck } from "react-icons/bs";
-<<<<<<< HEAD
+import './Responsive.scss';
+import { BsChevronDown } from "react-icons/bs";
 
-const Navbar = () => {
-  const [showInput, setShowInput] = useState(false);
-
-<<<<<<< HEAD
-=======
-import './Responsive.scss'
->>>>>>> 6914a1284c24c7c7062cab78110cfe0c8d6c9600
 const Navbar= () =>{
     return (
         <div>
@@ -51,7 +45,9 @@ const Navbar= () =>{
                 <nav className="Menu">
                     <ul>
                         <li> <Link to="/about-us"> Về chúng tôi</Link> </li>
-                        <li><Link to ={'/01'}>Bếp</Link> 
+                        <li><Link to ={'/01'}>Bếp
+                           <BsChevronDown/> 
+                            </Link> 
                             <ul className="header__menu__dropdown">
                                 <li>
                                     <Link to="/01/sub/B1">Nồi chiên không dầu</Link>
@@ -69,7 +65,9 @@ const Navbar= () =>{
                             </ul>
                         </li>
                         
-                        <li><Link to ="/02">Dọn dẹp</Link>
+                        <li><Link to ="/02">Dọn dẹp
+                        <BsChevronDown/> 
+                        </Link>
                             <ul className="header__menu__dropdown">
                                 <li><Link to="/02/sub/D1">Bàn chảy đa năng</Link></li>    
                                 <li><Link to="/02/sub/D2">Máy lọc không khí thông minh</Link></li>
@@ -77,7 +75,8 @@ const Navbar= () =>{
                             </ul>
                         </li>
 
-                        <li><Link to ="/03">Tiện ích</Link>
+                        
+                        <li><Link to ="/03">Tiện ích <BsChevronDown/> </Link>
                             <ul className="header__menu__dropdown">
                                 <li><Link to="/03/sub/T1">Máy tạo bọt rửa tay</Link></li>
                                 <li><Link to="/02/sub/T2">Loa trợ lý ảo thông minh</Link></li>
@@ -91,20 +90,6 @@ const Navbar= () =>{
                     </ul>
                 </nav>
             </div>
-<<<<<<< HEAD
-=======
-  const handleTruckButtonClick = () => {
-    setShowInput(!showInput);
-  };
->>>>>>> d58fbbf4f030b560f9a6795b8e7cef808aaf1e7c
-
-  return (
-    <div>
-      <div className="Nav__top">
-        <div className="header__top__left">
-          <Link to={"/"}>HOMETEK</Link>
-=======
->>>>>>> 6914a1284c24c7c7062cab78110cfe0c8d6c9600
         </div>
     )
 };
