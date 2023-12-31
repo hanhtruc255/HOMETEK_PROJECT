@@ -2,7 +2,6 @@ import React from "react";
 import classNames from "classnames";
 import styles from "./Footer.module.css";
 import { Link } from "react-router-dom";
-// import send from '../../assets/icons/icon-send.svg';
 import send from "../../Assets/icons/icon-send.svg";
 import FormButton from "../form-btn/FormButton";
 

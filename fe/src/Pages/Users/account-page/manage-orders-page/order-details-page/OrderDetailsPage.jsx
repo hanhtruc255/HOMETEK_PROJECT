@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import FormatPriceString from '../../../../../functions/FormatPriceString'
+
 import styles from "./OrderDetailsPage.module.css";
 const OrderDetailsPage = () => {
   const history = useNavigate();
@@ -89,7 +89,7 @@ const OrderDetailsPage = () => {
 
           <div className={styles.wrapperOrderDetail}>
             <div className={styles.detailName}>Ngày mua: </div>
-            <div className={styles.detailValue}>{orderData.createdAt}</div>
+            <div className={styles.detailValue}>28/11/2023</div>
           </div>
 
           <div className={styles.wrapperOrderDetail}>
@@ -99,9 +99,7 @@ const OrderDetailsPage = () => {
 
           <div className={styles.wrapperOrderDetail}>
             <div className={styles.detailName}>Tổng tiền: </div>
-            <div className={styles.detailValue}>
-              {FormatPriceString(orderData.finalAmount)}
-            </div>
+            <div className={styles.detailValue}>{orderData.finalAmount}</div>
           </div>
         </div>
         {orderData.orderStatus === "Chờ xác nhận" && (

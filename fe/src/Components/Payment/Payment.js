@@ -1,14 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsCartFill } from 'react-icons/bs';
 import { BsFillGeoAltFill } from 'react-icons/bs';
-import './Payment.scss'
+import './Payment.scss';
 import 'reactjs-popup/dist/index.css';
 import { BsTicketPerforatedFill } from "react-icons/bs";
-import Confirm from './Confirm';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 
 const Payment = () => {
+  const [searchParams] = useSearchParams();
+  const selectedItemsParam = searchParams.get('selectedItems');
+  const selectedItems = selectedItemsParam ? JSON.parse(decodeURIComponent(selectedItemsParam)) : [];
+  const decodedSelectedItems = selectedItemsParam ? decodeURIComponent(selectedItemsParam) : null;
+  const [totalAmount, setTotalAmount] = useState(0);
+
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
   const Modaladdress = () => {
@@ -44,9 +51,15 @@ const Payment = () => {
             </center>
         </div>
         </>
-    )
-    }
- 
+    )}
+    useEffect(() => {
+      const newTotalAmount = selectedItems.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+      setTotalAmount(newTotalAmount);
+    }, [selectedItems]);
+  
   return (
    
     <div className='Frame_Payment'>
@@ -68,11 +81,7 @@ const Payment = () => {
             {showModal && <Modaladdress closeModal={closeModal}/>}
           </>
 
-        
-
       </div>
-
-
       <div className='Payment_bottom'>
           <table>
               <thead>
@@ -85,13 +94,22 @@ const Payment = () => {
               </thead>
 
               <tbody>
-                {/* truyền data */}
-                <tr>
-                  <td>êffewf</td>
-                  <td>fwew</td>
-                  <td>ừef32w</td>
-                  <td>ừewf23</td>
-                </tr>
+                {/* push data */}
+                {selectedItems &&
+                  selectedItems.map((item, index) => (
+                    <tr key={item._id}>
+                      <td className='spec'>
+                        <p>{index + 1}</p>
+                        <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
+                        
+                        <b>{item.name}</b>
+                      </td>
+
+                      <td><b>{item.price}đ</b></td>
+                      <td>{item.quantity}</td>
+                      <td><b>{item.price * item.quantity}đ</b></td>
+                    </tr>
+                  ))}
               </tbody>
           </table>
           <div className='voucher'>
@@ -103,12 +121,12 @@ const Payment = () => {
               <p>Đơn vị vận chuyện</p> 
               <div>Giao hàng nhanh</div>
               <button>Thay đổi</button>
-              <div>(Tiền)</div>
+              <div>15000</div>
             <hr></hr>
             
           </div> 
           <div className='tongtien'>
-            <span>Tổng tiền:</span> ----Tiền---
+            <span>Tổng tiền: {totalAmount + 15000}đ</span>
           </div>
 
 
@@ -126,7 +144,7 @@ const Payment = () => {
               </div>
           
               <div className='money_right'>
-                <div>Tổng cộng:   <span>   ----
+                <div>Tổng cộng:  {totalAmount}đ <span>
                 </span>
                 </div>
                 <div>Phía vận chuyển:<span> -----

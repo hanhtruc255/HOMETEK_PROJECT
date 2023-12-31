@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { Slide } from "react-slideshow-image";
 import Slider from "react-slick";
-// Import Swiper React components
+
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -19,46 +19,37 @@ import "swiper/css/navigation";
 import { Pagination, Navigation, Scrollbar, FreeMode } from "swiper/modules";
 
 import "./HomePage.css";
-// import Product from '../../components/product/Product';
-import Product from "../../../Components/product/Product";
-// import banner from '../../assets/background/banner-1.png';
-import banner from "../../../Assets/background/banner-1.png";
-// import brandsImage from '../../assets/background/brands.png';
-import brandsImage from "../../../Assets/background/brands.png";
-// import SwiperBar from '../../components/swiper-bar/SwiperBar';
-import SwiperBar from "../../../Components/swiper-bar/SwiperBar";
-// import blogsImage from '../../assets/background/Blog.png';
-import blogsImage from "../../../Assets/background/Blog.png";
-// import BlogCard from '../../components/blog-card/BlogCard';
-import BlogCard from "../../../Components/blog-card/BlogCard";
-// import productData from '../../data_update/data/product.json';
 
-// import blogData from '../../data_update/data/blog.json';
-import blogData from "../../../data_update/data/blog.json";
-// import SwiperBackground from '../../components/swiper-background/SwiperBackground';
+import Product from "../../../Components/product/Product";
+
+import banner from "../../../Assets/background/banner-1.png";
+
+import brandsImage from "../../../Assets/background/brands.png";
+
+import SwiperBar from "../../../Components/swiper-bar/SwiperBar";
+
+import blogsImage from "../../../Assets/background/Blog.png";
+
+import BlogCard from "../../../Components/blog-card/BlogCard";
+
+// import blogData from "../../../data_update/data/blog.json";
+
 import SwiperBackground from "../../../Components/swiper-background/SwiperBackground";
 
-// import cupIcon from '../../assets/icons/cup.svg';
 import cupIcon from "../../../Assets/icons/cup.svg";
-// import handIcon from '../../assets/icons/hand.svg';
-import handIcon from "../../../Assets/icons/hand.svg";
-// import successIcon from '../../assets/icons/success.svg';
-import successIcon from "../../../Assets/icons/success.svg";
-// import assistantIcon from '../../assets/icons/assistant.svg';
-import assistantIcon from "../../../Assets/icons/assistant.svg";
 
-// import category1 from '../../assets/background/category1.png';
-// import category2 from '../../assets/background/category2.png';
-// import category3 from '../../assets/background/category3.png';
+import handIcon from "../../../Assets/icons/hand.svg";
+
+import successIcon from "../../../Assets/icons/success.svg";
+import assistantIcon from "../../../Assets/icons/assistant.svg";
 
 import category1 from "../../../Assets/background/category1.png";
 import category2 from "../../../Assets/background/category2.png";
 import category3 from "../../../Assets/background/category3.png";
 
-// import BlogsSwiper from '../../components/blogs-swiper/BlogsSwiper';
 import BlogsSwiper from "../../../Components/blogs-swiper/BlogsSwiper";
 import { AppContext } from "../layout/Layout";
-// import data from "../../../data_update/data/product.json";
+
 const HomePage = () => {
   const { setDisplayFooter } = useContext(AppContext);
   // const [loading, setLoading] = useState(true);

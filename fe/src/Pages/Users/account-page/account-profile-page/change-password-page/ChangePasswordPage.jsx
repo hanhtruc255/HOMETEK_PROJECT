@@ -54,6 +54,7 @@ const ChangePasswordPage = () => {
             alert("Đổi mật khẩu thành công!");
             history("/account/account-profile");
             // setIsAccountPopupVisible(true);
+
             // const accountModal = document.getElementById("account-modal");
             // const accountModalContainer = createRoot(accountModal);
             // accountModalContainer.render(<>Hello</>);

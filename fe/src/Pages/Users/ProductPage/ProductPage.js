@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import CategorySidebar from "../../../Components/Products/CategorySidebar";
-
 import "./styleproductpage.scss";
-import ListProducts from "../../../Components/Products/ListProducts";
+// import ListProducts from "../../../Components/Products/ListProducts";
 import Sort from "../../../Components/Products/Sort";
 
 const ProductPage = () => {
@@ -14,7 +13,7 @@ const ProductPage = () => {
       <Sort />
       <div className="Frame_Product">
         <CategorySidebar />
-        <ListProducts setCartItems={setCartItems} />
+        {/* <ListProducts setCartItems={setCartItems} /> */}
       </div>
     </div>
   );

@@ -1,15 +1,15 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import ProductPage from "./Pages/Users/ProductPage/ProductPage";
+import ProductPage from "./Pages/Users/ProductPage/ProductPage.js";
 import CartPage from "./Pages/Users/CartPage/CartPage";
 import DetailProductPage from "./Pages/Users/ProductPage/DetailProductPage";
-// import CatogoryPage from "./Pages/Users/ProductPage/CatogoryPage";
+import CatogoryPage from "./Pages/Users/ProductPage/CategoryPage.js";
 import PaymentSuccess from "./Components/Payment/PaymentSuccess";
 import PaymentMoney from "./Components/Payment/PaymentMoney";
 import Layout from "./Pages/Users/layout/Layout.jsx";
 import Contact from "./Pages/Users/contact/Contact.jsx";
-import BlogPage from "./Pages/Users/blog-page/BlogPage.jsx";
+// import BlogPage from "./Pages/Users/blog-page/BlogPage.jsx";
 
 // admin
 import DashBoard from "./Pages/Admin/Dashboard";
@@ -109,7 +109,7 @@ const App = () => {
             <Route path="about-us" element={<AboutUsPage />} />
             <Route path="/cua-hang" element={<ProductPage />} />
             <Route path="/cua-hang/:id" element={<DetailProductPage />} />
-            <Route path="/blog-page" element={<BlogPage />} />
+            {/* <Route path="/blog-page" element={<BlogPage />} /> */}
 
             {/* <Route path="/:category" element={<CatogoryPage />} /> */}
             <Route path="/:category/:id" element={<DetailProductPage />} />
