@@ -2,13 +2,9 @@ import React from "react";
 import { useState, createContext, useContext } from "react";
 import { Outlet } from "react-router-dom";
 import "./ForgetPasswordPage.css";
-// import '../../../styles/FormStyle.css';
 import "../../../../styles/FormStyle.css";
-// import WrapperModal from '../../../components/modals/WrapperModal';
 import WrapperModal from "../../../../Components/modals/WrapperModal";
-// import NotificationForm from '../../../components/form/notification-form/NotificationForm';
 import NotificationForm from "../../../../Components/form/notification-form/NotificationForm";
-// import xmark from '../../../assets/icons/xmark.svg';
 import xmark from "../../../../Assets/icons/xmark.svg";
 export const ForgetPasswordPageContext = createContext();
 const ForgetPasswordPage = () => {

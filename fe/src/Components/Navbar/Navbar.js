@@ -43,7 +43,7 @@ const Navbar = () => {
             </li>
             <li>
               {" "}
-              <Link to={"/dang-nhap"}>
+              <Link to={"/account/account-profile"}>
                 <BsPerson />
               </Link>
             </li>

@@ -5,23 +5,33 @@ import "./VerificationOtpForm.css";
 import FormButton from "../../form-btn/FormButton";
 // import { AppContext } from "../../../pages/layout/Layout";
 import { AppContext } from "../../../Pages/Users/layout/Layout";
-const VertificationOtpForm = ({
+import { SignUpPageContext } from "../../../Pages/Users/sign-up-page/SignUpPage";
+const VerificationOtpForm = ({
   smsOTP,
   nextPage,
   type = "signup",
   ...props
 }) => {
+  //call global state from Layout
   const {
     globalState,
     setGlobalState,
     setSignupStatus,
     enableSignupStatusModal,
   } = useContext(AppContext);
+
+  //call Sign up context
+  const { setFirebaseSignUpMsg } = useContext(SignUpPageContext);
+
+  //display the red text when user enter incorrect OTP
   const [incorrectOTPNotifyVisible, setIncorrectOTPNotifyVisible] =
     useState(false);
+
+  //handle input data when call this form
   var heading = props.heading.toUpperCase();
   var btnText = props.btnText;
 
+  //State for otp input of user
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [time, setTime] = useState(30);
   const [countdown, setCountdown] = useState(true);
@@ -43,11 +53,13 @@ const VertificationOtpForm = ({
     }
   }, [time]);
 
+  //handle function resend otp
   const handleClick = () => {
     setTime(30);
     setCountdown(true);
   };
 
+  //update current otp when user enter otp
   const handleInputChange = (e, index) => {
     const newOtp = [...otp];
     newOtp[index] = e.target.value;
@@ -59,32 +71,45 @@ const VertificationOtpForm = ({
     }
   };
 
+  //route
   const history = useNavigate();
+
+  //handle when send OTP to server
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (otp.join("") === smsOTP) {
-      setIncorrectOTPNotifyVisible(false);
-      if (type === "signup") {
-        setGlobalState({
-          ...globalState,
-          signupStatus: "success",
-          signupStatusModalVisible: true,
-        });
+
+    const confirmation = (otpInput) => {
+      if (window.confirmationResult) {
+        window.confirmationResult
+          .confirm(otpInput)
+          .then((result) => {
+            //Handle when OTP true
+            console.log("OTP: ", otp.join(""));
+            setIncorrectOTPNotifyVisible(false);
+            if (type === "signup") {
+              setFirebaseSignUpMsg(true);
+            }
+            history(nextPage);
+          })
+          .catch((error) => {
+            // User couldn't sign in (bad verification code?)
+            console.log("INVALID OTP");
+            console.log("CONFIRM OTP ERROR: ", error);
+            setFirebaseSignUpMsg(false);
+            if (type === "signup") {
+              setGlobalState({
+                ...globalState,
+                signupStatus: "error",
+                signupStatusModalVisible: true,
+              });
+            }
+            setIncorrectOTPNotifyVisible(true);
+            return;
+          });
       }
-      history(nextPage);
-    } else {
-      if (type === "signup") {
-        setGlobalState({
-          ...globalState,
-          signupStatus: "error",
-          signupStatusModalVisible: true,
-        });
-        // // setSignupStatus('error');
-        // enableSignupStatusModal();
-      }
-      setIncorrectOTPNotifyVisible(true);
-      return;
-    }
+    };
+
+    confirmation(otp.join(""));
   };
 
   return (
@@ -133,4 +158,4 @@ const VertificationOtpForm = ({
   );
 };
 
-export default VertificationOtpForm;
+export default VerificationOtpForm;

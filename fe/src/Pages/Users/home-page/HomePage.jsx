@@ -211,8 +211,8 @@ const HomePage = () => {
                     <Product
                       imgSrc={product.image}
                       productName={product.name}
-                      productPriceShow={product.price}
-                      productPriceThrough={product.sale_price}
+                      productPriceShow={product.sale_price}
+                      productPriceThrough={product.price}
                     />
                   </SwiperSlide>
                 );
@@ -231,8 +231,8 @@ const HomePage = () => {
                     <Product
                       imgSrc={product.image}
                       productName={product.name}
-                      productPriceShow={product.price}
-                      productPriceThrough={product.sale_price}
+                      productPriceShow={product.sale_price}
+                      productPriceThrough={product.price}
                     />
                   </SwiperSlide>
                 );

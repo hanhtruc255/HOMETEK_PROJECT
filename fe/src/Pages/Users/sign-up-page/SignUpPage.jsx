@@ -1,24 +1,19 @@
-import { React, useState, useContext, useEffect } from "react";
+import { React, useState, useContext, useEffect, createContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
+import auth from "../../../firebase-config/FirebaseConfig";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
 import "./SignUpPage.css";
-// import FormButton from '../../components/form-btn/FormButton';
 import FormButton from "../../../Components/form-btn/FormButton";
-// import RedirectLoginSignup from '../../components/redirect-login-signup/RedirectLoginSignup';
 import RedirectLoginSignup from "../../../Components/redirect-login-signup/RedirectLoginSignup";
-// import VertificationOtpForm from '../../components/form/verification-otp-form/VerificationOtpForm';
-import VertificationOtpForm from "../../../Components/form/verification-otp-form/VerificationOtpForm";
-// import WrapperModal from '../../components/modals/WrapperModal';
+import VerificationOtpForm from "../../../Components/form/verification-otp-form/VerificationOtpForm";
 import WrapperModal from "../../../Components/modals/WrapperModal";
-// import signupBackground from '../../assets/background/signup-background.png';
 import signupBackground from "../../../Assets/background/signup-background.png";
-// import { AppContext } from '../layout/Layout';
 import { AppContext } from "../layout/Layout";
-// import xmark from '../../assets/icons/xmark.svg';
 import xmark from "../../../Assets/icons/xmark.svg";
-// import NotificationForm from '../../components/form/notification-form/NotificationForm';
 import NotificationForm from "../../../Components/form/notification-form/NotificationForm";
-// import PasswordModal from '../../components/modals/password-modal/PasswordModal';
 import PasswordModal from "../../../Components/modals/password-modal/PasswordModal";
 import {
   CheckPasswordChars,
@@ -26,13 +21,22 @@ import {
   CheckPasswordFormat,
 } from "../../../functions/CheckPasswordFormat";
 
-// import CheckPhoneNumberFormat from '../../functions/CheckPhoneNumberFormat';
 import CheckPhoneNumberFormat from "../../../functions/CheckPhoneNumberFormat";
+
+//Call this function like this: SendOtp(phoneNumber) to send sms otp to phoneNumber
+import SendOtp from "../../../functions/SendOtp";
+
+//context of sign up page
+export const SignUpPageContext = createContext();
+
 const SignUpPage = () => {
+  //Display footer
   const { setDisplayFooter } = useContext(AppContext);
   useEffect(() => {
     setDisplayFooter(false);
   }, []);
+
+  //Call AppContext from Layout
   const {
     globalState,
     setGlobalState,
@@ -41,18 +45,23 @@ const SignUpPage = () => {
     disableSignupStatusModal,
   } = useContext(AppContext);
 
+  //State to show password notification modal
   const [isPasswordModalVisible, setIsPasswordModalVisible] = useState(false);
-  const [isConfirmPwdModalVisible, setIsConfirmPwdModalVisible] =
-    useState(false);
+
+  //data storage(store user input data)
   const [formData, setFormData] = useState({
     name: "",
     phoneNumber: "",
     password: "",
     confirmPassword: "",
     isReadTerms: false,
+    otpStatus: false,
   });
+
+  //state of formData(valid or invalid)
   const [formIsValid, setFormIsValid] = useState(false);
 
+  //Check formValid when formData change
   useEffect(() => {
     const conditions =
       CheckPasswordFormat(formData.password) &&
@@ -63,31 +72,80 @@ const SignUpPage = () => {
     setFormIsValid(conditions);
   }, [formData]);
 
+  //state to display error when user enter incorrect phone number format
   const [isPhoneNumberDirectionVisible, setIsPhoneNumberDirectionVisible] =
     useState(false);
+
+  //State to display error when user enter confirm password != password
   const [
-    isConfirmPassworDirectionVisible,
-    setIsConfirmPassworDirectionVisible,
+    siConfirmPasswordDirectionVisible,
+    setIsConfirmPasswordDirectionVisible,
   ] = useState(false);
 
-  const [isPassworDirectionVisible, setIsPassworDirectionVisible] =
+  //State to display error when user enter incorrect password format
+  const [isPasswordDirectionVisible, setIsPasswordDirectionVisible] =
     useState(false);
   const history = useNavigate();
 
-  const handleSubmit = (event) => {
+  //handle when click to send data to server
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(formData);
     if (!formIsValid) {
       alert("Form is not valid, please check your inputs.");
       return;
     } else {
-      enableOtpFormModalActive();
+      try {
+        await axios
+          .post("http://localhost:3001/register/findPhone", {
+            phone: formData.phoneNumber,
+          })
+          .then(() => {
+            console.log("CHECK PHONE SUCCESSFULLY");
+            SendOtp(formData.phoneNumber);
+            enableOtpFormModalActive();
+          });
+      } catch (error) {
+        const errorMsg = error.response.data.message;
+        alert(errorMsg);
+      }
     }
   };
 
+  const [firebaseSignUpMsg, setFirebaseSignUpMsg] = useState(false);
+
+  useEffect(() => {
+    async function fetchData() {
+      if (firebaseSignUpMsg) {
+        try {
+          await axios
+            .post("http://localhost:3001/register", {
+              userName: formData.name,
+              phone: formData.phoneNumber,
+              password: formData.password,
+              OTP: firebaseSignUpMsg,
+            })
+            .then(() => {
+              console.log("SIGN UP SUCCESSFULLY");
+              setGlobalState({
+                ...globalState,
+                signupStatus: "success",
+                signupStatusModalVisible: true,
+              });
+            });
+        } catch (error) {
+          const errorMsg = error.response.data.message;
+          alert(errorMsg);
+        }
+      }
+    }
+    fetchData();
+  }, [firebaseSignUpMsg]);
+
   return (
-    <>
+    <SignUpPageContext.Provider value={{ setFirebaseSignUpMsg }}>
       <div className="main-content">
+        <div id="recaptcha-container"></div>
         <div className="wrap-form">
           <div className="form-background">
             <img src={signupBackground} alt="signup background" />
@@ -163,9 +221,9 @@ const SignUpPage = () => {
                         password: newPassword,
                       });
                       if (!CheckPasswordFormat(newPassword)) {
-                        setIsPassworDirectionVisible(true);
+                        setIsPasswordDirectionVisible(true);
                       } else {
-                        setIsPassworDirectionVisible(false);
+                        setIsPasswordDirectionVisible(false);
                       }
                     }}
                     onFocus={() => {
@@ -176,7 +234,7 @@ const SignUpPage = () => {
                     }}
                   />
                   <label for="password">Nhập mật khẩu</label>
-                  {isPassworDirectionVisible && (
+                  {isPasswordDirectionVisible && (
                     <span className="notification-text">
                       Mật khẩu không hợp lệ
                     </span>
@@ -202,14 +260,14 @@ const SignUpPage = () => {
                         confirmPassword: newConfirmPassword,
                       });
                       if (newConfirmPassword === formData.password) {
-                        setIsConfirmPassworDirectionVisible(false);
+                        setIsConfirmPasswordDirectionVisible(false);
                       } else {
-                        setIsConfirmPassworDirectionVisible(true);
+                        setIsConfirmPasswordDirectionVisible(true);
                       }
                     }}
                   />
                   <label for="confirm-password">Nhập lại mật khẩu</label>
-                  {isConfirmPassworDirectionVisible && (
+                  {siConfirmPasswordDirectionVisible && (
                     <span className="notification-text">
                       Mật khẩu không khớp
                     </span>
@@ -259,7 +317,7 @@ const SignUpPage = () => {
           </form>
           {globalState.otpFormModalActive && (
             <WrapperModal className="otp-form-modal">
-              <VertificationOtpForm
+              <VerificationOtpForm
                 type="signup"
                 heading="Đăng ký"
                 btnText="Xác minh"
@@ -273,17 +331,16 @@ const SignUpPage = () => {
                 >
                   <img src={xmark} alt="xmark" />
                 </span>
-              </VertificationOtpForm>
+              </VerificationOtpForm>
             </WrapperModal>
           )}
         </div>
-
         {globalState.signupStatusModalVisible && (
           <WrapperModal className="otp-form-modal">
             <NotificationForm
               type={globalState.signupStatus === "error" ? "error" : "success"}
               btnText={
-                globalState.signupStatus === "error" ? "Gửi lại mã" : "Trở về"
+                globalState.signupStatus === "error" ? "Nhập lại" : "Trở về"
               }
               heading={
                 globalState.signupStatus === "error"
@@ -323,7 +380,7 @@ const SignUpPage = () => {
           </WrapperModal>
         )}
       </div>
-    </>
+    </SignUpPageContext.Provider>
   );
 };
 

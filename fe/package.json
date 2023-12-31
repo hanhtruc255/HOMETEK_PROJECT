@@ -13,6 +13,7 @@
     "bs-icon": "^0.0.6",
     "classnames": "^2.4.0",
     "cors": "^2.8.5",
+    "firebase": "^10.7.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-bootstrap-icons": "^1.10.3",

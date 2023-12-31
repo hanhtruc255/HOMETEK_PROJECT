@@ -86,6 +86,14 @@
   margin-top: 20px;
 }
 
+.addAddressBtn:hover {
+  filter: brightness(95%);
+}
+
+.addAddressBtn:active {
+  box-shadow: inset 0px 8px 8px -8px rgba(0, 0, 0, 0.3);
+}
+
 .footer {
   display: flex;
   padding: 10px 15px;
@@ -105,4 +113,8 @@
   background-color: white;
   color: #041e42;
   border: 1px solid #041e42;
+}
+
+.footer .cancelBtn:active {
+  box-shadow: inset 0px 8px 8px -8px rgba(0, 0, 0, 0.3);
 }

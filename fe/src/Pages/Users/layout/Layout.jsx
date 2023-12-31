@@ -12,6 +12,10 @@ const initalState = {
   notificationModalActive: false,
   otpFormModalActive: false,
   signupStatusModalVisible: false,
+  loginStatus: {
+    status: false,
+    userId: "",
+  },
 };
 
 const Layout = () => {

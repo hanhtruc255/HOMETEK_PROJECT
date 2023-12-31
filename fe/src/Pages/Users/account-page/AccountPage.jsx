@@ -28,7 +28,7 @@ const AccountPage = () => {
   const toggleIsAddressModalVisible = () => {
     setIsAddressModalVisible(!isAddressModalVisible);
   };
-
+  const [isAccountPopupVisible, setIsAccountPopupVisible] = useState(false);
   return (
     <AccountContext.Provider
       value={{
@@ -38,13 +38,20 @@ const AccountPage = () => {
         toggleIsAddressModalVisible,
         setIsAccountNotifyModalVisible,
         setAccountNotifyModalType,
+        setIsAccountPopupVisible,
       }}
     >
       <div className={styles.wrapperAccountPage}>
-        <SidebarAccount />
+        {isAccountPopupVisible && (
+          <WrapperModal id="account-modal"></WrapperModal>
+        )}
+        <div className={styles.wrapperSidebar}>
+          <SidebarAccount />
+        </div>
         <div className={styles.mainContent}>
           <Outlet />
         </div>
+        {/* Display the notify when  update new address success*/}
         {isAccountNotifyModalVisible && (
           <WrapperModal>
             <AccountModal
@@ -56,6 +63,8 @@ const AccountPage = () => {
             />
           </WrapperModal>
         )}
+
+        {/* This play list address popup */}
         {isAddressModalVisible && (
           <WrapperModal className="otp-form-modal">
             <ListAddressModal />

@@ -16,12 +16,12 @@ const listAddressSampleData = {
   otherAddresses: [
     {
       customerName: "Châm Anh",
-      deliveryAddress: "321 phạm văn đồng, phường 10, tp xxx",
+      deliveryAddress: "321 phạm văn đồng, phường 10, TP.Hồ Chí Minh",
       deliveryPhoneNumber: "0987654321",
     },
     {
       customerName: "Châm Anh",
-      deliveryAddress: "567 hồng bàng, phường 7, quận 5, tp xxx",
+      deliveryAddress: "567 hồng bàng, phường 7, quận 5, TP.Hồ CHí Minh",
       deliveryPhoneNumber: "0876543456",
     },
   ],

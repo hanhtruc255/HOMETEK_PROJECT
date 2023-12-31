@@ -46,8 +46,9 @@
 }
 
 .errorText {
-  font-size: 0.55em;
-  color: #919090;
+  font-size: 0.7em;
+  color: #041e42;
+  font-weight: 500;
   padding-bottom: 10px;
 }
 

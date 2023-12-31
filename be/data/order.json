@@ -1,14 +1,14 @@
-
- [
+[
   {
-    "orderId": "ORD245",
-    "orderStatus": "Đã giao hàng",
-    "deliveyInfor": {
+    "orderId": "ORD0001",
+    "orderStatus": "Hoàn tất",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
       "customerName": "Trần Anh Minh",
       "deliveryAddress": "699 Nguyễn Ảnh Thủ, Tân Chánh Hiệp, Quận 12, TPHCM",
       "deliveryPhoneNumber": "078322465"
     },
-    "_deliveryInforComment": "deliveyInfor lấy từ addresses",
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
     "paymentMethod": "Thanh toán khi nhận hàng",
     "orderProducts": [
       {
@@ -35,24 +35,25 @@
     "finalAmount": 365000
   },
   {
-    "orderId": "ORD235",
-    "orderStatus": "Chưa xác nhận",
-    "deliveyInfor": {
+    "orderId": "ORD0002",
+    "orderStatus": "Chờ xác nhận",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
       "customerName": "Trương Thị Tuyết Mai",
       "deliveryAddress": "33/3 đường số 1 phường 4 quận Gò Vâp TPHCM",
       "deliveryPhoneNumber": "0932660227"
     },
-    "_deliveryInforComment": "deliveyInfor lấy từ addresses",
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
     "paymentMethod": "Thanh toán khi nhận hàng",
     "orderProducts": [
       {
-          "productId": "NCKDE2",
-          "name": "Nồi chiên không dầu 5L Explore 6 NCKDE2",
-          "image": "https://i.ibb.co/gTLzM84/Electrolux-5-L-4-first.png",
-          "price": 3590000,
-          "sale_price": 2140000,
-          "quantity": 2,
-          "rating": {
+        "productId": "NCKDE2",
+        "name": "Nồi chiên không dầu 5L Explore 6 NCKDE2",
+        "image": "https://i.ibb.co/gTLzM84/Electrolux-5-L-4-first.png",
+        "price": 3590000,
+        "sale_price": 2140000,
+        "quantity": 2,
+        "rating": {
           "isRating": false,
           "_isRatingComment": "",
           "stars": "",
@@ -69,14 +70,15 @@
     "finalAmount": 4265000
   },
   {
-    "orderId": "ORD203",
-    "orderStatus": "Đã nhận hàng",
-    "deliveyInfor": {
+    "orderId": "ORD0003",
+    "orderStatus": "Chờ lấy hàng",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
       "customerName": "Trương Tú Anh",
       "deliveryAddress": "455 Lê Văn Thọ, Tân Chánh Hiệp, Quận 12, TPHCM",
       "deliveryPhoneNumber": "078322465"
     },
-    "_deliveryInforComment": "deliveyInfor lấy từ addresses",
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
     "paymentMethod": "Thanh toán khi nhận hàng",
     "orderProducts": [
       {
@@ -85,12 +87,12 @@
         "image": "https://i.ibb.co/876TrXK/CTTM-Life-Smart-1.png",
         "price": 2405000,
         "sale_price": 1850000,
-        "quantity": 1 ,
+        "quantity": 1,
         "rating": {
-          "isRating": true,
+          "isRating": false,
           "_isRatingComment": "",
-          "stars": 4.5,
-          "content": "Cảm ơn HOMETEK giao hàng rất nhanh, hỗ trợ cho tôi sử dụng rất tận tinh, 10 điểm"
+          "stars": 0,
+          "content": ""
         }
       },
       {
@@ -101,10 +103,10 @@
         "sale_price": 2000000,
         "quantity": 1,
         "rating": {
-          "isRating": true,
+          "isRating": false,
           "_isRatingComment": "",
-          "stars": 5,
-          "content": "Sản phẩm rất ưng ý, đáng lẽ tôi nên mua sớm hơn"
+          "stars": 0,
+          "content": ""
         }
       }
     ],
@@ -115,5 +117,558 @@
       "amount": 30000
     },
     "finalAmount": 3835000
+  },
+  {
+    "orderId": "ORD0004",
+    "orderStatus": "Đang vận chuyển",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trần Anh Minh",
+      "deliveryAddress": "699 Nguyễn Ảnh Thủ, Tân Chánh Hiệp, Quận 12, TPHCM",
+      "deliveryPhoneNumber": "078322465"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "MTB2",
+        "name": "Máy đựng sữa rửa tay tạo bọt Xiaomi X101",
+        "image": "https://i.ibb.co/QnhZvVV/Robot-ecovas-3-first.png",
+        "quantity": 2,
+        "price": 2260000,
+        "sale_price": 1900000,
+        "rating": {
+          "isRating": false,
+          "_isRatingComment": "",
+          "stars": 0,
+          "content": ""
+        }
+      }
+    ],
+    "totalAmount": 380000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 365000
+  },
+  {
+    "orderId": "ORD0005",
+    "orderStatus": "Hoàn tất",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trần Anh Minh",
+      "deliveryAddress": "699 Nguyễn Ảnh Thủ, Tân Chánh Hiệp, Quận 12, TPHCM",
+      "deliveryPhoneNumber": "078322465"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "MTB2",
+        "name": "Máy đựng sữa rửa tay tạo bọt Xiaomi X101",
+        "image": "https://i.ibb.co/QnhZvVV/Robot-ecovas-3-first.png",
+        "quantity": 2,
+        "price": 2260000,
+        "sale_price": 1900000,
+        "rating": {
+          "isRating": true,
+          "_isRatingComment": "Sản phẩm rất ưng ý, đáng lẽ tôi nên mua sớm hơn",
+          "stars": 4,
+          "content": "Sản phẩm rất ưng ý, đáng lẽ tôi nên mua sớm hơn"
+        }
+      }
+    ],
+    "totalAmount": 380000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 365000
+  },
+  {
+    "orderId": "ORD0006",
+    "orderStatus": "Đã hủy",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trương Thị Tuyết Mai",
+      "deliveryAddress": "33/3 đường số 1 phường 4 quận Gò Vâp TPHCM",
+      "deliveryPhoneNumber": "0932660227"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "NCKDE2",
+        "name": "Nồi chiên không dầu 5L Explore 6 NCKDE2",
+        "image": "https://i.ibb.co/gTLzM84/Electrolux-5-L-4-first.png",
+        "price": 3590000,
+        "sale_price": 2140000,
+        "quantity": 2,
+        "rating": {
+          "isRating": false,
+          "_isRatingComment": "",
+          "stars": "",
+          "content": ""
+        }
+      }
+    ],
+    "totalAmount": 4280000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 4265000
+  },
+  {
+    "orderId": "ORD0007",
+    "orderStatus": "Hoàn tất",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trần Anh Minh",
+      "deliveryAddress": "699 Nguyễn Ảnh Thủ, Tân Chánh Hiệp, Quận 12, TPHCM",
+      "deliveryPhoneNumber": "078322465"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "MTB2",
+        "name": "Máy đựng sữa rửa tay tạo bọt Xiaomi X101",
+        "image": "https://i.ibb.co/QnhZvVV/Robot-ecovas-3-first.png",
+        "quantity": 2,
+        "price": 2260000,
+        "sale_price": 1900000,
+        "rating": {
+          "isRating": true,
+          "_isRatingComment": "Sản phẩm rất ưng ý, đáng lẽ tôi nên mua sớm hơn",
+          "stars": 4,
+          "content": "Sản phẩm rất ưng ý, đáng lẽ tôi nên mua sớm hơn"
+        }
+      }
+    ],
+    "totalAmount": 380000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 365000
+  },
+  {
+    "orderId": "ORD0008",
+    "orderStatus": "Chờ xác nhận",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trương Thị Tuyết Mai",
+      "deliveryAddress": "33/3 đường số 1 phường 4 quận Gò Vâp TPHCM",
+      "deliveryPhoneNumber": "0932660227"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "NCKDE2",
+        "name": "Nồi chiên không dầu 5L Explore 6 NCKDE2",
+        "image": "https://i.ibb.co/gTLzM84/Electrolux-5-L-4-first.png",
+        "price": 3590000,
+        "sale_price": 2140000,
+        "quantity": 2,
+        "rating": {
+          "isRating": false,
+          "_isRatingComment": "",
+          "stars": "",
+          "content": ""
+        }
+      }
+    ],
+    "totalAmount": 4280000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 4265000
+  },
+  {
+    "orderId": "ORD0009",
+    "orderStatus": "Chờ lấy hàng",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trương Tú Anh",
+      "deliveryAddress": "455 Lê Văn Thọ, Tân Chánh Hiệp, Quận 12, TPHCM",
+      "deliveryPhoneNumber": "078322465"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "CTTM2",
+        "name": "Công tắc cảm ứng LifeSmart Nature Switch CTTM2",
+        "image": "https://i.ibb.co/876TrXK/CTTM-Life-Smart-1.png",
+        "price": 2405000,
+        "sale_price": 1850000,
+        "quantity": 1,
+        "rating": {
+          "isRating": false,
+          "_isRatingComment": "",
+          "stars": 0,
+          "content": ""
+        }
+      },
+      {
+        "productId": "LTM2",
+        "name": "Loa thông minh Google Home",
+        "image": "https://i.ibb.co/GQYHTv9/LTM-Google-1.jpg",
+        "price": 2260000,
+        "sale_price": 2000000,
+        "quantity": 1,
+        "rating": {
+          "isRating": false,
+          "_isRatingComment": "",
+          "stars": 0,
+          "content": ""
+        }
+      }
+    ],
+    "totalAmount": 3850000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 3835000
+  },
+  {
+    "orderId": "ORD0010",
+    "orderStatus": "Đang vận chuyển",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trần Anh Minh",
+      "deliveryAddress": "699 Nguyễn Ảnh Thủ, Tân Chánh Hiệp, Quận 12, TPHCM",
+      "deliveryPhoneNumber": "078322465"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "MTB2",
+        "name": "Máy đựng sữa rửa tay tạo bọt Xiaomi X101",
+        "image": "https://i.ibb.co/QnhZvVV/Robot-ecovas-3-first.png",
+        "quantity": 2,
+        "price": 2260000,
+        "sale_price": 1900000,
+        "rating": {
+          "isRating": false,
+          "_isRatingComment": "",
+          "stars": 0,
+          "content": ""
+        }
+      }
+    ],
+    "totalAmount": 380000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 365000
+  },
+  {
+    "orderId": "ORD0011",
+    "orderStatus": "Hoàn tất",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trần Anh Minh",
+      "deliveryAddress": "699 Nguyễn Ảnh Thủ, Tân Chánh Hiệp, Quận 12, TPHCM",
+      "deliveryPhoneNumber": "078322465"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "MTB2",
+        "name": "Máy đựng sữa rửa tay tạo bọt Xiaomi X101",
+        "image": "https://i.ibb.co/QnhZvVV/Robot-ecovas-3-first.png",
+        "quantity": 2,
+        "price": 2260000,
+        "sale_price": 1900000,
+        "rating": {
+          "isRating": true,
+          "_isRatingComment": "Sản phẩm rất ưng ý, đáng lẽ tôi nên mua sớm hơn",
+          "stars": 4,
+          "content": "Sản phẩm rất ưng ý, đáng lẽ tôi nên mua sớm hơn"
+        }
+      }
+    ],
+    "totalAmount": 380000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 365000
+  },
+  {
+    "orderId": "ORD0012",
+    "orderStatus": "Đã hủy",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trương Thị Tuyết Mai",
+      "deliveryAddress": "33/3 đường số 1 phường 4 quận Gò Vâp TPHCM",
+      "deliveryPhoneNumber": "0932660227"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "NCKDE2",
+        "name": "Nồi chiên không dầu 5L Explore 6 NCKDE2",
+        "image": "https://i.ibb.co/gTLzM84/Electrolux-5-L-4-first.png",
+        "price": 3590000,
+        "sale_price": 2140000,
+        "quantity": 2,
+        "rating": {
+          "isRating": false,
+          "_isRatingComment": "",
+          "stars": "",
+          "content": ""
+        }
+      }
+    ],
+    "totalAmount": 4280000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 4265000
+  },
+  {
+    "orderId": "ORD0013",
+    "orderStatus": "Hoàn tất",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trần Anh Minh",
+      "deliveryAddress": "699 Nguyễn Ảnh Thủ, Tân Chánh Hiệp, Quận 12, TPHCM",
+      "deliveryPhoneNumber": "078322465"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "MTB2",
+        "name": "Máy đựng sữa rửa tay tạo bọt Xiaomi X101",
+        "image": "https://i.ibb.co/QnhZvVV/Robot-ecovas-3-first.png",
+        "quantity": 2,
+        "price": 2260000,
+        "sale_price": 1900000,
+        "rating": {
+          "isRating": true,
+          "_isRatingComment": "Sản phẩm rất ưng ý, đáng lẽ tôi nên mua sớm hơn",
+          "stars": 4,
+          "content": "Sản phẩm rất ưng ý, đáng lẽ tôi nên mua sớm hơn"
+        }
+      }
+    ],
+    "totalAmount": 380000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 365000
+  },
+  {
+    "orderId": "ORD0014",
+    "orderStatus": "Chờ xác nhận",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trương Thị Tuyết Mai",
+      "deliveryAddress": "33/3 đường số 1 phường 4 quận Gò Vâp TPHCM",
+      "deliveryPhoneNumber": "0932660227"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "NCKDE2",
+        "name": "Nồi chiên không dầu 5L Explore 6 NCKDE2",
+        "image": "https://i.ibb.co/gTLzM84/Electrolux-5-L-4-first.png",
+        "price": 3590000,
+        "sale_price": 2140000,
+        "quantity": 2,
+        "rating": {
+          "isRating": false,
+          "_isRatingComment": "",
+          "stars": "",
+          "content": ""
+        }
+      }
+    ],
+    "totalAmount": 4280000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 4265000
+  },
+  {
+    "orderId": "ORD0015",
+    "orderStatus": "Chờ lấy hàng",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trương Tú Anh",
+      "deliveryAddress": "455 Lê Văn Thọ, Tân Chánh Hiệp, Quận 12, TPHCM",
+      "deliveryPhoneNumber": "078322465"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "CTTM2",
+        "name": "Công tắc cảm ứng LifeSmart Nature Switch CTTM2",
+        "image": "https://i.ibb.co/876TrXK/CTTM-Life-Smart-1.png",
+        "price": 2405000,
+        "sale_price": 1850000,
+        "quantity": 1,
+        "rating": {
+          "isRating": false,
+          "_isRatingComment": "",
+          "stars": 0,
+          "content": ""
+        }
+      },
+      {
+        "productId": "LTM2",
+        "name": "Loa thông minh Google Home",
+        "image": "https://i.ibb.co/GQYHTv9/LTM-Google-1.jpg",
+        "price": 2260000,
+        "sale_price": 2000000,
+        "quantity": 1,
+        "rating": {
+          "isRating": false,
+          "_isRatingComment": "",
+          "stars": 0,
+          "content": ""
+        }
+      }
+    ],
+    "totalAmount": 3850000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 3835000
+  },
+  {
+    "orderId": "ORD0016",
+    "orderStatus": "Đang vận chuyển",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trần Anh Minh",
+      "deliveryAddress": "699 Nguyễn Ảnh Thủ, Tân Chánh Hiệp, Quận 12, TPHCM",
+      "deliveryPhoneNumber": "078322465"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "MTB2",
+        "name": "Máy đựng sữa rửa tay tạo bọt Xiaomi X101",
+        "image": "https://i.ibb.co/QnhZvVV/Robot-ecovas-3-first.png",
+        "quantity": 2,
+        "price": 2260000,
+        "sale_price": 1900000,
+        "rating": {
+          "isRating": false,
+          "_isRatingComment": "",
+          "stars": 0,
+          "content": ""
+        }
+      }
+    ],
+    "totalAmount": 380000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 365000
+  },
+  {
+    "orderId": "ORD0017",
+    "orderStatus": "Hoàn tất",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trần Anh Minh",
+      "deliveryAddress": "699 Nguyễn Ảnh Thủ, Tân Chánh Hiệp, Quận 12, TPHCM",
+      "deliveryPhoneNumber": "078322465"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "MTB2",
+        "name": "Máy đựng sữa rửa tay tạo bọt Xiaomi X101",
+        "image": "https://i.ibb.co/QnhZvVV/Robot-ecovas-3-first.png",
+        "quantity": 2,
+        "price": 2260000,
+        "sale_price": 1900000,
+        "rating": {
+          "isRating": true,
+          "_isRatingComment": "Sản phẩm rất ưng ý, đáng lẽ tôi nên mua sớm hơn",
+          "stars": 4,
+          "content": "Sản phẩm rất ưng ý, đáng lẽ tôi nên mua sớm hơn"
+        }
+      }
+    ],
+    "totalAmount": 380000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 365000
+  },
+  {
+    "orderId": "ORD0018",
+    "orderStatus": "Đã hủy",
+    "createdAt": "20/12/2023",
+    "deliveryInfor": {
+      "customerName": "Trương Thị Tuyết Mai",
+      "deliveryAddress": "33/3 đường số 1 phường 4 quận Gò Vâp TPHCM",
+      "deliveryPhoneNumber": "0932660227"
+    },
+    "_deliveryInforComment": "deliveryInfor lấy từ addresses",
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "orderProducts": [
+      {
+        "productId": "NCKDE2",
+        "name": "Nồi chiên không dầu 5L Explore 6 NCKDE2",
+        "image": "https://i.ibb.co/gTLzM84/Electrolux-5-L-4-first.png",
+        "price": 3590000,
+        "sale_price": 2140000,
+        "quantity": 2,
+        "rating": {
+          "isRating": false,
+          "_isRatingComment": "",
+          "stars": "",
+          "content": ""
+        }
+      }
+    ],
+    "totalAmount": 4280000,
+    "shippingFee": 15000,
+    "voucher": {
+      "voucherCode": "V1",
+      "amount": 30000
+    },
+    "finalAmount": 4265000
   }
 ]

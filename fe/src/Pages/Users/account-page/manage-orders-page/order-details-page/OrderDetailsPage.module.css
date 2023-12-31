@@ -1,6 +1,7 @@
 .wrapperOrderDetailsPage {
   width: 100%;
   line-height: 1.3;
+  color: #041e42;
 }
 
 .wrapperOrderDetails {
@@ -58,6 +59,7 @@
 .shippingInforItem .heading {
   border-bottom: 1px solid black;
   padding: 10px 20px 0 20px;
+  font-weight: 500;
 }
 
 .shippingInforItem .wrapperShippingInforContent {
@@ -67,7 +69,7 @@
   width: 100%;
   min-width: 290px;
   width: 100%;
-  background-color: #f2f2f2;
+  background-color: #f5f5f5;
   padding-bottom: 10px;
 }
 
@@ -106,4 +108,19 @@
 .wrapperBillDetail .detailValue {
   min-width: 100px;
   text-align: end;
+}
+
+.col1,
+.col4,
+.col5,
+.col6 {
+  width: calc(1 / 7 * 100%);
+}
+
+.col2 {
+  width: calc(1.8 / 7 * 100%);
+}
+
+.col3 {
+  width: calc(1.2 / 7 * 100%);
 }
