@@ -175,7 +175,7 @@ const Navbar = () => {
 
             <li>
               {" "}
-              <Link to="/blog">Blog</Link>{" "}
+              <Link to="/blog-page">Blog</Link>{" "}
             </li>
             <li>
               {" "}

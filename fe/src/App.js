@@ -9,7 +9,8 @@ import PaymentSuccess from "./Components/Payment/PaymentSuccess";
 import PaymentMoney from "./Components/Payment/PaymentMoney";
 import Layout from "./Pages/Users/layout/Layout.jsx";
 import Contact from "./Pages/Users/contact/Contact.jsx";
-// import BlogPage from "./Pages/Users/blog-page/BlogPage.jsx";
+import BlogPage from "./Pages/Users/blog-page/BlogPage.jsx";
+import BlogDetailPage from "./Pages/Users/blog-page/BlogDetailPage.jsx"
 
 // admin
 import DashBoard from "./Pages/Admin/Dashboard";
@@ -105,6 +106,8 @@ const App = () => {
             <Route path="/cua-hang" element={<ProductPage />} />
             <Route path="/cua-hang/:id" element={<DetailProductPage />} />
             {/* <Route path="/blog-page" element={<BlogPage />} /> */}
+            <Route path="/blog-page" element={<BlogPage />} />
+            <Route path="/blog-page/:blogId" element={<BlogDetailPage />} />
 
             {/* <Route path="/:category" element={<CatogoryPage />} /> */}
             <Route path="/:category/:id" element={<DetailProductPage />} />
