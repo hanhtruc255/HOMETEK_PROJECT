@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const customerSchema = new Schema({
     LoginStatus:{ 
         type: Boolean,
-        default: false,},
+        default: false},
     userId: {
         type: String,
         unique:true},
@@ -22,7 +22,7 @@ const customerSchema = new Schema({
         default: ""},
     address:{
         type: String,
-        default: ''},
+        default: ''}
 })
 
 const Cust=mongoose.model("customers", customerSchema)

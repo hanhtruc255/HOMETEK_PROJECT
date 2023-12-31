@@ -37,33 +37,22 @@ async function  getAllCustomer (req,res){
     }
 }
 
-// xóa 1 hoặc nhiều khách theo điều kiện
-async function deleteCustomers(req, res) {
+// xóa customer
+async function deleteCustomer(req, res) {
+    const customerId = req.params.id; // Lấy id khách hàng từ request params
+  
     try {
-        const customerId = req.params.userId; // Lấy id khách hàng từ request params
-        const condition = { Name: req.body.Name }; // Điều kiện xóa, ví dụ là xóa nhiều khách có tên này
-
-        let result;
-        if (customerId) {
-        // Xóa một khách hàng dựa trên ID
-        const deletedCustomer = await Cust.findByIdAndDelete(customerId);
-        if (!deletedCustomer) {
-            return res.status(404).json({ error: 'The customer does not exist' });
-        }
-        result = deletedCustomer;
-        } else {
-        // Xóa nhiều khách hàng dựa trên điều kiện, kiểu xóa khách tên a, sdt 3123123 j đó
-        result = await Cust.deleteMany(condition);
-        if (result.deletedCount === 0) {
-            return res.status(404).json({ error: 'No customers have been deleted' });
-        }
-        }
-
-        res.json({ message: 'Delete successfully', result });
+      const deletedCustomer = await Cust.findByIdAndDelete(customerId); // Tìm và xóa khách hàng theo id
+  
+      if (!deletedCustomer) {
+        return res.status(404).json({ error: 'The customer does not exist' });
+      }
+  
+      res.json({ message: 'Delete successfully' });
     } catch (error) {
-        res.status(500).json({ error: 'Something went wrong! Can not delete the customer(s)' });
+      res.status(500).json({ error: 'Something went wrong! Can not delete this customer' });
     }
-}
+  }
 
 // Hàm sửa đổi dữ liệu khách hàng
 async function updateCustomer(req, res) {
@@ -140,8 +129,7 @@ module.exports={
     searchCustomers,
     getCustomerCount,
     getAllCustomer, 
-    deleteCustomers, 
+    deleteCustomer, 
     updateCustomer,
     changePassword,
-    // getCustData
 }
