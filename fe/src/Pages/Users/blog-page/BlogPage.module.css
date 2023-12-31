@@ -1,0 +1,63 @@
+
+.Banner {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+  }
+.img1{
+    justify-content: center;
+    text-align: center;
+    width: 85%;
+    margin: auto;
+}
+.text1{
+    margin: 30px 0 30px 0;
+    text-align: center;
+    color: #041E42;
+}
+
+/* Responsive Styles for Tablet */
+@media screen and (min-width: 431) and (max-width: 768px) {
+    .Banner{
+        padding: 10px 20px 0 20px;
+    }
+    .img1 {
+      height: 100px;
+      width: 90%; 
+    }
+  
+    .text1 {
+      font-size: 26px; 
+    }
+  }
+/* Responsive Styles for Tablet */
+@media screen  and (min-width: 769px) and (max-width: 1024px) {
+    .Banner{
+        padding: 10px 25px 0 25px;
+    }
+    .img1 {
+      width: 90%; 
+    }
+  
+    .text1 {
+      font-size: 29px; 
+    }
+  }
+  
+  /* Responsive Styles for iPhone */
+  @media screen and (max-width: 430px) {
+    .Banner{
+        padding: 10px 20px 0 20px;
+    }
+    .img1 {
+      height: 150px;
+      width: 90%; 
+    }
+  
+    .text1 {
+      font-size: 26px; 
+  }
+}
