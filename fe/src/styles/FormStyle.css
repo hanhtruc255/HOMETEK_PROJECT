@@ -12,6 +12,7 @@
   justify-content: space-evenly;
   height: 100%;
   align-items: center;
+  box-sizing: border-box !important;
 }
 
 .form-background {
@@ -25,11 +26,12 @@
 
 .form {
   height: fit-content;
-  padding: 30px 50px;
+  padding: 30px 50px !important;
   box-sizing: border-box;
   text-align: center;
   background-color: white;
   border-radius: 7px;
+  margin: 20px 0 !important;
 }
 
 .form__content {

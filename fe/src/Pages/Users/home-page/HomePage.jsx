@@ -48,6 +48,7 @@ import category2 from "../../../Assets/background/category2.png";
 import category3 from "../../../Assets/background/category3.png";
 
 import BlogsSwiper from "../../../Components/blogs-swiper/BlogsSwiper";
+import WrapperModal from "../../../Components/modals/WrapperModal";
 import { AppContext } from "../layout/Layout";
 
 const HomePage = () => {
@@ -216,18 +217,16 @@ const HomePage = () => {
           <div className="heading">GỢI Ý CHO BẠN</div>
           <SwiperBar>
             {productsData.map((product) => {
-              if (product.note === "Sản phẩm bán chạy") {
-                return (
-                  <SwiperSlide>
-                    <Product
-                      imgSrc={product.image}
-                      productName={product.name}
-                      productPriceShow={product.sale_price}
-                      productPriceThrough={product.price}
-                    />
-                  </SwiperSlide>
-                );
-              }
+              return (
+                <SwiperSlide>
+                  <Product
+                    imgSrc={product.image}
+                    productName={product.name}
+                    productPriceShow={product.sale_price}
+                    productPriceThrough={product.price}
+                  />
+                </SwiperSlide>
+              );
             })}
           </SwiperBar>
         </div>

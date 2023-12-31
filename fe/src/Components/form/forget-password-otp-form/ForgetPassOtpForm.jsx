@@ -1,24 +1,8 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import "./VerificationOtpForm.css";
 import FormButton from "../../form-btn/FormButton";
-// import { AppContext } from "../../../pages/layout/Layout";
-import { AppContext } from "../../../Pages/Users/layout/Layout";
-import { SignUpPageContext } from "../../../Pages/Users/sign-up-page/SignUpPage";
-const VerificationOtpForm = ({ smsOTP, nextPage, type, ...props }) => {
-  //call global state from Layout
-  const {
-    globalState,
-    setGlobalState,
-    setSignupStatus,
-    enableSignupStatusModal,
-  } = useContext(AppContext);
-
-  //call Sign up context
-
-  const { setFirebaseSignUpMsg } = useContext(SignUpPageContext);
-
+const ForgetPassOtpForm = ({ smsOTP, nextPage, type, ...props }) => {
   //display the red text when user enter incorrect OTP
   const [incorrectOTPNotifyVisible, setIncorrectOTPNotifyVisible] =
     useState(false);
@@ -67,9 +51,6 @@ const VerificationOtpForm = ({ smsOTP, nextPage, type, ...props }) => {
     }
   };
 
-  //route
-  const history = useNavigate();
-
   //handle when send OTP to server
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -82,22 +63,11 @@ const VerificationOtpForm = ({ smsOTP, nextPage, type, ...props }) => {
             //Handle when OTP true
             console.log("OTP: ", otp.join(""));
             setIncorrectOTPNotifyVisible(false);
-            if (type === "signup") {
-              setFirebaseSignUpMsg(true);
-            }
           })
           .catch((error) => {
             // User couldn't sign in (bad verification code?)
             console.log("INVALID OTP");
             console.log("CONFIRM OTP ERROR: ", error);
-            setFirebaseSignUpMsg(false);
-            if (type === "signup") {
-              setGlobalState({
-                ...globalState,
-                signupStatus: "error",
-                signupStatusModalVisible: true,
-              });
-            }
             setIncorrectOTPNotifyVisible(true);
             return;
           });
@@ -153,4 +123,4 @@ const VerificationOtpForm = ({ smsOTP, nextPage, type, ...props }) => {
   );
 };
 
-export default VerificationOtpForm;
+export default ForgetPassOtpForm;

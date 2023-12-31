@@ -39,24 +39,21 @@ const LoginPage = () => {
         })
         .then((res) => {
           if (res) {
+            setNotificationModalActive(true);
             const userId = res.data.userId;
-            setGlobalState({
-              ...globalState,
-              loginStatus: { status: true, userId: userId },
-            });
-            history("/");
+            window.localStorage.setItem("userId", userId);
+            window.localStorage.setItem("isLoggedIn", true);
           }
-
           console.log("LOGIN SUCCESSFULLY");
           setLoginStatus("success");
         });
     } catch (error) {
       console.log("ERROR: ", error);
       setLoginStatus("error");
+      setNotificationModalActive(true);
     }
-
-    setNotificationModalActive(true);
   };
+
   return (
     <div className="main-content">
       <div className="wrap-form">

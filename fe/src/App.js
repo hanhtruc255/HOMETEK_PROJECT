@@ -48,6 +48,7 @@ import ManageOrdersTable from "./Pages/Users/account-page/manage-orders-page/man
 import OrderDetailsPage from "./Pages/Users/account-page/manage-orders-page/order-details-page/OrderDetailsPage.jsx";
 import RatingOrderPage from "./Pages/Users/account-page/manage-orders-page/order-details-page/rating-order-page/RatingOrderPage.jsx";
 import AssistsPage from "./Pages/Users/account-page/assists-page/AssistsPage.jsx";
+import ForgetPassOtpForm from "./Components/form/forget-password-otp-form/ForgetPassOtpForm.jsx";
 const App = () => {
   return (
     <div>
@@ -62,15 +63,9 @@ const App = () => {
               <Route index element={<SendOtpForm />} />
               <Route path="send-otp" element={<SendOtpForm />} />
               <Route
-                path="vertify-otp"
+                path="verify-otp"
                 element={
-                  <VerificationOtpForm
-                    type="forgetPassword"
-                    heading="Phục hồi mật khẩu"
-                    btnText="Xác minh"
-                    smsOTP={"123456"}
-                    nextPage={"/forget-password/password-recovery"}
-                  />
+                  <ForgetPassOtpForm heading={"Nhập OTP"} btnText="Xác minh" />
                 }
               />
               <Route
@@ -102,7 +97,7 @@ const App = () => {
                   element={<RatingOrderPage />}
                 />
               </Route>
-              <Route path="assits" element={<AssistsPage />} />
+              <Route path="assist" element={<AssistsPage />} />
             </Route>
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<PageNotFound />} />

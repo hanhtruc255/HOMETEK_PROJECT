@@ -4,7 +4,9 @@ import Navbar from "../../../Components/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
 // import Footer from "../../components/footer/Footer";
 import Footer from "../../../Components/footer/Footer";
-
+import WrapperModal from "../../../Components/modals/WrapperModal";
+import AccountModal from "../../../Components/modals/account-modal/AccountModal";
+import Logout from "../../../functions/Logout";
 export const AppContext = createContext();
 
 const initalState = {
@@ -12,10 +14,6 @@ const initalState = {
   notificationModalActive: false,
   otpFormModalActive: false,
   signupStatusModalVisible: false,
-  loginStatus: {
-    status: false,
-    userId: "",
-  },
 };
 
 const Layout = () => {
@@ -53,6 +51,7 @@ const Layout = () => {
     console.log("globalState:", globalState);
   }, [globalState]);
   const [displayFooter, setDisplayFooter] = useState(true);
+  const [displayNotifyPopup, setDisplayNotifyPopup] = useState(false);
   return (
     <AppContext.Provider
       value={{
@@ -64,9 +63,26 @@ const Layout = () => {
         disableSignupStatusModal,
         setSignupStatus,
         setDisplayFooter,
+        setDisplayNotifyPopup,
       }}
     >
       <Navbar />
+      {displayNotifyPopup && (
+        <WrapperModal>
+          <AccountModal
+            mainBtnText={"Đăng xuất"}
+            secondaryBtnText={"Hủy"}
+            headingText={"Xác nhận rằng bạn muốn đăng xuất!"}
+            handleClickMainBtn={() => {
+              Logout();
+              setDisplayNotifyPopup(false);
+            }}
+            handleClickSecondaryBtn={() => {
+              setDisplayNotifyPopup(false);
+            }}
+          />
+        </WrapperModal>
+      )}
       <Outlet />
       {displayFooter && <Footer />}
     </AppContext.Provider>

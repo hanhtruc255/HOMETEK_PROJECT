@@ -12,6 +12,10 @@ router.get("/account", customer.getAllCustomer);
 
 router.post("/login", account.login);
 router.post("/register/findPhone", account.findPhoneNumber); // cái này để tìm sdt nè, chỉ nhận giá trị phone thôi
+
+//Dùng để kiểm tra có tồn tại sdt không
+router.post("/login/existedPhone", account.existedPhoneNumber);
+
 router.post("/register", account.register);
 
 router.delete("/customer/:userId", customer.deleteCustomer);

@@ -1,5 +1,5 @@
 import { React, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import styles from "./AccountProfile.module.css";
 // import FormButton from '../../../../components/form-btn/FormButton';
@@ -9,7 +9,11 @@ import rewriteIcon from "../../../../../Assets/icons/rewrite.svg";
 // import { AccountContext } from '../../AccountPage';
 import { AccountContext } from "../../AccountPage";
 import { useContext } from "react";
+import SendOtp from "../../../../../functions/SendOtp";
+
+import axios from "axios";
 const AccountProfile = () => {
+  const history = useNavigate();
   const { isAddressModalVisible, toggleIsAddressModalVisible } =
     useContext(AccountContext);
   const [disabledNameField, setDisabledNameField] = useState(true);
@@ -150,7 +154,24 @@ const AccountProfile = () => {
               value={formData.password}
               disabled={true}
             />
-            <Link to="change-password">
+            <Link
+              onClick={async () => {
+                try {
+                  await axios
+                    .get("http://localhost:3001/account/search", {
+                      params: { userId: window.localStorage.getItem("userId") },
+                    })
+                    .then((res) => {
+                      console.log("CHECK USER SUCCESSFULLY");
+                      console.log("res: ", res);
+                      history("/account/account-profile/change-password");
+                    });
+                } catch (error) {
+                  const errorMsg = error.response.data.message;
+                  alert(errorMsg);
+                }
+              }}
+            >
               <img
                 src={rewriteIcon}
                 alt="rewrite-icon"

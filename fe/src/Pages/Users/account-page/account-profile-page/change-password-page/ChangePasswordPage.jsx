@@ -42,7 +42,9 @@ const ChangePasswordPage = () => {
       try {
         await axios
           .patch(
-            `http://localhost:3001/customer/change/${globalState.loginStatus.userId}`,
+            `http://localhost:3001/customer/change/${window.localStorage.getItem(
+              "userId"
+            )}`,
             {
               oldPassword: changePasswordData.currentPassword,
               newPassword: changePasswordData.newPassword,

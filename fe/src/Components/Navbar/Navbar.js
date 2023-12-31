@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Navbar.scss";
 import { BsHeart } from "react-icons/bs";
 import { BsCart3 } from "react-icons/bs";
@@ -8,8 +8,10 @@ import { Link } from "react-router-dom";
 import { BsTruck } from "react-icons/bs";
 import "./Responsive.scss";
 import { BsChevronDown } from "react-icons/bs";
-
+import "./UserDropdownMenu.css";
+import { AppContext } from "../../Pages/Users/layout/Layout";
 const Navbar = () => {
+  const { setDisplayNotifyPopup } = useContext(AppContext);
   return (
     <div>
       <div className="Nav__top">
@@ -37,11 +39,66 @@ const Navbar = () => {
                 <BsCart3 />
               </Link>
             </li>
-            <li>
+            <li className="wrap-user-dropdown">
               {" "}
-              <Link to={"/login"}>
+              <Link
+                to={
+                  window.localStorage.getItem("isLoggedIn")
+                    ? "/account/account-profile"
+                    : "/login"
+                }
+              >
                 <BsPerson />
               </Link>
+              {window.localStorage.getItem("isLoggedIn") && (
+                <ul className="acc-dropdown in-acc-dropdown">
+                  <li>
+                    <Link
+                      to={"/account/account-profile"}
+                      className="dropdown-link"
+                    >
+                      Tài khoản của tôi
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to={"/account/orders-management/list-orders"}
+                      className="dropdown-link"
+                    >
+                      Quản lý đơn hàng
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/account/assist"} className="dropdown-link">
+                      Hỗ trợ
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="dropdown-link"
+                      onClick={() => {
+                        setDisplayNotifyPopup(true);
+                      }}
+                    >
+                      Đăng xuất
+                    </Link>
+                  </li>
+                </ul>
+              )}
+              {!window.localStorage.getItem("isLoggedIn") && (
+                <ul className="acc-dropdown out-acc-dropdown">
+                  <li>
+                    <Link to={"/login"} className="dropdown-link">
+                      Đăng nhập
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/signup"} className="dropdown-link">
+                      Đăng ký
+                    </Link>
+                  </li>
+                </ul>
+              )}
             </li>
             <li>
               <Link to={"/tra-ma-van-don"}>

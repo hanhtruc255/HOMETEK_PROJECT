@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import classNames from 'classnames';
-import styles from './SidebarAccount.module.css';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import classNames from "classnames";
+import styles from "./SidebarAccount.module.css";
+import { Link } from "react-router-dom";
 const SidebarAccount = () => {
-  const [activeLink, setActiveLink] = useState('account-profile');
+  const [activeLink, setActiveLink] = useState("account-profile");
   return (
     <>
       <div className={styles.sidebar}>
         <ul>
           <li className={styles.wrapperNavLink}>
             <Link
-              to={'account-profile'}
+              to={"account-profile"}
               className={
-                activeLink === 'account-profile'
+                activeLink === "account-profile"
                   ? classNames(styles.navLink, styles.activeLink)
                   : classNames(styles.navLink)
               }
               onClick={() => {
-                setActiveLink('account-profile');
+                setActiveLink("account-profile");
               }}
             >
               Thông tin tài khoản
@@ -25,14 +25,14 @@ const SidebarAccount = () => {
           </li>
           <li className={styles.wrapperNavLink}>
             <Link
-              to={'orders-management/list-orders'}
+              to={"orders-management/list-orders"}
               className={
-                activeLink === 'orders-management'
+                activeLink === "orders-management"
                   ? classNames(styles.navLink, styles.activeLink)
                   : classNames(styles.navLink)
               }
               onClick={() => {
-                setActiveLink('orders-management');
+                setActiveLink("orders-management");
               }}
             >
               Quản lý đơn hàng
@@ -40,14 +40,14 @@ const SidebarAccount = () => {
           </li>
           <li className={styles.wrapperNavLink}>
             <Link
-              to={'assits'}
+              to={"assist"}
               className={
-                activeLink === 'assits'
+                activeLink === "assist"
                   ? classNames(styles.navLink, styles.activeLink)
                   : classNames(styles.navLink)
               }
               onClick={() => {
-                setActiveLink('assits');
+                setActiveLink("assist");
               }}
             >
               Hỗ trợ

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, createContext, useContext } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import "./ForgetPasswordPage.css";
 import "../../../../styles/FormStyle.css";
 import WrapperModal from "../../../../Components/modals/WrapperModal";
@@ -8,6 +8,7 @@ import NotificationForm from "../../../../Components/form/notification-form/Noti
 import xmark from "../../../../Assets/icons/xmark.svg";
 export const ForgetPasswordPageContext = createContext();
 const ForgetPasswordPage = () => {
+  const history = useNavigate();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [forgetPasswordPageState, setForgetPasswordPageState] = useState({
     confirmPhoneNumber: "",
@@ -47,7 +48,7 @@ const ForgetPasswordPage = () => {
                 heading={
                   forgetPasswordPageState.confirmPhoneNumber === "notExist"
                     ? "Số điện thoại không thuộc tài khoản nào"
-                    : ""
+                    : "Bước tiếp theo"
                 }
                 errorText={
                   forgetPasswordPageState.confirmPhoneNumber === "notExist"
@@ -58,6 +59,12 @@ const ForgetPasswordPage = () => {
                   if (
                     forgetPasswordPageState.confirmPhoneNumber === "notExist"
                   ) {
+                    setForgetPasswordPageState({
+                      ...forgetPasswordPageState,
+                      confirmPhoneNumberModalVisible: false,
+                    });
+                  } else {
+                    history("/forget-password/verify-otp");
                     setForgetPasswordPageState({
                       ...forgetPasswordPageState,
                       confirmPhoneNumberModalVisible: false,

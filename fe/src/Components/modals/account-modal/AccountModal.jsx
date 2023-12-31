@@ -6,9 +6,15 @@ import styles from "./AccountModal.module.css";
 import FormButton from "../../form-btn/FormButton";
 // import { AccountContext } from '../../../pages/account-page/AccountPage';
 import { AccountContext } from "../../../Pages/Users/account-page/AccountPage";
-const AccountModal = ({ headingText }) => {
+const AccountModal = ({
+  headingText,
+  mainBtnText,
+  secondaryBtnText,
+  handleClickMainBtn,
+  handleClickSecondaryBtn,
+}) => {
   const history = useNavigate();
-  const { setIsAccountNotifyModalVisible } = useContext(AccountContext);
+  // const { setIsAccountNotifyModalVisible } = useContext(AccountContext);
   return (
     <div className={styles.wrapperAccountModal}>
       <div className={styles.heading}>
@@ -16,19 +22,14 @@ const AccountModal = ({ headingText }) => {
       </div>
       <div className={styles.wrapperBtn}>
         <FormButton
-          text="Trang chủ"
+          text={mainBtnText}
           className={styles.btn}
-          onClick={() => {
-            history("/");
-            setIsAccountNotifyModalVisible(false);
-          }}
+          onClick={handleClickMainBtn}
         />
         <FormButton
-          text="Hủy"
+          text={secondaryBtnText}
           className={classNames(styles.btn, styles.cancelBtn)}
-          onClick={() => {
-            setIsAccountNotifyModalVisible(false);
-          }}
+          onClick={handleClickSecondaryBtn}
         />
       </div>
     </div>
