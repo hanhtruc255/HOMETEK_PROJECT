@@ -12,25 +12,7 @@ const orderRouter = require("./routes/order");
 const blogRouter = require("./routes/blog");
 
 //Mấy này để duyệt folder ảnh:
-const fs = require("fs");
-const path = require("path");
 
-app.get("/images", (req, res) => {
-  const { dirName } = req.body;
-  const directoryPath = path.join(dirName, "public/images");
-  const images = [];
-  fs.readdir(directoryPath, function (err, files) {
-    if (err) {
-      return console.log("Unable to scan directory: ", err);
-    }
-
-    files.forEach(function (file) {
-      images.push(file);
-    });
-
-    res.json(images);
-  });
-});
 db.connect();
 // app.use('/product',product )
 // HTTP Request Logger

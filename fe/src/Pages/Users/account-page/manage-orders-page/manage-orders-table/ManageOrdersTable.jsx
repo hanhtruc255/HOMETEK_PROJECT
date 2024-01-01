@@ -40,7 +40,7 @@ const ManageOrdersTable = () => {
       }
 
       const data = await orders.json();
-
+      console.log("success");
       setOrdersData(data);
     } catch (error) {}
   };
@@ -48,54 +48,54 @@ const ManageOrdersTable = () => {
   useEffect(() => {
     console.log("RELOAD");
     fetchData();
-    renderListOrdersUi();
+    // renderListOrdersUi();
   }, []);
 
   useEffect(() => {
     console.log("orders: ", ordersData);
   }, [ordersData]);
 
-  const renderListOrdersUi = () => {
-    ordersData.map((order) => {
-      if (orderStatus === "Tất cả") {
-        return (
-          <SingleOrder
-            type={"Tất cả"}
-            order={order}
-            handleClickDetailBtn={() => {
-              navigateOrderDetailPageAtId(order.orderId);
-            }}
-          />
-        );
-      } else {
-        if (order.orderStatus === orderStatus) {
-          if (orderStatus === "Chờ xác nhận") {
-            return (
-              <SingleOrder
-                order={order}
-                type={orderStatus}
-                handleClickMainBtn={() => {
-                  cancelOrder(order.orderId);
-                }}
-                handleClickDetailBtn={() => {
-                  navigateOrderDetailPageAtId(order.orderId);
-                }}
-              />
-            );
-          }
-          return (
-            <SingleOrder
-              order={order}
-              type={orderStatus}
-              handleClickDetailBtn={() => {
-                navigateOrderDetailPageAtId(order.orderId);
-              }}
-            />
-          );
-        }
-      }
-    });
-  };
+  // const renderListOrdersUi = () => {
+  //   ordersData.map((order) => {
+  //     if (orderStatus === "Tất cả") {
+  //       return (
+  //         <SingleOrder
+  //           type={"Tất cả"}
+  //           order={order}
+  //           handleClickDetailBtn={() => {
+  //             navigateOrderDetailPageAtId(order.orderId);
+  //           }}
+  //         />
+  //       );
+  //     } else {
+  //       if (order.orderStatus === orderStatus) {
+  //         if (orderStatus === "Chờ xác nhận") {
+  //           return (
+  //             <SingleOrder
+  //               order={order}
+  //               type={orderStatus}
+  //               handleClickMainBtn={() => {
+  //                 cancelOrder(order.orderId);
+  //               }}
+  //               handleClickDetailBtn={() => {
+  //                 navigateOrderDetailPageAtId(order.orderId);
+  //               }}
+  //             />
+  //           );
+  //         }
+  //         return (
+  //           <SingleOrder
+  //             order={order}
+  //             type={orderStatus}
+  //             handleClickDetailBtn={() => {
+  //               navigateOrderDetailPageAtId(order.orderId);
+  //             }}
+  //           />
+  //         );
+  //       }
+  //     }
+  //   });
+  // };
 
   const navigateOrderDetailPageAtId = (orderId) => {
     history(`/account/orders-management/order-details/${orderId}`);

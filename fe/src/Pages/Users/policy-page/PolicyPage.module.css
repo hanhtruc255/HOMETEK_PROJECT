@@ -21,3 +21,8 @@
 .textBolder {
   font-weight: 600;
 }
+
+.textLink {
+  color: greenyellow;
+  cursor: pointer;
+}

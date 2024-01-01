@@ -227,7 +227,7 @@ const HomePage = () => {
         <div className="block-swiper block-swiper--latest-products">
           <div className="heading">SẢN PHẨM MỚI NHẤT</div>
           <SwiperBar>
-            {productsData.map((product) => {
+            {productsData.map((product, index) => {
               if (product.note === "Sản phẩm mới nhất") {
                 return (
                   <SwiperSlide>
@@ -247,11 +247,12 @@ const HomePage = () => {
         <div className="block-swiper block-swiper--best-selling-products">
           <div className="heading">SẢN PHẨM BÁN CHẠY</div>
           <SwiperBar>
-            {productsData.map((product) => {
+            {productsData.map((product, index) => {
               if (product.note === "Sản phẩm bán chạy") {
                 return (
                   <SwiperSlide>
                     <Product
+                      key={index}
                       imgSrc={product.image}
                       productName={product.name}
                       productPriceShow={product.sale_price}
@@ -267,7 +268,7 @@ const HomePage = () => {
         <div className="block-swiper block-swiper--recommended">
           <div className="heading">GỢI Ý CHO BẠN</div>
           <SwiperBar>
-            {productsData.map((product) => {
+            {productsData.map((product, index) => {
               return (
                 <SwiperSlide>
                   <Product
@@ -293,7 +294,7 @@ const HomePage = () => {
           <div className="heading">TIN TỨC</div>
 
           <Slider {...settings}>
-            {blogsData.map((blog) => {
+            {blogsData.map((blog, index) => {
               return (
                 <div className="wrapper-slide">
                   <BlogCard

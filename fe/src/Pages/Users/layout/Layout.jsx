@@ -18,6 +18,7 @@ const initalState = {
 
 const Layout = () => {
   const [globalState, setGlobalState] = useState(initalState);
+
   const enableOtpFormModalActive = () => {
     setGlobalState({ ...globalState, otpFormModalActive: true });
   };
@@ -48,8 +49,22 @@ const Layout = () => {
   };
 
   useEffect(() => {
-    console.log("globalState:", globalState);
-  }, [globalState]);
+    console.log("IS LOGGED: ", window.localStorage.getItem("isLoggedIn"));
+    const handlePopState = () => {
+      const url = window.location.href;
+      console.log("URL thay đổi:", url);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log("CURRENT URL: ", window.location.href);
+  }, []);
   const [displayFooter, setDisplayFooter] = useState(true);
   const [displayNotifyPopup, setDisplayNotifyPopup] = useState(false);
   return (
