@@ -13,7 +13,6 @@ const WhishlistPage = () => {
       };
   return (
     <div>
-        <Navbar/>
         <Whishlist addToWhishlist={addToWhishlist} />
     </div>
   )

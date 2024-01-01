@@ -5,7 +5,6 @@ import Tracking from '../../../Components/Tracking/Tracking'
 const TrackingPage = () => {
   return (
     <div>
-        <Navbar/>
         <Tracking/>
 
     </div>

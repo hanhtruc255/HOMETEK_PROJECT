@@ -6,7 +6,7 @@ const generateRandomCode = () => {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
-const Confirm = ({ selectedPaymentMethod }) => {
+const ConfirmMoney = ({ selectedPaymentMethod }) => {
   const initialCode = generateRandomCode();
   const [countdown, setCountdown] = useState(30);
   const [verificationCode, setVerificationCode] = useState('');
@@ -27,6 +27,7 @@ const Confirm = ({ selectedPaymentMethod }) => {
   }, [countdown]);
 
   const resetTimer = () => {
+    // Reset the timer and generate a new code
     setCountdown(30);
     setGeneratedCode(generateRandomCode());
   };
@@ -69,7 +70,7 @@ const Confirm = ({ selectedPaymentMethod }) => {
       <br />
       <center>
         <button onClick={resetTimer}>Gửi lại ({countdown}s)</button> <br />
-        <Link to="/thanh-toan/xac-minh/thanh-toan-tien"className='speclink' disabled={!isCodeValid}>
+        <Link to="/thanh-toan/thanh-cong"className='speclink' disabled={!isCodeValid}>
           XÁC MINH
         </Link>
           <div className='special'></div>
@@ -80,4 +81,4 @@ const Confirm = ({ selectedPaymentMethod }) => {
   );
 };
 
-export default Confirm;
+export default ConfirmMoney;

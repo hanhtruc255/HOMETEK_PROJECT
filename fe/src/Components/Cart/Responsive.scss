@@ -1,0 +1,60 @@
+@media only screen and (max-width: 800px){
+    .cart{
+        margin: 0;
+        margin-right: 10px;
+        .Frame_cart{
+            .Cart_1{
+                table{
+                    font-size: 13px;
+
+                .spec{
+                    flex-direction: column;
+                    width: 100%;
+                    .icon_heartfill{
+                        color: rgb(170, 4, 4);
+                        width: 30px;
+                        font-size: 17px;
+                        margin-top: 17px;
+                    }
+                    .icon_trash{
+                        background: #041E42;
+                        color: white;
+                        padding: 2px;
+                        font-size: 15px;
+                        margin: 15px 10px 2px 0;
+                        border-radius: 5px;}
+                    .icon_heart{
+                        font-size: 15px;
+                        font-size: 15px;
+                    }
+                }
+                td{
+                    text-align: right;
+                }
+                .qty{
+                    input{
+                        margin-top: 5px;
+                    }
+                }
+
+                }
+            }
+        }
+    .buy{
+        .buy_child{
+            p{
+                margin: 5px 30px 0 -10px ;
+            }
+        }
+        
+
+        a{
+            margin-left: 30px ;
+            text-decoration: none;
+            background:  #041E42;
+            color: white;
+            padding: 5px 10px;
+        }
+    }
+    }
+}

@@ -11,7 +11,6 @@ const CartPage = () => {
 
   return (
     <div>
-      <Navbar />
       <Breadcrumb />
       <Cart updateCartQuantity={updateCartQuantity}/>
     </div>

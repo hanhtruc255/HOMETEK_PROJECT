@@ -1,36 +1,21 @@
 import { Link } from "react-router-dom";
+import React, {useState, useEffect} from "react";
 import "./Order.scss";
 function Order() {
-  const orders = [
-    {
-      orderId: "STC",
-      customerName: "Mai Thương",
-      phoneNumber: "0120102120",
-      totalPrice: "3.4000.600đ",
-      created_at: "24/11/2023",
-    },
-    {
-      orderId: "STC",
-      customerName: "Mai Thương",
-      phoneNumber: "0120102120",
-      totalPrice: "3.4000.600đ",
-      created_at: "24/11/2023",
-    },
-    {
-      orderId: "STC",
-      customerName: "Mai Thương",
-      phoneNumber: "0120102120",
-      totalPrice: "3.4000.600đ",
-      created_at: "24/11/2023",
-    },
-    {
-      orderId: "STC",
-      customerName: "Mai Thương",
-      phoneNumber: "0120102120",
-      totalPrice: "3.4000.600đ",
-      created_at: "24/11/2023",
-    },
-  ];
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/order');
+        const data = await response.json();
+        setOrders(data); // Set state with fetched data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData(); 
+  }, []); 
   return (
     <>
       <div className="order-filter">
@@ -52,7 +37,7 @@ function Order() {
             </select>
           </div>
           <label className="col-lg-2 col-form-label">Tình trạng: </label>
-          <div className="col-lg-2 my-2">
+          <div className="col-lg-2 my-2 row ">
             <select className="form-select">
               <option>Đã hủy</option>
               <option>Đã xác nhận</option>
@@ -86,10 +71,10 @@ function Order() {
                   <tr key={item.categoryId}>
                     <td>{index + 1}</td>
                     <td>{item.orderId}</td>
-                    <td>{item.customerName}</td>
-                    <td>{item.phoneNumber}</td>
-                    <td>{item.totalPrice}</td>
-                    <td>{item.created_at}</td>
+                    <td>{item.deliveyInfor.customerName}</td>
+                    <td>{item.deliveyInfor.deliveryPhoneNumber}</td>
+                    <td>{item.finalAmount}</td>
+                    <td>01/01/2024</td>
                     <td>
                       <button className="btn btn-danger">Đã hủy</button>
                       <Link className="btn edit-btn mx-2" to={"cap-nhat"}>

@@ -1,3 +1,4 @@
+@import url('../../Style/style.scss');
 .sidebar-admin {
   background: #041e42;
   .sidebar-home {
@@ -9,6 +10,10 @@
     span {
       color: #041e42;
       font-weight: 600;
+    }
+    .titlehometek{
+      font-size: 36px;
+      font-family: 'Lexend Deca', sans-serif;  
     }
   }
   #menu {
