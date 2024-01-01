@@ -1,5 +1,6 @@
-import { React, useState, useRef } from "react";
+import { React, useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import classNames from "classnames";
 import styles from "./AccountProfile.module.css";
 // import FormButton from '../../../../components/form-btn/FormButton';
@@ -13,7 +14,28 @@ import SendOtp from "../../../../../functions/SendOtp";
 
 import axios from "axios";
 const AccountProfile = () => {
+  const [currentUserData, setCurrentUserData] = useState({});
   const history = useNavigate();
+
+  const fetchCurrentCusData = async () => {
+    try {
+      await axios
+        .get("http://localhost:3001/account/search", {
+          params: { userId: window.localStorage.getItem("userId") },
+        })
+        .then((res) => {
+          console.log("GET CURRENT USER DATA SUCCESSFULLY");
+          setCurrentUserData(res.data[0]);
+        });
+    } catch (error) {
+      const errorMsg = error.response.data.message;
+      alert(errorMsg);
+    }
+  };
+
+  useEffect(() => {
+    fetchCurrentCusData();
+  }, []);
   const { isAddressModalVisible, toggleIsAddressModalVisible } =
     useContext(AccountContext);
   const [disabledNameField, setDisabledNameField] = useState(true);
@@ -27,34 +49,51 @@ const AccountProfile = () => {
   };
 
   const [formData, setFormData] = useState({
-    name: "Ngô Thị Châm Anh",
-    gender: "male",
-    phoneNumber: "0385320575",
-    defaultAddress: "109/6, Lê Văn Chí, Linh Trung, Thủ Đức",
-    password: "Cham2105@",
+    userName: currentUserData.userName,
+    gender: currentUserData.gender,
+    phone: currentUserData.phone,
   });
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log("formData: ", formData);
+    if (formData.userName || formData.phone || formData.gender) {
+      console.log("START UPDATE!");
+      try {
+        await axios
+          .patch(
+            `http://localhost:3001/customer/${window.localStorage.getItem(
+              "userId"
+            )}`,
+            formData
+          )
+          .then((res) => {
+            console.log("UPDATE USER INFOR SUCCESS");
+          });
+      } catch (error) {
+        const errorMsg = error.response.data.message;
+        alert(errorMsg);
+      }
+    }
   };
   return (
     <div className={styles.wrapperAccountProfile}>
       <h1 className={styles.heading}>TÀI KHOẢN CỦA BẠN</h1>
-      <form action="" method="get">
+      <form action="" method="post" onSubmit={handleSubmit}>
         <div className={styles.content}>
           <div className={styles.wrapperInforField}>
             <div className={styles.labelInfor}>Họ và tên</div>
             <input
               className={classNames(styles.displayInfor, "inputFocus")}
               type="text"
-              value={formData.name}
+              placeholder={currentUserData.userName}
               disabled={disabledNameField}
               name="name"
               id="name"
               ref={nameRef}
               autofocus={disabledNameField ? false : true}
               onChange={(event) => {
-                setFormData({ ...formData, name: event.target.value });
+                setFormData({ ...formData, userName: event.target.value });
               }}
             />
             <img
@@ -81,7 +120,10 @@ const AccountProfile = () => {
                     type="radio"
                     name="gender"
                     id="gender-female"
-                    value={formData.gender === "female" ? true : false}
+                    value={false}
+                    onChange={(event) => {
+                      setFormData({ ...formData, gender: event.target.value });
+                    }}
                   />
                 </div>
 
@@ -93,7 +135,10 @@ const AccountProfile = () => {
                     type="radio"
                     name="gender"
                     id="gender-male"
-                    value={formData.gender === "male" ? true : false}
+                    value={true}
+                    onChange={(event) => {
+                      setFormData({ ...formData, gender: event.target.value });
+                    }}
                   />
                 </div>
               </div>
@@ -101,18 +146,18 @@ const AccountProfile = () => {
           </div>
 
           <div className={styles.wrapperInforField}>
-            <div className={styles.labelInfor}>Sđt</div>
+            <div className={styles.labelInfor}>Số điện thoại</div>
             <input
               className={classNames(styles.displayInfor, "inputFocus")}
               type="phone"
-              value={formData.phoneNumber}
               name="phone-number"
               id="phone-number"
               ref={phoneRef}
+              placeholder={currentUserData.phone}
               disabled={disablePhoneNumberField}
               autofocus={disablePhoneNumberField ? false : true}
               onChange={(event) => {
-                setFormData({ ...formData, phoneNumber: event.target.value });
+                setFormData({ ...formData, phone: event.target.value });
               }}
             />
             <img
@@ -133,7 +178,7 @@ const AccountProfile = () => {
             <input
               className={styles.displayInfor}
               type="text"
-              value={formData.defaultAddress}
+              value={currentUserData.address}
               disabled={true}
             />
 
@@ -151,8 +196,9 @@ const AccountProfile = () => {
             <input
               className={styles.displayInfor}
               type="password"
-              value={formData.password}
+              value={""}
               disabled={true}
+              placeholder="*********"
             />
             <Link
               onClick={async () => {
@@ -185,9 +231,6 @@ const AccountProfile = () => {
             text={"Cập nhật Thông tin"}
             type="submit"
             className={styles.accountBtn}
-            onClick={(event) => {
-              handleSubmit(event);
-            }}
           />
         </div>
       </form>

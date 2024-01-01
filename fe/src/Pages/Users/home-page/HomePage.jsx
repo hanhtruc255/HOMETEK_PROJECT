@@ -47,21 +47,47 @@ import category1 from "../../../Assets/background/category1.png";
 import category2 from "../../../Assets/background/category2.png";
 import category3 from "../../../Assets/background/category3.png";
 
+import banner1 from "../../../Assets/images/banners/banner-1.png";
+import banner2 from "../../../Assets/images/banners/banner-2.png";
+import banner3 from "../../../Assets/images/banners/banner-3.png";
+import banner4 from "../../../Assets/images/banners/banner-4.png";
+import banner5 from "../../../Assets/images/banners/banner-5.png";
+import banner6 from "../../../Assets/images/banners/banner-6.png";
+import banner7 from "../../../Assets/images/banners/banner-7.png";
+
+import bannerVertical from "../../../Assets/images/bannerVertical/BannerVertical.png";
+
+import coupleImg1 from "../../../Assets/images/coupleBanner/couple-banner-1.png";
+import coupleImg2 from "../../../Assets/images/coupleBanner/couple-banner-2.png";
+
 import BlogsSwiper from "../../../Components/blogs-swiper/BlogsSwiper";
 import WrapperModal from "../../../Components/modals/WrapperModal";
 import { AppContext } from "../layout/Layout";
 
 const HomePage = () => {
   const { setDisplayFooter } = useContext(AppContext);
-  // const [loading, setLoading] = useState(true);
-  // const [errorMsg, setErrorMsg] = useState(null);
+
+  const [images, setImages] = useState([]);
 
   const [productsData, setProductsData] = useState([]);
   const [blogsData, setBlogsData] = useState([]);
   useEffect(() => {
     setDisplayFooter(true);
     fetchData();
+    // fetchImages();
   }, []);
+
+  // const fetchImages = async () => {
+  //   try {
+  //     const res = await fetch("http://localhost:3001/images", {
+  //       dirName: "banners",
+  //     });
+  //     const data = await res.json();
+  //     setImages(data);
+  //   } catch (err) {
+  //     console.error("Error fetch images: ", err);
+  //   }
+  // };
 
   const fetchData = async () => {
     try {
@@ -129,16 +155,29 @@ const HomePage = () => {
         <div className="wrapper-banner">
           <Slide>
             <div className="each-slide-effect">
-              <img src={banner} alt="" />
+              <img key={1} src={banner1} alt="" />
             </div>
             <div className="each-slide-effect">
-              <img src={banner} alt="" />
+              <img key={2} src={banner2} alt="" />
             </div>
             <div className="each-slide-effect">
-              <img src={banner} alt="" />
+              <img key={3} src={banner3} alt="" />
+            </div>
+            <div className="each-slide-effect">
+              <img key={4} src={banner4} alt="" />
+            </div>
+            <div className="each-slide-effect">
+              <img key={5} src={banner5} alt="" />
+            </div>
+            <div className="each-slide-effect">
+              <img key={6} src={banner6} alt="" />
+            </div>
+            <div className="each-slide-effect">
+              <img key={7} src={banner7} alt="" />
             </div>
           </Slide>
         </div>
+
         <div className="block-category">
           <div className="heading">DANH MỤC SẢN PHẨM</div>
           <div className="wrapper-category">
@@ -152,6 +191,9 @@ const HomePage = () => {
               <img src={category3} alt="" />
             </div>
           </div>
+        </div>
+        <div className="banner-vertical">
+          <img src={bannerVertical} alt="" className="banner-ver-img" />
         </div>
         <div className="block-swiper block-swiper--promotional-products">
           <div className="heading">SẢN PHẨM KHUYẾN MÃI</div>
@@ -171,6 +213,15 @@ const HomePage = () => {
               }
             })}
           </SwiperBar>
+        </div>
+
+        <div className="wrapper-couple-banner">
+          <div className="couple-banner">
+            <img src={coupleImg1} alt="" className="couple-img" />
+          </div>
+          <div className="couple-banner">
+            <img src={coupleImg1} alt="" className="couple-img" />
+          </div>
         </div>
 
         <div className="block-swiper block-swiper--latest-products">
@@ -246,7 +297,9 @@ const HomePage = () => {
               return (
                 <div className="wrapper-slide">
                   <BlogCard
-                    imgSrc={"/test-blog.jpg"}
+                    // imgSrc={"/test-blog.jpg"}
+                    path={`http://localhost:3000/blog-page/${blog.blogId}`}
+                    imgSrc={blog.image}
                     blogTitle={blog.title}
                     dateCreate={blog.created_at}
                   />

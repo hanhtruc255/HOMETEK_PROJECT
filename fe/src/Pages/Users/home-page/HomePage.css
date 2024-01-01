@@ -208,14 +208,14 @@
   margin: 0;
   padding: 0;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .benefit-content .benefit-description {
   margin: 0;
   padding: 0;
   color: #595959;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 @media only screen and (max-width: 1135px) {
@@ -297,4 +297,26 @@
   .benefit-content .benefit-description {
     font-size: 0.5rem;
   }
+}
+
+.banner-vertical {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.banner-ver-img {
+  width: 100%;
+  box-sizing: border-box;
+  object-fit: cover;
+}
+
+.wrapper-couple-banner {
+  margin-top: 40px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 20px;
+}
+
+.couple-img {
+  width: 100%;
 }

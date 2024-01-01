@@ -10,7 +10,7 @@ import PaymentMoney from "./Components/Payment/PaymentMoney";
 import Layout from "./Pages/Users/layout/Layout.jsx";
 import Contact from "./Pages/Users/contact/Contact.jsx";
 import BlogPage from "./Pages/Users/blog-page/BlogPage.jsx";
-import BlogDetailPage from "./Pages/Users/blog-page/BlogDetailPage.jsx"
+import BlogDetailPage from "./Pages/Users/blog-page/BlogDetailPage.jsx";
 
 // admin
 import DashBoard from "./Pages/Admin/Dashboard";
@@ -50,6 +50,7 @@ import OrderDetailsPage from "./Pages/Users/account-page/manage-orders-page/orde
 import RatingOrderPage from "./Pages/Users/account-page/manage-orders-page/order-details-page/rating-order-page/RatingOrderPage.jsx";
 import AssistsPage from "./Pages/Users/account-page/assists-page/AssistsPage.jsx";
 import ForgetPassOtpForm from "./Components/form/forget-password-otp-form/ForgetPassOtpForm.jsx";
+import PolicyPage from "./Pages/Users/policy-page/PolicyPage.jsx";
 const App = () => {
   return (
     <div>
@@ -101,6 +102,7 @@ const App = () => {
               <Route path="assist" element={<AssistsPage />} />
             </Route>
             <Route path="contact" element={<Contact />} />
+            <Route path="/chinh-sach" element={<PolicyPage />} />
             <Route path="*" element={<PageNotFound />} />
             <Route path="about-us" element={<AboutUsPage />} />
             <Route path="/cua-hang" element={<ProductPage />} />

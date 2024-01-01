@@ -58,8 +58,13 @@
 }
 
 .acc-dropdown li:hover {
-  background-color: wheat;
+  background-color: rgb(238, 229, 213);
   color: black;
+}
+
+.acc-dropdown li:active {
+  box-shadow: inset 0px 8px 8px -8px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 2px grey;
 }
 
 /* .in-acc-dropdown {
