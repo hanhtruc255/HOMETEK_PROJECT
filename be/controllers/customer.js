@@ -101,11 +101,11 @@ async function updateCustomer(req, res) {
 }
 
 async function changePassword(req, res) {
-  const customerId = req.params.userId;
-  const { oldPassword, newPassword } = req.body;
+  // const customerId = req.userId;
+  const { userId, oldPassword, newPassword } = req.body;
 
   try {
-    const existingUser = await Cust.findOne({ userId: customerId });
+    const existingUser = await Cust.findOne({ userId: userId });
     if (!existingUser) {
       return res.status(404).json({ error: "User not found" });
     }

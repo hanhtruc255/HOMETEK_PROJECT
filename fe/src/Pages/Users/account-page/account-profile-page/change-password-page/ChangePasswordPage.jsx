@@ -43,25 +43,22 @@ const ChangePasswordPage = () => {
       return;
     } else {
       try {
+        const userId = await window.localStorage.getItem("userId");
+        console.log("userId: ", userId);
         await axios
-          .patch(
-            `http://localhost:3001/customer/change/${window.localStorage.getItem(
-              "userId"
-            )}`,
-            {
-              oldPassword: changePasswordData.currentPassword,
-              newPassword: changePasswordData.newPassword,
-            }
-          )
+          .patch(`http://localhost:3001/customer/change/${userId}`, {
+            userId: userId,
+            oldPassword: changePasswordData.currentPassword,
+            newPassword: changePasswordData.newPassword,
+          })
           .then(() => {
             console.log("CHANGE PASSWORD SUCCESSFULLY");
-            console.log("new pwd: ", changePasswordData.newPassword);
             alert("Đổi mật khẩu thành công!");
             history("/account/account-profile");
           });
       } catch (error) {
-        console.log("USER ID: ", globalState.loginStatus.userId);
-        console.log(error);
+        // console.log("USER ID: ", globalState.loginStatus.userId);
+        alert("Vui lòng nhập chính xác mật khẩu hiện tại!");
       }
     }
   };
