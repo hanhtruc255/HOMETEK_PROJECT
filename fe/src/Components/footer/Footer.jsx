@@ -15,37 +15,70 @@ const Footer = () => {
           >
             <Link
               to={"/"}
-              className={classNames(styles.headingContent, styles.homeLink)}
+              className={classNames(
+                styles.headingContent,
+                styles.homeLink,
+                styles.headingContentLink
+              )}
             >
               HOME TEK
             </Link>
             <p className={styles.itemDescription}>
-              TheFaceHolic.com cung cấp thông tin giá, mô tả, hình ảnh và thông
-              tin chi tiết của sản phẩm Chăm sóc da mặt, Chăm sóc cơ thể, Trang
-              điểm, Chăm sóc tóc và da đầu, Nước hoa, Bộ sản phẩm làm đẹp, Mỹ
-              phẩm nam, Mỹ Phẩm Khác...
+              HomeTek là một nền tảng trực tuyến cung cấp đồ gia dụng thông minh
+              và tiện ích, chúng tôi cam kết mang đến cho khách hàng những sản
+              phẩm chất lượng và dịch vụ tốt nhất.
             </p>
           </div>
 
           <div className={styles.wrapperFooterItem}>
-            <Link to={"/about-us"} className={styles.headingContent}>
+            <Link
+              to={"/about-us"}
+              className={classNames(
+                styles.headingContent,
+                styles.headingContentLink
+              )}
+            >
               Về Chúng Tôi
             </Link>
-            <Link to={"/"} className={classNames(styles.itemDescription)}>
+            <Link
+              to={"/about-us"}
+              className={classNames(
+                styles.itemDescription,
+                styles.itemDescriptionLink
+              )}
+            >
               Giới Thiệu
             </Link>
 
-            <Link to={"/"} className={classNames(styles.itemDescription)}>
+            <Link
+              to={"/chinh-sach"}
+              className={classNames(
+                styles.itemDescription,
+                styles.itemDescriptionLink
+              )}
+            >
               Chính Sách
             </Link>
 
-            <Link to={"/"} className={classNames(styles.itemDescription)}>
+            <Link
+              to={"/blog-page"}
+              className={classNames(
+                styles.itemDescription,
+                styles.itemDescriptionLink
+              )}
+            >
               Tin Tức
             </Link>
           </div>
 
           <div className={styles.wrapperFooterItem}>
-            <Link to={"/"} className={styles.headingContent}>
+            <Link
+              to={"/contact"}
+              className={classNames(
+                styles.headingContent,
+                styles.headingContentLink
+              )}
+            >
               Liên Hệ
             </Link>
             <p className={classNames(styles.itemDescription)}>

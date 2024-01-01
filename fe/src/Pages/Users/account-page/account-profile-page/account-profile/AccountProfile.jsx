@@ -61,24 +61,22 @@ const AccountProfile = () => {
       alert("Vui lòng nhập đúng tên và số điện thoại!");
       return;
     }
-    if (formData.userName || formData.phone || formData.gender) {
-      console.log("START UPDATE!");
-      try {
-        await axios
-          .patch(
-            `http://localhost:3001/customer/${window.localStorage.getItem(
-              "userId"
-            )}`,
-            formData
-          )
-          .then((res) => {
-            console.log("UPDATE USER INFOR SUCCESS");
-            alert("Cập nhật tài khoản thành công!");
-          });
-      } catch (error) {
-        const errorMsg = error.response.data.message;
-        alert(errorMsg);
-      }
+    console.log("START UPDATE!");
+    try {
+      await axios
+        .patch(
+          `http://localhost:3001/customer/${window.localStorage.getItem(
+            "userId"
+          )}`,
+          formData
+        )
+        .then((res) => {
+          console.log("UPDATE USER INFOR SUCCESS");
+          alert("Cập nhật tài khoản thành công!");
+        });
+    } catch (error) {
+      const errorMsg = error.response.data.message;
+      alert(errorMsg);
     }
   };
   return (

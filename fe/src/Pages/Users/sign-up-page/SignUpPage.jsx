@@ -290,11 +290,11 @@ const SignUpPage = () => {
                   <label htmlFor="user-agreement">
                     <p className="user-agreement-description">
                       Tôi đã đọc và đồng ý với{" "}
-                      <Link className="user-greement-link">
+                      <Link className="user-greement-link" to={"/chinh-sach"}>
                         Thỏa thuận người dùng
                       </Link>{" "}
                       và{" "}
-                      <Link className="user-greement-link">
+                      <Link className="user-greement-link" to={"/chinh-sach"}>
                         Chính sách quyền riêng tư
                       </Link>{" "}
                       của HomTek

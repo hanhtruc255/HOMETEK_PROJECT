@@ -19,20 +19,28 @@ const AssistsPage = () => {
         icon={warrantyIcon}
         text="Bảo hành (8h00 - 21h00)"
         text2="0377363281"
+        className={styles.singleAssist}
       />
 
-      <AssistsField icon={emailIcon} text="Email" text2="cskh@hometek.com" />
+      <AssistsField
+        icon={emailIcon}
+        text="Email"
+        text2="cskh@hometek.com"
+        className={styles.singleAssist}
+      />
 
       <AssistsField
         icon={CustomerCare}
         text="Tư vấn mua hàng (8h00 - 22h00)"
         text2="0377363281"
+        className={styles.singleAssist}
       />
 
       <AssistsField
         icon={complainIcon}
         text="Khiếu nại (8h00 - 21h30)"
         text2="0968408945"
+        className={styles.singleAssist}
       />
     </div>
   );

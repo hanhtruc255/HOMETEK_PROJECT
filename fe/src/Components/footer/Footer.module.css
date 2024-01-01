@@ -33,6 +33,20 @@
   padding: 0;
 }
 
+.itemDescriptionLink:hover {
+  filter: brightness(150%);
+}
+.headingContentLink:hover {
+  filter: brightness(150%);
+}
+
+.itemDescriptionLink:active {
+  text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.6);
+}
+.headingContentLink:active {
+  text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.6);
+}
+
 .wrapperFooterItem .itemDescription {
   text-align: justify;
   text-decoration: none;
@@ -78,10 +92,6 @@
     font-size: 2.8rem !important;
   }
 
-  .itemDescription {
-    font-size: 0.8rem !important;
-  }
-
   .secondLineDescription {
     font-size: 0.6rem;
   }
@@ -97,6 +107,7 @@
   margin: 0 !important;
   color: #9f9f9f;
   text-align: center;
+  font-size: 1.2rem;
 }
 /* .footerContent1 {
   grid-area: 1 / 1 / 2 / 2;
