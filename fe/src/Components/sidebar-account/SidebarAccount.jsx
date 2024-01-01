@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import classNames from "classnames";
 import styles from "./SidebarAccount.module.css";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../Pages/Users/layout/Layout";
 const SidebarAccount = () => {
+  const { setDisplayNotifyPopup } = useContext(AppContext);
   var currentURL = window.location.href;
   var [activeAccountService, setActiveAccountService] =
     useState("account-profile");
@@ -76,7 +78,14 @@ const SidebarAccount = () => {
             </Link>
           </li>
           <li className={styles.wrapperNavLink}>
-            <Link className={styles.navLink}>Đăng xuất</Link>
+            <Link
+              className={styles.navLink}
+              onClick={() => {
+                setDisplayNotifyPopup(true);
+              }}
+            >
+              Đăng xuất
+            </Link>
           </li>
         </ul>
       </div>

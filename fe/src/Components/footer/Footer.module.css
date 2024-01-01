@@ -8,7 +8,7 @@
   grid-template-columns: 1.3fr 0.7fr repeat(2, 1fr);
   grid-template-rows: 1fr;
   grid-column-gap: 20px;
-  grid-row-gap: 0px;
+  grid-row-gap: 5px;
 }
 
 .wrapperFooterItem {
@@ -24,7 +24,7 @@
   padding: 0;
   margin: 0;
   padding-bottom: 10px;
-  line-height: fit-content;
+  line-height: 1;
 }
 
 .wrapperFooterItem .homeLink {
@@ -83,7 +83,7 @@
   }
 
   .secondLineDescription {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
   }
 }
 

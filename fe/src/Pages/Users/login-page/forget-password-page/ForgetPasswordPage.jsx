@@ -6,8 +6,11 @@ import "../../../../styles/FormStyle.css";
 import WrapperModal from "../../../../Components/modals/WrapperModal";
 import NotificationForm from "../../../../Components/form/notification-form/NotificationForm";
 import xmark from "../../../../Assets/icons/xmark.svg";
+import { AppContext } from "../../layout/Layout";
 export const ForgetPasswordPageContext = createContext();
 const ForgetPasswordPage = () => {
+  const { setDisplayFooter } = useContext(AppContext);
+  setDisplayFooter(false);
   const history = useNavigate();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [forgetPasswordPageState, setForgetPasswordPageState] = useState({

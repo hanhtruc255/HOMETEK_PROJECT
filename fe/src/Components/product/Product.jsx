@@ -19,7 +19,7 @@ const Product = (props) => {
 
   const [heartIconActive, setHeartIconActive] = useState(false);
   return (
-    <div className={styles.product}>
+    <div className={styles.product} {...props}>
       <div className={styles.productImage}>
         <img src={props.imgSrc} alt="" className={styles.productImg} />
       </div>

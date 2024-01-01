@@ -1,6 +1,6 @@
 import React from "react";
 import { useRef, useState, useEffect, useContext } from "react";
-
+import { useNavigate } from "react-router-dom";
 import "react-slideshow-image/dist/styles.css";
 
 import "slick-carousel/slick/slick.css";
@@ -55,6 +55,7 @@ import banner5 from "../../../Assets/images/banners/banner-5.png";
 import banner6 from "../../../Assets/images/banners/banner-6.png";
 import banner7 from "../../../Assets/images/banners/banner-7.png";
 
+import insetBanner from "../../../Assets/images/banners/inset-banner.png";
 import bannerVertical from "../../../Assets/images/bannerVertical/BannerVertical.png";
 
 import coupleImg1 from "../../../Assets/images/coupleBanner/couple-banner-1.png";
@@ -65,6 +66,7 @@ import WrapperModal from "../../../Components/modals/WrapperModal";
 import { AppContext } from "../layout/Layout";
 
 const HomePage = () => {
+  const history = useNavigate();
   const { setDisplayFooter } = useContext(AppContext);
 
   const [images, setImages] = useState([]);
@@ -95,7 +97,6 @@ const HomePage = () => {
         fetch("http://localhost:3001/Cua_hang"),
         fetch("http://localhost:3001/blog"),
       ]);
-
       if (!products.ok) {
         throw new Error("Products response was not ok");
       }
@@ -181,13 +182,28 @@ const HomePage = () => {
         <div className="block-category">
           <div className="heading">DANH MỤC SẢN PHẨM</div>
           <div className="wrapper-category">
-            <div className="category-item category-item-1">
+            <div
+              className="category-item category-item-1"
+              onClick={() => {
+                history("/01");
+              }}
+            >
               <img src={category1} alt="" />
             </div>
-            <div className="category-item category-item-2">
+            <div
+              className="category-item category-item-2"
+              onClick={() => {
+                history("/02");
+              }}
+            >
               <img src={category2} alt="" />
             </div>
-            <div className="category-item category-item-3">
+            <div
+              className="category-item category-item-3"
+              onClick={() => {
+                history("/03");
+              }}
+            >
               <img src={category3} alt="" />
             </div>
           </div>
@@ -207,6 +223,9 @@ const HomePage = () => {
                       productName={product.name}
                       productPriceShow={product.sale_price}
                       productPriceThrough={product.price}
+                      onClick={() => {
+                        history(`/${product.categoryId}/${product._id}`);
+                      }}
                     />
                   </SwiperSlide>
                 );
@@ -236,12 +255,19 @@ const HomePage = () => {
                       productName={product.name}
                       productPriceShow={product.sale_price}
                       productPriceThrough={product.price}
+                      onClick={() => {
+                        history(`/${product.categoryId}/${product._id}`);
+                      }}
                     />
                   </SwiperSlide>
                 );
               }
             })}
           </SwiperBar>
+        </div>
+
+        <div className="inset-banner">
+          <img src={insetBanner} alt="" className="inset-banner-img" />
         </div>
 
         <div className="block-swiper block-swiper--best-selling-products">
@@ -257,6 +283,9 @@ const HomePage = () => {
                       productName={product.name}
                       productPriceShow={product.sale_price}
                       productPriceThrough={product.price}
+                      onClick={() => {
+                        history(`/${product.categoryId}/${product._id}`);
+                      }}
                     />
                   </SwiperSlide>
                 );
@@ -276,6 +305,9 @@ const HomePage = () => {
                     productName={product.name}
                     productPriceShow={product.sale_price}
                     productPriceThrough={product.price}
+                    onClick={() => {
+                      history(`/${product.categoryId}/${product._id}`);
+                    }}
                   />
                 </SwiperSlide>
               );

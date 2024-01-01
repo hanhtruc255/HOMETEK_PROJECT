@@ -3,20 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 
 import classNames from "classnames";
 import styles from "./AccountProfile.module.css";
-// import FormButton from '../../../../components/form-btn/FormButton';
 import FormButton from "../../../../../Components/form-btn/FormButton";
-// import rewriteIcon from '../../../../assets/icons/rewrite.svg';
 import rewriteIcon from "../../../../../Assets/icons/rewrite.svg";
-// import { AccountContext } from '../../AccountPage';
 import { AccountContext } from "../../AccountPage";
 import { useContext } from "react";
 import SendOtp from "../../../../../functions/SendOtp";
-
+import CheckPhoneNumberFormat from "../../../../../functions/CheckPhoneNumberFormat.js";
 import axios from "axios";
 const AccountProfile = () => {
   const [currentUserData, setCurrentUserData] = useState({});
   const history = useNavigate();
-
+  const [isPhoneNumberDirectionVisible, setIsPhoneNumberDirectionVisible] =
+    useState(false);
   const fetchCurrentCusData = async () => {
     try {
       await axios
@@ -54,9 +52,15 @@ const AccountProfile = () => {
     phone: currentUserData.phone,
   });
 
+  const [isFormDataValid, setIsFormValid] = useState(false);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("formData: ", formData);
+    if (!CheckPhoneNumberFormat(formData.phone) && !formData.userName) {
+      alert("Vui lòng nhập đúng tên và số điện thoại!");
+      return;
+    }
     if (formData.userName || formData.phone || formData.gender) {
       console.log("START UPDATE!");
       try {
@@ -69,6 +73,7 @@ const AccountProfile = () => {
           )
           .then((res) => {
             console.log("UPDATE USER INFOR SUCCESS");
+            alert("Cập nhật tài khoản thành công!");
           });
       } catch (error) {
         const errorMsg = error.response.data.message;
@@ -147,19 +152,31 @@ const AccountProfile = () => {
 
           <div className={styles.wrapperInforField}>
             <div className={styles.labelInfor}>Số điện thoại</div>
-            <input
-              className={classNames(styles.displayInfor, "inputFocus")}
-              type="phone"
-              name="phone-number"
-              id="phone-number"
-              ref={phoneRef}
-              placeholder={currentUserData.phone}
-              disabled={disablePhoneNumberField}
-              autofocus={disablePhoneNumberField ? false : true}
-              onChange={(event) => {
-                setFormData({ ...formData, phone: event.target.value });
-              }}
-            />
+            <div className={styles.wrapperInput}>
+              <input
+                className={classNames(styles.displayInfor, "inputFocus")}
+                type="phone"
+                name="phone-number"
+                id="phone-number"
+                ref={phoneRef}
+                placeholder={currentUserData.phone}
+                disabled={disablePhoneNumberField}
+                autofocus={disablePhoneNumberField ? false : true}
+                onChange={(event) => {
+                  const newPhone = event.target.value;
+                  setFormData({ ...formData, phone: newPhone });
+                  setIsPhoneNumberDirectionVisible(
+                    !CheckPhoneNumberFormat(newPhone)
+                  );
+                }}
+              />
+              {isPhoneNumberDirectionVisible && (
+                <span className="notification-text">
+                  Số điện thoại bạn nhập không hợp lệ
+                </span>
+              )}
+            </div>
+
             <img
               className={styles.changeInforIcon}
               src={rewriteIcon}

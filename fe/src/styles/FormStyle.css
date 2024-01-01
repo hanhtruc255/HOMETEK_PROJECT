@@ -67,8 +67,9 @@
 
 .form-control:focus,
 .inputFocus:focus {
-  border-color: grey;
-  box-shadow: 0 0 0 0.25rem rgba(128, 128, 128, 0.25);
+  border-color: #0068ff;
+  /* box-shadow: 0 0 0 0.25rem rgba(128, 128, 128, 0.25); */
+  box-shadow: unset;
 }
 
 .checkbox-container {
@@ -146,3 +147,9 @@
 .inputFocusError:focus {
   background-color: #fcf2f3;
 } */
+
+@media only screen and (max-width: 768px) {
+  .form-background {
+    display: none !important;
+  }
+}
