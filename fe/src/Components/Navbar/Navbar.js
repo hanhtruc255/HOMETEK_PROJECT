@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
+import { useEffect } from "react";
 import "./Navbar.scss";
 import { BsHeart } from "react-icons/bs";
 import { BsCart3 } from "react-icons/bs";
 import { BsPerson } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useLocation  } from "react-router-dom";
 import { BsTruck } from "react-icons/bs";
 import "./Responsive.scss";
 import { BsChevronDown } from "react-icons/bs";
@@ -12,6 +13,13 @@ import "./UserDropdownMenu.css";
 import { AppContext } from "../../Pages/Users/layout/Layout";
 const Navbar = () => {
   const { setDisplayNotifyPopup } = useContext(AppContext);
+
+  const [activeLink, setActiveLink] = useState(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location.pathname]);
   return (
     <div>
       <div className="Nav__top">
@@ -28,18 +36,18 @@ const Navbar = () => {
 
         <div className="header__top__right">
           <ul>
-            <li>
+            <li className={activeLink === '/yeu-thich' ? 'active' : ''}>
               <Link to={"/yeu-thich"}>
                 <BsHeart />
               </Link>
             </li>
-            <li>
+            <li className={activeLink === '/gio-hang' ? 'active' : ''}>
               {" "}
               <Link to={"/gio-hang"}>
                 <BsCart3 />
               </Link>
             </li>
-            <li className="wrap-user-dropdown">
+            <li className="wrap-user-dropdown" >
               {" "}
               <Link
                 to={
@@ -100,7 +108,7 @@ const Navbar = () => {
                 </ul>
               )}
             </li>
-            <li>
+            <li  className={activeLink === '/tra-ma-van-don' ? 'active' : ''}>
               <Link to={"/tra-ma-van-don"}>
                 <BsTruck />
               </Link>

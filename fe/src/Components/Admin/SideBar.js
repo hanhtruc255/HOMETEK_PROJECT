@@ -8,8 +8,8 @@ const SideBar = () => {
           to="/"
           className="sidebar-home pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
         >
-          <span className="fs-3 d-none d-sm-inline text-center w-100 text-uppercase">
-            Home tek
+          <span className="titlehometek">
+           HOMETEK
           </span>
         </Link>
         <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">

@@ -1,39 +1,19 @@
 import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 import "./Rate.scss";
 
 const Rate = () => {
-  const rates = [
-    {
-      customerName: "Lan Phuong",
-      productName: "abc",
-      rateContent: "danh gia danh gisa kajdadj kaks  adkdk djas",
-      rateScore: 4,
-    },
-    {
-      customerName: "Lan Phuong",
-      productName: "abc",
-      rateContent: "danh gia danh gisa kajdadj kaks  adkdk djas",
-      rateScore: 4,
-    },
-    {
-      customerName: "Lan Phuong",
-      productName: "abc",
-      rateContent: "danh gia danh gisa kajdadj kaks  adkdk djas",
-      rateScore: 4,
-    },
-    {
-      customerName: "Lan Phuong",
-      productName: "abc",
-      rateContent: "danh gia danh gisa kajdadj kaks  adkdk djas",
-      rateScore: 4,
-    },
-    {
-      customerName: "Lan Phuong",
-      productName: "abc",
-      rateContent: "danh gia danh gisa kajdadj kaks  adkdk djas",
-      rateScore: 4,
-    },
-  ];
+  const [rates, setRates] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:3001/feedback')
+      .then(response => response.json())
+      .then(data => {
+        setRates(data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []); 
   return (
     <>
       <div className="rate-filter">
@@ -83,11 +63,11 @@ const Rate = () => {
                 return (
                   <tr key={item.categoryId}>
                     <td>{index + 1}</td>
-                    <td>{item.customerName}</td>
-                    <td>{item.productName}</td>
-                    <td>{item.rateContent}</td>
-                    <td>{item.rateScore}</td>
-                    <td>
+                    <td>{item.username}</td>
+                    <td>{item.products.name}</td>
+                    <td>{item.feedback}</td>
+                    <td>{item.rating}</td>
+                    <td className="specrate">
                       <button className="btn active-btn">Đã hoàn tất</button>
                       <Link className="btn edit-btn mx-2" to={"cap-nhat"}>
                         Cập nhật

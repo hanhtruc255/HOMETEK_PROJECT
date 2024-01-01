@@ -3,26 +3,27 @@ import "./styleproduct.scss";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom';
-import { BsHeart } from "react-icons/bs";
+import { BsHeart, BsFillHeartFill  } from "react-icons/bs";
 import { BsStar } from "react-icons/bs";
+import { BsStarFill } from "react-icons/bs";
 import { BsTruck } from "react-icons/bs";
 import { BsArrowRepeat } from "react-icons/bs";
 import { BsCamera } from "react-icons/bs";
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
+import ick from '../../Assets/background/Detail_product_background.jpg'
 // 
 
 const DetailProduct = () => {
     const {_id} = useParams();
-    console.log(">>>", _id)
     const navigate = useNavigate(); 
+    const [BuyItem, setBuyItem] = useState([]);
     const [cartItems, setCartItems] = useState([]);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [product, setProduct] = useState(null);
     const [activeTab, setActiveTab] = useState('description'); 
     const [whishlistItems, setWhishlistItems] = useState([]);
     const [wishlistChanged, setWishlistChanged] = useState(false);
-
-
+    const [quantity, setQuantity] = useState(1);
 
 //đánh giá sao trong đánh giá
     const [selectedStarIndex, setSelectedStarIndex] = useState(null);
@@ -35,7 +36,7 @@ const DetailProduct = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get(`http://localhost:3000/Cua_hang/${_id}`);
+          const response = await axios.get(`http://localhost:3001/Cua_hang/${_id}`);
           setProduct(response.data);
         } catch (error) {
           console.error('Error fetching product details:', error);
@@ -51,7 +52,7 @@ const DetailProduct = () => {
     //đánh giá
       const [showModal, setShowModal] = useState(false);
       const closeModal = () => setShowModal(false);
-      const Modaladdress = () => {
+      const ModalEvalua = () => {
         useEffect(() => {
           document.body.style.overflowY = "hidden";
           return () => {
@@ -70,7 +71,7 @@ const DetailProduct = () => {
 
             <div className='evalua_body'>
               <div className='evalua_product'>
-                  <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'}/>
+                  <img src={product.image}/>
                   <b>{product.name}</b>
                   
               </div>
@@ -80,7 +81,7 @@ const DetailProduct = () => {
               <div className='evalua_star' >
               {Array(5).fill().map((_, index) => (
                 <div key={index} onClick={() => handleStarClick(index)} className={index === selectedStarIndex ? 'selected' : ''}>
-                  <BsStar color={index === selectedStarIndex ? 'rgb(216, 216, 18)' : ''} />
+                  <BsStarFill color={index === selectedStarIndex ? '#FFAD33' : ''} />
                   <p>
                     {index === 0 ? 'Rất tệ' : index === 1 ? 'Tệ' : index === 2 ? 'Bình thường' : index === 3 ? 'Tốt' : 'Tuyệt vời'}
                   </p>
@@ -114,6 +115,12 @@ const DetailProduct = () => {
       localStorage.setItem('cart', JSON.stringify(newCart));
       setCartItems(newCart);
     };
+    const incrementQuantity = () => {
+      setQuantity((prevQuantity) => Math.max(1, prevQuantity + 1));
+    };
+    const decrementQuantity = () => {
+      setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1));
+    };
 
   ///add to whishlist
     useEffect(() => {
@@ -140,7 +147,17 @@ const DetailProduct = () => {
         alert('Đã thêm vào sản phẩm yêu thích.');
       }
     };
-    
+
+      ///format price
+  const formatPrice = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+    //mua ngay
+    const addToPayment = (item) => {
+      const existingPayment = JSON.parse(localStorage.getItem('payment')) || [];
+      const newPayment = [...existingPayment, item];
+      localStorage.setItem('payment', JSON.stringify(newPayment));
+    };
   return (
     <div>
         {product ? (
@@ -148,13 +165,12 @@ const DetailProduct = () => {
                 <div  className='Detail_Product'>
                     <div className='Image'>
                         <div className='Image_large'>
-                            <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
+                            <img src={product.image} alt="hinh"/>
                         </div>
-
                         <div className='Image_small'>
-                          <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
-                          <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
-                          <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
+                          <img src={product.sub_image[0]} alt="hinh"/>
+                          <img src={product.sub_image[1]} alt="hinh"/>
+                          <img src={product.sub_image[2]} alt="hinh"/>
                         </div>
                     </div>
 
@@ -164,26 +180,34 @@ const DetailProduct = () => {
                         {product.name}
                         </div>
                       <div>
-                        <BsStar className='icon'/>
-                        <BsStar className='icon'/>
-                        <BsStar className='icon'/>
-                        <BsStar className='icon'/>
-                        <BsStar className='icon'/>
-                        <BsHeart className='heart' style={{ color: isItemInWishlist(product._id) ? 'rgb(170, 4, 4)' : 'inherit' }} onClick={() => addToWhishlist(product)}/> </div>
+                        <BsStarFill className='iconstar'/>
+                        <BsStarFill className='iconstar'/>
+                        <BsStarFill className='iconstar'/>
+                        <BsStarFill className='iconstar'/>
+                        <BsStarFill className='iconstar'/>
+                        
+                        <button onClick={() => addToWhishlist(product)}>
+                          {isItemInWishlist(product._id) ? <BsFillHeartFill  className='icon_heartfill'/> : <BsHeart className='icon_heart'/>}
+                        </button> </div>
 
-                      <div className='price'>{product.price}đ</div>
+                      <div className='price'>{formatPrice(product.price)}đ</div>
                         
                       <h4>Số lượng</h4>
 
-                      <div className='qty'>
-                        <button>-</button>
-                        <div><input type='text'/></div>
-                        <button>+</button>
-                      </div>
+                        <div className='qty'>
+                          <button onClick={decrementQuantity}>-</button>
+                          <div>
+                            <input type='text' value={quantity} readOnly />
+                          </div>
+                          <button onClick={incrementQuantity}>+</button>
+                        </div>
                       <div className='buy_product'>
-                        <Link to="/thanh-toan">MUA HÀNG</Link>
+                          <Link to={"/thanh-toan-mua-ngay"}onClick={() => addToPayment({ ...product, quantity })}>
+                            MUA HÀNG
+                          </Link>
 
-                        <button onClick={() => addToCart(product)}>THÊM VÀO GIỎ HÀNG</button>
+                        <button onClick={() => addToCart({ ...product, quantity })}>
+                          THÊM VÀO GIỎ HÀNG</button>
                       </div>
 
                       <div className='Deli'>
@@ -200,77 +224,100 @@ const DetailProduct = () => {
                           </p>
                           
                           </div>
-                          
-                        
                       </div>
                     </div>   
                 </div>
                      {/* Đường line */}
-                     <hr className='line'/>
-
-                {/* Mô tả và kỷ thuật */}
-                <div className='frame_descrip'>
-                    <div className='descrip_name'>
-                        <hr className='hr_des'/>
-                            <button onClick={() => handleTabChange('description')} >Mô tả</button>
-                            <button onClick={() => handleTabChange('tech_detail')} >Thông số kỹ thuật</button>
-                        <hr className='hr_des'/>
-                    </div>
-                {/* mô tả */}
-                <div className='frame_content'>
-                    {activeTab === 'description' && (
-                        <div>
-                        {product.description}
-                        </div>)}
-                    {/* kỷ thuật */}
-                    {activeTab === 'tech_detail' && (
-                        <div>
-                        {product.tech_detail}
-                        </div>)}       
-                </div>
+                     <p className='line'/>
+            <div className='frame__bottom'>
+                <div className='frame_1'><div className='frame_descrip'>
+                  <div>
+                        <div className='descrip_name'>
+                            
+                            <button onClick={() => handleTabChange('description')} >MÔ TẢ</button>
+                            <button onClick={() => handleTabChange('tech_detail')} >THÔNG SỐ KỶ THUẬT</button>
+                      
+                        </div>
+                    {/* mô tả */}
+                        <div className='frame_content'>
+                              <div>
+                              {activeTab === 'description' && (
+                                    <div>
+                                    {product.description}
+                                    </div>)}
+                                {/* kỷ thuật */}
+                                {activeTab === 'tech_detail' && (
+                                    <div>
+                                    {product.tech_detail}
+                                    </div>)}       
+                              </div>
+                        </div>
+                  </div>
+                  <div>
+                        <img src={product.image}/>
+                  </div>
             
               </div>
 
                 {/* đánh giá */}
                   <div className='frame_evalua'>
-                    {/* frame chỉnh */}
-                    <h3>Đánh giá sản phẩm {product.name}</h3>
+                    <div className='frame_evalua_1'>
+                      <p>Đánh giá sản phẩm <span>5.0</span> </p>
+                    
+                    </div>
                     {/* tỏng đánh giá */}
-                    <div>
+                    <div className='frame_evalua_2'>
                         <div>
-                        <h2>(?)/5</h2>
-                        <BsStar className='icon'/>
-                        <BsStar className='icon'/>
-                        <BsStar className='icon'/>
-                        <BsStar className='icon'/>
-                        <BsStar className='icon'/>
-                        <span> (?) đánh giá</span>
-                        <hr></hr>
+                          <p>Đánh giá về {product.name}</p>
+                        <div className='evalua'>
+                          <div>Tuyết Mai <span>5</span><BsStarFill className='icon'/>
+                          <p>Giao hàng nhanh, nồi chiên không dầu, chiên đồ ăn rất ngon, giòn</p>
+                          </div>
+                        </div>
+ 
                         <center>
-                        <p>Bạn đánh giá sao về sản phẩm này?</p>
-                        <button onClick={()=> setShowModal(true)}>Đánh giá ngay</button>
+                          <button onClick={()=> setShowModal(true)}>Đánh giá ngay</button>
                         </center>
-                        <>{showModal && <Modaladdress closeModal={closeModal}/>}</>
+                        <>{showModal && <ModalEvalua closeModal={closeModal}/>}</>
                         {/* popup */}
                         <br/>
-                        <div className='frame_evalua_1'>
-                          Khung những đánh giá hiển thị
-                        </div>
+
                       </div>
 
                     </div>
                   </div>
                 {/* hỏi đáp */}
                   <div className='ask'>
-                    <h3>HỎI ĐÁP</h3>
-                    <p>Bình luận về {product.name}</p>
-                    <input placeholder="Xin mời để lại câu hỏi, Hometek sẽ nhanh chóng giải đáp những thắc mắc của bạn."/>
-                    <div className='ask_inf'>
-                        <input placeholder="Nhập họ tên*"/>
-                        <input placeholder="Nhập số điện thoại"/>
-                        <button >Gửi</button>
+                    <div className='ask_title'><p>HỎI ĐÁP</p></div>
+                    <div className='ask_box'>
+                      <p>Hỏi đáp về {product.name}</p>
+                      <input placeholder="Mời bạn bình luận. Vui lòng nhập Tiếng Việt có dấu."/>
+                      <div className='ask_inf'>
+                          <input placeholder="Nhập họ tên*"/>
+                          <input placeholder="Nhập số điện thoại"/>
+                          <button >Gửi</button>
+                      </div>
                     </div>
+                    
+                    
                   </div>
+                </div>
+                {/* end left frame */}
+                <div  className='camket'>
+                  <ul>
+                    CAM KẾT CỦA HOMETEK
+                    <li>Bảo đảm hàng chất lượng chính hãng 100%</li>
+                    <li>Giao hàng nhanh nhất</li>
+                    <li>30 ngày đổi trả, hoàn tiền 100% nếu không đúng chất lượng</li>
+                    <li>Bảo hành 12 tháng chính hãng 1 đổi 1 trong 15 ngày nếu có lỗi phần cứng từ NSX. </li>
+                    <li>Giá sản phẩm đã bao gồm VAT</li>
+                  </ul>
+                  <img src={ick}/>
+                </div>
+
+            </div>
+                {/* Mô tả và kỷ thuật */}
+                
 {/* Kết thúc */}
             </div>
               ) : (<></>)}

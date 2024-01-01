@@ -1,12 +1,20 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import ProductPage from "./Pages/Users/ProductPage/ProductPage.js";
+
 import CartPage from "./Pages/Users/CartPage/CartPage";
 import DetailProductPage from "./Pages/Users/ProductPage/DetailProductPage";
-import CatogoryPage from "./Pages/Users/ProductPage/CategoryPage.js";
+import CategoryPage from "./Pages/Users/ProductPage/CategoryPage";
+import SubcategotyPage from "./Pages/Users/ProductPage/SubcategoryPage";
 import PaymentSuccess from "./Components/Payment/PaymentSuccess";
 import PaymentMoney from "./Components/Payment/PaymentMoney";
+import TrackingPage from "./Pages/Users/TrackingPage/TrackingPage";
+import PaymentPage from "./Pages/Users/PaymentPage/PaymentPage";
+import Payment_buyPage from "./Pages/Users/PaymentPage/Payment_buyPage";
+import ConfirmPage from "./Pages/Users/PaymentPage/ConfirmPage";
+import WhishlistPage from "./Pages/Users/WhishlistPage/WhishlistPage";
+import ConfirmPage1 from "./Pages/Users/PaymentPage/ConfirmPage1";
+
 import Layout from "./Pages/Users/layout/Layout.jsx";
 import Contact from "./Pages/Users/contact/Contact.jsx";
 import BlogPage from "./Pages/Users/blog-page/BlogPage.jsx";
@@ -27,9 +35,8 @@ import OrderUpdate from "./Pages/Admin/Order/OrderUpdate";
 import Voucher from "./Pages/Admin/Voucher/Voucher";
 import VoucherCreate from "./Pages/Admin/Voucher/VoucherCreate";
 import VoucherUpdate from "./Pages/Admin/Voucher/VoucherUpdate";
-import PaymentPage from "./Pages/Users/PaymentPage/PaymentPage";
-import ConfirmPage from "./Pages/Users/PaymentPage/ConfirmPage";
 import HomePage from "./Pages/Users/home-page/HomePage.jsx";
+
 import PageNotFound from "./Pages/Users/page-not-found/PageNotFound.jsx";
 import AboutUsPage from "./Pages/Users/about-us/AboutUsPage.jsx";
 import LoginPage from "./Pages/Users/login-page/LoginPage";
@@ -105,27 +112,32 @@ const App = () => {
             <Route path="/chinh-sach" element={<PolicyPage />} />
             <Route path="*" element={<PageNotFound />} />
             <Route path="about-us" element={<AboutUsPage />} />
-            <Route path="/cua-hang" element={<ProductPage />} />
-            <Route path="/cua-hang/:id" element={<DetailProductPage />} />
             {/* <Route path="/blog-page" element={<BlogPage />} /> */}
             <Route path="/blog-page" element={<BlogPage />} />
             <Route path="/blog-page/:blogId" element={<BlogDetailPage />} />
 
-            {/* <Route path="/:categoryId" element={<CategoryPage />} /> */}
-            <Route path="/:category/:id" element={<DetailProductPage />} />
-            {/* <Route path="/:category/:subcategory" element={<CatogoryPage />} /> */}
+            <Route path="/:categoryId" element={<CategoryPage />} />
+            <Route path="/:categoryId/:_id" element={<DetailProductPage />} />
             <Route
-              path="/:category/:subcategory/:id"
+              path="/:categoryId/sub/:sub_categoryId"
+              element={<SubcategotyPage />}
+            />
+            <Route
+              path="/:categoryId/sub/:sub_categoryId/:_id"
               element={<DetailProductPage />}
             />
             <Route path="/gio-hang" element={<CartPage />} />
+            <Route path="/yeu-thich" element={<WhishlistPage />} />
             <Route path="/thanh-toan" element={<PaymentPage />} />
+            <Route path="/thanh-toan-mua-ngay" element={<Payment_buyPage />} />
             <Route path="/thanh-toan/xac-minh" element={<ConfirmPage />} />
+            <Route path="/thanh-toan/xac-minh-1" element={<ConfirmPage1 />} />
             <Route path="/thanh-toan/thanh-cong" element={<PaymentSuccess />} />
             <Route
               path="/thanh-toan/xac-minh/thanh-toan-tien"
               element={<PaymentMoney />}
             />
+            <Route path="/tra-ma-van-don" element={<TrackingPage />} />
           </Route>
 
           <Route path="/admin" element={<DashBoard />}>

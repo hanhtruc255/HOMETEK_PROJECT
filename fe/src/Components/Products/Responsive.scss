@@ -1,0 +1,127 @@
+@media only screen and (max-width: 768px) {
+    .Frame_filter{
+        .Frame__filter__lefft{
+            h5{
+                font-size: 14px;
+            }
+        }
+        .Frame__filter__right{
+            button{
+                padding: 5px;
+            }
+            p{
+                font-size: 11px;
+            }
+        }
+        
+    }
+}
+@media only screen and (max-width: 500px) {
+    .Frame_filter{
+        .Frame__filter__lefft{
+            h5{
+                font-size: 14px;
+            }
+        }
+        .Frame__filter__right{
+            button{
+                height: 30px;
+                padding: 5px;
+            }
+            p{
+                font-size: 11px;
+            }
+        }
+        
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .Category__Sidebar{
+        width: 150px;
+        max-width: 150px;
+        min-width: 150px;
+    }
+}
+
+
+@media only screen and (max-width: 1100px){
+    .Detail_Product{
+        .Infomation{
+            .buy_product{
+                a{
+                padding:13px 0 0 0;
+                height: 40px;
+                font-size: 20px;
+            }
+            button{
+                font-size: 20px;
+            }
+        }
+        }
+
+    }}
+
+@media only screen and (max-width: 950px){
+        .Detail_Product{
+            .Infomation{
+                flex-direction: column;
+                .buy_product{
+                    a{
+                    padding:13px 0 0 0;
+                    height: 40px;
+                    font-size: 15px;
+                }
+                button{
+                    font-size: 15px;
+                }
+            }
+            }}}
+
+ @media only screen and (max-width: 800px){
+
+    .Detail_Product{
+        flex-direction: column;
+        .Image{
+            width: 100%;
+            .Image_large{
+                
+                border: 1px solid #C5C5C5;
+                img{            
+                    width: 100%;
+                }
+            };
+        }
+        .Infomation{
+            width: 100%;
+            .breadcrumdetail{display: none;}
+            .buy_product{
+                a{
+                padding:13px 0 0 0;
+                height: 40px;
+                font-size: 15px;
+            }
+            button{
+                font-size: 15px;
+            }
+        }
+        }}
+    .frame__bottom{
+        flex-direction: column;
+        margin: 30px 70px 30px 100px;
+        .frame_1{
+            width: 100%;
+        }
+        .camket{display: flex;
+        img{
+            width: 35%;
+           margin: 0px 30px 15px 3px;
+        }}
+    }
+    .frame_descrip{
+        img{
+            width: 100%;
+        }
+    }
+}
+    

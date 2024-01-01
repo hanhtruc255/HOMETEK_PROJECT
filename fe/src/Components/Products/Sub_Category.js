@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link,useNavigate  } from 'react-router-dom';
-import { BsHeart, BsCart3 } from 'react-icons/bs';
+import { BsHeart, BsCart3,BsFillHeartFill } from 'react-icons/bs';
 import './styleproduct.scss';
 
 const SubCategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice }) => {
   const { sub_categoryId, categoryId } = useParams();
   const navigate = useNavigate(); 
+  const [BuyItem, setBuyItem] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [product, setProduct] = useState(null);
   const [whishlistItems, setWhishlistItems] = useState([]);
   const [wishlistChanged, setWishlistChanged] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   const sortProducts = (products, criteria) => {
     switch (criteria) {
@@ -32,7 +34,7 @@ const SubCategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice }) => 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/categories/${categoryId}/${sub_categoryId}`);
+        const response = await axios.get(`http://localhost:3001/categories/${categoryId}/${sub_categoryId}`);
 
         if (response.data) {
           const productData = Array.isArray(response.data)
@@ -100,6 +102,16 @@ const sortedProducts = sortProducts(filteredProducts, sortCriteria);
     }
   };
 
+    ///format price
+    const formatPrice = (price) => {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    };
+    //mua ngay
+    const addToPayment = (item) => {
+      const existingPayment = JSON.parse(localStorage.getItem('payment')) || [];
+      const newPayment = [...existingPayment, item];
+      localStorage.setItem('payment', JSON.stringify(newPayment));
+    };
 
   return (
     <div className='item'>
@@ -111,19 +123,22 @@ const sortedProducts = sortProducts(filteredProducts, sortCriteria);
             </div>
             <div className='child_inf'>
               <h4>{item.name}</h4>
-              <b>{item.price}đ</b>
+              <b>{formatPrice(item.price)}đ</b>
             </div>
           </Link>
 
           <div className="item__buy">
             <div>
-              <Link to="/thanh-toan" >Mua ngay</Link>
+                 <Link to={"/thanh-toan-mua-ngay"}onClick={() => addToPayment({ ...item, quantity })}>
+                            MUA HÀNG
+                  </Link>
             </div>
 
             <div className="item__buy__icon">
-            <button
-              style={{ color: isItemInWishlist(item._id) ? 'rgb(170, 4, 4)' : 'inherit' }} onClick={() => addToWhishlist(item)}><BsHeart /></button>
               <button><BsCart3  onClick={() => addToCart(item)}/></button>
+              <button onClick={() => addToWhishlist(item)}>
+                {isItemInWishlist(item._id) ? <BsFillHeartFill  className='icon_heart'/> : <BsHeart />}
+              </button>
             </div>
           </div>
         </div>

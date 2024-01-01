@@ -1,11 +1,16 @@
 @import url('../Products/styleproduct.scss');
+@import url('../../Style/style.scss');
 
 .title{
-    margin: 20px 0 0 50px;
+    margin: 20px 0 -30px 50px;
     font-weight: bolder;
     font-size: 40px;
-}
+    font-family: 'Lexend Deca', sans-serif;   
+    p{
+        margin-bottom: -20px;
+    }
 
+}
 .item{
     margin: 0px 30px;
     .item__buy{
