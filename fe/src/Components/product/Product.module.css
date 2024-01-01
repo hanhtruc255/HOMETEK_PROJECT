@@ -28,7 +28,7 @@
 }
 
 .productName .name {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: rgb(5, 5, 100);
 }
@@ -36,7 +36,7 @@
 .productPriceThrough {
   height: 16px;
   color: #595959;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   -webkit-text-decoration: line-through;
   text-decoration: line-through;
 }
@@ -44,7 +44,7 @@
 .productPriceShow {
   color: #0068ff;
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   padding-top: 2px;
 }
 
@@ -92,6 +92,8 @@
   cursor: pointer;
   box-sizing: border-box;
   margin-right: 1px !important;
+  position: relative;
+  z-index: 1000;
 }
 
 .productIconHeartActive {
@@ -101,4 +103,6 @@
   cursor: pointer;
   box-sizing: border-box;
   margin-right: 1px !important;
+  position: relative;
+  z-index: 1000;
 }

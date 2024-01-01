@@ -159,8 +159,19 @@
 }
 .wrapper-brands {
   text-align: center;
-  padding: 0 40px;
+  /* padding: 0 40px; */
   overflow-x: hidden;
+}
+
+.wrapper-brands--block-brands {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.wrapper-brands--block-brands .brandsImg {
+  width: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
 }
 
 /* .wrapper-brands--heading,

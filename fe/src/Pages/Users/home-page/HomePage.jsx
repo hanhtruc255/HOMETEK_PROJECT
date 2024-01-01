@@ -113,6 +113,14 @@ const HomePage = () => {
       // console.log("data: ", data);
     } catch (error) {}
   };
+
+  //add product into storage
+  const addToPayment = (item) => {
+    const existingPayment = JSON.parse(localStorage.getItem("payment")) || [];
+    const newPayment = [...existingPayment, item];
+    localStorage.setItem("payment", JSON.stringify(newPayment));
+  };
+
   //setting for blogs slider
   var settings = {
     dots: false,
@@ -226,6 +234,11 @@ const HomePage = () => {
                       onClick={() => {
                         history(`/${product.categoryId}/${product._id}`);
                       }}
+                      handleBuyNowBtn={(event) => {
+                        event.stopPropagation();
+                        addToPayment(product);
+                        history("/thanh-toan-mua-ngay");
+                      }}
                     />
                   </SwiperSlide>
                 );
@@ -258,6 +271,12 @@ const HomePage = () => {
                       onClick={() => {
                         history(`/${product.categoryId}/${product._id}`);
                       }}
+                      handleBuyNowBtn={(event) => {
+                        event.stopPropagation();
+
+                        addToPayment(product);
+                        history("/thanh-toan-mua-ngay");
+                      }}
                     />
                   </SwiperSlide>
                 );
@@ -286,6 +305,12 @@ const HomePage = () => {
                       onClick={() => {
                         history(`/${product.categoryId}/${product._id}`);
                       }}
+                      handleBuyNowBtn={(event) => {
+                        event.stopPropagation();
+
+                        addToPayment(product);
+                        history("/thanh-toan-mua-ngay");
+                      }}
                     />
                   </SwiperSlide>
                 );
@@ -308,6 +333,11 @@ const HomePage = () => {
                     onClick={() => {
                       history(`/${product.categoryId}/${product._id}`);
                     }}
+                    handleBuyNowBtn={(event) => {
+                      event.stopPropagation();
+                      addToPayment(product);
+                      history("/thanh-toan-mua-ngay");
+                    }}
                   />
                 </SwiperSlide>
               );
@@ -319,7 +349,7 @@ const HomePage = () => {
           <div className="heading">THƯƠNG HIỆU</div>
 
           <div className="wrapper-brands--block-brands">
-            <img src={brandsImage} alt="" />
+            <img src={brandsImage} alt="" className="brandsImg" />
           </div>
         </div>
         <div className="wrapper-blogs">
