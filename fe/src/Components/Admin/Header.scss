@@ -2,6 +2,8 @@
   .search-btn {
     background: #041e42;
     color: #e3e6f0;
+    height: 40px;
+    border-radius: 0 5px 5px 0;
   }
 }
 
@@ -11,6 +13,7 @@
   height: calc(4.375rem - 2rem);
   margin: auto 1rem;
 }
+
 .dropdown:hover .dropdown-menu,
 .dropdown:focus .dropdown-menu {
   display: block !important;

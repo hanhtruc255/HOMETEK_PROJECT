@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import './Login.scss';
+import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
+import "./Login.scss";
 
 const LoginAdmin = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [isLoggedIn, setLoggedIn] = useState(false);
 
   const handleLogin = () => {
-    if (username === 'admin123' && password === '123456') {
+    if (username === "admin123" && password === "123456") {
       setLoggedIn(true);
     } else {
-      setError('Đăng nhập không thành công. Vui lòng nhập lại.');
+      setError("Đăng nhập không thành công. Vui lòng nhập lại.");
     }
   };
 
@@ -21,14 +21,14 @@ const LoginAdmin = () => {
   }
 
   return (
-    <div className='loginadmin'>
+    <div className="loginadmin">
       <h2>Đăng nhập</h2>
       <div>
         <input
           type="text"
           id="username"
           value={username}
-          placeholder='Tên đăng nhập'
+          placeholder="Tên đăng nhập"
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
@@ -37,12 +37,12 @@ const LoginAdmin = () => {
           type="password"
           id="password"
           value={password}
-          placeholder='Mật khẩu'
+          placeholder="Mật khẩu"
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <button onClick={handleLogin}>Đăng nhập</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };

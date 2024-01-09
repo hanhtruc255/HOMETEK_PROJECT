@@ -140,7 +140,7 @@ const App = () => {
             />
             <Route path="/tra-ma-van-don" element={<TrackingPage />} />
           </Route>
-          <Route path="/adminhometek" element={<LoginAdmin/>}></Route>
+          <Route path="/adminhometek" element={<LoginAdmin />}></Route>
           <Route path="/admin" element={<DashBoard />}>
             <Route path="san-pham" element={<Product />}></Route>
             <Route path="san-pham/them" element={<ProductCreate />}></Route>

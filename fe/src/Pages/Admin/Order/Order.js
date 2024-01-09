@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./Order.scss";
 function Order() {
   const [orders, setOrders] = useState([]);
@@ -7,15 +7,15 @@ function Order() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3001/order');
+        const response = await fetch("http://localhost:3001/order");
         const data = await response.json();
         setOrders(data); // Set state with fetched data
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
-    fetchData(); 
-  }, []); 
+    fetchData();
+  }, []);
   return (
     <>
       <div className="order-filter">
@@ -71,8 +71,8 @@ function Order() {
                   <tr key={item.categoryId}>
                     <td>{index + 1}</td>
                     <td>{item.orderId}</td>
-                    <td>{item.deliveyInfor.customerName}</td>
-                    <td>{item.deliveyInfor.deliveryPhoneNumber}</td>
+                    <td>{item.deliveryInfor.customerName}</td>
+                    <td>{item.deliveryInfor.deliveryPhoneNumber}</td>
                     <td>{item.finalAmount}</td>
                     <td>01/01/2024</td>
                     <td>

@@ -14,7 +14,7 @@ const Header = () => {
               placeholder="Tìm kiếm..."
             />
             <div class="input-group-append">
-              <button class="btn search-btn" type="button">
+              <button class="search-btn" type="button">
                 <i class="bi bi-search"></i>
               </button>
             </div>
@@ -70,7 +70,7 @@ const Header = () => {
               <div class="dropdown-divider"></div>
               <li class="dropdown-item">
                 <i class="bi bi-arrow-left mx-2"></i>
-                <Link to='/loginadmin'>Thoát</Link>
+                <Link to="/adminhometek">Thoát</Link>
               </li>
             </div>
           </li>
