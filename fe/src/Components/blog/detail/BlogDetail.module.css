@@ -30,10 +30,11 @@
   font-style: italic;
 }
 .blogContent{
+  margin: 0 45px 0 45px; 
   color: #041E42;
   font-size: 17px;
   text-align: justify;
-  line-height: 25px;
+  line-height: 30px;
   font-weight: lighter;
 }
 
@@ -50,6 +51,7 @@
   font-style: italic;
   margin-top: 10px;
   text-align: left;
+  margin-left: 40px ;
 }
 /* Responsive Styles for Detail Page */
 

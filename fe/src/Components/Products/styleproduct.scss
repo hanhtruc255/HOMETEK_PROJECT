@@ -8,9 +8,9 @@
     .child{
         width: 210px;
         height: 340px;
-        padding: 5px 0 10px 10px ;
+        padding: 10px;
         margin:50px 0 10px 15px ;
-        border: 1px solid black;
+        border: 1px solid #041E42;
         border-radius: 5px;
         box-shadow: 0 1px 0 0 ;
     }
@@ -31,7 +31,7 @@
         }
         p{
             margin: 0px 5px;
-            font-size: 20px;
+            font-size: 18px;
             color: #0068FF;
             font-weight: 900;   
             font-family: 'Lexend Deca', sans-serif;   
@@ -46,13 +46,15 @@
         }}
 
     .item__buy{
+        justify-content: space-between;
         margin-top: 15px;
         display: flex;
         button{
+
             color: #041E42;
             padding: 5px 18px;
             border: 1px solid;
-            border-radius: 10px;
+            border-radius: 20px;
         }
         a{justify-content: space-between;
             border: 1px solid #041E42;
@@ -63,10 +65,16 @@
             :visited{
                 color:#041E42;}
         }
+        .textstyle{
+            font-size: 15px;
+        }
 
         .item__buy__icon{
             display: flex;
+            margin-right: 15px;
+          
             button{
+        
              background: none;
              border: none;
             //  width: 30px;

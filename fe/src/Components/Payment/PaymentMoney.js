@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Navbar from '../Navbar/Navbar';
+
 import ipayment from '../../Assets/images/payment.png';
 
 const PaymentMoney = () => {
@@ -25,7 +25,7 @@ const PaymentMoney = () => {
 
   return (
     <div>
-      <Navbar />
+      
       <center className='payment_money'>
         <h3>THÔNG TIN THANH TOÁN</h3>
           <img src={ipayment} alt='Payment' />

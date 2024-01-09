@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from '../Navbar/Navbar';
+
 import { BsCheckCircleFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
 const PaymentSuccess = () => {
   return (
     <div>
-        <Navbar/>
+       
         <center className='confirm_success'>
             <BsCheckCircleFill className='iconcheck'/>
             <h3>Đặt hàng thành công</h3>

@@ -331,9 +331,12 @@
   display: flex;
   gap: 20px;
 }
-
+.couple-banner{
+  flex: 1;
+}
 .couple-img {
   width: 100%;
+  height: 100%;
 }
 
 .inset-banner {

@@ -136,8 +136,8 @@ const CategoryProduct = ({ sortCriteria, filteredBrands, selectedPrice}) => {
 
           <div className="item__buy">
             <div>
-                     <Link to={"/thanh-toan-mua-ngay"}onClick={() => addToPayment({ ...item, quantity })}>
-                            MUA HÀNG
+                     <Link to={"/thanh-toan-mua-ngay"}onClick={() => addToPayment({ ...item, quantity })} className='textstyle'>
+                            Mua hàng
                      </Link>
             </div>
 
