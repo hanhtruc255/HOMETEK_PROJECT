@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import "./styleproduct.scss";
-import { BsList } from "react-icons/bs";
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 
-const CategorySidebar = () => {
+const CategorySidebar = ({ onFilterChange, onPriceChange}) => {
   //category
   const [showBepSubcategories, setShowBepSubcategories] = useState(false);
   const [showDonDepSubcategories, setShowDonDepSubcategories] = useState(false);
@@ -31,11 +30,12 @@ const CategorySidebar = () => {
   // brand
   const {categoryId} = useParams()
   console.log (">>", categoryId)
-
   const [product, setProduct] = useState(null);
   const [uniqueBrands, setUniqueBrands] = useState(new Set());
   const [selectedBrands, setSelectedBrands] = useState(new Set());
 
+  //filter brand and price
+  const [selectedPrice, setSelectedPrice] = useState(null);
   const handleBrandChange = (brand) => {
     const updatedBrands = new Set(selectedBrands);
     if (updatedBrands.has(brand)) {
@@ -44,17 +44,21 @@ const CategorySidebar = () => {
       updatedBrands.add(brand);
     }
     setSelectedBrands(updatedBrands);
-  };
-  const [filteredProducts, setFilteredProducts] = useState([]);
-
-  const filterProducts = (selectedBrands) => {
-    if (product) {
-      const filtered = product.filter(item => selectedBrands.has(item.brand_name));
-      setFilteredProducts(filtered);
-    }
+    onFilterChange(updatedBrands);
   };
 
+  const handlePriceChange = (price) => {
+    setSelectedPrice(price);
+    onPriceChange(price);
+  };
 
+  const applyFilters = () => {
+    onFilterChange(selectedBrands);
+    onPriceChange(selectedPrice);
+  };
+
+
+//get data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -76,7 +80,7 @@ const CategorySidebar = () => {
   }, [categoryId]);
 
 
-
+//output
   return (
     <div className='Category__Sidebar'>
       {/* CATEGORY */}
@@ -106,8 +110,6 @@ const CategorySidebar = () => {
               <Link to="/02/sub/D1">Bàn chảy đa năng</Link> <br />
               <Link to="/02/sub/D2">Máy lọc không khí thông minh</Link> <br />
               <Link to="/02/sub/D3">Robot hút bụi lau nhà</Link> <br />
-              
-             
             </div>
           )}
         </div>
@@ -147,12 +149,20 @@ const CategorySidebar = () => {
       <div className='brandandprice'>
         <b>PRICE</b> <br/>
         <div className='b1'>
-          <label> <input type='radio' name='price' className='input_soft' /> <p>0đ - 2.000.000đ</p></label>
-          <label> <input type='radio' name='price' className='input_soft' /><p>2.000.000đ - 5.000.000đ</p> </label>
-          <label> <input type='radio' name='price' className='input_soft' /> <p> {'>'}= 5.000.000đ </p> </label>
+          <label>
+              <input type='checkbox' name='price' className='input_soft' onChange={() => handlePriceChange(0)} />
+              <p>0đ - 2.000.000đ</p>
+            </label>
+            <label>
+              <input type='checkbox' name='price' className='input_soft' onChange={() => handlePriceChange(1)} />
+              <p>2.000.000đ - 5.000.000đ</p>
+            </label>
+            <label>
+              <input type='checkbox' name='price' className='input_soft' onChange={() => handlePriceChange(2)} />
+              <p> {'>'}= 5.000.000đ </p>
+            </label>
         </div>
       </div>
-      <div> <button onClick={() => filterProducts(selectedBrands)}>LỌC</button> </div>
     </div>
   );
 }

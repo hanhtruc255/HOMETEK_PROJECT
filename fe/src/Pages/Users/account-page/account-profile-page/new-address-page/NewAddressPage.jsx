@@ -9,6 +9,7 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 // import { AccountContext } from '../../AccountPage';
 import { AccountContext } from "../../AccountPage";
+import CheckPhoneNumberFormat from "../../../../../functions/CheckPhoneNumberFormat";
 const NewAddressPage = () => {
   const {
     singleAddressData,
@@ -62,6 +63,8 @@ const NewAddressPage = () => {
     }
   };
 
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumberErrorText, setPhoneNumberErrorText] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsAccountNotifyModalVisible(true);
@@ -118,9 +121,24 @@ const NewAddressPage = () => {
               id="phone-number"
               placeholder="Nhập số điện thoại"
               value={
-                singleAddressData ? singleAddressData.deliveryPhoneNumber : ""
+                singleAddressData
+                  ? singleAddressData.deliveryPhoneNumber
+                  : phoneNumber
               }
-            />
+              onChange={(event) => {
+                const newPhoneNumber = event.target.value;
+                setPhoneNumber(newPhoneNumber);
+                setPhoneNumberErrorText(
+                  !CheckPhoneNumberFormat(newPhoneNumber)
+                );
+              }}
+            >
+              {phoneNumberErrorText && (
+                <span className="notification-text">
+                  Số điện thoại bạn nhập không hợp lệ
+                </span>
+              )}
+            </InputField>
           </div>
         </div>
 

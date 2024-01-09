@@ -49,14 +49,15 @@
         
         margin-top: 15px;
         display: flex;
+        .show_message{
+            
+        }
     
         button{
             color: #041E42;
             padding: 5px 18px;
             border: 1px solid;
             border-radius: 10px;
-            
-
         }
 
         a{
@@ -189,6 +190,7 @@
             margin-bottom: 10px;
             color: #041E42;
             font-weight: bold;
+            cursor: pointer;
         }
 
         .price{
@@ -318,6 +320,7 @@
     .frame_content{
         border: 1px solid rgb(195, 195, 195);
         padding: 50px;
+        white-space: pre-line 
 
 
     }
@@ -329,7 +332,7 @@
     max-width: 200px;
     min-width: 200px;
     padding: 15px;
-    margin: 50px 20px 0px 20px;
+    margin: 50px 3px 0px 20px;
     border: 1px solid black;
     border-radius: 5px;
     background-color: #F5F5F5F5;
@@ -337,7 +340,9 @@
     b{
         font-size: 30;
         text-decoration:underline;
-        margin-top: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+        letter-spacing: 1.5px;
     }
    .category{
     // margin: 0 100px 0 0 ;
@@ -365,39 +370,8 @@
                 p{
                     margin: 0 0 0 10px;
                 }}}}
-    button{
-       background: #041E42; 
-       padding: 5px 10px;
-       color: white;
-       border: 1px solid #041E42;
-       border-radius: 5px;
-       margin: 10px 20px 0 50px;
-    }
 }
 
-
-
-/////////breadcum
-.bread{
-    display: flex;
-    font-size: 20px;
-    margin: 20px 0 0 20px;
-    color: #041E42;
-    font-weight: bold;
-    a{
-        text-decoration: none;
-        color: #041E42;
-        font-size: 20px;
-
-    }
-    .iconbread{
-        font-size: 16px;
-        margin: 10px;
-    }
-    p{
-        font-size: 20px;
-    }
-}
 
 
 ////đánh giá

@@ -1,0 +1,19 @@
+@import url('../Products/styleproduct.scss');
+
+.title{
+    margin: 20px 0 0 50px;
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+.item{
+    margin: 0px 30px;
+    .item__buy{
+        .item__buy__icon{
+            .icon_heart{
+                color: rgb(170, 4, 4);
+            }
+        }
+    }
+    
+}

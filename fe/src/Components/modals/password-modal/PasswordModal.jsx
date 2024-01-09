@@ -5,6 +5,7 @@ import styles from "./PasswordModal.module.css";
 import checkIcon from "../../../Assets/icons/check.svg";
 // import xmark from '../../../assets/icons/xmark.svg';
 import xmark from "../../../Assets/icons/xmark.svg";
+
 const PasswordModal = ({ firstCondition, secondCondition, className }) => {
   return (
     <div className={classNames(styles.wrapperPwdModal, className)}>

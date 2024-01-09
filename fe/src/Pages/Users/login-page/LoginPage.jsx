@@ -1,31 +1,25 @@
 import React from "react";
-import { useContext, useState } from "react";
-
+import { useContext, useState, useEffect } from "react";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-// import '../../styles/FormStyle.css';
 import "../../../styles/FormStyle.css";
-// import FormButton from '../../components/form-btn/FormButton';
 import FormButton from "../../../Components/form-btn/FormButton";
-// import GoogleIcon from '../../assets/icons/google-icon.svg';
 import GoogleIcon from "../../../Assets/icons/google-icon.svg";
-// import FacebookIcon from '../../assets/icons/facebook-icon.svg';
 import FacebookIcon from "../../../Assets/icons/facebook-icon.svg";
-// import xmark from '../../assets/icons/xmark.svg';
 import xmark from "../../../Assets/icons/xmark.svg";
-// import RedirectLoginSignup from '../../components/redirect-login-signup/RedirectLoginSignup';
 import RedirectLoginSignup from "../../../Components/redirect-login-signup/RedirectLoginSignup";
-// import WrapperModal from '../../components/modals/WrapperModal';
 import WrapperModal from "../../../Components/modals/WrapperModal";
-// import NotificationForm from '../../components/form/notification-form/NotificationForm';
 import NotificationForm from "../../../Components/form/notification-form/NotificationForm";
-// import loginBackground from '../../assets/background/login-background.png';
 import loginBackground from "../../../Assets/background/login-background.png";
+import { AppContext } from "../layout/Layout";
 const LoginPage = () => {
+  const { setDisplayFooter, globalState, setGlobalState } =
+    useContext(AppContext);
+  useEffect(() => {
+    setDisplayFooter(false);
+  }, []);
   const history = useNavigate();
-  const sampleUserData = {
-    phoneNumber: "0123456789",
-    password: "Abcd1234@",
-  };
+
   const [notificationModalActive, setNotificationModalActive] = useState(false);
 
   const [loginData, setLoginData] = useState({
@@ -34,17 +28,33 @@ const LoginPage = () => {
   });
 
   const [loginStatus, setLoginStatus] = useState("success");
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("loginData: ", loginData);
-    if (
-      loginData.phoneNumber === sampleUserData.phoneNumber &&
-      loginData.password === sampleUserData.password
-    ) {
-      setLoginStatus("success");
-    } else {
+    try {
+      await axios
+        .post("http://localhost:3001/login", {
+          phone: loginData.phoneNumber,
+          password: loginData.password,
+        })
+        .then((res) => {
+          if (res) {
+            const userId = res.data.userId;
+            setGlobalState({
+              ...globalState,
+              loginStatus: { status: true, userId: userId },
+            });
+            history("/");
+          }
+
+          console.log("LOGIN SUCCESSFULLY");
+          setLoginStatus("success");
+        });
+    } catch (error) {
+      console.log("ERROR: ", error);
       setLoginStatus("error");
     }
+
     setNotificationModalActive(true);
   };
   return (
@@ -146,7 +156,11 @@ const LoginPage = () => {
                 : "Chào mừng bạn quay lại"
             }
             handleClick={() => {
-              history("/");
+              if (loginStatus === "error") {
+                history("/login");
+              } else {
+                history("/");
+              }
               setNotificationModalActive(false);
             }}
           >

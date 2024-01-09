@@ -1,13 +1,10 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema
+    const mongoose = require('mongoose');
+    const Schema = mongoose.Schema
 
 const customerSchema = new Schema({
-    LoginStatus:{ 
-        type: Boolean,
-        default: false},
     userId: {
         type: String,
-        unique:true},
+        default: ''},
     userName: {
         type: String,
         required: true},
@@ -18,12 +15,23 @@ const customerSchema = new Schema({
     password:{
         type: String,
         default: ''},
-    gender:{type: String,
-        default: ""},
+
     address:{
         type: String,
-        default: ''}
+        default: ''},
+
+    salt:{
+        type: String,
+        // required: true
+    },
+    // cart: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Cart'
+    // }
 })
 
 const Cust=mongoose.model("customers", customerSchema)
 module.exports=Cust
+
+
+// module.exports = mongoose.model('customer',customerSchema,'customer')

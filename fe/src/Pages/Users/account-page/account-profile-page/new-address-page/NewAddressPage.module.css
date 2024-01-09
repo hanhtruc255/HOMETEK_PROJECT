@@ -19,7 +19,6 @@
 }
 
 .wrapperForm {
-  font-size: 20px;
 }
 
 .inputContainer {
@@ -82,7 +81,7 @@ select {
 
 .submitBtn {
   width: fit-content;
-  padding: 3px 15px;
+  padding: 5px 15px;
   margin: 0;
   font-weight: 500;
 }

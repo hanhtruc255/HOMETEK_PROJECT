@@ -2,7 +2,6 @@ import React from "react";
 import classNames from "classnames";
 import styles from "./Footer.module.css";
 import { Link } from "react-router-dom";
-// import send from '../../assets/icons/icon-send.svg';
 import send from "../../Assets/icons/icon-send.svg";
 import FormButton from "../form-btn/FormButton";
 
@@ -89,8 +88,8 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className={styles.secondline}>
-        <h4 className={styles.secondlineDescription}>
+      <div className={styles.secondLine}>
+        <h4 className={styles.secondLineDescription}>
           HOME TEK © 2023 - Đồ công nghệ gia dụng chính hãng
         </h4>
       </div>

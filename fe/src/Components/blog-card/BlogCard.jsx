@@ -8,7 +8,7 @@ const BlogCard = (props) => {
   return (
     <div className={styles.blog}>
       <div className={styles.blogImage}>
-        <img src={blogImage} alt="" className={styles.blogImg} />
+        <img src={props.imgSrc} alt="" className={styles.blogImg} />
       </div>
       <div className={styles.blogTitle}>
         <h3 className={styles.title}>{props.blogTitle}</h3>

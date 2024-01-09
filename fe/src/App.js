@@ -1,14 +1,15 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import ProductPage from "./Pages/Users/ProductPage/ProductPage";
+import ProductPage from "./Pages/Users/ProductPage/ProductPage.js";
 import CartPage from "./Pages/Users/CartPage/CartPage";
 import DetailProductPage from "./Pages/Users/ProductPage/DetailProductPage";
-// import CatogoryPage from "./Pages/Users/ProductPage/CatogoryPage";
+import CatogoryPage from "./Pages/Users/ProductPage/CategoryPage.js";
 import PaymentSuccess from "./Components/Payment/PaymentSuccess";
 import PaymentMoney from "./Components/Payment/PaymentMoney";
 import Layout from "./Pages/Users/layout/Layout.jsx";
 import Contact from "./Pages/Users/contact/Contact.jsx";
+// import BlogPage from "./Pages/Users/blog-page/BlogPage.jsx";
 
 // admin
 import DashBoard from "./Pages/Admin/Dashboard";
@@ -34,7 +35,7 @@ import LoginPage from "./Pages/Users/login-page/LoginPage";
 import SignUpPage from "./Pages/Users/sign-up-page/SignUpPage";
 import ForgetPasswordPage from "./Pages/Users/login-page/forget-password-page/ForgetPasswordPage.jsx";
 import SendOtpForm from "./Components/form/send-otp-form/SendOtpForm.jsx";
-import VertificationOtpForm from "./Components/form/verification-otp-form/VerificationOtpForm.jsx";
+import VerificationOtpForm from "./Components/form/verification-otp-form/VerificationOtpForm.jsx";
 import PasswordRecoveryForm from "./Components/form/password-recovery-form/PasswordRecoveryForm.jsx";
 
 import AccountPage from "./Pages/Users/account-page/AccountPage.jsx";
@@ -63,7 +64,7 @@ const App = () => {
               <Route
                 path="vertify-otp"
                 element={
-                  <VertificationOtpForm
+                  <VerificationOtpForm
                     type="forgetPassword"
                     heading="Phục hồi mật khẩu"
                     btnText="Xác minh"
@@ -92,9 +93,12 @@ const App = () => {
               <Route path="orders-management" element={<ManageOrdersPage />}>
                 <Route index element={<ManageOrdersTable />} />
                 <Route path="list-orders" element={<ManageOrdersTable />} />
-                <Route path="order-details" element={<OrderDetailsPage />} />
                 <Route
-                  path="order-details/rating-order"
+                  path="order-details/:id"
+                  element={<OrderDetailsPage />}
+                />
+                <Route
+                  path="order-details/:id/rating-order"
                   element={<RatingOrderPage />}
                 />
               </Route>
@@ -105,6 +109,7 @@ const App = () => {
             <Route path="about-us" element={<AboutUsPage />} />
             <Route path="/cua-hang" element={<ProductPage />} />
             <Route path="/cua-hang/:id" element={<DetailProductPage />} />
+            {/* <Route path="/blog-page" element={<BlogPage />} /> */}
 
             {/* <Route path="/:category" element={<CatogoryPage />} /> */}
             <Route path="/:category/:id" element={<DetailProductPage />} />

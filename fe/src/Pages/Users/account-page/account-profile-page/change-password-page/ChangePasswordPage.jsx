@@ -1,43 +1,77 @@
-import React from "react";
+import React, { useContext } from "react";
+import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
+
 import { useState } from "react";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
-// import FormButton from '../../../../components/form-btn/FormButton';
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import FormButton from "../../../../../Components/form-btn/FormButton";
 import styles from "./ChangePasswordPage.module.css";
-// import { useContext } from 'react';
-// import { AccountProfileContext } from '../AccountProfilePage';
-// import InputField from '../../../../components/input-field/InputField';
+
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+
 import InputField from "../../../../../Components/input-field/InputField";
-// import PasswordModal from '../../../../components/modals/password-modal/PasswordModal';
 import PasswordModal from "../../../../../Components/modals/password-modal/PasswordModal";
 import {
   CheckPasswordFormat,
   CheckPasswordChars,
   CheckPasswordLength,
 } from "../../../../../functions/CheckPasswordFormat";
-// import NotificationModal from '../../../../components/modals/notification-modal/NotificationModal';
-import NotificationModal from "../../../../../Components/modals/notification-modal/NotificationModal";
+
+import { AppContext } from "../../../layout/Layout";
+import { AccountContext } from "../../AccountPage";
 const ChangePasswordPage = () => {
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const { globalState } = useContext(AppContext);
+  const { setIsAccountPopupVisible } = useContext(AccountContext);
   const [isPasswordModalVisible, setIsPasswordModalVisible] = useState(false);
-  const [isConfirmPwdModalVisible, setIsConfirmPwdModalVisible] =
-    useState(false);
-  const handleSubmit = (event) => {
+
+  const [changePasswordData, setChangePasswordData] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmNewPassword: "",
+  });
+  const history = useNavigate();
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("current pwd: " + currentPassword);
-    console.log("new pwd: " + newPassword);
-    console.log("confirm new pwd: " + confirmNewPassword);
+    if (!canSubmit) {
+      alert("Form is not valid, please check your inputs.");
+      return;
+    } else {
+      try {
+        await axios
+          .patch(
+            `http://localhost:3001/customer/change/${globalState.loginStatus.userId}`,
+            {
+              oldPassword: changePasswordData.currentPassword,
+              newPassword: changePasswordData.newPassword,
+            }
+          )
+          .then(() => {
+            console.log("CHANGE PASSWORD SUCCESSFULLY");
+            console.log("new pwd: ", changePasswordData.newPassword);
+            alert("Đổi mật khẩu thành công!");
+            history("/account/account-profile");
+            // setIsAccountPopupVisible(true);
+
+            // const accountModal = document.getElementById("account-modal");
+            // const accountModalContainer = createRoot(accountModal);
+            // accountModalContainer.render(<>Hello</>);
+          });
+      } catch (error) {
+        console.log("USER ID: ", globalState.loginStatus.userId);
+        console.log(error);
+      }
+    }
   };
 
   const canSubmit =
-    currentPassword &&
-    newPassword &&
-    confirmNewPassword &&
-    CheckPasswordFormat(newPassword) &&
-    newPassword === confirmNewPassword;
+    changePasswordData.currentPassword &&
+    changePasswordData.newPassword &&
+    changePasswordData.confirmNewPassword &&
+    CheckPasswordFormat(changePasswordData.newPassword) &&
+    changePasswordData.newPassword === changePasswordData.confirmNewPassword;
   return (
     <>
       <div className={styles.wrapperChangePassword}>
@@ -54,7 +88,13 @@ const ChangePasswordPage = () => {
                 type="password"
                 id="current-password"
                 placeholder="Nhập mật khẩu hiện tại"
-                onChange={(e) => setCurrentPassword(e.target.value)}
+                onChange={(e) => {
+                  const currentPasswordTemp = e.target.value;
+                  setChangePasswordData({
+                    ...changePasswordData,
+                    currentPassword: currentPasswordTemp,
+                  });
+                }}
               />
             </div>
             <div
@@ -69,21 +109,32 @@ const ChangePasswordPage = () => {
               <div className={styles.inputContainer}>
                 <InputField
                   className={
-                    CheckPasswordFormat(newPassword)
+                    CheckPasswordFormat(changePasswordData.newPassword)
                       ? "inputFocus"
                       : "inputFocus inputFocusError"
                   }
                   type="password"
                   id="new-password"
                   placeholder="Nhập mật khẩu mới"
-                  onChange={(e) => setNewPassword(e.target.value)}
+                  onChange={(e) => {
+                    const newPasswordTemp = e.target.value;
+                    setChangePasswordData({
+                      ...changePasswordData,
+                      newPassword: newPasswordTemp,
+                    });
+                  }}
                   onFocus={() => setIsPasswordModalVisible(true)}
                   onBlur={() => setIsPasswordModalVisible(false)}
                 />
                 {isPasswordModalVisible && (
                   <PasswordModal
-                    firstCondition={CheckPasswordLength(newPassword)}
-                    secondCondition={CheckPasswordChars(newPassword)}
+                    firstCondition={CheckPasswordLength(
+                      changePasswordData.newPassword
+                    )}
+                    secondCondition={CheckPasswordChars(
+                      changePasswordData.newPassword
+                    )}
+                    className={styles.pwdModal}
                   />
                 )}
               </div>
@@ -101,24 +152,29 @@ const ChangePasswordPage = () => {
               <div className={styles.inputContainer}>
                 <InputField
                   className={
-                    newPassword === confirmNewPassword
+                    changePasswordData.newPassword ===
+                    changePasswordData.confirmNewPassword
                       ? "inputFocus"
                       : "inputFocus inputFocusError"
                   }
                   type="password"
                   id="repeat-new-password"
                   placeholder="Nhập lại mật khẩu"
-                  onFocus={() => setIsConfirmPwdModalVisible(true)}
-                  onBlur={() => setIsConfirmPwdModalVisible(false)}
                   onChange={(e) => {
-                    setConfirmNewPassword(e.target.value);
+                    const confirmNewPasswordTemp = e.target.value;
+                    setChangePasswordData({
+                      ...changePasswordData,
+                      confirmNewPassword: confirmNewPasswordTemp,
+                    });
                   }}
-                />
-                {isConfirmPwdModalVisible && (
-                  <NotificationModal
-                    text={"Đảm bảo mật khẩu bạn nhập giống nhau"}
-                  />
-                )}
+                >
+                  {changePasswordData.newPassword !==
+                    changePasswordData.confirmNewPassword && (
+                    <span className="notification-text">
+                      Đảm bảo mật khẩu bạn nhập giống nhau!
+                    </span>
+                  )}
+                </InputField>
               </div>
             </div>
             <div className={styles.footer}>

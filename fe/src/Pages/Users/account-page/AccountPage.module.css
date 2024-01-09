@@ -1,10 +1,8 @@
 .wrapperAccountPage {
   display: flex;
   box-sizing: border-box;
-  /* min-height: calc(100vh - 110px); */
   min-height: 100vh;
   max-height: fit-content;
-  /* align-items: stretch; */
   padding: 50px;
   position: relative;
 }
@@ -15,4 +13,10 @@
   align-items: stretch;
   padding-left: 50px;
   position: relative;
+}
+
+@media screen and (max-width: 975px) {
+  .wrapperAccountPage .wrapperSidebar {
+    display: none;
+  }
 }

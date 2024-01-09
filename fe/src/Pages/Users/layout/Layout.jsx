@@ -12,6 +12,10 @@ const initalState = {
   notificationModalActive: false,
   otpFormModalActive: false,
   signupStatusModalVisible: false,
+  loginStatus: {
+    status: false,
+    userId: "",
+  },
 };
 
 const Layout = () => {
@@ -48,6 +52,7 @@ const Layout = () => {
   useEffect(() => {
     console.log("globalState:", globalState);
   }, [globalState]);
+  const [displayFooter, setDisplayFooter] = useState(true);
   return (
     <AppContext.Provider
       value={{
@@ -58,11 +63,12 @@ const Layout = () => {
         enableSignupStatusModal,
         disableSignupStatusModal,
         setSignupStatus,
+        setDisplayFooter,
       }}
     >
       <Navbar />
       <Outlet />
-      <Footer />
+      {displayFooter && <Footer />}
     </AppContext.Provider>
   );
 };

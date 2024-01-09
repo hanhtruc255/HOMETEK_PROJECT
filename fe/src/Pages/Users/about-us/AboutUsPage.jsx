@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useContext, useEffect } from "react";
 import image1 from "../../../Assets/images/AboutUs1.png";
 import image2 from "../../../Assets/images/AboutUs2.png";
 import styles from "./AboutUsPage.module.scss";
@@ -8,7 +8,13 @@ import image4 from "../../../Assets/images/AboutUs4.png";
 import image5 from "../../../Assets/images/AboutUs5.png";
 import image6 from "../../../Assets/images/AboutUs6.png";
 
+import { AppContext } from "../layout/Layout";
+
 const AboutUsPage = () => {
+  const { setDisplayFooter } = useContext(AppContext);
+  useEffect(() => {
+    setDisplayFooter(true);
+  }, []);
   return (
     <>
       <div className={styles.content1}>
