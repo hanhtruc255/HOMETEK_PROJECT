@@ -23,11 +23,11 @@ const NewAddressPage = () => {
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
 
-  // const [newAddressData, setNewAddressData] = useState({
-  //   name: singleAddressData.customerName,
-  //   phoneNumber: singleAddressData.deliveryPhoneNumber,
-  //   addressDetail: singleAddressData.deliveryAddress,
-  // })
+  const [newAddressData, setNewAddressData] = useState({
+    name: singleAddressData.customerName,
+    phoneNumber: singleAddressData.deliveryPhoneNumber,
+    addressDetail: singleAddressData.deliveryAddress,
+  });
   useEffect(() => {
     axios
       .get(
@@ -97,7 +97,13 @@ const NewAddressPage = () => {
               name="name"
               id="name"
               placeholder="Nhập họ và tên"
-              value={singleAddressData ? singleAddressData.customerName : ""}
+              value={newAddressData.name}
+              onChange={(event) => {
+                setNewAddressData({
+                  ...newAddressData,
+                  name: event.target.value,
+                });
+              }}
             />
           </div>
 
@@ -120,13 +126,19 @@ const NewAddressPage = () => {
               name="phone-number"
               id="phone-number"
               placeholder="Nhập số điện thoại"
-              value={
-                singleAddressData
-                  ? singleAddressData.deliveryPhoneNumber
-                  : phoneNumber
-              }
+              value={newAddressData.phoneNumber}
+              // onChange={(event) => {
+              //   setNewAddressData({
+              //     ...newAddressData,
+              //     name: event.target.value,
+              //   });
+              // }}
               onChange={(event) => {
                 const newPhoneNumber = event.target.value;
+                setNewAddressData({
+                  ...newAddressData,
+                  phoneNumber: newPhoneNumber,
+                });
                 setPhoneNumber(newPhoneNumber);
                 setPhoneNumberErrorText(
                   !CheckPhoneNumberFormat(newPhoneNumber)
@@ -261,7 +273,13 @@ const NewAddressPage = () => {
             name="specific-address"
             id="specific-address"
             placeholder="Nhập địa chỉ cụ thể"
-            value={singleAddressData ? singleAddressData.deliveryAddress : ""}
+            value={newAddressData.addressDetail}
+            onChange={(event) => {
+              setNewAddressData({
+                ...newAddressData,
+                addressDetail: event.target.value,
+              });
+            }}
             style={{ width: "100%" }}
           />
         </div>

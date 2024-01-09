@@ -57,7 +57,11 @@ const AccountProfile = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("formData: ", formData);
-    if (!CheckPhoneNumberFormat(formData.phone) && !formData.userName) {
+    if (
+      !CheckPhoneNumberFormat(formData.phone) &&
+      !formData.userName &&
+      !formData.gender
+    ) {
       alert("Vui lòng nhập đúng tên và số điện thoại!");
       return;
     }
@@ -119,30 +123,68 @@ const AccountProfile = () => {
                   <label className={styles.labelGender} for="gender-female">
                     Nữ
                   </label>
-                  <input
-                    type="radio"
-                    name="gender"
-                    id="gender-female"
-                    value={false}
-                    onChange={(event) => {
-                      setFormData({ ...formData, gender: event.target.value });
-                    }}
-                  />
+                  {currentUserData.gender === "false" ? (
+                    <input
+                      type="radio"
+                      name="gender"
+                      id="gender-female"
+                      value={false}
+                      checked
+                      onChange={(event) => {
+                        setFormData({
+                          ...formData,
+                          gender: event.target.value,
+                        });
+                      }}
+                    />
+                  ) : (
+                    <input
+                      type="radio"
+                      name="gender"
+                      id="gender-female"
+                      value={false}
+                      onChange={(event) => {
+                        setFormData({
+                          ...formData,
+                          gender: event.target.value,
+                        });
+                      }}
+                    />
+                  )}
                 </div>
 
                 <div className={styles.genderField}>
                   <label className={styles.labelGender} for="gender-male">
                     Nam
                   </label>
-                  <input
-                    type="radio"
-                    name="gender"
-                    id="gender-male"
-                    value={true}
-                    onChange={(event) => {
-                      setFormData({ ...formData, gender: event.target.value });
-                    }}
-                  />
+                  {currentUserData.gender === "true" ? (
+                    <input
+                      type="radio"
+                      name="gender"
+                      id="gender-male"
+                      value={true}
+                      checked
+                      onChange={(event) => {
+                        setFormData({
+                          ...formData,
+                          gender: event.target.value,
+                        });
+                      }}
+                    />
+                  ) : (
+                    <input
+                      type="radio"
+                      name="gender"
+                      id="gender-male"
+                      value={true}
+                      onChange={(event) => {
+                        setFormData({
+                          ...formData,
+                          gender: event.target.value,
+                        });
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             </div>

@@ -65,7 +65,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route path="homepage" element={<HomePage />} />
+            {/* <Route path="homepage" element={<HomePage />} /> */}
             <Route path="signup" element={<SignUpPage />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="forget-password" element={<ForgetPasswordPage />}>

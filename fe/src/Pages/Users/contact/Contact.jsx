@@ -12,6 +12,7 @@ const Contact = () => {
   const { setDisplayFooter } = useContext(AppContext);
   useEffect(() => {
     setDisplayFooter(true);
+    window.scrollTo(0, 0);
   }, []);
   return (
     <>

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Navbar from '../Navbar/Navbar';
-import ipayment from '../../Assets/images/payment.png';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
+import ipayment from "../../Assets/images/payment.png";
 
 const PaymentMoney = () => {
   const [timeLeft, setTimeLeft] = useState(120);
@@ -12,7 +12,7 @@ const PaymentMoney = () => {
       setTimeLeft((prevTime) => {
         if (prevTime === 0) {
           clearInterval(timer);
-          navigate('/thanh-toan/xac-minh/thanh-cong');
+          navigate("/thanh-toan/xac-minh/thanh-cong");
         }
         return prevTime - 1;
       });
@@ -25,15 +25,14 @@ const PaymentMoney = () => {
 
   return (
     <div>
-      <Navbar />
-      <center className='payment_money'>
+      <center className="payment_money">
         <h3>THÔNG TIN THANH TOÁN</h3>
-          <img src={ipayment} alt='Payment' />
+        <img src={ipayment} alt="Payment" />
         <p>
           Mã có hiệu lực trong
           <span> {timeLeft} giây</span>
         </p>
-        <Link to='/thanh-toan/thanh-cong'>Trở lại</Link>
+        <Link to="/thanh-toan/thanh-cong">Trở lại</Link>
       </center>
     </div>
   );

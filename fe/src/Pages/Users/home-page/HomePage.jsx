@@ -76,6 +76,7 @@ const HomePage = () => {
   useEffect(() => {
     setDisplayFooter(true);
     fetchData();
+    window.scrollTo(0, 0);
     // fetchImages();
   }, []);
 
@@ -119,6 +120,13 @@ const HomePage = () => {
     const existingPayment = JSON.parse(localStorage.getItem("payment")) || [];
     const newPayment = [...existingPayment, item];
     localStorage.setItem("payment", JSON.stringify(newPayment));
+  };
+
+  const addToCart = (item) => {
+    alert("Đã thêm vào giỏ hàng thành công");
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const newCart = [...existingCart, item];
+    localStorage.setItem("cart", JSON.stringify(newCart));
   };
 
   //setting for blogs slider
@@ -239,6 +247,10 @@ const HomePage = () => {
                         addToPayment(product);
                         history("/thanh-toan-mua-ngay");
                       }}
+                      handleAddToCartBtn={(event) => {
+                        event.stopPropagation();
+                        addToCart(product);
+                      }}
                     />
                   </SwiperSlide>
                 );
@@ -277,6 +289,10 @@ const HomePage = () => {
                         addToPayment(product);
                         history("/thanh-toan-mua-ngay");
                       }}
+                      handleAddToCartBtn={(event) => {
+                        event.stopPropagation();
+                        addToCart(product);
+                      }}
                     />
                   </SwiperSlide>
                 );
@@ -311,12 +327,20 @@ const HomePage = () => {
                         addToPayment(product);
                         history("/thanh-toan-mua-ngay");
                       }}
+                      handleAddToCartBtn={(event) => {
+                        event.stopPropagation();
+                        addToCart(product);
+                      }}
                     />
                   </SwiperSlide>
                 );
               }
             })}
           </SwiperBar>
+        </div>
+
+        <div className="banner-vertical">
+          <img src={bannerVertical} alt="" className="banner-ver-img" />
         </div>
 
         <div className="block-swiper block-swiper--recommended">
@@ -337,6 +361,10 @@ const HomePage = () => {
                       event.stopPropagation();
                       addToPayment(product);
                       history("/thanh-toan-mua-ngay");
+                    }}
+                    handleAddToCartBtn={(event) => {
+                      event.stopPropagation();
+                      addToCart(product);
                     }}
                   />
                 </SwiperSlide>
@@ -373,7 +401,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className="wrapper-benefits">
-        <div className="wrapper-signle-benefit">
+        <div className="wrapper-single-benefit">
           <div className="wrapper-image">
             <img src={cupIcon} alt="" className="img" />
           </div>
@@ -382,7 +410,7 @@ const HomePage = () => {
             <p className="benefit-description">Crafted from top materials</p>
           </div>
         </div>
-        <div className="wrapper-signle-benefit">
+        <div className="wrapper-single-benefit">
           <div className="wrapper-image">
             <img src={successIcon} alt="" className="img" />
           </div>
@@ -391,7 +419,7 @@ const HomePage = () => {
             <p className="benefit-description">Over 2 years</p>
           </div>
         </div>
-        <div className="wrapper-signle-benefit">
+        <div className="wrapper-single-benefit">
           <div className="wrapper-image">
             <img src={handIcon} alt="" className="img" />
           </div>
@@ -400,7 +428,7 @@ const HomePage = () => {
             <p className="benefit-description">Orders Over 150$</p>
           </div>
         </div>
-        <div className="wrapper-signle-benefit">
+        <div className="wrapper-single-benefit">
           <div className="wrapper-image">
             <img src={assistantIcon} alt="" className="img" />
           </div>

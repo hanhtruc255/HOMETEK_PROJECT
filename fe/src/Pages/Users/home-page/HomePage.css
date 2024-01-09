@@ -154,6 +154,10 @@
   background-color: white;
 }
 
+.couple-banner {
+  flex: 1;
+}
+
 .block-swiper--recommended {
   background-color: white;
 }
@@ -202,17 +206,17 @@
   align-items: center;
 }
 
-.wrapper-benefits .wrapper-signle-benefit {
+.wrapper-benefits .wrapper-single-benefit {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.wrapper-signle-benefit .img {
+.wrapper-single-benefit .img {
   height: 50px;
 }
 
-.wrapper-signle-benefit .benefit-content {
+.wrapper-single-benefit .benefit-content {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -234,7 +238,7 @@
 }
 
 @media only screen and (max-width: 1135px) {
-  .wrapper-signle-benefit .img {
+  .wrapper-single-benefit .img {
     height: 40px;
   }
 
@@ -287,7 +291,7 @@
 } */
 
 @media only screen and (max-width: 950px) {
-  .wrapper-signle-benefit .img {
+  .wrapper-single-benefit .img {
     height: 30px;
   }
 
@@ -301,7 +305,7 @@
 }
 
 @media only screen and (max-width: 780px) {
-  .wrapper-signle-benefit .img {
+  .wrapper-single-benefit .img {
     height: 25px;
   }
 
@@ -317,6 +321,7 @@
 .banner-vertical {
   width: 100%;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .banner-ver-img {

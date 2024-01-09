@@ -21,7 +21,7 @@ const Footer = () => {
                 styles.headingContentLink
               )}
             >
-              HOME TEK
+              HOMETEK
             </Link>
             <p className={styles.itemDescription}>
               HomeTek là một nền tảng trực tuyến cung cấp đồ gia dụng thông minh

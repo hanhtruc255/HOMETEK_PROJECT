@@ -10,13 +10,6 @@ import SendOtp from "../../../functions/SendOtp";
 import { ForgetPasswordPageContext } from "../../../Pages/Users/login-page/forget-password-page/ForgetPasswordPage";
 
 const SendOtpForm = (nextPage) => {
-  const sampleUser = {
-    phoneNumber: "0123456789",
-  };
-
-  const { forgetPasswordPageState, setForgetPasswordPageState } = useContext(
-    ForgetPasswordPageContext
-  );
   const [isPhoneNumberDirectionVisible, setIsPhoneNumberDirectionVisible] =
     useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -24,22 +17,28 @@ const SendOtpForm = (nextPage) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!CheckPhoneNumberFormat(phoneNumber)) {
-      console.log("phone number: " + phoneNumber);
+      console.log("phone number err: " + phoneNumber);
       return;
     } else {
+      console.log("phone number: " + phoneNumber);
+
       try {
         await axios
           .post("http://localhost:3001/login/existedPhone", {
             phone: phoneNumber,
           })
-          .then((res) => {
-            SendOtp(phoneNumber);
-          })
-          .then(() => {
-            console.log("success");
+          .then(async (res) => {
+            try {
+              await SendOtp("0946841813");
+              history("/forget-password/verify-otp");
+            } catch (err) {
+              console.log("err forget pwd: ", err);
+              history("/forget-password/verify-otp");
+            }
           });
       } catch (error) {
         console.log("check phone error: ", error);
+        alert(error.response.data.message);
       }
     }
   };
