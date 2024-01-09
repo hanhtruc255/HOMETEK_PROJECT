@@ -58,6 +58,7 @@ import RatingOrderPage from "./Pages/Users/account-page/manage-orders-page/order
 import AssistsPage from "./Pages/Users/account-page/assists-page/AssistsPage.jsx";
 import ForgetPassOtpForm from "./Components/form/forget-password-otp-form/ForgetPassOtpForm.jsx";
 import PolicyPage from "./Pages/Users/policy-page/PolicyPage.jsx";
+import LoginAdmin from "./Components/Admin/LoginAdmin.js";
 const App = () => {
   return (
     <div>
@@ -139,7 +140,7 @@ const App = () => {
             />
             <Route path="/tra-ma-van-don" element={<TrackingPage />} />
           </Route>
-
+          <Route path="/adminhometek" element={<LoginAdmin/>}></Route>
           <Route path="/admin" element={<DashBoard />}>
             <Route path="san-pham" element={<Product />}></Route>
             <Route path="san-pham/them" element={<ProductCreate />}></Route>

@@ -73,6 +73,13 @@ const HomePage = () => {
 
   const [productsData, setProductsData] = useState([]);
   const [blogsData, setBlogsData] = useState([]);
+
+  const [whishlistItems, setWhishlistItems] = useState([]);
+  const [wishlistChanged, setWishlistChanged] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+
+
   useEffect(() => {
     setDisplayFooter(true);
     fetchData();
@@ -193,6 +200,7 @@ const HomePage = () => {
             <div
               className="category-item category-item-1"
               onClick={() => {
+                
                 history("/01");
               }}
             >
@@ -236,7 +244,7 @@ const HomePage = () => {
                       }}
                       handleBuyNowBtn={(event) => {
                         event.stopPropagation();
-                        addToPayment(product);
+                        addToPayment({ ...product, quantity });
                         history("/thanh-toan-mua-ngay");
                       }}
                     />
@@ -274,7 +282,7 @@ const HomePage = () => {
                       handleBuyNowBtn={(event) => {
                         event.stopPropagation();
 
-                        addToPayment(product);
+                        addToPayment({ ...product, quantity });
                         history("/thanh-toan-mua-ngay");
                       }}
                     />
@@ -308,7 +316,7 @@ const HomePage = () => {
                       handleBuyNowBtn={(event) => {
                         event.stopPropagation();
 
-                        addToPayment(product);
+                        addToPayment({ ...product, quantity });
                         history("/thanh-toan-mua-ngay");
                       }}
                     />
@@ -335,7 +343,7 @@ const HomePage = () => {
                     }}
                     handleBuyNowBtn={(event) => {
                       event.stopPropagation();
-                      addToPayment(product);
+                      addToPayment({ ...product, quantity });
                       history("/thanh-toan-mua-ngay");
                     }}
                   />

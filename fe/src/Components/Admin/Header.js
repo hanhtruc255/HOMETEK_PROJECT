@@ -41,7 +41,7 @@ const Header = () => {
           <div className="top-bar-split"></div>
           <li class="nav-item dropdown">
             <button class="btn dropdown-toggle" data-bs-toggle="dropdown">
-              <span class="me-2 d-none d-lg-inline">Douglas McGee</span>
+              <span class="me-2 d-none d-lg-inline">Admin Hometek</span>
               <img
                 className={"rounded-circle"}
                 src={
@@ -70,7 +70,7 @@ const Header = () => {
               <div class="dropdown-divider"></div>
               <li class="dropdown-item">
                 <i class="bi bi-arrow-left mx-2"></i>
-                Thoát
+                <Link to='/loginadmin'>Thoát</Link>
               </li>
             </div>
           </li>

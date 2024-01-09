@@ -9,7 +9,6 @@ const LoginAdmin = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
 
   const handleLogin = () => {
-
     if (username === 'admin123' && password === '123456') {
       setLoggedIn(true);
     } else {
