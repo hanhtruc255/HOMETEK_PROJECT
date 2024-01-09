@@ -1,6 +1,6 @@
 import auth from "../firebase-config/FirebaseConfig";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-const onCaptchaVerify = (callbackPhoneNumber) => {
+const onCaptchaVerify = async (callbackPhoneNumber) => {
   if (!window.recaptchaVerifier) {
     console.log("RUN RECAPTCHA!");
     window.recaptchaVerifier = new RecaptchaVerifier(
@@ -8,9 +8,9 @@ const onCaptchaVerify = (callbackPhoneNumber) => {
       "recaptcha-container",
       {
         size: "invisible",
-        callback: (response) => {
+        callback: async (response) => {
           console.log("CALL BACK RECAPTCHA!");
-          SendOtp(callbackPhoneNumber);
+          await SendOtp(callbackPhoneNumber);
         },
         "expired-callback": () => {},
       }
@@ -18,10 +18,11 @@ const onCaptchaVerify = (callbackPhoneNumber) => {
   }
 };
 
-function SendOtp(phoneNumber) {
-  const realPhoneNumber = "+84" + phoneNumber.substring(1);
+async function SendOtp(phoneNumber) {
+  const realPhoneNumber =
+    phoneNumber[0] === "+" ? phoneNumber : "+84" + phoneNumber.substring(1);
   console.log("RUN FIREBASE!");
-  onCaptchaVerify(realPhoneNumber);
+  await onCaptchaVerify(realPhoneNumber);
   const appVerifier = window.recaptchaVerifier;
   signInWithPhoneNumber(auth, realPhoneNumber, appVerifier)
     .then((confirmationResult) => {

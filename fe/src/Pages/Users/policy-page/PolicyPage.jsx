@@ -1,40 +1,43 @@
-import React from "react";
+import { React, useEffect } from "react";
 import styles from "./PolicyPage.module.css";
 const PolicyPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.wapperPolicyPage}>
       <h2 className={styles.mainHeading}>Chính sách Riêng tư HOMETEK</h2>
       <p className={styles.para}>
         Chính sách Riêng tư của chúng tôi đã được cập nhật vào ngày 15 tháng 1
-        năm 2021.\n\n Xin hãy dành ra một chút thời gian để tìm hiểu về các cách
+        năm 2021. Xin hãy dành ra một chút thời gian để tìm hiểu về các cách
         thức thực hiện riêng tư của chúng tôi và cho chúng tôi biết nếu bạn có
         bất cứ câu hỏi nào.
       </p>
       <h3 className={styles.secondaryHeading}>Giới thiệu về chúng tôi</h3>
       <p className={styles.para}>
-        Xiaomi Singapore Pte. Ltd., Xiaomi Technology Netherlands B.V., và tất
-        cả các công ty liên kết thuộc Tập đoàn Xiaomi (nhấn vào đây để xem danh
-        sách chi tiết), sau đây gọi chung là "Xiaomi", "chúng tôi", "của chúng
+        HomeTek Singapore Pte. Ltd., HomeTek Technology Netherlands B.V., và tất
+        cả các công ty liên kết thuộc Tập đoàn HomeTek (nhấn vào đây để xem danh
+        sách chi tiết), sau đây gọi chung là "HomeTek", "chúng tôi", "của chúng
         tôi", coi trọng quyền riêng tư của bạn. Chính sách Riêng tư này được
         thiết kế phù hợp với nhu cầu của bạn, và điều quan trọng là bạn hiểu đầy
         đủ về cách thức thu thập và sử dụng thông tin cá nhân của chúng tôi,
         trong khi đảm bảo rằng sau cùng, bạn nắm quyền kiểm soát bất cứ thông
-        tin cá nhân nào đã được cung cấp cho Xiaomi.
+        tin cá nhân nào đã được cung cấp cho HomeTek.
       </p>
       <h3 className={styles.secondaryHeading}>
         Giới thiệu Chính sách Riêng tư này
       </h3>
       <p className={styles.para}>
-        Ngoại trừ các sản phẩm cụ thể của Xiaomi đưa ra chính sách riêng tư
+        Ngoại trừ các sản phẩm cụ thể của HomeTek đưa ra chính sách riêng tư
         riêng, Chính sách Riêng tư này áp dụng cho toàn bộ các thiết bị, trang
-        web và ứng dụng của Xiaomi có tham chiếu hay liên kết tới Chính sách
-        Riêng tư này. Chính sách Riêng tư này giải thích cách thức Xiaomi thu
+        web và ứng dụng của HomeTek có tham chiếu hay liên kết tới Chính sách
+        Riêng tư này. Chính sách Riêng tư này giải thích cách thức HomeTek thu
         thập, sử dụng, tiết lộ, xử lý và bảo vệ bất kỳ thông tin cá nhân nào bạn
         cung cấp cho chúng tôi hoặc chúng tôi thu thập từ bạn, khi bạn sử dụng
         các sản phẩm và dịch vụ của chúng tôi được truy cập từ các trang web
-        (https://www.mi.com, https://en.miui.com, https://account.xiaomi.com),
+        (https://www.mi.com, https://en.miui.com, https://account.HomeTek.com),
         và các ứng dụng mà chúng tôi cung cấp trên các thiết bị di động của
-        chúng tôi. Nếu một sản phẩm của Xiaomi quy định chính sách về quyền
+        chúng tôi. Nếu một sản phẩm của HomeTek quy định chính sách về quyền
         riêng tư riêng thì chính sách về quyền riêng tư riêng đó sẽ được ưu tiên
         áp dụng, trong khi bất kỳ điều gì không được đề cập cụ thể sẽ phải tuân
         theo các điều khoản của Chính Sách về Quyền Riêng Tư này. Ngoài ra, cách
@@ -84,11 +87,11 @@ const PolicyPage = () => {
         thông tin đơn hàng, chi tiết hóa đơn, số tài khoản ngân hàng, tên chủ
         tài khoản, số thẻ tín dụng và các thông tin khác nếu bạn sử dụng dịch vụ
         bán lẻ của mi.com; bạn có thể đồng bộ thông tin hoặc dữ liệu nếu bạn sử
-        dụng dịch vụ Xiaomi Cloud; bạn có thể cung cấp giới tính, thông tin liên
-        quan đến bảo mật và thông tin khác nếu bạn tạo tài khoản; bạn có thể
-        cung cấp cho chúng tôi biệt danh, địa chỉ email, ảnh, video hoặc thông
-        tin cần thiết khác nếu bạn tham gia các hoạt động quảng bá; bạn có thể
-        cung cấp tên, số điện thoại di động và địa chỉ nếu bạn tham gia với
+        dụng dịch vụ HomeTek Cloud; bạn có thể cung cấp giới tính, thông tin
+        liên quan đến bảo mật và thông tin khác nếu bạn tạo tài khoản; bạn có
+        thể cung cấp cho chúng tôi biệt danh, địa chỉ email, ảnh, video hoặc
+        thông tin cần thiết khác nếu bạn tham gia các hoạt động quảng bá; bạn có
+        thể cung cấp tên, số điện thoại di động và địa chỉ nếu bạn tham gia với
         chúng tôi, nội dung của chúng tôi hoặc hoạt động tiếp thị của chúng tôi
         hoặc giành được giải thưởng.
       </p>

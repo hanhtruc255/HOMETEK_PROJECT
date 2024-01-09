@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./AccountPage.module.css";
 // import SidebarAccount from '../../components/sidebar-account/SidebarAccount';
 import SidebarAccount from "../../../Components/sidebar-account/SidebarAccount";
@@ -15,6 +16,7 @@ import { AppContext } from "../layout/Layout";
 export const AccountContext = createContext();
 
 const AccountPage = () => {
+  const history = useNavigate();
   const { setDisplayFooter } = useContext(AppContext);
   useEffect(() => {
     setDisplayFooter(false);
@@ -60,6 +62,14 @@ const AccountPage = () => {
                   ? "Cập nhật địa chỉ thành công"
                   : "Cập nhật mật khẩu thành công"
               }
+              mainBtnText={"Trang Chủ"}
+              secondaryBtnText={"Quay lại"}
+              handleClickMainBtn={() => {
+                history("/");
+              }}
+              handleClickSecondaryBtn={() => {
+                history("/account/account-profile");
+              }}
             />
           </WrapperModal>
         )}

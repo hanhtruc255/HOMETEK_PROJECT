@@ -34,6 +34,7 @@
   font-weight: 500;
   display: block;
   width: 100% !important;
+  color: black !important;
 }
 .in-acc-dropdown {
   width: 180px !important;
@@ -47,6 +48,7 @@
   width: 100%;
   display: block;
   padding: 5px 10px !important;
+  color: black !important;
 }
 
 .acc-dropdown li:first-child {
@@ -59,7 +61,7 @@
 
 .acc-dropdown li:hover {
   background-color: rgb(238, 229, 213);
-  color: black;
+  color: black !important;
 }
 
 .acc-dropdown li:active {

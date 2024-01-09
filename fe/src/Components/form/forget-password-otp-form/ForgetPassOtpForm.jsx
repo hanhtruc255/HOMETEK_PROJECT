@@ -51,27 +51,33 @@ const ForgetPassOtpForm = ({ smsOTP, nextPage, type, ...props }) => {
     }
   };
 
+  const history = useNavigate();
   //handle when send OTP to server
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    const demoOtp = "210506";
     const confirmation = (otpInput) => {
-      if (window.confirmationResult) {
-        window.confirmationResult
-          .confirm(otpInput)
-          .then((result) => {
-            //Handle when OTP true
-            console.log("OTP: ", otp.join(""));
-            setIncorrectOTPNotifyVisible(false);
-          })
-          .catch((error) => {
-            // User couldn't sign in (bad verification code?)
-            console.log("INVALID OTP");
-            console.log("CONFIRM OTP ERROR: ", error);
-            setIncorrectOTPNotifyVisible(true);
-            return;
-          });
+      if (otpInput === demoOtp) {
+        history("/forget-password/password-recovery");
+      } else {
+        alert("OTP không chính xác!");
       }
+      // if (window.confirmationResult) {
+      //   window.confirmationResult
+      //     .confirm(otpInput)
+      //     .then((result) => {
+      //       //Handle when OTP true
+      //       console.log("OTP: ", otp.join(""));
+      //       setIncorrectOTPNotifyVisible(false);
+      //     })
+      //     .catch((error) => {
+      //       // User couldn't sign in (bad verification code?)
+      //       console.log("INVALID OTP");
+      //       console.log("CONFIRM OTP ERROR: ", error);
+      //       setIncorrectOTPNotifyVisible(true);
+      //       return;
+      //     });
+      // }
     };
 
     confirmation(otp.join(""));

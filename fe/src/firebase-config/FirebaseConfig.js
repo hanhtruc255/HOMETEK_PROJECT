@@ -24,6 +24,17 @@ const firebaseConfig = {
 //   measurementId: "G-B21WGRVBXY",
 // };
 
+//This is account of thuongmt21406@st.uel.edu.vn
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBe_ipYjNlrQl1358g28Zk5bTUyKL_PULA",
+//   authDomain: "hometek-project-2f3cc.firebaseapp.com",
+//   projectId: "hometek-project-2f3cc",
+//   storageBucket: "hometek-project-2f3cc.appspot.com",
+//   messagingSenderId: "352096727739",
+//   appId: "1:352096727739:web:af581537e501868b252f9e",
+//   measurementId: "G-9MS8S4RG88",
+// };
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 export default auth;

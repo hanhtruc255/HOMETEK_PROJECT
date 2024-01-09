@@ -5,7 +5,7 @@ import * as Icon from "react-bootstrap-icons";
 // import cartIcon from '../../assets/icons/cart-shopping.svg';
 // import heartIcon from '../../assets/icons/heart-icon.svg';
 import cartIcon from "../../Assets/icons/cart-shopping.svg";
-const Product = ({ handleBuyNowBtn, ...props }) => {
+const Product = ({ handleBuyNowBtn, handleAddToCartBtn, ...props }) => {
   function formatPrice(price) {
     return (
       price
@@ -47,6 +47,7 @@ const Product = ({ handleBuyNowBtn, ...props }) => {
               src={cartIcon}
               alt=""
               className={classNames(styles.productIcon, styles.productIconCart)}
+              onClick={handleAddToCartBtn}
             />
             {!heartIconActive && (
               <Icon.Heart

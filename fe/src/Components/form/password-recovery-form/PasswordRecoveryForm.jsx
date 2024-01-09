@@ -1,25 +1,22 @@
 import { React, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./PasswordRecoveryForm.css";
-// import FormButton from '../../form-btn/FormButton';
 import FormButton from "../../form-btn/FormButton";
-// import InputField from '../../input-field/InputField';
 import InputField from "../../input-field/InputField";
-// import PasswordModal from '../../modals/password-modal/PasswordModal';
 import PasswordModal from "../../modals/password-modal/PasswordModal";
-// import Modal from '../../modals/WrapperModal';
 import Modal from "../../modals/WrapperModal";
-// import NotificationModal from '../../modals/notification-modal/NotificationModal';
 import NotificationModal from "../../modals/notification-modal/NotificationModal";
-// import NotificationForm from '../notification-form/NotificationForm';
 import NotificationForm from "../notification-form/NotificationForm";
-// import xmark from '../../../assets/icons/xmark.svg';
 import xmark from "../../../Assets/icons/xmark.svg";
 import {
   CheckPasswordChars,
   CheckPasswordFormat,
   CheckPasswordLength,
 } from "../../../functions/CheckPasswordFormat";
+
 const PasswordRecoveryForm = (props) => {
+  const history = useNavigate();
+
   const [formData, setFormData] = useState({
     newPassword: "",
     confirmNewPassword: "",
@@ -137,10 +134,13 @@ const PasswordRecoveryForm = (props) => {
         <Modal className="otp-form-modal">
           <NotificationForm
             type="success"
-            btnText="Trang chủ"
+            btnText="Đăng nhập"
             heading="Đổi mật khẩu thành công!"
             errorText="Chào mừng bạn quay lại"
-            handleClick={() => setNotificationModalActive(false)}
+            handleClick={() => {
+              setNotificationModalActive(false);
+              history("/login");
+            }}
           >
             <span
               className="closeModal"

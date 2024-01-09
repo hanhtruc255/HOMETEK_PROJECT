@@ -5,7 +5,7 @@ import { BsHeart } from "react-icons/bs";
 import { BsCart3 } from "react-icons/bs";
 import { BsPerson } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
-import { Link, useLocation  } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BsTruck } from "react-icons/bs";
 import "./Responsive.scss";
 import { BsChevronDown } from "react-icons/bs";
@@ -20,6 +20,23 @@ const Navbar = () => {
   useEffect(() => {
     setActiveLink(location.pathname);
   }, [location.pathname]);
+
+  var currentURL = window.location.href;
+  const [isInAccount, setIsInAccount] = useState(false);
+  // Chia chuỗi thành mảng bằng ký tự '/'
+  useEffect(() => {
+    var urlParts = currentURL.split("/");
+
+    // Tìm kiếm vị trí của từ khóa "account" trong mảng
+    var accountIndex = urlParts.indexOf("account");
+    // Kiểm tra nếu từ khóa "account" tồn tại trong đường dẫn
+    if (accountIndex !== -1) {
+      setIsInAccount(true);
+    } else {
+      console.log('Từ khóa "account" không tồn tại trong đường dẫn');
+      setIsInAccount(false);
+    }
+  }, [currentURL]);
   return (
     <div>
       <div className="Nav__top">
@@ -36,18 +53,24 @@ const Navbar = () => {
 
         <div className="header__top__right">
           <ul>
-            <li className={activeLink === '/yeu-thich' ? 'active' : ''}>
+            <li className={activeLink === "/yeu-thich" ? "active" : ""}>
               <Link to={"/yeu-thich"}>
                 <BsHeart />
               </Link>
             </li>
-            <li className={activeLink === '/gio-hang' ? 'active' : ''}>
+            <li className={activeLink === "/gio-hang" ? "active" : ""}>
               {" "}
               <Link to={"/gio-hang"}>
                 <BsCart3 />
               </Link>
             </li>
-            <li className="wrap-user-dropdown" >
+            <li
+              className={
+                isInAccount === true
+                  ? "wrap-user-dropdown active"
+                  : "wrap-user-dropdown"
+              }
+            >
               {" "}
               <Link
                 to={
@@ -108,7 +131,7 @@ const Navbar = () => {
                 </ul>
               )}
             </li>
-            <li  className={activeLink === '/tra-ma-van-don' ? 'active' : ''}>
+            <li className={activeLink === "/tra-ma-van-don" ? "active" : ""}>
               <Link to={"/tra-ma-van-don"}>
                 <BsTruck />
               </Link>
@@ -153,7 +176,7 @@ const Navbar = () => {
               </Link>
               <ul className="header__menu__dropdown">
                 <li>
-                  <Link to="/02/sub/D1">Bàn chảy đa năng</Link>
+                  <Link to="/02/sub/D1">Bàn chải đa năng</Link>
                 </li>
                 <li>
                   <Link to="/02/sub/D2">Máy lọc không khí thông minh</Link>
