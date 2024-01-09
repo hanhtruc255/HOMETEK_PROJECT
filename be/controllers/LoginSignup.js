@@ -67,6 +67,29 @@ async function findPhoneNumber(req, res) {
   }
 }
 
+async function existedPhoneNumber(req, res) {
+  const { phone } = req.body;
+
+  try {
+    const existingUser = await Acc.findOne({ phone });
+
+    if (!existingUser) {
+      console.log("Not existing Account:", existingUser);
+      return res
+        .status(409)
+        .json({ message: "Số diện thoại không thuộc tài khoản nào!" });
+    }
+
+    // Số điện thoại có tồn tại trong cơ sở dữ liệu
+    return res.status(200).json({ phone });
+  } catch (error) {
+    console.log("Check phone err: ", error);
+    return res
+      .status(500)
+      .json({ message: "lỗi server, không thực hiện tìm kiếm được " });
+  }
+}
+
 /// đăng ký tài khoản // luu vao database a
 async function register(req, res) {
   const { userName, phone, password, OTP } = req.body;
@@ -107,4 +130,5 @@ module.exports = {
   register,
   generateUserId,
   findPhoneNumber,
+  existedPhoneNumber,
 };

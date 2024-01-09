@@ -12,6 +12,7 @@
   justify-content: space-evenly;
   height: 100%;
   align-items: center;
+  box-sizing: border-box !important;
 }
 
 .form-background {
@@ -25,11 +26,12 @@
 
 .form {
   height: fit-content;
-  padding: 30px 50px;
+  padding: 30px 50px !important;
   box-sizing: border-box;
   text-align: center;
   background-color: white;
   border-radius: 7px;
+  margin: 20px 0 !important;
 }
 
 .form__content {
@@ -65,8 +67,9 @@
 
 .form-control:focus,
 .inputFocus:focus {
-  border-color: grey;
-  box-shadow: 0 0 0 0.25rem rgba(128, 128, 128, 0.25);
+  border-color: #0068ff;
+  /* box-shadow: 0 0 0 0.25rem rgba(128, 128, 128, 0.25); */
+  box-shadow: unset;
 }
 
 .checkbox-container {
@@ -144,3 +147,9 @@
 .inputFocusError:focus {
   background-color: #fcf2f3;
 } */
+
+@media only screen and (max-width: 768px) {
+  .form-background {
+    display: none !important;
+  }
+}

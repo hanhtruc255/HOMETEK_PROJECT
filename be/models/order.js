@@ -7,7 +7,7 @@ const orderSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  customerName: {
+  orderStatus: {
     type: String,
     enum: [
       "Chờ xác nhận",

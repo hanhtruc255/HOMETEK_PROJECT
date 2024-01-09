@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./styleproduct.scss";
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
+import './Responsive.scss'
 
 const CategorySidebar = ({ onFilterChange, onPriceChange}) => {
   //category
@@ -62,7 +63,7 @@ const CategorySidebar = ({ onFilterChange, onPriceChange}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/categories/${categoryId}`);
+        const response = await axios.get(`http://localhost:3001/categories/${categoryId}`);
         console.log("truc", response)
         if (response.data && response.data && Array.isArray(response.data)) {
           setProduct(response.data);

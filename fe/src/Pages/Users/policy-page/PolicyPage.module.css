@@ -1,0 +1,28 @@
+.wapperPolicyPage {
+  padding: 40px 10%;
+  justify-content: center;
+}
+
+.mainHeading {
+}
+
+.secondaryHeading,
+.mainHeading {
+  border-bottom: 1px solid grey;
+  padding-bottom: 3px;
+  margin-bottom: 20px;
+}
+
+.para {
+  text-align: justify;
+  padding-bottom: 15px;
+}
+
+.textBolder {
+  font-weight: 600;
+}
+
+.textLink {
+  color: greenyellow;
+  cursor: pointer;
+}

@@ -9,9 +9,6 @@ import axios from "axios";
 import FormButton from "../../../../../Components/form-btn/FormButton";
 import styles from "./ChangePasswordPage.module.css";
 
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-
 import InputField from "../../../../../Components/input-field/InputField";
 import PasswordModal from "../../../../../Components/modals/password-modal/PasswordModal";
 import {
@@ -32,6 +29,12 @@ const ChangePasswordPage = () => {
     newPassword: "",
     confirmNewPassword: "",
   });
+  const canSubmit =
+    changePasswordData.currentPassword &&
+    changePasswordData.newPassword &&
+    changePasswordData.confirmNewPassword &&
+    CheckPasswordFormat(changePasswordData.newPassword) &&
+    changePasswordData.newPassword === changePasswordData.confirmNewPassword;
   const history = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -40,43 +43,31 @@ const ChangePasswordPage = () => {
       return;
     } else {
       try {
+        const userId = await window.localStorage.getItem("userId");
+        console.log("userId: ", userId);
         await axios
-          .patch(
-            `http://localhost:3001/customer/change/${globalState.loginStatus.userId}`,
-            {
-              oldPassword: changePasswordData.currentPassword,
-              newPassword: changePasswordData.newPassword,
-            }
-          )
+          .patch(`http://localhost:3001/customer/change/${userId}`, {
+            userId: userId,
+            oldPassword: changePasswordData.currentPassword,
+            newPassword: changePasswordData.newPassword,
+          })
           .then(() => {
             console.log("CHANGE PASSWORD SUCCESSFULLY");
-            console.log("new pwd: ", changePasswordData.newPassword);
             alert("Đổi mật khẩu thành công!");
             history("/account/account-profile");
-            // setIsAccountPopupVisible(true);
-
-            // const accountModal = document.getElementById("account-modal");
-            // const accountModalContainer = createRoot(accountModal);
-            // accountModalContainer.render(<>Hello</>);
           });
       } catch (error) {
-        console.log("USER ID: ", globalState.loginStatus.userId);
-        console.log(error);
+        // console.log("USER ID: ", globalState.loginStatus.userId);
+        alert("Vui lòng nhập chính xác mật khẩu hiện tại!");
       }
     }
   };
 
-  const canSubmit =
-    changePasswordData.currentPassword &&
-    changePasswordData.newPassword &&
-    changePasswordData.confirmNewPassword &&
-    CheckPasswordFormat(changePasswordData.newPassword) &&
-    changePasswordData.newPassword === changePasswordData.confirmNewPassword;
   return (
     <>
       <div className={styles.wrapperChangePassword}>
         <h1 className={styles.heading}>Đổi mật khẩu mới</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className={styles.changePasswordContent}>
             <div className={styles.wrapperInputField}>
               <div className={styles.wrapperLabel}>
@@ -183,8 +174,6 @@ const ChangePasswordPage = () => {
                 type="submit"
                 text={"Đổi mật khẩu"}
                 className={styles.changePasswordBtn}
-                onClick={handleSubmit}
-                disabled={!canSubmit}
               />
             </div>
           </div>

@@ -2,9 +2,9 @@ import React, { useEffect} from 'react';
 import './Cart.scss';
 import { BsTicketPerforatedFill } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
-import { BsFillGeoAltFill } from 'react-icons/bs';
 import { useState } from 'react';
-import { BsTrash, BsHeart } from "react-icons/bs";
+import { BsTrash, BsHeart,BsShop, BsFillHeartFill} from "react-icons/bs";
+import './Responsive.scss';
 
 const Cart = ({ updateCartQuantity }) => {
   const [showModal, setShowModal] = useState(false);
@@ -13,10 +13,11 @@ const Cart = ({ updateCartQuantity }) => {
   const [cartItems, setCartItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const navigate = useNavigate();
+  const [whishlistItems, setWhishlistItems] = useState([]);
+  const [wishlistChanged, setWishlistChanged] = useState(false);
 
   const getCartItemsData = () => {
-    return cartItems;
-  };
+    return cartItems;  };
 
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cart')) || [];
@@ -70,10 +71,6 @@ const Cart = ({ updateCartQuantity }) => {
       setCartItems(aggregatedCartItems);
     }, []);
   
-    const calculateTotal = () => {
-      return cartItems.reduce((total, item) => (item.selected ? total + item.price * item.quantity : total), 0);
-    };
-  
     const toggleItemSelection = (itemId) => {
       setSelectedItems((prevSelectedItems) => {
         const isSelected = prevSelectedItems.some((item) => item._id === itemId);
@@ -89,11 +86,52 @@ const Cart = ({ updateCartQuantity }) => {
     
     const toggleSelectAll = () => {
       setSelectAll((prevSelectAll) => !prevSelectAll);
-      setSelectedItems((prevSelectedItems) =>
-        !selectAll ? cartItems.filter((item) => !item.selected) : []
-      );
+      const updatedCartItems = cartItems.map((item) => ({
+        ...item,
+        selected: !selectAll,
+      }));
+      setSelectedItems(!selectAll ? updatedCartItems : []);
+      setCartItems(updatedCartItems);
     };
-    console.log('Selected Items:', selectedItems);
+    //add whishlist
+     useEffect(() => {
+    setWhishlistItems(JSON.parse(localStorage.getItem('Whishlist')) || []);
+    setWishlistChanged(false);
+  }, [wishlistChanged]); 
+
+  const isItemInWishlist = (itemId) => {
+    return whishlistItems.some((wishlistItem) => wishlistItem._id === itemId);
+  };
+
+  const addToWhishlist = (item) => {
+    const isDuplicate = isItemInWishlist(item._id);
+    if (isDuplicate) {
+      const updatedWhishlist = whishlistItems.filter((wishlistItem) => wishlistItem._id !== item._id);
+      setWhishlistItems(updatedWhishlist);
+      localStorage.setItem('Whishlist', JSON.stringify(updatedWhishlist));
+      setWishlistChanged(true);
+      alert('Đã xóa khỏi sản phẩm yêu thích.');
+    } else {
+      const updatedWhishlist = [...whishlistItems, item];
+      setWhishlistItems(updatedWhishlist);
+      localStorage.setItem('Whishlist', JSON.stringify(updatedWhishlist));
+      setWishlistChanged(true);
+      alert('Đã thêm vào sản phẩm yêu thích.');
+    }
+  };
+
+      ///format price
+  const formatPrice = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+      ///total money
+      const calculateTotal = () => {
+        const total = selectedItems.reduce((accumulator, item) => {
+          return accumulator + item.price * item.quantity;
+        }, 0);
+        return formatPrice(total);
+      };
+
   return (
     <div className='cart'>
         <div className='Frame_cart'>
@@ -101,7 +139,10 @@ const Cart = ({ updateCartQuantity }) => {
                 <table>
                   <thead>
                     <tr>
-                      <th className='th1'>Tên sản phẩm</th>
+                      <th>
+                      <input type='checkbox' onChange={toggleSelectAll} checked={selectAll}/>
+                        <BsShop className='iconshop'/>
+                        Tên sản phẩm</th>
                       <th>Đơn giá</th>
                       <th>Số lượng</th>
                       <th>Thành tiền</th>
@@ -118,20 +159,20 @@ const Cart = ({ updateCartQuantity }) => {
                           id={`checkbox-${item._id}`}
                           checked={item.selected}
                           onChange={() => toggleItemSelection(item._id)}/>
-                          {/* <img src={item.image} /> */}
-                           <img src={'https://i.ibb.co/dbnMxGQ/img1.jpg'} alt="hinh"/>
-
+                          <img src={item.image} />
+                         
                         </div>
 
                         <div>
-                          <b>{item.name} </b> <br/>
+                          <b>{item.name}</b> <br/>
                           <BsTrash className='icon_trash' onClick={() => removeItem(item._id)}/>
-                          <BsHeart className='icon_heart'/>
-
+                          <button onClick={() => addToWhishlist(item)}>
+                            {isItemInWishlist(item._id) ? <BsFillHeartFill  className='icon_heartfill'/> : <BsHeart className='icon_heart' />}
+                          </button>
                         </div>
                         
                       </td>
-                      <td><b>{item.price}đ</b>
+                      <td><b>{formatPrice(item.price)}đ</b>
                       </td>
                       <td>
                         <div className='qty'>
@@ -141,18 +182,12 @@ const Cart = ({ updateCartQuantity }) => {
                         </div>
                           
                       </td>
-                      <td><b>{item.price*item.quantity}</b></td>
+                      <td><b>{formatPrice(item.price*item.quantity)}đ</b></td>
                     </tr>
                   ))}
                   </tbody>
               </table>
-           
              </div>
-        </div>
-       
-        <div className='voucher'>
-          <BsTicketPerforatedFill className='icon_voucher'/> <p>HomeTek Voucher</p>
-          <button>Chọn Voucher</button>
         </div>
 
         <div className='buy'>
@@ -161,7 +196,7 @@ const Cart = ({ updateCartQuantity }) => {
               <p> Chọn tất cả</p>
           </div>
           <div className='buy_child'> 
-              <p>Tổng thanh toán</p>
+              <p>Tổng thanh toán: </p>
               <div> {calculateTotal()}</div>
           </div>
           

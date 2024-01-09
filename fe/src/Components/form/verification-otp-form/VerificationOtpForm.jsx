@@ -6,12 +6,7 @@ import FormButton from "../../form-btn/FormButton";
 // import { AppContext } from "../../../pages/layout/Layout";
 import { AppContext } from "../../../Pages/Users/layout/Layout";
 import { SignUpPageContext } from "../../../Pages/Users/sign-up-page/SignUpPage";
-const VerificationOtpForm = ({
-  smsOTP,
-  nextPage,
-  type = "signup",
-  ...props
-}) => {
+const VerificationOtpForm = ({ smsOTP, nextPage, type, ...props }) => {
   //call global state from Layout
   const {
     globalState,
@@ -21,6 +16,7 @@ const VerificationOtpForm = ({
   } = useContext(AppContext);
 
   //call Sign up context
+
   const { setFirebaseSignUpMsg } = useContext(SignUpPageContext);
 
   //display the red text when user enter incorrect OTP
@@ -89,7 +85,6 @@ const VerificationOtpForm = ({
             if (type === "signup") {
               setFirebaseSignUpMsg(true);
             }
-            history(nextPage);
           })
           .catch((error) => {
             // User couldn't sign in (bad verification code?)

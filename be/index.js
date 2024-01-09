@@ -10,6 +10,9 @@ const productRouter = require("./routes/product");
 const feedbackRouter = require("./routes/feedback");
 const orderRouter = require("./routes/order");
 const blogRouter = require("./routes/blog");
+
+//Mấy này để duyệt folder ảnh:
+
 db.connect();
 // app.use('/product',product )
 // HTTP Request Logger

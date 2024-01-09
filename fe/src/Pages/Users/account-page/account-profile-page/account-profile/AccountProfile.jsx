@@ -1,15 +1,39 @@
-import { React, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { React, useState, useRef, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import classNames from "classnames";
 import styles from "./AccountProfile.module.css";
-// import FormButton from '../../../../components/form-btn/FormButton';
 import FormButton from "../../../../../Components/form-btn/FormButton";
-// import rewriteIcon from '../../../../assets/icons/rewrite.svg';
 import rewriteIcon from "../../../../../Assets/icons/rewrite.svg";
-// import { AccountContext } from '../../AccountPage';
 import { AccountContext } from "../../AccountPage";
 import { useContext } from "react";
+import SendOtp from "../../../../../functions/SendOtp";
+import CheckPhoneNumberFormat from "../../../../../functions/CheckPhoneNumberFormat.js";
+import axios from "axios";
 const AccountProfile = () => {
+  const [currentUserData, setCurrentUserData] = useState({});
+  const history = useNavigate();
+  const [isPhoneNumberDirectionVisible, setIsPhoneNumberDirectionVisible] =
+    useState(false);
+  const fetchCurrentCusData = async () => {
+    try {
+      await axios
+        .get("http://localhost:3001/account/search", {
+          params: { userId: window.localStorage.getItem("userId") },
+        })
+        .then((res) => {
+          console.log("GET CURRENT USER DATA SUCCESSFULLY");
+          setCurrentUserData(res.data[0]);
+        });
+    } catch (error) {
+      const errorMsg = error.response.data.message;
+      alert(errorMsg);
+    }
+  };
+
+  useEffect(() => {
+    fetchCurrentCusData();
+  }, []);
   const { isAddressModalVisible, toggleIsAddressModalVisible } =
     useContext(AccountContext);
   const [disabledNameField, setDisabledNameField] = useState(true);
@@ -23,34 +47,56 @@ const AccountProfile = () => {
   };
 
   const [formData, setFormData] = useState({
-    name: "Ngô Thị Châm Anh",
-    gender: "male",
-    phoneNumber: "0385320575",
-    defaultAddress: "109/6, Lê Văn Chí, Linh Trung, Thủ Đức",
-    password: "Cham2105@",
+    userName: currentUserData.userName,
+    gender: currentUserData.gender,
+    phone: currentUserData.phone,
   });
 
-  const handleSubmit = (event) => {
+  const [isFormDataValid, setIsFormValid] = useState(false);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log("formData: ", formData);
+    if (!CheckPhoneNumberFormat(formData.phone) && !formData.userName) {
+      alert("Vui lòng nhập đúng tên và số điện thoại!");
+      return;
+    }
+    console.log("START UPDATE!");
+    try {
+      await axios
+        .patch(
+          `http://localhost:3001/customer/${window.localStorage.getItem(
+            "userId"
+          )}`,
+          formData
+        )
+        .then((res) => {
+          console.log("UPDATE USER INFOR SUCCESS");
+          alert("Cập nhật tài khoản thành công!");
+        });
+    } catch (error) {
+      const errorMsg = error.response.data.message;
+      alert(errorMsg);
+    }
   };
   return (
     <div className={styles.wrapperAccountProfile}>
       <h1 className={styles.heading}>TÀI KHOẢN CỦA BẠN</h1>
-      <form action="" method="get">
+      <form action="" method="post" onSubmit={handleSubmit}>
         <div className={styles.content}>
           <div className={styles.wrapperInforField}>
             <div className={styles.labelInfor}>Họ và tên</div>
             <input
               className={classNames(styles.displayInfor, "inputFocus")}
               type="text"
-              value={formData.name}
+              placeholder={currentUserData.userName}
               disabled={disabledNameField}
               name="name"
               id="name"
               ref={nameRef}
               autofocus={disabledNameField ? false : true}
               onChange={(event) => {
-                setFormData({ ...formData, name: event.target.value });
+                setFormData({ ...formData, userName: event.target.value });
               }}
             />
             <img
@@ -77,7 +123,10 @@ const AccountProfile = () => {
                     type="radio"
                     name="gender"
                     id="gender-female"
-                    value={formData.gender === "female" ? true : false}
+                    value={false}
+                    onChange={(event) => {
+                      setFormData({ ...formData, gender: event.target.value });
+                    }}
                   />
                 </div>
 
@@ -89,7 +138,10 @@ const AccountProfile = () => {
                     type="radio"
                     name="gender"
                     id="gender-male"
-                    value={formData.gender === "male" ? true : false}
+                    value={true}
+                    onChange={(event) => {
+                      setFormData({ ...formData, gender: event.target.value });
+                    }}
                   />
                 </div>
               </div>
@@ -97,20 +149,32 @@ const AccountProfile = () => {
           </div>
 
           <div className={styles.wrapperInforField}>
-            <div className={styles.labelInfor}>Sđt</div>
-            <input
-              className={classNames(styles.displayInfor, "inputFocus")}
-              type="phone"
-              value={formData.phoneNumber}
-              name="phone-number"
-              id="phone-number"
-              ref={phoneRef}
-              disabled={disablePhoneNumberField}
-              autofocus={disablePhoneNumberField ? false : true}
-              onChange={(event) => {
-                setFormData({ ...formData, phoneNumber: event.target.value });
-              }}
-            />
+            <div className={styles.labelInfor}>Số điện thoại</div>
+            <div className={styles.wrapperInput}>
+              <input
+                className={classNames(styles.displayInfor, "inputFocus")}
+                type="phone"
+                name="phone-number"
+                id="phone-number"
+                ref={phoneRef}
+                placeholder={currentUserData.phone}
+                disabled={disablePhoneNumberField}
+                autofocus={disablePhoneNumberField ? false : true}
+                onChange={(event) => {
+                  const newPhone = event.target.value;
+                  setFormData({ ...formData, phone: newPhone });
+                  setIsPhoneNumberDirectionVisible(
+                    !CheckPhoneNumberFormat(newPhone)
+                  );
+                }}
+              />
+              {isPhoneNumberDirectionVisible && (
+                <span className="notification-text">
+                  Số điện thoại bạn nhập không hợp lệ
+                </span>
+              )}
+            </div>
+
             <img
               className={styles.changeInforIcon}
               src={rewriteIcon}
@@ -129,7 +193,7 @@ const AccountProfile = () => {
             <input
               className={styles.displayInfor}
               type="text"
-              value={formData.defaultAddress}
+              value={currentUserData.address}
               disabled={true}
             />
 
@@ -147,10 +211,28 @@ const AccountProfile = () => {
             <input
               className={styles.displayInfor}
               type="password"
-              value={formData.password}
+              value={""}
               disabled={true}
+              placeholder="*********"
             />
-            <Link to="change-password">
+            <Link
+              onClick={async () => {
+                try {
+                  await axios
+                    .get("http://localhost:3001/account/search", {
+                      params: { userId: window.localStorage.getItem("userId") },
+                    })
+                    .then((res) => {
+                      console.log("CHECK USER SUCCESSFULLY");
+                      console.log("res: ", res);
+                      history("/account/account-profile/change-password");
+                    });
+                } catch (error) {
+                  const errorMsg = error.response.data.message;
+                  alert(errorMsg);
+                }
+              }}
+            >
               <img
                 src={rewriteIcon}
                 alt="rewrite-icon"
@@ -164,9 +246,6 @@ const AccountProfile = () => {
             text={"Cập nhật Thông tin"}
             type="submit"
             className={styles.accountBtn}
-            onClick={(event) => {
-              handleSubmit(event);
-            }}
           />
         </div>
       </form>

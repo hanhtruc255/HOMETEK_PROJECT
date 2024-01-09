@@ -4,7 +4,6 @@ import Payment from "../../../Components/Payment/Payment";
 const PaymentPage = () => {
   return (
     <div>
-        <Navbar/>
         <Payment/>
     </div>
   );

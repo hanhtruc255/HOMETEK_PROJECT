@@ -27,7 +27,6 @@ const SubCategoryPage = () => {
 
   return  (
   <div>
-    <Navbar/>
     <Breadcrumb/>
     <Sort onSortChange={handleSortChange} />
     <div  className="Frame_Product">

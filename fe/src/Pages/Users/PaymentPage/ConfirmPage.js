@@ -5,7 +5,7 @@ import Confirm from "../../../Components/Payment/Confirm";
 const ConfirmPage = () => {
   return (
     <div>
-      <Confirm />
+      <Confirm/>
     </div>
   );
 };

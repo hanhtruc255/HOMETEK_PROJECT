@@ -9,9 +9,10 @@ body{
         margin: 0 0 30px 0 ;
         background: white;
         font-size: 40px;
+        padding-left: 100px;
         h2{
             font-weight: bold;
-            margin-left: 10px;
+            margin-left: 15px;
         }
     }
     .address{
@@ -28,13 +29,16 @@ body{
             justify-content: space-between;
             
             span{
-                margin: 0 680px 0 0 ;
-                color: #041E42 ;
+                margin: 20px 0 0 20px;
+                color: #C2C2C2 ;
 
             }
             button{
+                color: #00337D;
+                font-weight: bold;
                 background: none;
                 border: none; 
+                float: right;
             }
 
         }
@@ -46,57 +50,67 @@ body{
     margin: 40px 100px 0 100px;
     background: white;
     font-size: 17px;
-    height: 700px;
+    padding-bottom: 80px;
+    // height: 700px;
     table{
         width: 100%;
+      tbody{
+        border-radius: 5px;
+        box-shadow: 0px 1px 1px 1px #b4b4b4;
+      } 
+        th:first-child{
+            border-radius: 5px 0 0 0;
+            text-align: left;
+            padding-left: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            .iconshop{
+                margin: -3px 10px 0 10px;
+                background: #041E42;
+                color:white ;
+                border-radius: 50%;
+                width: 21px;
+                height: 16px;}}
+        th:last-child{
+            border-radius: 0 5px 0 0;
+        }
         th{
             background: #FFDFE3;
             padding:5px;
             text-align: center;
-            width: 250px;
+            font-weight: normal;
         }
-        .th1{width: 450px;}
-
-        td{
-            background: white;
-            padding:5px;
-            text-align: center;
-            width: 250px;
+        .spec{
+            text-align: left;
+            width: 100%;
+            display: flex;
             p{
-                padding-top: 33px;
+                margin-top: 28px;
             }
-        }
-
-        tbody{
-            border: 1px solid #b4b4b4;
-            border-radius: 5px;
-            box-shadow: 0px 1px 1px 1px #b4b4b4;
-            .spec{
-                text-align: left;
-                width: 100%;
-                display: flex;
-                b{
-                    color: #00337D;
-                }
-                img{
+            b{
+                color: #00337D;
+            }
+            input{
+                color: #041E42;
+            }
+            img{
                     width: 80px;
                     border: 1px solid #041E42;
                     border-radius:5px ;
                     margin: 5px 15px;
                     box-shadow: 0 1px #696969 ;
-                }
-            }
-            
-        }
-
-        
-    }
+                }}
+        td{
+            background: white;
+            padding:15px;
+            text-align: center;
+            border-radius: 0 0 5px 5px;}        }
     .voucher{
         display: flex;
-        margin: 30px;
         justify-content: end;
-    
+        border-bottom: 1.5px dotted #C5C5C5 ;
         button{
+            margin-right: 30px;
             margin-left: 100px;
             padding: 5px 10px;
             border: none;
@@ -116,34 +130,43 @@ body{
     }
 
     .delivery{
-        margin: 40px;
         justify-content: end;
         display: flex;
-        button{
-            border: none;
-            background: none;
-            margin: 0 150px 14px 40px;
-            color: rgb(64, 64, 226);
-        }
+        border-bottom: 1.4px dotted #C5C5C5;
+        margin: 30px 0px 30px 300px;
         p{
             margin-right: 100px;
         }
+        b{color:#00337D; 
+            p{ color: #041E42;
+                font-weight: normal;
+                font-size: 12px;
+            }
+        }
+        div{
+            margin-right: 40px;
+        }
     }
-
-    .tongtien{text-align: end;
-        margin: 40px;
+    .tongtien{
+        text-align:end;
+        border-bottom: 1.5px dotted #C2C2C2;
+        padding-bottom: 10px;
         span{
             margin-right: 40px;
+            float: right;
+            margin-left: 230px ;
         }}
 
     .money{
         margin: 40px;
         display: flex;
         justify-content: space-between;
+        color: #041E42;
         .money_left{
             .money_left_child{
                 img{
-                    margin: 0 25px 5px 5px
+                    margin: 0 25px 5px 5px;
+                    width: 35px;
                 }
                 p{
                     margin-top: 10px;
@@ -151,131 +174,60 @@ body{
             }
         }
         .money_right{
+            width: 50%;
 
+            div{
+                border-bottom: 1.5px dotted #c2c2c2;
+                margin-bottom: 10px;
+                padding-bottom: 5px ;
+
+            }
+            div:last-child{
+                font-weight: bold;
+                font-size: 22px;
+            }
+   
             span{
-                margin-left: 100px;}}         
+                float: right;}}    
+                
+                    
     }
-
     .dathang{
         background: #041E42;
         color: white;
         padding: 5px 20px;
-        margin-right: 30px;
-        float: right;
         text-decoration: none;
+        float: right;
+        margin: 0 30px 0px 0;
     }
-   
+
+ 
 }
 
 
 
 
-///-------wrapper------
-.modal_wrapper{
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(28, 27, 27, 0.9);
 
-
-}
-.modal_container{
-    color: #041E42;
-    position: fixed;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #f5f5f5;
-    width: 650px;
-    padding: 30px;
-    font-size: 16px;
-    color: #041E42;
-    border-radius: 5px;
-    
-    span{
-        color: rgb(216, 80, 80);
-    }
-    label{
-        color: #b4b4b4;}
-
-    .new_add1{
-        margin-top: 20px ;
-        display: flex;
-        margin-bottom: 15px;
-        
-        input{
-            border: none;
-            height: 30px;
-            width: 270px;
-            margin-right: 50px;
-        }
-
-        
-       }
-    
-    .new_add2{
-        display: flex;
-        select{
-            width: 190px;
-            border: none;
-            height: 30px;
-            margin-right: 10px;
-            margin-bottom: 20px;
-        }}
-    .new_add3{
-        input{
-            width: 305%;
-            border: none;
-            height: 30px;
-            margin-bottom: 20px;
-        }}
-    .new_add4{
-        margin-bottom: 20px;
-        span{
-            color: #041E42;
-            margin: 0 0 0 10px;
-        }
-        input{
-            border: 1px solid #041E42
-        };
-    }
-
-    center{
-        button{
-            border: none;
-            text-decoration: underline;
-            background: none;
-            font-size: 18px;
-            margin: 0 20px;
-            border-radius: 5px;
-        }
-
-        .spebut{
-            background: #041E42;
-            text-decoration: none;
-            padding: 5px 15px;
-            color: #f5f5f5;
-        }
-    }
-}
 
 ///Xác minh
 .confirm{
     margin: 3% 35%;
     width: 500px;
-    // height:400px;
     padding: 50px;
     border: 1px solid #f5f5f5;
     border-radius: 5px;
     background: #f5f5f5;
-    input{
-        width: 30px;
-        margin: 20px 5px 20px 0;
-        border-radius:3px ;
-        border: 1px solid #041E42;
+    .so{
+        display: flex;
+        margin: 20px 0 0 50px ;
+        input{
+            margin-left: 20px;
+            width: 30px;
+            border-radius:3px ;
+            border: 1px solid #041E42;
+        }
     }
+   
     button{
         border: none;
         background: none;
@@ -285,6 +237,13 @@ body{
     h3{
         margin: 20px 0;
     }
+    .special{
+        margin: 20px;
+    }
+    a{
+        margin-top: 10px;
+    }
+
     p{
         margin: 20px 0 0 0;}
     h5, p, .specint {
@@ -307,15 +266,14 @@ body{
     }
 }
 .payment_money{
-    margin: 3% 35%;
-    width: 500px;
-    // height:600px;
-    padding: 50px;
+    margin: 25px 400px;
+    width: 400px;
+    padding: 40px;
     border: 1px solid #f5f5f5;
     border-radius: 5px;
     background: #f5f5f5;
     img{
-        width: 60%;
+        width: 50%;
     }
     p{
         color: #b4b4b4;
@@ -326,9 +284,8 @@ body{
         font-size: 20px;
     }}
 .confirm_success{
-    margin: 15% 35%;
-    width: 500px;
-    // height:400px;
+    margin: 50px 350px;
+    width: 400px;
     padding: 50px;
     border: 1px solid #f5f5f5;
     border-radius: 5px;

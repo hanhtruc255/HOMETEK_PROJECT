@@ -31,7 +31,6 @@ const CategoryPage = () => {
   
   return (
     <div>
-      <Navbar />
       <Breadcrumb />
       <Sort onSortChange={handleSortChange} />
       <div className="Frame_Product">

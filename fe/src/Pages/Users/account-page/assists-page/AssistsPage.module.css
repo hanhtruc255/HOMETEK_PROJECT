@@ -1,6 +1,28 @@
-.assistField {
+/* .assistField {
   display: grid;
   grid-template-columns: 370px 370px;
   grid-template-rows: 90px;
   gap: 30px;
+} */
+
+.assistField {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+  .assistField {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 20px;
+  }
+
+  .singleAssist {
+    margin: 0 10px;
+  }
 }

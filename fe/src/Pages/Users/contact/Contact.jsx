@@ -3,7 +3,7 @@ import classNames from "classnames";
 import FormButton from "../../../Components/form-btn/FormButton";
 import GgMap from "../../../Components/gg-map/GgMap";
 import styles from "./Contact.module.css";
-import BannerContact from "../../../Assets/images/BannerContact.png";
+import BannerContact from "../../../Assets/images/banners/banner-contact.png";
 import phone from "../../../Assets/icons/telephone.svg";
 import mail from "../../../Assets/icons/envelope.svg";
 import geoAlt from "../../../Assets/icons/geo-alt-fill.svg";

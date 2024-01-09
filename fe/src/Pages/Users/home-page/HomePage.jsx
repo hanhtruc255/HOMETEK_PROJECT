@@ -1,6 +1,6 @@
 import React from "react";
 import { useRef, useState, useEffect, useContext } from "react";
-
+import { useNavigate } from "react-router-dom";
 import "react-slideshow-image/dist/styles.css";
 
 import "slick-carousel/slick/slick.css";
@@ -47,20 +47,49 @@ import category1 from "../../../Assets/background/category1.png";
 import category2 from "../../../Assets/background/category2.png";
 import category3 from "../../../Assets/background/category3.png";
 
+import banner1 from "../../../Assets/images/banners/banner-1.png";
+import banner2 from "../../../Assets/images/banners/banner-2.png";
+import banner3 from "../../../Assets/images/banners/banner-3.png";
+import banner4 from "../../../Assets/images/banners/banner-4.png";
+import banner5 from "../../../Assets/images/banners/banner-5.png";
+import banner6 from "../../../Assets/images/banners/banner-6.png";
+import banner7 from "../../../Assets/images/banners/banner-7.png";
+
+import insetBanner from "../../../Assets/images/banners/inset-banner.png";
+import bannerVertical from "../../../Assets/images/bannerVertical/BannerVertical.png";
+
+import coupleImg1 from "../../../Assets/images/coupleBanner/couple-banner-1.png";
+import coupleImg2 from "../../../Assets/images/coupleBanner/couple-banner-2.png";
+
 import BlogsSwiper from "../../../Components/blogs-swiper/BlogsSwiper";
+import WrapperModal from "../../../Components/modals/WrapperModal";
 import { AppContext } from "../layout/Layout";
 
 const HomePage = () => {
+  const history = useNavigate();
   const { setDisplayFooter } = useContext(AppContext);
-  // const [loading, setLoading] = useState(true);
-  // const [errorMsg, setErrorMsg] = useState(null);
+
+  const [images, setImages] = useState([]);
 
   const [productsData, setProductsData] = useState([]);
   const [blogsData, setBlogsData] = useState([]);
   useEffect(() => {
     setDisplayFooter(true);
     fetchData();
+    // fetchImages();
   }, []);
+
+  // const fetchImages = async () => {
+  //   try {
+  //     const res = await fetch("http://localhost:3001/images", {
+  //       dirName: "banners",
+  //     });
+  //     const data = await res.json();
+  //     setImages(data);
+  //   } catch (err) {
+  //     console.error("Error fetch images: ", err);
+  //   }
+  // };
 
   const fetchData = async () => {
     try {
@@ -68,7 +97,6 @@ const HomePage = () => {
         fetch("http://localhost:3001/Cua_hang"),
         fetch("http://localhost:3001/blog"),
       ]);
-
       if (!products.ok) {
         throw new Error("Products response was not ok");
       }
@@ -85,6 +113,14 @@ const HomePage = () => {
       // console.log("data: ", data);
     } catch (error) {}
   };
+
+  //add product into storage
+  const addToPayment = (item) => {
+    const existingPayment = JSON.parse(localStorage.getItem("payment")) || [];
+    const newPayment = [...existingPayment, item];
+    localStorage.setItem("payment", JSON.stringify(newPayment));
+  };
+
   //setting for blogs slider
   var settings = {
     dots: false,
@@ -128,29 +164,60 @@ const HomePage = () => {
         <div className="wrapper-banner">
           <Slide>
             <div className="each-slide-effect">
-              <img src={banner} alt="" />
+              <img key={1} src={banner1} alt="" />
             </div>
             <div className="each-slide-effect">
-              <img src={banner} alt="" />
+              <img key={2} src={banner2} alt="" />
             </div>
             <div className="each-slide-effect">
-              <img src={banner} alt="" />
+              <img key={3} src={banner3} alt="" />
+            </div>
+            <div className="each-slide-effect">
+              <img key={4} src={banner4} alt="" />
+            </div>
+            <div className="each-slide-effect">
+              <img key={5} src={banner5} alt="" />
+            </div>
+            <div className="each-slide-effect">
+              <img key={6} src={banner6} alt="" />
+            </div>
+            <div className="each-slide-effect">
+              <img key={7} src={banner7} alt="" />
             </div>
           </Slide>
         </div>
+
         <div className="block-category">
           <div className="heading">DANH MỤC SẢN PHẨM</div>
           <div className="wrapper-category">
-            <div className="category-item category-item-1">
+            <div
+              className="category-item category-item-1"
+              onClick={() => {
+                history("/01");
+              }}
+            >
               <img src={category1} alt="" />
             </div>
-            <div className="category-item category-item-2">
+            <div
+              className="category-item category-item-2"
+              onClick={() => {
+                history("/02");
+              }}
+            >
               <img src={category2} alt="" />
             </div>
-            <div className="category-item category-item-3">
+            <div
+              className="category-item category-item-3"
+              onClick={() => {
+                history("/03");
+              }}
+            >
               <img src={category3} alt="" />
             </div>
           </div>
+        </div>
+        <div className="banner-vertical">
+          <img src={bannerVertical} alt="" className="banner-ver-img" />
         </div>
         <div className="block-swiper block-swiper--promotional-products">
           <div className="heading">SẢN PHẨM KHUYẾN MÃI</div>
@@ -164,6 +231,14 @@ const HomePage = () => {
                       productName={product.name}
                       productPriceShow={product.sale_price}
                       productPriceThrough={product.price}
+                      onClick={() => {
+                        history(`/${product.categoryId}/${product._id}`);
+                      }}
+                      handleBuyNowBtn={(event) => {
+                        event.stopPropagation();
+                        addToPayment(product);
+                        history("/thanh-toan-mua-ngay");
+                      }}
                     />
                   </SwiperSlide>
                 );
@@ -172,10 +247,19 @@ const HomePage = () => {
           </SwiperBar>
         </div>
 
+        <div className="wrapper-couple-banner">
+          <div className="couple-banner">
+            <img src={coupleImg1} alt="" className="couple-img" />
+          </div>
+          <div className="couple-banner">
+            <img src={coupleImg1} alt="" className="couple-img" />
+          </div>
+        </div>
+
         <div className="block-swiper block-swiper--latest-products">
           <div className="heading">SẢN PHẨM MỚI NHẤT</div>
           <SwiperBar>
-            {productsData.map((product) => {
+            {productsData.map((product, index) => {
               if (product.note === "Sản phẩm mới nhất") {
                 return (
                   <SwiperSlide>
@@ -184,6 +268,15 @@ const HomePage = () => {
                       productName={product.name}
                       productPriceShow={product.sale_price}
                       productPriceThrough={product.price}
+                      onClick={() => {
+                        history(`/${product.categoryId}/${product._id}`);
+                      }}
+                      handleBuyNowBtn={(event) => {
+                        event.stopPropagation();
+
+                        addToPayment(product);
+                        history("/thanh-toan-mua-ngay");
+                      }}
                     />
                   </SwiperSlide>
                 );
@@ -192,18 +285,32 @@ const HomePage = () => {
           </SwiperBar>
         </div>
 
+        <div className="inset-banner">
+          <img src={insetBanner} alt="" className="inset-banner-img" />
+        </div>
+
         <div className="block-swiper block-swiper--best-selling-products">
           <div className="heading">SẢN PHẨM BÁN CHẠY</div>
           <SwiperBar>
-            {productsData.map((product) => {
+            {productsData.map((product, index) => {
               if (product.note === "Sản phẩm bán chạy") {
                 return (
                   <SwiperSlide>
                     <Product
+                      key={index}
                       imgSrc={product.image}
                       productName={product.name}
                       productPriceShow={product.sale_price}
                       productPriceThrough={product.price}
+                      onClick={() => {
+                        history(`/${product.categoryId}/${product._id}`);
+                      }}
+                      handleBuyNowBtn={(event) => {
+                        event.stopPropagation();
+
+                        addToPayment(product);
+                        history("/thanh-toan-mua-ngay");
+                      }}
                     />
                   </SwiperSlide>
                 );
@@ -215,19 +322,25 @@ const HomePage = () => {
         <div className="block-swiper block-swiper--recommended">
           <div className="heading">GỢI Ý CHO BẠN</div>
           <SwiperBar>
-            {productsData.map((product) => {
-              if (product.note === "Sản phẩm bán chạy") {
-                return (
-                  <SwiperSlide>
-                    <Product
-                      imgSrc={product.image}
-                      productName={product.name}
-                      productPriceShow={product.sale_price}
-                      productPriceThrough={product.price}
-                    />
-                  </SwiperSlide>
-                );
-              }
+            {productsData.map((product, index) => {
+              return (
+                <SwiperSlide>
+                  <Product
+                    imgSrc={product.image}
+                    productName={product.name}
+                    productPriceShow={product.sale_price}
+                    productPriceThrough={product.price}
+                    onClick={() => {
+                      history(`/${product.categoryId}/${product._id}`);
+                    }}
+                    handleBuyNowBtn={(event) => {
+                      event.stopPropagation();
+                      addToPayment(product);
+                      history("/thanh-toan-mua-ngay");
+                    }}
+                  />
+                </SwiperSlide>
+              );
             })}
           </SwiperBar>
         </div>
@@ -236,18 +349,20 @@ const HomePage = () => {
           <div className="heading">THƯƠNG HIỆU</div>
 
           <div className="wrapper-brands--block-brands">
-            <img src={brandsImage} alt="" />
+            <img src={brandsImage} alt="" className="brandsImg" />
           </div>
         </div>
         <div className="wrapper-blogs">
           <div className="heading">TIN TỨC</div>
 
           <Slider {...settings}>
-            {blogsData.map((blog) => {
+            {blogsData.map((blog, index) => {
               return (
                 <div className="wrapper-slide">
                   <BlogCard
-                    imgSrc={"/test-blog.jpg"}
+                    // imgSrc={"/test-blog.jpg"}
+                    path={`http://localhost:3000/blog-page/${blog.blogId}`}
+                    imgSrc={blog.image}
                     blogTitle={blog.title}
                     dateCreate={blog.created_at}
                   />

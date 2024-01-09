@@ -1,14 +1,12 @@
 import React from "react";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./SendOtpForm.css";
-// import FormButton from '../../form-btn/FormButton';
 import FormButton from "../../form-btn/FormButton";
-// import InputField from '../../input-field/InputField';
 import InputField from "../../input-field/InputField";
-// import CheckPhoneNumberFormat from '../../../functions/CheckPhoneNumberFormat';
 import CheckPhoneNumberFormat from "../../../functions/CheckPhoneNumberFormat";
-// import { ForgetPasswordPageContext } from '../../../pages/login-page/forget-password-page/ForgetPasswordPage';
+import SendOtp from "../../../functions/SendOtp";
 import { ForgetPasswordPageContext } from "../../../Pages/Users/login-page/forget-password-page/ForgetPasswordPage";
 
 const SendOtpForm = (nextPage) => {
@@ -21,27 +19,31 @@ const SendOtpForm = (nextPage) => {
   );
   const [isPhoneNumberDirectionVisible, setIsPhoneNumberDirectionVisible] =
     useState(false);
-
+  const [phoneNumber, setPhoneNumber] = useState("");
   const history = useNavigate();
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!CheckPhoneNumberFormat(phoneNumber)) {
       console.log("phone number: " + phoneNumber);
       return;
     } else {
-      if (phoneNumber != sampleUser.phoneNumber) {
-        setForgetPasswordPageState({
-          ...forgetPasswordPageState,
-          confirmPhoneNumberModalVisible: true,
-          confirmPhoneNumber: "notExist",
-        });
-        return;
+      try {
+        await axios
+          .post("http://localhost:3001/login/existedPhone", {
+            phone: phoneNumber,
+          })
+          .then((res) => {
+            SendOtp(phoneNumber);
+          })
+          .then(() => {
+            console.log("success");
+          });
+      } catch (error) {
+        console.log("check phone error: ", error);
       }
-      history("/forget-password/vertify-otp");
     }
   };
 
-  const [phoneNumber, setPhoneNumber] = useState("");
   return (
     <form className="form--send-otp form-otp" onSubmit={handleSubmit}>
       <div className="form__content">

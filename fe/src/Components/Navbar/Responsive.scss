@@ -46,6 +46,36 @@
     }
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .Nav__top{
+    .header__top__left{
+      a{
+        font-size: 25px;
+        margin: 7px;
+        padding-top: 100px;
+      }
+    }
+    .header__top__midle{
+    }
+    .header__top__right{
+      margin: 13px 3px;
+      justify-content: end;
+
+      width: 210px;
+      ul{
+        white-space: 0px;
+        li{
+          white-space: 0px;
+          a{
+            flex-wrap: nowrap;
+          }
+        }
+      }
+    }
+  }
+ 
+}
   
 
 
