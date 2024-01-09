@@ -19,8 +19,8 @@ const onCaptchaVerify = async (callbackPhoneNumber) => {
 };
 
 async function SendOtp(phoneNumber) {
-  const realPhoneNumber =
-    phoneNumber[0] === "+" ? phoneNumber : "+84" + phoneNumber.substring(1);
+  const realPhoneNumber = "+84" + phoneNumber.substring(1);
+  // phoneNumber[0] === "+" ? phoneNumber : "+84" + phoneNumber.substring(1);
   console.log("RUN FIREBASE!");
   await onCaptchaVerify(realPhoneNumber);
   const appVerifier = window.recaptchaVerifier;

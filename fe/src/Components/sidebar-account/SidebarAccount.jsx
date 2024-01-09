@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { AppContext } from "../../Pages/Users/layout/Layout";
 const SidebarAccount = () => {
   const { setDisplayNotifyPopup } = useContext(AppContext);
-  var currentURL = window.location.href;
   var [activeAccountService, setActiveAccountService] =
     useState("account-profile");
+  var currentURL = window.location.href;
 
   // Chia chuỗi thành mảng bằng ký tự '/'
   useEffect(() => {

@@ -3,15 +3,15 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 
 //This is account of anhntc21406@st.uel.edu.vn
-const firebaseConfig = {
-  apiKey: "AIzaSyD3gvOGatlRGSwb56IWNRLF756ceSiCyT0",
-  authDomain: "homtek-3adcf.firebaseapp.com",
-  projectId: "homtek-3adcf",
-  storageBucket: "homtek-3adcf.appspot.com",
-  messagingSenderId: "293007960608",
-  appId: "1:293007960608:web:e3f2157bec93f473c62a45",
-  measurementId: "G-DBS98C6B14",
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyD3gvOGatlRGSwb56IWNRLF756ceSiCyT0",
+//   authDomain: "homtek-3adcf.firebaseapp.com",
+//   projectId: "homtek-3adcf",
+//   storageBucket: "homtek-3adcf.appspot.com",
+//   messagingSenderId: "293007960608",
+//   appId: "1:293007960608:web:e3f2157bec93f473c62a45",
+//   measurementId: "G-DBS98C6B14",
+// };
 
 //This is account of chamanh0506@gmail.com
 // const firebaseConfig = {
@@ -25,15 +25,15 @@ const firebaseConfig = {
 // };
 
 //This is account of thuongmt21406@st.uel.edu.vn
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBe_ipYjNlrQl1358g28Zk5bTUyKL_PULA",
-//   authDomain: "hometek-project-2f3cc.firebaseapp.com",
-//   projectId: "hometek-project-2f3cc",
-//   storageBucket: "hometek-project-2f3cc.appspot.com",
-//   messagingSenderId: "352096727739",
-//   appId: "1:352096727739:web:af581537e501868b252f9e",
-//   measurementId: "G-9MS8S4RG88",
-// };
+const firebaseConfig = {
+  apiKey: "AIzaSyBe_ipYjNlrQl1358g28Zk5bTUyKL_PULA",
+  authDomain: "hometek-project-2f3cc.firebaseapp.com",
+  projectId: "hometek-project-2f3cc",
+  storageBucket: "hometek-project-2f3cc.appspot.com",
+  messagingSenderId: "352096727739",
+  appId: "1:352096727739:web:af581537e501868b252f9e",
+  measurementId: "G-9MS8S4RG88",
+};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
