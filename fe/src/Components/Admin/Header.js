@@ -14,7 +14,7 @@ const Header = () => {
               placeholder="Tìm kiếm..."
             />
             <div class="input-group-append">
-              <button class="btn search-btn" type="button">
+              <button class="search-btn" type="button">
                 <i class="bi bi-search"></i>
               </button>
             </div>
