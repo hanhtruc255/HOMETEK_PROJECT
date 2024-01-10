@@ -4,7 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import ipayment from "../../Assets/images/payment.png";
 
 const PaymentMoney = () => {
-  const [timeLeft, setTimeLeft] = useState(120);
+  const [timeLeft, setTimeLeft] = useState(30);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const PaymentMoney = () => {
       setTimeLeft((prevTime) => {
         if (prevTime === 0) {
           clearInterval(timer);
-          navigate("/thanh-toan/xac-minh/thanh-cong");
+          navigate("/thanh-toan/thanh-cong");
         }
         return prevTime - 1;
       });
@@ -32,7 +32,7 @@ const PaymentMoney = () => {
           Mã có hiệu lực trong
           <span> {timeLeft} giây</span>
         </p>
-        <Link to="/thanh-toan/thanh-cong">Trở lại</Link>
+        <Link to="/thanh-toan">Trở lại</Link>
       </center>
     </div>
   );
